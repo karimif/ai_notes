@@ -280,4 +280,103 @@ Common effect
 \end{table}
 
 
+\chapter{General}
+\section{Terminology}
+\subsection{Intelligent Agents}
+An {\bf agent} operates autonomously. A {\bf rational agent} acts to achieve the best outcome or expected outcome if there is uncertainty. An {\bf agent program} implements the {\bf agent function} which maps perceptions to actions.
+
+\subsection{Task Environments}
+{\bf Fully observable} vs. {\bf partially observable}: the agent's sensors perceive the complete state of the relevant environment at each point in time. {\bf Deterministic} vs. {\bf stochastic}: the agent's state and action uniquely determine the next state. {\bf Discrete} vs. {\bf continuous}: finite amount of states, actions and outcomes. {\bf Benign} vs. {\bf adversarial}: there is no opponent.
+
+
+\chapter{Problem Solving}
+\section{General Search}
+
+Table~\ref{ref:search} compares general search algorithms.
+
+\begin{table}[h!]
+\begin{center}
+\begin{tabular}{|l||c|c|c|}
+\hline
+ & Breadth-first & Uniform-cost & Depth-first\\
+\hline
+\hline
+Expansion order
+&
+\begin{tikzpicture}[
+  node distance=1cm and 1cm,
+  mynode/.style={draw,circle,align=center},
+  font=\small
+]
+\node[mynode] (A) {1};
+\node[mynode,below left=0.5cm and 0.4 of A] (B) {2};
+\node[mynode,below right=0.5cm and 0.4 of A] (C) {3};
+\node[mynode,below left=0.5cm and 0.05 of B] (D) {4};
+\node[mynode,below right=0.5cm and 0.05 of B] (E) {5};
+\node[mynode,below left=0.5cm and 0.05 of C] (F) {6};
+\node[mynode,below right=0.5cm and 0.05 of C] (G) {7};
+\path (A) edge[-latex] (B)
+(A) edge[-latex] (C)
+(B) edge[-latex] (D)
+(B) edge[-latex] (E)
+(C) edge[-latex] (F)
+(C) edge[-latex] (G);
+\end{tikzpicture}
+&
+\begin{tikzpicture}[
+  node distance=1cm and 1cm,
+  mynode/.style={draw,circle,align=center},
+  font=\small
+]
+\node[mynode] (A) {1};
+\node[mynode,below left=0.5cm and 0.4 of A] (B) {4};
+\node[mynode,below right=0.5cm and 0.4 of A] (C) {2};
+\node[mynode,below left=0.5cm and 0.05 of B] (D) {7};
+\node[mynode,below right=0.5cm and 0.05 of B] (E) {6};
+\node[mynode,below left=0.5cm and 0.05 of C] (F) {5};
+\node[mynode,below right=0.5cm and 0.05 of C] (G) {3};
+\path (A) edge[-latex] node[left] {5} (B)
+(A) edge[-latex] node[right] {2} (C)
+(B) edge[-latex] node[left] {3} (D)
+(B) edge[-latex] node[right] {2} (E)
+(C) edge[-latex] node[left] {4} (F)
+(C) edge[-latex] node[right] {2} (G);
+\end{tikzpicture}
+&
+\begin{tikzpicture}[
+  node distance=1cm and 1cm,
+  mynode/.style={draw,circle,align=center},
+  font=\small
+]
+\node[mynode] (A) {1};
+\node[mynode,below left=0.5cm and 0.4 of A] (B) {2};
+\node[mynode,below right=0.5cm and 0.4 of A] (C) {5};
+\node[mynode,below left=0.5cm and 0.05 of B] (D) {3};
+\node[mynode,below right=0.5cm and 0.05 of B] (E) {4};
+\node[mynode,below left=0.5cm and 0.05 of C] (F) {6};
+\node[mynode,below right=0.5cm and 0.05 of C] (G) {7};
+\path (A) edge[-latex] (B)
+(A) edge[-latex] (C)
+(B) edge[-latex] (D)
+(B) edge[-latex] (E)
+(C) edge[-latex] (F)
+(C) edge[-latex] (G);
+\end{tikzpicture}
+\\
+\hline
+Expansion strategy & Shallowest & Cheapest & Deepest\\
+\hline
+Optimal & Yes & Yes & No\\
+\hline
+Complete & Yes & Yes & No\\
+\hline
+Frontier size ($n$ levels) & $2n$ & $2n$ & $n$\\
+\hline
+\end{tabular}
+\end{center}
+\caption{Comparison of search algorithms}
+\label{ref:search}
+\end{table}
+
+
 \end{document}
