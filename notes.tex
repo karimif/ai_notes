@@ -379,5 +379,13 @@ Frontier size ($n$ levels) & $2n$ & $2n$ & $n$\\
 \label{ref:search}
 \end{table}
 
+\section{A* Search}
+$A*$ expands the path with that has the minimum value $f$.
+
+\begin{definition}[A* cost function]
+$f = g + h$ with $g(path) =$ current path cost and $h(path) = h(s) =$ estimated distance to goal
+\end{definition}
+
+$A*$ finds lowest cost path if: $h(s) <$ true cost. Subsequently, $h$ never overestimates and is optimistic/admissable.
 
 \end{document}
