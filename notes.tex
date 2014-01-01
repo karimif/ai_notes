@@ -4,6 +4,7 @@
 \usepackage{xcolor,colortbl}
 \usepackage{caption}
 \usepackage{subcaption}
+\usepackage{amsmath}
 
 \title{Artificial Intelligence Notes}
 \author{Patrick Oliver GLAUNER, \\
@@ -469,5 +470,43 @@ $\rightarrow$&$\rightarrow$&$\uparrow$&$\uparrow$&&* \\
 \label{ref:policy}
 \end{figure}
 
+
+\chapter{Logic}
+\section{Comparison}
+
+\begin{table}[h!]
+\begin{center}
+\begin{tabular}{|l|c|c|}
+\hline
+& World & Beliefs \\
+\hline
+\hline
+Probability theory & facts & $[0,1]$ \\
+\hline
+Propositional logic & facts & true, false, unknown \\
+\hline
+First-order logic & relations, objects, functions & true, false, unknown \\
+\hline
+\end{tabular}
+\end{center}
+\caption{Comparison of formal languages}
+\label{ref:complang}
+\end{table}
+
+
+\section{Propositional Logic}
+Equivalent to Boolean Algebra. There are efficient inference algorithms to determine validity and satisfiability. Limitations:
+\begin{itemize}
+  \item It can only handle true and false values
+  \item No capability to handle uncertainty
+  \item No objects
+  \item No shortcuts to express similar properties, only like: $A_1 \wedge A_2 \wedge ... \wedge A_n$
+\end{itemize}
+
+
+\section{First-Order Logic}
+
+\section{Higher-Order Logic}
+Allows more powerful expressions, e.g. relations on relations: $\forall_R$ $Transitive(R)\iff \forall a,b,c$ $R(a,b)\wedge R(b,c) \implies R(a,c)$
 
 \end{document}
