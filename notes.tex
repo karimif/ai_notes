@@ -31,10 +31,10 @@ This document aggregates definitions and findings that are related to {\em Artif
 
 \chapter{General}
 \section{Terminology}
-\subsection{Intelligent Agents}
+\subsection{Intelligent agents}
 An {\bf agent} operates autonomously. A {\bf rational agent} acts to achieve the best outcome or expected outcome if there is uncertainty. An {\bf agent program} implements the {\bf agent function} which maps perceptions to actions.
 
-\subsection{Task Environments}
+\subsection{Task environments}
 {\bf Fully observable} vs. {\bf partially observable}: the agent's sensors perceive the complete state of the relevant environment at each point in time. {\bf Deterministic} vs. {\bf stochastic}: the agent's state and action uniquely determine the next state. {\bf Discrete} vs. {\bf continuous}: finite amount of states, actions and outcomes. {\bf Benign} vs. {\bf adversarial}: there is no opponent.
 
 
@@ -76,7 +76,7 @@ $P(A\vert B) = P(A)$ or $P(B\vert A) = P(B)$
 \end{definition}
 
 
-\subsection{Conditional Independence}
+\subsection{Conditional independence}
 
 \begin{figure}[h!]
 \centering
@@ -127,7 +127,7 @@ As seen in Figure~\ref{ref:condindependence2}, $A\independent B$ when $C$ is unk
 \end{figure}
 
 
-\section{Conditional Probabilities} 
+\section{Conditional probabilities}
 \begin{definition}[Complement]
 $P(\neg A\vert B) = 1 - P(A\vert B)$
 \end{definition}
@@ -137,7 +137,7 @@ For $a$ and $b$ to be true, $b$ needs to be true and $a$ needs to be true given 
 $P(A,B) =P(A\vert B)P(B)$
 \end{definition}
 
-\subsection{Total Probability}
+\subsection{Total probability}
 \begin{definition}
 $P(A) = \sum_{b\in B}{P(A,b)} = \sum_{b\in B}{P(A\vert b)P(b)}$
 \end{definition}
@@ -146,7 +146,7 @@ $P(A) = \sum_{b\in B}{P(A,b)} = \sum_{b\in B}{P(A\vert b)P(b)}$
 $P(A\vert C) = \sum_{b\in B}{P(A\vert C,b)P(b\vert C)}$
 \end{definition}
 
-\subsection{Bayes' Rule}
+\subsection{Bayes' rule}
 Applying product rule and total probability:
 \begin{definition}
 $P(A\vert B) = \frac{P(B\vert A)P(A)}{\sum_{a\in A}{P(B\vert a)P(a)}} = \frac{P(B\vert A)P(A)}{P(B)}$
@@ -165,7 +165,7 @@ $P(A\vert B,e) = \frac{P(B\vert A,e)P(A\vert e)}{P(B\vert e)}$
 \end{definition}
 
 
-\section{Bayes Networks}
+\section{Bayes networks}
 Bayes networks define probability distributions over random variables and allow compact specification of full joint distributions. The joint probability of the network shown in Figure~\ref{ref:samplenetwork} is: $P(A,B,C,D,E)=P(A)(B)P(C\vert A,B)P(D\vert C)P(E\vert C)$. The general equation is:
 \begin{definition}
 $P(x_1,...,x_n) = \prod_{i=1}^{n}{P(x_i\vert parents(X_i))}$
@@ -192,7 +192,7 @@ $P(x_1,...,x_n) = \prod_{i=1}^{n}{P(x_i\vert parents(X_i))}$
 \label{ref:samplenetwork}
 \end{figure}
 
-\subsection{D-Separation}
+\subsection{D-separation}
 Stands for direction-dependent separation. D-separated variables are independent. $X$ and $Y$ are d-separated if there is no active path between them. Paths consists of {\bf triplets} as defined in Table~\ref{ref:triplets}. An inactive triplet makes an entire path inactive.
 
 \begin{table}[h!]
@@ -298,7 +298,7 @@ common effect
 
 
 \chapter{Problem Solving}
-\section{General Search}
+\section{General search}
 
 Table~\ref{ref:search} compares general search algorithms.
 
@@ -386,7 +386,7 @@ Frontier size ($n$ levels) & $2n$ & $2n$ & $n$\\
 \label{ref:search}
 \end{table}
 
-\section{A* Search}
+\section{A* search}
 $A*$ expands the path with that has the minimum value $f$.
 
 \begin{definition}[A* cost function]
@@ -495,7 +495,7 @@ First-order logic & relations, objects, functions & true, false, unknown \\
 \end{table}
 
 
-\section{Propositional Logic}
+\section{Propositional logic}
 Equivalent to Boolean Algebra. There are efficient inference algorithms to determine validity and satisfiability. Limitations:
 \begin{itemize}
   \item It can only handle true and false values
@@ -505,9 +505,9 @@ Equivalent to Boolean Algebra. There are efficient inference algorithms to deter
 \end{itemize}
 
 
-\section{First-Order Logic}
+\section{First-order logic}
 
-\section{Higher-Order Logic}
+\section{Higher-order logic}
 Allows more powerful expressions, e.g. relations on relations: $\forall_R$ $Transitive(R)\iff \forall a,b,c$ $R(a,b)\wedge R(b,c) \implies R(a,c)$
 
 \end{document}
