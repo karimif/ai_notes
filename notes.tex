@@ -1,0 +1,281 @@
+\documentclass{report}
+\usepackage{tikz}
+\usetikzlibrary{positioning,shapes,arrows}
+
+\title{Artificial Intelligence Notes}
+\author{Patrick Oliver GLAUNER, \\
+	\texttt{patrick.oliver.glauner@gmail.com}}
+
+\date{\today}
+
+\newtheorem{definition}{Definition}[section]
+
+\newcommand\independent{\protect\mathpalette{\protect\independenT}{\perp}}
+\def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This document aggregates definitions and findings that are related to {\em Artificial Intelligence}. It will continuously be updated in the future.
+
+\end{abstract}
+
+
+\chapter{Probabilities}
+\section{Basics} 
+
+\begin{definition}[Complement]
+$P(\neg A) = 1 - P(A)$
+\end{definition}
+
+\begin{definition}[Inclusion-exclusion principle]
+$P(A\vee B) =P(A) + P(B) - P(A,B)$
+\end{definition}
+
+
+\section{Independence}
+
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}[
+  node distance=1cm and 1cm,
+  mynode/.style={draw,circle,align=center}
+]
+\node[mynode] (A) {A};
+\node[mynode, right=1.5cm of A] (B) {B};
+\end{tikzpicture}
+\caption{Independence}
+\label{ref:independence}
+\end{figure}
+
+As seen in Figure~\ref{ref:independence}, $A$ and $B$ are independent:
+\begin{definition}
+P(A,B) = P(A)P(B)
+\end{definition}
+
+\begin{definition}
+$P(A\vert B) = P(A)$ or $P(B\vert A) = P(B)$ 
+\end{definition}
+
+
+\subsection{Conditional Independence}
+
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}[
+  node distance=1cm and 0cm,
+  mynode/.style={draw,circle,align=center}
+]
+\node[mynode] (C) {C};
+\node[mynode,below left=1cm of C] (A) {A};
+\node[mynode,below right=1cm of C] (B) {B};
+\path (C) edge[-latex] (A)
+(C) edge[-latex] (B);
+\end{tikzpicture}
+\caption{Conditional independence}
+\label{ref:condindependence1}
+\end{figure}
+
+
+As seen in Figure~\ref{ref:condindependence1}, $A$ and $B$ are conditionally independent, given $C$:
+\begin{definition}
+$P(A,B\vert C) = P(A\vert C)P(B\vert C)$
+\end{definition}
+
+\begin{definition}
+$P(A\vert B,C) = P(A\vert C)$ and $P(B\vert A,C) = P(B\vert C)$
+\end{definition}
+
+$A\independent B \vert C \neq A\independent B$
+\\
+
+As seen in Figure~\ref{ref:condindependence2}, $A\independent B$ when $C$ is unknown. When $C$ is known, $A$ and $B$ are dependent. Therefore, independence does not imply conditional independence.
+
+
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}[
+  node distance=1cm and 1cm,
+  mynode/.style={draw,circle,align=center}
+]
+\node[mynode] (C) {C};
+\node[mynode,above left=1cm of C] (A) {A};
+\node[mynode,above right=1cm of C] (B) {B};
+\path (A) edge[-latex] (C)
+(B) edge[-latex] (C);
+\end{tikzpicture}
+\caption{Conditional independence}
+\label{ref:condindependence2}
+\end{figure}
+
+
+\section{Conditional Probabilities} 
+\begin{definition}[Complement]
+$P(\neg A\vert B) = 1 - P(A\vert B)$
+\end{definition}
+
+For $a$ and $b$ to be true, $b$ needs to be true and $a$ needs to be true given $b$:
+\begin{definition}[Product rule]
+$P(A,B) =P(A\vert B)P(B)$
+\end{definition}
+
+\subsection{Total Probability}
+\begin{definition}
+$P(A) = \sum_{b\in B}{P(A,b)} = \sum_{b\in B}{P(A\vert b)P(b)}$
+\end{definition}
+
+\begin{definition}[For conditional variables]
+$P(A\vert C) = \sum_{b\in B}{P(A\vert C,b)P(b\vert C)}$
+\end{definition}
+
+\subsection{Bayes' Rule}
+Applying product rule and total probability:
+\begin{definition}
+$P(A\vert B) = \frac{P(B\vert A)P(A)}{\sum_{a\in A}{P(B\vert a)P(a)}} = \frac{P(B\vert A)P(A)}{P(B)}$
+\end{definition}
+
+The normalizer might be difficult to calculate. It can be substituted with pseudo probabilities:
+\begin{enumerate}
+\item $P'(A\vert B) = P(B\vert A)P(A)$ and $P'(\neg A\vert B) = P(B\vert \neg A)P(\neg A)$
+\item $P(A\vert B) = \alpha P'(A\vert B)$ and $P(\neg A\vert B) = \alpha P'(\neg A\vert B)$ with $\alpha = \frac{1}{P'(A\vert B) + P'(\neg A\vert B)}$
+\end{enumerate}
+
+\begin{definition}[General Bayes' rule]
+$P(A\vert B,e) = \frac{P(B\vert A,e)P(A\vert e)}{P(B\vert e)}$
+\end{definition}
+
+
+\section{Bayes Networks}
+Bayes networks define probability distributions over random variables and allow compact specification of full joint distributions. The joint probability of the network shown in Figure~\ref{ref:samplenetwork} is: $P(A,B,C,D,E)=P(A)(B)P(C\vert A,B)P(D\vert C)P(E\vert C)$. The general equation is:
+\begin{definition}
+$P(x_1,...,x_n) = \prod_{i=1}^{n}{P(x_i\vert parents(X_i))}$
+\end{definition}
+
+
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}[
+  node distance=1cm and 1cm,
+  mynode/.style={draw,circle,align=center}
+]
+\node[mynode] (C) {C};
+\node[mynode,above left=1cm of C] (A) {A};
+\node[mynode,above right=1cm of C] (B) {B};
+\node[mynode,below left=1cm of C] (D) {D};
+\node[mynode,below right=1cm of C] (E) {E};
+\path (A) edge[-latex] (C)
+(B) edge[-latex] (C)
+(C) edge[-latex] (D)
+(C) edge[-latex] (E);
+\end{tikzpicture}
+\caption{Sample Bayes network}
+\label{ref:samplenetwork}
+\end{figure}
+
+\subsection{D-Separation}
+Stands for $direction-dependent separation$. D-separated variables are independent. $X$ and $Y$ are d-separated if there is no active path between them. Paths consists of $triplets$ as defined in Table~\ref{ref:triplets}. An inactive triplet makes an entire path inactive.
+
+\begin{table}[h!]
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+Active & Inactive \\
+\hline
+\begin{tikzpicture}[
+  node distance=1cm and 1cm,
+  mynode/.style={draw,circle,align=center}
+]
+\node[mynode] (A) {};
+\node[mynode, right=0.5cm of A] (B) {};
+\node[mynode, right=0.5cm of B] (C) {};
+\path (A) edge[-latex] (B)
+(B) edge[-latex] (C);
+\end{tikzpicture}
+Causal chain
+&
+\begin{tikzpicture}[
+  node distance=1cm and 1cm,
+  mynode/.style={draw,circle,align=center}
+]
+\node[mynode] (A) {};
+\node[mynode, right=0.5cm of A, fill=black] (B) {};
+\node[mynode, right=0.5cm of B] (C) {};
+\path (A) edge[-latex] (B)
+(B) edge[-latex] (C);
+\end{tikzpicture}
+\\
+\hline
+\begin{tikzpicture}[
+  node distance=1cm and 1cm,
+  mynode/.style={draw,circle,align=center}
+]
+\node[mynode] (C) {};
+\node[mynode,below left=0.5cm of C] (A) {};
+\node[mynode,below right=0.5cm of C] (B) {};
+\path (C) edge[-latex] (A)
+(C) edge[-latex] (B);
+\end{tikzpicture}
+Common cause
+&
+\begin{tikzpicture}[
+  node distance=1cm and 1cm,
+  mynode/.style={draw,circle,align=center}
+]
+\node[mynode, fill=black] (C) {};
+\node[mynode,below left=0.5cm of C] (A) {};
+\node[mynode,below right=0.5cm of C] (B) {};
+\path (C) edge[-latex] (A)
+(C) edge[-latex] (B);
+\end{tikzpicture}
+\\
+\hline
+\begin{tikzpicture}[
+  node distance=1cm and 1cm,
+  mynode/.style={draw,circle,align=center}
+]
+\node[mynode,fill=black] (C) {};
+\node[mynode,above left=0.5cm of C] (A) {};
+\node[mynode,above right=0.5cm of C] (B) {};
+\path (A) edge[-latex] (C)
+(B) edge[-latex] (C);
+\end{tikzpicture}
+Common effect
+&
+\begin{tikzpicture}[
+  node distance=1cm and 1cm,
+  mynode/.style={draw,circle,align=center}
+]
+\node[mynode] (C) {};
+\node[mynode,above left=0.5cm of C] (A) {};
+\node[mynode,above right=0.5cm of C] (B) {};
+\path (A) edge[-latex] (C)
+(B) edge[-latex] (C);
+\end{tikzpicture}
+\\
+\hline
+\begin{tikzpicture}[
+  node distance=1cm and 1cm,
+  mynode/.style={draw,circle,align=center}
+]
+\node[mynode] (C) {};
+\node[mynode,above left=0.5cm of C] (A) {};
+\node[mynode,above right=0.5cm of C] (B) {};
+\node[mynode,below=0.5cm of C,color=white] (D) {};
+\node[mynode,below=0cm of D, fill=black] (E) {};
+\path (A) edge[-latex] (C)
+(B) edge[-latex] (C)
+(C) edge[-latex] (D);
+\end{tikzpicture}
+&
+\\
+\hline
+\end{tabular}
+\end{center}
+\caption{Active and inactive triplets with known variables filled}
+\label{ref:triplets}
+\end{table}
+
+
+\end{document}
