@@ -136,6 +136,8 @@ Applying product rule and total probability:
 $P(A\vert B) = \frac{P(B\vert A)P(A)}{\sum_{a\in A}{P(B\vert a)P(a)}} = \frac{P(B\vert A)P(A)}{P(B)}$
 \end{definition}
 
+The terminology is: $Posterior = \frac{Prior\times Likelihood}{Normalizer}$\\
+
 The normalizer might be difficult to calculate. It can be substituted with pseudo probabilities:
 \begin{enumerate}
 \item $P'(A\vert B) = P(B\vert A)P(A)$ and $P'(\neg A\vert B) = P(B\vert \neg A)P(\neg A)$
@@ -175,7 +177,7 @@ $P(x_1,...,x_n) = \prod_{i=1}^{n}{P(x_i\vert parents(X_i))}$
 \end{figure}
 
 \subsection{D-Separation}
-Stands for $direction-dependent separation$. D-separated variables are independent. $X$ and $Y$ are d-separated if there is no active path between them. Paths consists of $triplets$ as defined in Table~\ref{ref:triplets}. An inactive triplet makes an entire path inactive.
+Stands for direction-dependent separation. D-separated variables are independent. $X$ and $Y$ are d-separated if there is no active path between them. Paths consists of $triplets$ as defined in Table~\ref{ref:triplets}. An inactive triplet makes an entire path inactive.
 
 \begin{table}[h!]
 \begin{center}
