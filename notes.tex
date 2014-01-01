@@ -1,6 +1,9 @@
 \documentclass{report}
 \usepackage{tikz}
 \usetikzlibrary{positioning,shapes,arrows}
+\usepackage{xcolor,colortbl}
+\usepackage{caption}
+\usepackage{subcaption}
 
 \title{Artificial Intelligence Notes}
 \author{Patrick Oliver GLAUNER, \\
@@ -386,6 +389,83 @@ $A*$ expands the path with that has the minimum value $f$.
 $f = g + h$ with $g(path) =$ current path cost and $h(path) = h(s) =$ estimated distance to goal
 \end{definition}
 
-$A*$ finds lowest cost path if: $h(s) <$ true cost. Subsequently, $h$ never overestimates and is optimistic/admissable.
+$f$ is a {\bf heuristic function}. $A*$ finds lowest cost path if: $h(s) <$ true cost. Subsequently, $h$ never overestimates and is optimistic/admissible. See Figure~\ref{ref:heuristic} for an example.
+
+\begin{figure}[h!]
+\centering
+\begin{subfigure}[b]{0.3\textwidth}
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+S &\cellcolor{black}&&&& \\
+\hline
+&\cellcolor{black}&&&& \\
+\hline
+&\cellcolor{black}&&&& \\
+\hline
+&\cellcolor{black}&&&& \\
+\hline
+&&&&&G \\
+\hline
+\end{tabular}
+\end{subfigure}
+\begin{subfigure}[b]{0.3\textwidth}
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+9&8&7&6&5&4 \\
+\hline
+8&7&6&5&4&3 \\
+\hline
+7&6&5&4&3&2 \\
+\hline
+6&5&4&3&2&1 \\
+\hline
+5&4&3&2&1&0 \\
+\hline
+\end{tabular}
+\end{subfigure}
+\caption{Sample world and heuristic}
+\label{ref:heuristic}
+\end{figure}
+
+
+\section{Policy}
+A {\bf policy} specifies what an agent should do for any state that the agent might reach. An {\bf optimal policy} is a policy that yields the highest expected {\bf utility} (meaning "the quality of being useful"). See Figure~\ref{ref:policy} for an example.
+
+\begin{figure}[h!]
+\centering
+\begin{subfigure}[b]{0.3\textwidth}
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+&\cellcolor{black}&&&& \\
+\hline
+&\cellcolor{black}&&&& \\
+\hline
+&\cellcolor{black}&&&& \\
+\hline
+&\cellcolor{black}&&&& \\
+\hline
+&&&&\cellcolor{black}&G \\
+\hline
+\end{tabular}
+\end{subfigure}
+\begin{subfigure}[b]{0.3\textwidth}
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+$\downarrow$&&$\rightarrow$&$\rightarrow$&$\rightarrow$&$\downarrow$ \\
+\hline
+$\downarrow$&&$\rightarrow$&$\rightarrow$&$\rightarrow$&$\downarrow$ \\
+\hline
+$\downarrow$&&$\rightarrow$&$\rightarrow$&$\rightarrow$&$\downarrow$ \\
+\hline
+$\downarrow$&&$\rightarrow$&$\rightarrow$&$\rightarrow$&$\downarrow$ \\
+\hline
+$\rightarrow$&$\rightarrow$&$\uparrow$&$\uparrow$&&* \\
+\hline
+\end{tabular}
+\end{subfigure}
+\caption{Sample world and policy}
+\label{ref:policy}
+\end{figure}
+
 
 \end{document}
