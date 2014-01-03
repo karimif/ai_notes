@@ -505,9 +505,41 @@ Equivalent to Boolean Algebra. There are efficient inference algorithms to deter
 
 
 \section{First-order logic}
+First-order logic is sufficiently expressive to represent a reasonable amount of our commonsense knowledge. It is also used in many further representation languages and has been studied intensively for many decades. The first-order logic syntax is defined in Figure~\ref{ref:firstordersyntax}.
+
+\begin{figure}[h!]
+\centering
+\begin{tabular}{lcl}
+$Sentence$ & $\rightarrow$ & $AtomicSentence$ $\vert$ $ComplexSentence$ \\
+$AtomicSentence$ & $\rightarrow$ & $Predicate$ $\vert$ $Predicate(Term,...)$ $\vert$ $Term=Term$ \\
+$ComplexSentence$ & $\rightarrow$ & $(Sentence)$ $\vert$ $[Sentence]$ \\
+ & $\vert$ & $\neg Sentence$ \\
+ & $\vert$ & $Sentence \wedge Sentence$ \\
+ & $\vert$ & $Sentence \vee Sentence$ \\
+ & $\vert$ & $Sentence \implies Sentence$ \\
+ & $\vert$ & $Sentence \iff Sentence$ \\
+ & $\vert$ & $Quantifier$ $Variable, ...$ $Sentence$ \\
+\\
+$Term$ & $\rightarrow$ & $Function(Term,...)$ \\
+ & $\vert$ & $Constant$ \\
+ & $\vert$ & $Variable$ \\
+ \\
+$Quantifier$ & $\rightarrow$ & $\forall$ $\vert$ $\exists$ \\
+$Constant$ & $\rightarrow$ & $A$ $\vert$ $X_1$ $\vert$ $John$ $\vert$ $...$ \\
+$Variable$ & $\rightarrow$ & $a$ $\vert$ $x$ $\vert$ $s$ $\vert$ $..$ \\
+$Predicate$ & $\rightarrow$ & $True$ $\vert$ $False$ $\vert$ $After$ $\vert$ $Loves$ $\vert$ $Raining$ $\vert$ $...$\\
+$Function$ & $\rightarrow$ & $FullName$ $\vert$ $PhoneNumber$ $\vert$ $...$ \\
+\\
+$OPERATOR$ $PRECEDENCE$ & $:$ & $\neg,=,\wedge,\vee,\implies,\iff$ \\
+\end{tabular}
+\caption{First-order logic syntax}
+\label{ref:firstordersyntax}
+\end{figure}
+
+
 
 \section{Higher-order logic}
-Allows more powerful expressions, e.g. relations on relations: $\forall_R$ $Transitive(R)\iff \forall a,b,c$ $R(a,b)\wedge R(b,c) \implies R(a,c)$
+Views relations and functions as objects themselves. Therefore, it allows more powerful expressions, e.g. relations on relations: $\forall_R$ $Transitive(R)\iff \forall a,b,c$ $R(a,b)\wedge R(b,c) \implies R(a,c)$
 
 
 \chapter{Planning}
