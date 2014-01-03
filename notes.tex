@@ -6,6 +6,8 @@
 \usepackage{subcaption}
 \usepackage{amsmath}
 
+\setlength{\parindent}{0cm}
+
 \title{Artificial Intelligence Notes}
 \author{Patrick Oliver GLAUNER, \\
 	\texttt{patrick.oliver.glauner@gmail.com}}
@@ -545,5 +547,56 @@ Views relations and functions as objects themselves. Therefore, it allows more p
 \chapter{Planning}
 \label{ref:chapterplanning}
 A {\bf planning agent} interleaves planning and execution. This is necessary for environments which are {\bf stochastic}, {\bf multi agent}, {\bf partially observable} or {\bf unknown}. Plans might be {\bf hierarchical} which consist of actions on different levels. Some of these levels can be planned ahead, others while executing the plan. Example: A* can find a route from A to Z but the route might change due to accidents. Low-level actions such as turning the steering wheel or pressing the pedals cannot be planned well-ahead in time in the real world.
+
+
+\chapter{Learning}
+
+\section{Terminology}
+What:
+\begin{itemize}
+  \item Parameters
+  \item Structure
+  \item Hidden concepts
+\end{itemize}
+
+What from:
+\begin{itemize}
+  \item Supervised
+  \item Unsupervised
+  \item Reinforcement
+\end{itemize}
+
+What for:
+\begin{itemize}
+  \item Prediction
+  \item Diagnostics
+  \item Summarization
+  \item ...
+\end{itemize}
+
+How:
+\begin{itemize}
+  \item Passive: learning agent is just an observer and has no impact on the data itself
+  \item Active
+  \item Online: learning while data has been generated
+  \item Offline: learning after data has been generated
+\end{itemize}
+
+Outputs:
+\begin{itemize}
+  \item Classification: discrete values
+  \item Regression: continuous
+\end{itemize}
+
+Details:
+\begin{itemize}
+  \item Generative: model data as generally as possible
+  \item Descriminative: seek to distinguish data
+\end{itemize}
+
+
+\section{Supervised learning}
+\section{Unsupervised learning}
+\section{Reinforcement learning}
 
 \end{document}
