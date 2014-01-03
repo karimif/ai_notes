@@ -35,7 +35,7 @@ This document aggregates definitions and findings that are related to {\em Artif
 An {\bf agent} operates autonomously. A {\bf rational agent} acts to achieve the best outcome or expected outcome if there is uncertainty. An {\bf agent program} implements the {\bf agent function} which maps perceptions to actions.
 
 \subsection{Task environments}
-{\bf Fully observable} vs. {\bf partially observable}: the agent's sensors perceive the complete state of the relevant environment at each point in time. {\bf Deterministic} vs. {\bf stochastic}: the agent's state and action uniquely determine the next state. {\bf Discrete} vs. {\bf continuous}: finite amount of states, actions and outcomes. {\bf Benign} vs. {\bf adversarial}: there is no opponent.
+{\bf Single vs. multi agent}: the agent is the only one. {\bf Fully observable} vs. {\bf partially observable}: the agent's sensors perceive the complete state of the relevant environment at each point in time. {\bf Deterministic} vs. {\bf stochastic}: the agent's state and action uniquely determine the next state. {\bf Discrete} vs. {\bf continuous}: finite amount of states, actions and outcomes. {\bf Benign} vs. {\bf adversarial}: there is no opponent. {\bf Known vs. unknown}: the agent's knowledge about the "law of physics" of the environment, the outcomes (or probabilities) for all actions are given.
 
 
 
@@ -299,7 +299,7 @@ common effect
 
 \chapter{Problem Solving}
 \section{General}
-The algorithms in this chapter require a deterministic and fully observable environment. Please see Chapter~\ref{ref:chapterplanning} for planning in more complex environments. Table~\ref{ref:search} compares general search algorithms.
+A {\bf problem solving agent} requires a deterministic and fully observable environment. Please see Chapter~\ref{ref:chapterplanning} for planning in more complex environments. Table~\ref{ref:search} compares general search algorithms.
 
 \begin{table}[h!]
 \begin{center}
@@ -512,6 +512,6 @@ Allows more powerful expressions, e.g. relations on relations: $\forall_R$ $Tran
 
 \chapter{Planning}
 \label{ref:chapterplanning}
-
+A {\bf planning agent} interleaves planning and execution. This is necessary for environments which are {\bf stochastic}, {\bf multi agent}, {\bf partially observable} or {\bf unknown}. Plans might be {\bf hierarchical} which consist of actions on different levels. Some of these levels can be planned ahead, others while executing the plan. Example: A* can find a route from A to Z but the route might change due to accidents. Low-level actions such as turning the steering wheel or pressing the pedals cannot be planned well-ahead in time in the real world.
 
 \end{document}
