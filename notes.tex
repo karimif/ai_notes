@@ -578,8 +578,8 @@ How:
 \begin{itemize}
   \item Passive: learning agent is just an observer and has no impact on the data itself
   \item Active
-  \item Online: learning while data has been generated
-  \item Offline: learning after data has been generated
+  \item Online: learning while data is being generated
+  \item Offline: learning by processing data in batch
 \end{itemize}
 
 Outputs:
@@ -596,6 +596,43 @@ Details:
 
 
 \section{Supervised learning}
+Supervised learning learns from training data If there are not sufficiently enough training data, the learning algorithm may {\bf underfit}. In contrast, it may {\bf overfit} for too many training data meaning it only matches the truing data well and provides distorted results for new data.
+
+\subsection{Linear regression}
+There are $m$ training examples having $n+1$ features. Linear regression computes a regression function for these training examples. The objective is to minimize the cost function:
+\begin{definition}[Cost function]
+$J(\theta) = \frac{1}{2m}\sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})^2$
+\end{definition}
+
+Where the hypothesis $h_\theta(x^{(i)})$ is given by the linear model:
+\begin{definition}[Hypothesis]
+$h_\theta(x^{(i)}) = \theta^{T}x = \theta_0 x_0 + \theta_1 x_1 + ... + \theta_n x_n$ with $x_0 = 1$
+\end{definition}
+
+The parameters of the model to be learned are the $\theta_j$ values. One way to do this is to use the batch {\bf gradient descent} algorithm. Through is step, the parameters $\theta_j$ come closer to the optimal values that will achieve the lowest cost $J(\theta)$. If the {\bf learning rate} $\alpha$ is too large, gradient descent might not converge and overshoot the minimum after a certain amount of iterations. Gradient descent might generally not find the global but the local minimum.
+
+\begin{definition}[Gradient descent]
+loop until converge \{ \\
+$\theta_j := \theta_j - \alpha \frac{1}{m}\sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)}$ (simultaneously update $\theta_j$ for all $j$) \\
+\}
+\end{definition}
+
+{\bf Vectorization} allows to do the updates simultaneously by all updates through various matrix operations. Matrix multiplications can be executed very efficiently (Strassen algorithm).
+
+{\bf Feature normalization} allows to perform gradient descent quickly by scaling each feature, e.g.:
+\begin{definition}[Feature normalization]
+$v' = \frac{v - \mu}{\sigma ^2}$
+\end{definition}
+
+The {\bf normal equation} is a closed-form solution for linear regression which requires no loop, no learning rate and no feature normalization.
+\begin{definition}[Normal equation]
+$\theta = (X^{T}X)^{-1}X^{T}y$
+\end{definition}
+
+
+\subsection{Logistic regression}
+
+
 \section{Unsupervised learning}
 \section{Reinforcement learning}
 
