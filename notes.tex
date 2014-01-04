@@ -596,10 +596,10 @@ Details:
 
 
 \section{Supervised learning}
-Supervised learning learns from training data If there are not sufficiently enough training data, the learning algorithm may {\bf underfit}. In contrast, it may {\bf overfit} for too many training data meaning it only matches the truing data well and provides distorted results for new data.
+Supervised learning learns from training examples. If there are not sufficiently enough training examples, the learning algorithm may {\bf underfit}. In contrast, it may {\bf overfit} for too many training examples meaning it only matches the training data well and provides distorted results for new data.
 
 \subsection{Linear regression}
-There are $m$ training examples having $n+1$ features. Linear regression computes a regression function for these training examples. The objective is to minimize the cost function:
+{\bf Linear regression} computes a linear regression function for $m$ {\bf training examples} having $n+1$ {\bf features}. The objective is to minimize the cost function:
 \begin{definition}[Cost function]
 $J(\theta) = \frac{1}{2m}\sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})^2$
 \end{definition}
@@ -617,14 +617,13 @@ $\theta_j := \theta_j - \alpha \frac{1}{m}\sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)}
 \}
 \end{definition}
 
-{\bf Vectorization} allows to do the updates simultaneously by all updates through various matrix operations. Matrix multiplications can be executed very efficiently (Strassen algorithm).
-
+{\bf Vectorization} allows to do the updates simultaneously by all updates through various matrix operations. Matrix multiplications can be executed very efficiently (Strassen algorithm). Matrix $X$ contains $m$ training data rows and $n+1$ features where row $x_0$ contains entirely 1s.
 {\bf Feature normalization} allows to perform gradient descent quickly by scaling each feature, e.g.:
 \begin{definition}[Feature normalization]
 $v' = \frac{v - \mu}{\sigma ^2}$
 \end{definition}
 
-The {\bf normal equation} is a closed-form solution for linear regression which requires no loop, no learning rate and no feature normalization.
+The {\bf normal equation} is a closed-form solution for linear regression which requires no loop, no learning rate and no feature normalization. Is it usually recommended to calculate the pseudo inverse as the inverse of $X$ might not exist.
 \begin{definition}[Normal equation]
 $\theta = (X^{T}X)^{-1}X^{T}y$
 \end{definition}
@@ -632,8 +631,32 @@ $\theta = (X^{T}X)^{-1}X^{T}y$
 
 \subsection{Logistic regression}
 
+Logistic regression allows linear classification. The hypothesis is defined as:
+\begin{definition}[Hypothesis]
+$h_\theta(x) = g(\theta^{T}x)$
+\end{definition}
+
+$g$ is the {\bf sigmoid function} which is defined as:
+\begin{definition}[Sigmoid function]
+$g(z) = \frac{1}{1 + e^{-z}}$
+\end{definition}
+
+The cost function in logistic regression is:
+\begin{definition}[Cost function]
+$J(\theta) = \frac{1}{m}\sum_{i=1}^m[-y^{(i)}log(h_{\theta}(x^{(i)}))-(1-y^{(i)})log(1-h_{\theta}(x^{(i)}))]$
+\end{definition}
+
+This gradient descent looks identical to the linear regression gradient but the formula is actually different because of the different definition of $h_{\theta}(x)$.
+\begin{definition}[Gradient descent]
+$\theta_j := \theta_j - \alpha \frac{1}{m}\sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)}$
+\end{definition}
+
+
+\subsection{Regularization}
+
 
 \section{Unsupervised learning}
 \section{Reinforcement learning}
+
 
 \end{document}
