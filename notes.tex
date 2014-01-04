@@ -611,13 +611,24 @@ $h_\theta(x^{(i)}) = \theta^{T}x = \theta_0 x_0 + \theta_1 x_1 + ... + \theta_n 
 
 The parameters of the model to be learned are the $\theta_j$ values. One way to do this is to use the batch {\bf gradient descent} algorithm. Through is step, the parameters $\theta_j$ come closer to the optimal values that will achieve the lowest cost $J(\theta)$. If the {\bf learning rate} $\alpha$ is too large, gradient descent might not converge and overshoot the minimum after a certain amount of iterations. Gradient descent might generally not find the global but the local minimum.
 
-\begin{definition}[Gradient descent]
+\begin{definition}[Gradient descent] ~\\
 loop until converge \{ \\
 $\theta_j := \theta_j - \alpha \frac{1}{m}\sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)}$ (simultaneously update $\theta_j$ for all $j$) \\
 \}
 \end{definition}
 
-{\bf Vectorization} allows to do the updates simultaneously by all updates through various matrix operations. Matrix multiplications can be executed very efficiently (Strassen algorithm). Matrix $X$ contains $m$ training data rows and $n+1$ features where row $x_0$ contains entirely 1s.
+{\bf Vectorization} allows to do the updates simultaneously by all updates through various matrix operations. Matrix multiplications can be executed very efficiently (Strassen algorithm). Matrix $X$ contains $m$ training data rows and $n+1$ features where row $x_0$ contains entirely 1s. The cost function and gradient descent then look:
+
+\begin{definition}[Vectorized cost function] ~\\
+$J(\theta) = \frac{1}{2m}(X\theta-y)^T(X\theta-y)$\\
+\end{definition}
+
+\begin{definition}[Vectorized gradient descent] ~\\
+$\theta := \theta - \alpha \frac{1}{m}X^{T}(h_{\theta}(x)-y) := \theta - \alpha \frac{1}{m}X^{T}(X\theta-y)$
+\end{definition}
+
+
+
 {\bf Feature normalization} allows to perform gradient descent quickly by scaling each feature, e.g.:
 \begin{definition}[Feature normalization]
 $v' = \frac{v - \mu}{\sigma ^2}$
