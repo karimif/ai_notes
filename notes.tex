@@ -552,6 +552,8 @@ A {\bf planning agent} interleaves planning and execution. This is necessary for
 \chapter{Learning}
 
 \section{Introduction}
+{\bf Machine learning} is the field of study that gives computers the ability to learn without being explicitly programmed.
+
 What:
 \begin{itemize}
   \item Parameters
@@ -640,12 +642,12 @@ $\theta = (X^{T}X)^{-1}X^{T}y$
 
 \subsection{Logistic regression}
 
-Logistic regression allows linear classification. The hypothesis is defined as:
+Logistic regression allows linear classification. The parameters $\theta_j$ comprise the linear separator called decision boundary. The hypothesis is defined as:
 \begin{definition}[Hypothesis]
 $h_\theta(x) = g(\theta^{T}x)$
 \end{definition}
 
-$g$ is the {\bf sigmoid function} which is defined as:
+The hypothesis can be more complex to use logistic regression for non-linear classification. $g$ is the {\bf sigmoid function} which is defined as:
 \begin{definition}[Sigmoid function]
 $g(z) = \frac{1}{1 + e^{-z}}$
 \end{definition}
