@@ -609,7 +609,7 @@ Where the hypothesis $h_\theta(x^{(i)})$ is given by the linear model:
 $h_\theta(x^{(i)}) = \theta^{T}x = \theta_0 x_0 + \theta_1 x_1 + ... + \theta_n x_n$ with $x_0 = 1$
 \end{definition}
 
-The parameters of the model to be learned are the $\theta_j$ values. One way to do this is to use the batch {\bf gradient descent} algorithm. Through is step, the parameters $\theta_j$ come closer to the optimal values that will achieve the lowest cost $J(\theta)$. If the {\bf learning rate} $\alpha$ is too large, gradient descent might not converge and overshoot the minimum after a certain amount of iterations. Gradient descent might generally not find the global but the local minimum. {\bf Feature normalization} allows to perform gradient descent quickly by scaling each feature.
+The parameters of the model to be learned are the $\theta_j$ values. One way to do this is to use the batch {\bf gradient descent} algorithm. Through is step, the parameters $\theta_j$ come closer to the optimal values that will achieve the lowest cost $J(\theta)$. If the {\bf learning rate} $\alpha$ is too large, gradient descent might not converge and overshoot the minimum after a certain amount of iterations. Gradient descent might generally not find the global but the local minimum. Gradient descent returns the global minimum for convex or bowl-shaped cost functions which do not have local optima. {\bf Feature normalization} allows to perform gradient descent quickly by scaling each feature.
 
 
 \begin{definition}[Gradient descent] ~\\
@@ -622,7 +622,7 @@ $\theta_j := \theta_j - \alpha \frac{1}{m}\sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)}
 $x_j' = \frac{x_j - \mu_j}{\sigma_j}$
 \end{definition}
 
-{\bf Vectorization} allows to do the updates simultaneously through various matrix operations. Matrix multiplications can be executed very efficiently (Strassen algorithm). Matrix $X$ contains $m$ training data rows and $n+1$ features where row $x_0$ contains entirely 1s. The cost function and gradient descent then look:
+{\bf Vectorization} allows to do the updates simultaneously through various matrix operations. Matrix multiplications can be executed very efficiently (Strassen algorithm). Matrix $X$ contains $m$ training data rows and $n$ features where row $x_0$ contains entirely 1s. The cost function and gradient descent then look:
 
 \begin{definition}[Vectorized cost function] ~\\
 $J(\theta) = \frac{1}{2m}(X\theta-y)^T(X\theta-y)$\\
@@ -650,14 +650,22 @@ $g$ is the {\bf sigmoid function} which is defined as:
 $g(z) = \frac{1}{1 + e^{-z}}$
 \end{definition}
 
-The cost function in logistic regression is:
-\begin{definition}[Cost function]
+The cost function in logistic regression is convex:
+\begin{definition}[Cost function] ~\\
 $J(\theta) = \frac{1}{m}\sum_{i=1}^m[-y^{(i)}log(h_{\theta}(x^{(i)}))-(1-y^{(i)})log(1-h_{\theta}(x^{(i)}))]$
+\end{definition}
+
+\begin{definition}[Vectorized cost function] ~\\
+$J(\theta) = \frac{1}{m}[-y^T log(g(X\theta))-(1-y)^T log(1-g(X\theta))]$
 \end{definition}
 
 This gradient descent looks identical to the linear regression gradient but the formula is actually different because of the different definition of $h_{\theta}(x)$.
 \begin{definition}[Gradient descent]
 $\theta_j := \theta_j - \alpha \frac{1}{m}\sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)}$
+\end{definition}
+
+\begin{definition}[Vectorized gradient descent] ~\\
+$\theta := \theta - \alpha \frac{1}{m}X^{T}(g(X\theta)-y)$
 \end{definition}
 
 
