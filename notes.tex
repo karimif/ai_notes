@@ -705,6 +705,84 @@ $\theta_j := \theta_j - \alpha[ \frac{1}{m}\sum_{i=1}^m((h_\theta(x^{(i)})-y^{(i
 \end{definition}
 
 
+\subsection{Neural network}
+A neuron has {\bf inputs} and an {\bf output} as seen in Figure~\ref{ref:neuron}. A {\bf neural network} consists of layers of {\bf neurons}. The parameters $\theta_j$ are called {\bf weights} in some sources. The hypothesis is called {\bf Sigmoid activation function}.
+
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}[
+  node distance=1cm and 1cm,
+  mynode/.style={draw,circle,align=center}
+]
+\node[mynode] (C) {C};
+\node[mynode,above left=2cm and 1cm of C] (X0) {$1$};
+\node[mynode,above left=1cm and 1cm of C] (X1) {$x_1$};
+\node[mynode,above left=0cm and 1cm of C] (X2) {$x_2$};
+\node[mynode,below left=0cm and 1cm of C,draw=white] (X3) {...};
+\node[mynode,below left=1cm and 1cm of C] (XN) {$x_n$};
+\node[mynode,right=1cm and 1cm of C,draw=white] (h) {$h_{\theta}(x)$};
+\path (X0) edge[-latex] (C)
+(X1) edge[-latex] (C)
+(X2) edge[-latex] (C)
+(X3) edge[-latex] (C)
+(XN) edge[-latex] (C)
+(C) edge[-latex] (h);
+\end{tikzpicture}
+\caption{Neuron with $x_0=1$}
+\label{ref:neuron}
+\end{figure}
+
+\begin{definition}[Sigmoid activation function]
+$h_\theta(x) = \frac{1}{1+e^{-\theta^{T}x}}$
+\end{definition}
+
+Each neural network has an {\bf input layer}, $\ge 0$ {\bf hidden layers} and an {\bf output layer} as seen in Figure~\ref{ref:neuralnetwork}. The value $a_i^{(j)}$ is the called {\bf activation} of unit $i$ in layer $j$. $\Theta^{(j)}$ is a matrix of weights to map from layer $j$ to layer $j+1$. If network has $s_j$ units in layer $j$, $s_{j+1}$ units in layer $j+1$, then $\Theta^{(j)}$ will be of dimension $s_{j+1}\times (s_j + 1)$. For the neural network in Figure~\ref{ref:neuralnetwork}, the mapping is defined in Figure~\ref{ref:neuralnetworkmapping}.
+
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}[
+  node distance=1cm and 1cm,
+  mynode/.style={draw,circle,align=center}
+]
+\node[mynode] (A12) {$a_1^{(2)}$};
+\node[mynode,below=0.5cm of A12] (A22) {$a_2^{(2)}$};
+\node[mynode,below=0.5cm of A22] (A32) {$a_3^{(2)}$};
+\node[mynode,left=0cm and 1cm of A12] (X1) {$x_1$};
+\node[mynode,left=0cm and 1cm of A22] (X2) {$x_2$};
+\node[mynode,left=0cm and 1cm of A32] (X3) {$x_3$};
+\node[mynode,right=0cm and 1cm of A22] (L3) {};
+\node[mynode,right=0cm and 1cm of L3,draw=white] (h) {$h_{\Theta}(x)$};
+\path (X1) edge[-latex] (A12)
+(X1) edge[-latex] (A22)
+(X1) edge[-latex] (A32)
+(X2) edge[-latex] (A12)
+(X2) edge[-latex] (A22)
+(X2) edge[-latex] (A32)
+(X3) edge[-latex] (A12)
+(X3) edge[-latex] (A22)
+(X3) edge[-latex] (A32)
+(A12) edge[-latex] (L3)
+(A22) edge[-latex] (L3)
+(A32) edge[-latex] (L3)
+(L3) edge[-latex] (h);
+\end{tikzpicture}
+\caption{Neural network with three layers ($x_0=1$ not displayed)}
+\label{ref:neuralnetwork}
+\end{figure}
+
+\begin{figure}[h!]
+\centering
+\begin{tabular}{lcl}
+$a_1^{(2)}$ & $=$ & $g(\Theta_{10}^{(1)}x_0 + \Theta_{11}^{(1)}x_1 + \Theta_{12}^{(1)}x_2 + \Theta_{13}^{(1)}x_3)$ \\
+$a_2^{(2)}$ & $=$ & $g(\Theta_{20}^{(1)}x_0 + \Theta_{21}^{(1)}x_1 + \Theta_{22}^{(1)}x_2 + \Theta_{23}^{(1)}x_3)$ \\
+$a_3^{(2)}$ & $=$ & $g(\Theta_{30}^{(1)}x_0 + \Theta_{31}^{(1)}x_1 + \Theta_{32}^{(1)}x_2 + \Theta_{33}^{(1)}x_3)$ \\
+$h_{\Theta}(x)$ & $=$ & $a_1^{(3)}$ $=$ $g(\Theta_{10}^{(2)}a_0^{(2)} + \Theta_{11}^{(2)}a_1^{(2)} + \Theta_{12}^{(2)}a_2^{(2)} + \Theta_{13}^{(2)}a_3^{(2)})$ \\
+\end{tabular}
+\caption{Activation of layers in a neural network}
+\label{ref:neuralnetworkmapping}
+\end{figure}
+
+
 \section{Unsupervised learning}
 \section{Reinforcement learning}
 
