@@ -5,6 +5,7 @@
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{amsmath}
+\usepackage{amssymb}
 
 \setlength{\parindent}{0cm}
 
@@ -697,7 +698,7 @@ $\theta = (X^{T}X+\lambda
 For logistic regression, the definitions change to:
 
 \begin{definition}[Regularized logistic regression cost function] ~\\
-$J(\theta) = \frac{1}{m}\sum_{i=1}^m[-y^{(i)}log(h_{\theta}(x^{(i)}))-(1-y^{(i)})log(1-h_{\theta}(x^{(i)}))] {\bf + \frac{1}{2m}\sum_{j=1}^n\theta_j^2}$
+$J(\theta) = \frac{1}{m}\sum_{i=1}^m[-y^{(i)}log(h_{\theta}(x^{(i)}))-(1-y^{(i)})log(1-h_{\theta}(x^{(i)}))] {\bf + \frac{\lambda}{2m}\sum_{j=1}^n\theta_j^2}$
 \end{definition}
 
 \begin{definition}[Regularized logistic regression gradient descent] ~\\
@@ -736,7 +737,14 @@ A neuron has {\bf inputs} and an {\bf output} as seen in Figure~\ref{ref:neuron}
 $h_\theta(x) = \frac{1}{1+e^{-\theta^{T}x}}$
 \end{definition}
 
-Each neural network has an {\bf input layer}, $\ge 0$ {\bf hidden layers} and an {\bf output layer} as seen in Figure~\ref{ref:neuralnetwork}. The value $a_i^{(j)}$ is the called {\bf activation} of unit $i$ in layer $j$. $\Theta^{(j)}$ is a matrix of weights to map from layer $j$ to layer $j+1$. If network has $s_j$ units in layer $j$, $s_{j+1}$ units in layer $j+1$, then $\Theta^{(j)}$ will be of dimension $s_{j+1}\times (s_j + 1)$. For the neural network in Figure~\ref{ref:neuralnetwork}, the mapping is defined in Figure~\ref{ref:neuralnetworkmapping}.
+Each neural network has an {\bf input layer}, $\ge 0$ {\bf hidden layers} and an {\bf output layer} as seen in Figure~\ref{ref:neuralnetwork}. The value $a_i^{(j)}$ is the called {\bf activation} of unit $i$ in layer $j$. $\Theta^{(j)}$ is a matrix of weights to map from layer $j$ to layer $j+1$. If network has $s_j$ units in layer $j$, $s_{j+1}$ units in layer $j+1$, then $\Theta^{(j)}$ will be of dimension $s_{j+1}\times (s_j + 1)$. For the neural network in Figure~\ref{ref:neuralnetwork}, the mapping is defined in Figure~\ref{ref:neuralnetworkmapping}. \\
+
+The cost function for $K$ output units and $L$ layers is defined as follows (with $h_\Theta(x) \in \mathbb{R}^K$ and $(h_\Theta(x))_i = i^{th}$ output):
+
+\begin{definition}[Regularized cost function] ~\\
+$J(\Theta) = -\frac{1}{m}[\sum_{i=1}^m \sum_{k=1}^K y_k^{(i)}log(h_{\Theta}(x^{(i)}))_k+(1-y_k^{(i)})log(1-h_{\Theta}(x^{(i)}))_k] \\
++ \frac{\lambda}{2m}\sum_{l=1}^{L-1}\sum_{i=1}^{s_{l}}\sum_{j=1}^{s_{l+1}}(\Theta_{ij}^{(l)})^2$
+\end{definition}
 
 \begin{figure}[h!]
 \centering
