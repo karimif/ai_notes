@@ -832,6 +832,9 @@ $\frac{\partial}{\partial \Theta_{ij}^{(l)}}J(\Theta)=D_{ij}^{(l)}$
 \label{ref:backpropagation}
 \end{figure}
 
+$\Theta_{ij}^{(l)}$ needs to have an initial value. If $\Theta$ was entirely 0, {\bf symmetry} would create a highly redundant neural network with poor learning capabilities. {\bf Random initialization} allows symmetry breaking by initializing each $\Theta_{ij}^{(l)}$ to a random value in $[-\epsilon,\epsilon]$
+
+\subsection{Gradient checking}
 
 \chapter{Unsupervised learning}
 \chapter{Reinforcement learning}
