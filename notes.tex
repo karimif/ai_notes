@@ -822,7 +822,7 @@ For $i=1$ to $m$
 \> Using $y^{(i)}$, compute $\delta^{(L)}=a^{(L)}-y^{(i)}$ ("error") \\
 \> Compute $\delta^{(L-1)},\delta^{(L-2)},...,\delta^{(2)}$, e.g. $\delta^{(2)}=(\Theta^{(2)})^T\delta^{(3)}.*g^{'}(z^{(2)})$ (element-wise multiplication) \\
 \> $\Delta_{ij}^{(l)}:=\Delta_{ij}^{(l)}+a_j^{(l)}\delta_i{(l+1)}$ \\
-$D_{ij}^{(l)}:=\frac{1}{m}\Delta_{ij}^{(l)}+\lambda\Theta_{ij}^{(l)}$ if $j\ne0$ (no regularization of bias terms) \\
+$D_{ij}^{(l)}:=\frac{1}{m}\Delta_{ij}^{(l)}+\frac{\lambda}{m}\Theta_{ij}^{(l)}$ if $j\ne0$ (no regularization of bias terms) \\
 $D_{ij}^{(l)}:=\frac{1}{m}\Delta_{ij}^{(l)}$ if $j=0$
 \\
 \\
@@ -839,6 +839,15 @@ As backpropagation is a complex algorithm, subtile bugs might not be caught and 
 \begin{definition}[Gradient checking] ~\\
 $\frac{\partial}{\partial\theta_i}J(\theta)\approx\frac{J(...,\theta_{i-1},\theta_{i}+\epsilon,\theta_{i+1},...)+J(...,\theta_{i-1},\theta_{i}-\epsilon,\theta_{i+1},...)}{2\epsilon}$ for small $\epsilon$
 \end{definition}
+
+\subsection{Picking a network architecture}
+The following rules can be followed to decide on the network architecture:
+\begin{itemize}
+\item No. of input units: dimension of features $x^(i)$
+\item No. output units: number of classes
+\item No. of hidden layers: reasonable default: $1$ hidden layer, if $>1$, same number of units in every layer
+\item No. of units per layer: usually the more the better (but also computationally more expensive)
+\end{itemize}
 
 \chapter{Unsupervised learning}
 \chapter{Reinforcement learning}
