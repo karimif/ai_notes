@@ -569,7 +569,6 @@ A {\bf planning agent} interleaves planning and execution. This is necessary for
 
 \chapter{Learning}
 
-\section{Introduction}
 {\bf Machine learning} is the field of study that gives computers the ability to learn without being explicitly programmed.
 
 What:
@@ -615,10 +614,10 @@ Details:
 \end{itemize}
 
 
-\section{Supervised learning}
+\chapter{Supervised learning}
 Supervised learning learns from training examples. If there are not sufficiently enough tfeatures, the learning algorithm may {\bf underfit}. In contrast, it may {\bf overfit} for too many features meaning it only matches the training data well but fails to generalize to new examples.
 
-\subsection{Linear regression}
+\section{Linear regression}
 {\bf Linear regression} computes a linear regression function for $m$ {\bf training examples} having $n$ {\bf features}. The objective is to minimize the cost function:
 \begin{definition}[Cost function]
 $J(\theta) = \frac{1}{2m}\sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})^2$
@@ -658,7 +657,7 @@ $\theta = (X^{T}X)^{-1}X^{T}y$
 \end{definition}
 
 
-\subsection{Logistic regression}
+\section{Logistic regression}
 
 Logistic regression allows linear classification. The parameters $\theta_j$ comprise the linear separator called decision boundary. The hypothesis is defined as:
 \begin{definition}[Hypothesis]
@@ -689,7 +688,7 @@ $\theta := \theta - \alpha \frac{1}{m}X^{T}(g(X\theta)-y)$
 \end{definition}
 
 
-\subsection{Regularization}
+\section{Regularization}
 {\bf Regularization} allows to prevent overfitting by "penalizing" large $\theta_j$ values. Feature $x_0$ is usually not affected by regularization. If $\lambda$ is set too large, the learning algorithm may underfit. For linear regression, the definitions change to:
 
 \begin{definition}[Regularized linear regression cost function] ~\\
@@ -723,7 +722,7 @@ $\theta_j := \theta_j - \alpha[ \frac{1}{m}\sum_{i=1}^m((h_\theta(x^{(i)})-y^{(i
 \end{definition}
 
 
-\subsection{Neural network}
+\section{Neural network}
 A neuron has {\bf inputs} and an {\bf output} as seen in Figure~\ref{ref:neuron}. A {\bf neural network} consists of layers of {\bf neurons}. The parameters $\theta_j$ are called {\bf weights} in some sources. The hypothesis is called {\bf Sigmoid activation function}.
 
 \begin{figure}[h!]
@@ -810,8 +809,8 @@ $h_{\Theta}(x)$ & $=$ & $a_1^{(3)}$ $=$ $g(\Theta_{10}^{(2)}a_0^{(2)} + \Theta_{
 {\bf Backpropagation} is a method of trainining a neural network.
 
 
-\section{Unsupervised learning}
-\section{Reinforcement learning}
+\chapter{Unsupervised learning}
+\chapter{Reinforcement learning}
 
 \chapter{Localization}
 \section{Grid localization}
