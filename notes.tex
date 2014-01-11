@@ -832,7 +832,7 @@ $\frac{\partial}{\partial \Theta_{ij}^{(l)}}J(\Theta)=D_{ij}^{(l)}$
 \label{ref:backpropagation}
 \end{figure}
 
-$\Theta_{ij}^{(l)}$ needs to have an initial value. If $\Theta$ was entirely 0, {\bf symmetry} would create a highly redundant neural network with poor learning capabilities. {\bf Random initialization} allows symmetry breaking by initializing each $\Theta_{ij}^{(l)}$ to a random value in $[-\epsilon,\epsilon]$
+$\Theta_{ij}^{(l)}$ needs to have an initial value. If $\Theta$ was entirely 0, {\bf symmetry} would create a highly redundant neural network with poor learning capabilities. {\bf Random initialization} allows symmetry breaking by initializing each $\Theta_{ij}^{(l)}$ to a random value in $[-\epsilon,\epsilon]$.
 
 \subsection{Gradient checking}
 As backpropagation is a complex algorithm, subtile bugs might not be caught and gradient descent might not reach the intended global minimum but only a more expensive minimum. {\bf Gradient checking} allows to approximate the gradient and compare it to the gradient returned by backpropagation. The approximation is computed as follows for each feature $\theta_i$:
@@ -848,6 +848,10 @@ The following rules can be followed to decide on the network architecture:
 \item No. of hidden layers: reasonable default: $1$ hidden layer, if $>1$, same number of units in every layer
 \item No. of units per layer: usually the more the better (but also computationally more expensive)
 \end{itemize}
+
+\section{Debugging a learning algorithm}
+Implementing a supervised learning algorithm and testing it on new data might reveal unacceptably large errors in its predictions. This section is to give advice on what to do next. Implementing a {\bf diagnostic} might be time-consuming, but doing so can be a very good use of time to get directed into the right direction.
+
 
 \chapter{Unsupervised learning}
 \chapter{Reinforcement learning}
