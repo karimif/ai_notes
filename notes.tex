@@ -753,7 +753,7 @@ A neuron has {\bf inputs} and an {\bf output} as seen in Figure~\ref{ref:neuron}
 $h_\theta(x) = \frac{1}{1+e^{-\theta^{T}x}}$
 \end{definition}
 
-Each neural network has an {\bf input layer}, $\ge 0$ {\bf hidden layers} and an {\bf output layer} as seen in Figure~\ref{ref:neuralnetwork}. The value $a_i^{(j)}$ is the called {\bf activation} of unit $i$ in layer $j$. $\Theta^{(j)}$ is a matrix of weights to map from layer $j$ to layer $j+1$. If network has $s_j$ units in layer $j$, $s_{j+1}$ units in layer $j+1$, then $\Theta^{(j)}$ will be of dimension $s_{j+1}\times (s_j + 1)$. For the neural network in Figure~\ref{ref:neuralnetwork}, the mapping is defined in Figure~\ref{ref:neuralnetworkmapping}. \\
+Each neural network has an {\bf input layer}, $\ge 0$ {\bf hidden layers} and an {\bf output layer} as seen in Figure~\ref{ref:neuralnetwork}. The value $a_i^{(j)}$ is called {\bf activation} or {\bf forward propagation} of unit $i$ in layer $j$. $\Theta^{(j)}$ is a matrix of weights to map from layer $j$ to layer $j+1$. If network has $s_j$ units in layer $j$, $s_{j+1}$ units in layer $j+1$, then $\Theta^{(j)}$ will be of dimension $s_{j+1}\times (s_j + 1)$. For the neural network in Figure~\ref{ref:neuralnetwork}, the mapping is defined in Figure~\ref{ref:neuralnetworkmapping}. \\
 
 The cost function for $K$ output units and $L$ layers is defined as follows (with $h_\Theta(x) \in \mathbb{R}^K$ and $(h_\Theta(x))_i = i^{th}$ output):
 
@@ -806,7 +806,31 @@ $h_{\Theta}(x)$ & $=$ & $a_1^{(3)}$ $=$ $g(\Theta_{10}^{(2)}a_0^{(2)} + \Theta_{
 \label{ref:neuralnetworkmapping}
 \end{figure}
 
-{\bf Backpropagation} is a method of trainining a neural network.
+\subsection{Backpropagation}
+Training a neural network requires to $\min\limits_{\Theta}J(\Theta)$, e.g. through gradient descent which requires $J(\Theta)$ and $\frac{\partial}{\partial \Theta_{ij}^{(l)}}J(\Theta)$. {\bf Backpropagation} is a method to compute the gradient as described in Figure~\ref{ref:backpropagation}. This algorithm can also be vectorized. The derivative of the Sigmoid function is defined as follows:
+\begin{definition}[Derivative of Sigmoid function] ~\\
+$g^{'}(x)=g(x)*(1-g(x))$
+\end{definition}
+
+\begin{figure}[h!]
+Training set $\{(x^{(1)},y^{(1)}),...,(x^{(m)},y^{(m)})\}$ \\
+Set $\Delta_{ij}^{(l)}=0$ (for all $l,i,j$). \\
+For $i=1$ to $m$
+\begin{tabbing}
+~~~~ \= Set $a^{(i)}=x^{(i)}$ \\
+\> Perform forward propagation to compute $a^{(l)}$ for $l=2,3,...,L$ \\
+\> Using $y^{(i)}$, compute $\delta^{(L)}=a^{(L)}-y^{(i)}$ \\
+\> Compute $\delta^{(L-1)},\delta^{(L-2)},...,\delta^{(2)}$, e.g. $\delta^{(2)}=(\Theta^{(2)})^T\delta^{(3)}.*g^{'}(z^{(2)})$ (element-wise multiplication) \\
+\> $\Delta_{ij}^{(l)}:=\Delta_{ij}^{(l)}+a_j^{(l)}\delta_i{(l+1)}$ \\
+$D_{ij}^{(l)}:=\frac{1}{m}\Delta_{ij}^{(l)}+\lambda\Theta_{ij}^{(l)}$ if $j\ne0$ (no regularization of bias terms) \\
+$D_{ij}^{(l)}:=\frac{1}{m}\Delta_{ij}^{(l)}$ if $j=0$
+\\
+\\
+$\frac{\partial}{\partial \Theta_{ij}^{(l)}}J(\Theta)=D_{ij}^{(l)}$
+\end{tabbing}
+\caption{Backpropagation algorithm}
+\label{ref:backpropagation}
+\end{figure}
 
 
 \chapter{Unsupervised learning}
