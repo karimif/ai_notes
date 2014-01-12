@@ -849,6 +849,34 @@ The following rules can be followed to decide on the network architecture:
 \item No. of units per layer: usually the more the better (but also computationally more expensive)
 \end{itemize}
 
+\section{Model selection}
+{\bf Model selection} is the task of selecting a statistical model from a set of candidate models, given data. For example, different hypotheses for linear regression. Usually, the data is split up in three sets: {\bf training set} (60\%), {\bf cross validation set} (20\%) and {\bf test set} (20\%). A a non-regularized error function can be computed for each of these sets, such as for the test set:
+
+\begin{definition}[Linear regression error function] ~\\
+$J_{test}(\theta) = \frac{1}{2m_{test}}\sum_{i=1}^{m_{test}}(h_{\theta}(x_{test}^{(i)})-y_{test}^{(i)})^2$
+\end{definition}
+
+\begin{definition}[Logistic regression error function] ~\\
+$J_{test}(\theta) = -\frac{1}{m_{test}}\sum_{i=1}^{m_{test}}[y_{test}^{(i)}log(h_\theta(x_{test}^{(i)}))+(1-y_{test}^{(i)})log(h_\theta(x_{test}^{(i)}))]$
+\end{definition}
+
+Alternatively, the following error function might be easier to interpret for logistic regression:
+
+\begin{definition}[0/1 misclassification error] ~\\
+$err(h_\theta(x),y)=
+\left\{
+\begin{array}{lll}
+1  & \mbox{if } h_\theta(x) \geq 0.5, & y=0 \\
+  & \mbox{if } h_\theta(x) < 0.5, & y=1 \\
+0 & otherwise
+\end{array}
+\right.$ \\
+$J_{test}(\theta) = \frac{1}{m_{test}}\sum_{i=1}^{m_{test}}err(h_\theta(x_{test}^{(i)}),y^{(i)})$
+\end{definition}
+
+
+First, the learning algorithm is trained by using the training data for each hypothesis resulting in $\Theta^{(n)}$ for each hypothesis. Second, model {k} with the lowest $J_{CV}(\Theta^{(k)})$ is chosen. Last, the {\bf generalization error} can be computed for the test set $J_{test}(\Theta^{(k)})$.
+
 \section{Debugging a learning algorithm}
 Implementing a supervised learning algorithm and testing it on new data might reveal unacceptably large errors in its predictions. This section is to give advice on what to do next. Implementing a {\bf diagnostic} might be time-consuming, but doing so can be a very good use of time to get directed into the right direction.
 
