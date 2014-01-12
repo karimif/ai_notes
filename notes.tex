@@ -883,7 +883,6 @@ A similar approach can be done to find a good regularization parameter $\lambda$
 \section{Debugging a learning algorithm}
 Implementing a supervised learning algorithm and testing it on new data might reveal unacceptably large errors in its predictions. This section is to give advice on what to do next. Implementing a {\bf diagnostic} might be time-consuming, but doing so can be a very good use of time to get directed into the right direction. In this context, underfitting is called {\bf bias} and overfitting {\bf variance}.
 
-\subsection{Linear and logistic regression}
 In non-regularized model selection, to diagnose if it is a bias problem or variance problem, the following guidelines may help:
 \begin{itemize}
 \item Bias: $J_{train}(\theta)$ is high and $J_{CV}(\theta)\approx J_{train}(\theta)$
@@ -898,6 +897,8 @@ To determine if the regularization parameter $\lambda$ is the cause of bias and 
 
 {\bf Learning curves} can be used to plot a learning's algorithm error for more training examples. Usually, the training error increases as the learning algorithm's hypothesis fails to fit more data. Quite the opposite, the cross validation error decreases because the algorithm generalizes better. For high bias, both errors are high and converge quickly. Therefore, more training data will not help. For high variance, there is a large gap between the cross validation error and the training error. In this case, more data is likely to help.
 \\ \\
+"Small" {\bf neural networks} which have fewer parameters are prone to underfitting but computationally chapter. "Large" neural networks have more parameters and are more prone to overfitting (can be addressed by regularization) but computationally more expensive.
+\\ \\
 In summary, the following actions can help to solve particular problems:
 \begin{itemize}
 \item Get more training examples: fixes high variance
@@ -907,8 +908,6 @@ In summary, the following actions can help to solve particular problems:
 \item Try decreasing $\lambda$: fixes high bias
 \item Try increasing $\lambda$: fixes high variance
 \end{itemize}
-
-\subsection{Neural networks}
 
 
 \chapter{Unsupervised learning}
