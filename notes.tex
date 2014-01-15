@@ -910,6 +910,38 @@ In summary, the following actions can help to solve particular problems:
 \end{itemize}
 
 \section{Error analysis}
+The recommended approach to develop a machine learning algorithm is to start with a simple algorithm that can be implemented quickly. Then, it can be tested a small set of data, e.g. a couple of hundreds of records. The cross-validation data can be used to plot the learning curves. This allows to decide if more data, more features etc. are likely to help. In the {\bf error analysis} the examples on which the algorithm made errors on are manually examined. This can help to spot any systematic trend in what type of examples it makes errors on, e.g. stemming, capitalization etc.
+\\ \\
+{\bf Precision} and {\bf recall} allow to describe classification errors mathematically as described in Figure~\ref{ref:classificationerror}. Precision and and recall can be changed by amending the threshold of the classifier such as the sigmoid function of logistic regression. Usually, a tradeoff needs to be made. The {\bf $F_1$ score} allows to compare precision and recall.
+
+\begin{figure}[h!]
+\centering
+\begin{tabular}{r|c|c|c|}
+& & Actual class & \\
+\hline
+& & 1 & 0 \\
+\hline
+Predicted & 1 & True positive & False positive \\
+\hline
+class & 0 & False negative & True negative \\
+\hline
+\end{tabular}
+\caption{Classification and errors}
+\label{ref:classificationerror}
+\end{figure}
+
+
+\begin{definition}[Precision]
+$\frac{True positive}{True positive + False positive}$
+\end{definition}
+
+\begin{definition}[Recall]
+$\frac{True positive}{True positive + False negative}$
+\end{definition}
+
+\begin{definition}[$F_1$ score]
+$2\frac{PR}{P+R}$
+\end{definition}
 
 
 \chapter{Unsupervised learning}
