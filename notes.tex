@@ -943,16 +943,32 @@ $2\frac{PR}{P+R}$
 \end{definition}
 
 \section{Support vector machines}
-A {\bf support Vector machine} (SVM) is a linear separator that aims for large margins between the classes. The goal is to minimize the cost function.
+A {\bf support Vector machine} (SVM) is a large margin a linear classifier. In order to get a large margin, the motivation for the cost function definition is:
+\begin{itemize}
+\item If $y=1$, we want $\theta^Tx\ge 1$ (not just $\ge 0$)
+\item If $y=0$, we want $\theta^Tx\le -1$ (not just $\le 0$)
+\end{itemize}
 
 \begin{definition}[SVM cost function]~\\
 $C\sum_{i=1}^m[y^{(i)}cost_1(\theta^Tx^{(i)})+(1-y^{(i)})cost_0(\theta^Tx^{(i)})]+\frac{1}{2}\sum_{j=1}^n\theta_j^2$
 \\
 $C = \frac{1}{\lambda}$
 \\
-$cost_1(z)=-log\frac{1}{1+e^{-z}}$
+$cost_1(z)=
+\left\{
+\begin{array}{lll}
+0  & \mbox{if } z \ge 1 \\
+-z + 1  & \mbox{else}
+\end{array}
+\right.$ \\
 \\
-$cost_0(z)=-log(1-\frac{1}{1+e^{-z}})$
+$cost_1(z)=
+\left\{
+\begin{array}{lll}
+0  & \mbox{if } z \le 1 \\
+z + 1  & \mbox{else}
+\end{array}
+\right.$ \\
 \end{definition}
 
 
