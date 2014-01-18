@@ -943,16 +943,22 @@ $2\frac{PR}{P+R}$
 \end{definition}
 
 \section{Support vector machines}
-A {\bf support vector machine} (SVM) is a large margin linear classifier. In order to get a large margin, the motivation for the cost function definition is:
+A {\bf support vector machine} (SVM) is a large margin linear classifier.
 \begin{definition}[SVM hypothesis]~\\
 $h_{\theta}(x) =
 \left\{
 \begin{array}{lll}
-1  & \mbox{if } \theta^Tx \ge 1$ (not just $\ge $0)$ \\
-0  & \mbox{if } \theta^Tx \le -1$ (not just $\le $0)$
+1  & \mbox{if } \theta^Tx \ge 0 \\
+0  & \mbox{else}
 \end{array}
 \right.$ \\
 \end{definition}
+
+In order to get a large margin, the motivation for the cost function definition is:
+\begin{itemize}
+\item If $y=1$, we want $\theta^Tx\ge 1$ (not just $\ge 0$)
+\item If $y=0$, we want $\theta^Tx\le -1$ (not just $\le 0$)
+\end{itemize}
 
 \begin{definition}[SVM cost function]~\\
 $J(\theta)=C\sum_{i=1}^m[y^{(i)}cost_1(\theta^Tx^{(i)})+(1-y^{(i)})cost_0(\theta^Tx^{(i)})]+\frac{1}{2}\sum_{j=1}^n\theta_j^2$
@@ -995,6 +1001,7 @@ $e^{-\frac{\lVert x - l^{(i)} \rVert^2}{2\sigma^2}}$
 
 Given $x$, new features $f$ depending on proximity to landmarks of the training set $l^{(1)}, l^{(2)}, ..., l^{(m)}$ can be computed:
 \begin{itemize}
+\item $f_0 = 1$
 \item $f_1 = similarity(x,l^{(1)})=e^{-\frac{\lVert x - l^{(1)} \rVert^2}{2\sigma^2}}$
 \item $f_2 = similarity(x,l^{(2)})=e^{-\frac{\lVert x - l^{(2)} \rVert^2}{2\sigma^2}}$
 \item ...
