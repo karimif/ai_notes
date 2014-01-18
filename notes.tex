@@ -994,6 +994,10 @@ $h_{\theta}(x) =
 \right.$ \\
 \end{definition}
 
+\begin{definition}[SVM kernel cost function]~\\
+$J(\theta)=C\sum_{i=1}^m[y^{(i)}cost_1(\theta^Tf^{(i)})+(1-y^{(i)})cost_0(\theta^Tf^{(i)})]+\frac{1}{2}\sum_{j=1}^n\theta_j^2$
+\end{definition}
+
 
 \begin{definition}[Gaussian kernel]
 $e^{-\frac{\lVert x - l^{(i)} \rVert^2}{2\sigma^2}}$
@@ -1009,8 +1013,8 @@ Given $x$, new features $f$ depending on proximity to landmarks of the training 
 \end{itemize}
 
 If $x\approx l^{(i)}$, then $f_i\approx 1$. If $x$ far from $l^{(i)}$, then $f_i\approx 0$. To optimize the training, the regularization part is slightly changed:
-\begin{definition}[Optimized SVM cost function]~\\
-$J(\theta)=C\sum_{i=1}^m[y^{(i)}cost_1(\theta^Tx^{(i)})+(1-y^{(i)})cost_0(\theta^Tx^{(i)})]+\frac{1}{2}\sum_{j=1}^{\bf m}\theta_j^2$
+\begin{definition}[Optimized SVM kernel cost function]~\\
+$J(\theta)=C\sum_{i=1}^m[y^{(i)}cost_1(\theta^Tf^{(i)})+(1-y^{(i)})cost_0(\theta^Tf^{(i)})]+\frac{1}{2}\sum_{j=1}^{\bf m}\theta_j^2$
 \end{definition}
 
 Changing the SVM parameters $C(=\frac{1}{\lambda})$ and $\sigma^2$ has impact on bias an variance.  A large $C$ results in lower bias and higher variance whereas a small $C$ results in higher bias and lower variance. A large $\sigma^2$ results in higher bias and lower variance because the features $f_i$ vary more smoothly. In contrast, a small $\sigma^2$ results in lower bias and higher variance.
