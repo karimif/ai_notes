@@ -1024,16 +1024,16 @@ Changing the SVM parameters $C(=\frac{1}{\lambda})$ and $\sigma^2$ has impact on
 
 
 \chapter{Unsupervised learning}
-Unsupervised learning tries to find hidden structure in {\bf unlabeled data} $x^{(1)}, x^{(2)}, ..., x^{(m)}$.
+Unsupervised learning tries to find hidden structure in {\bf unlabeled data} $\{x^{(1)}, x^{(2)}, ..., x^{(m)}\}$.
 
 \section{k-means}
-{\bf k-means} partitions $m$ observations into $K$ clusters as defined in Algorithm~\ref{ref:kmeans}.  The optimization objective is to minimize the cost function.
+{\bf k-means} partitions $m$ observations $x^{(i)}$ into $K$ clusters $\mu_k$ as defined in Algorithm~\ref{ref:kmeans}. The optimization objective is to minimize the cost function. The initial cluster coordinates are random which makes this algorithm non-deterministic. A recommended strategy is to randomly pick $K$ training examples as the initial coordinates to make sure that the initial coordinates are not too far away from the actual data. k-means can be run multiple times on the same data to pick the result with the lowest cost. Choosing the number of clusters $K$ is usually done manually depending on the use case.
 
 \begin{algorithm}
 \caption{k-means}
 \label{ref:kmeans}
 \begin{algorithmic}
-\State $\mu_1, \mu_2, ..., \mu_K \in \mathbb{R} \gets$ random initialization
+\State $\mu_1, \mu_2, ..., \mu_K \in \mathbb{R}^n \gets$ random initialization
 \Repeat
 \For{$i=1$ to $m$}
 \State $c^{(i)} \gets$ index of cluster centroid closest to $x^{(i)}$
