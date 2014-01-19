@@ -7,6 +7,9 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{hyperref}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+\usepackage[chapter]{algorithm}
 
 \setlength{\parindent}{0cm}
 
@@ -1021,9 +1024,32 @@ Changing the SVM parameters $C(=\frac{1}{\lambda})$ and $\sigma^2$ has impact on
 
 
 \chapter{Unsupervised learning}
-Unsupervised learning tries to find hidden structure in {\bf unlabeled data}.
+Unsupervised learning tries to find hidden structure in {\bf unlabeled data} $x^{(1)}, x^{(2)}, ..., x^{(m)}$.
 
 \section{k-means}
+{\bf k-means} partitions $m$ observations into $K$ clusters as defined in Algorithm~\ref{ref:kmeans}.  The optimization objective is to minimize the cost function.
+
+\begin{algorithm}
+\caption{k-means}
+\label{ref:kmeans}
+\begin{algorithmic}
+\State $\mu_1, \mu_2, ..., \mu_K \in \mathbb{R} \gets$ random initialization
+\Repeat
+\For{$i=1$ to $m$}
+\State $c^{(i)} \gets$ index of cluster centroid closest to $x^{(i)}$
+\EndFor
+\For{$k=1$ to $K$}
+\State $\mu_k \gets$ mean of points assigned to cluster $k$
+\EndFor
+\Until{conversion}
+\end{algorithmic}
+\end{algorithm}
+
+\begin{definition}[k-means cost function]~\\
+$J(c^{(1)}, ..., c^{(m)}, \mu_1, ..., \mu_K)=\frac{1}{m}\sum_{i=1}^m \lVert x^{(i)}-\mu_{c^{(i)}}\rVert^2 $
+\end{definition}
+
+
 
 
 \chapter{Reinforcement learning}
