@@ -644,7 +644,16 @@ $\theta_j := \theta_j - \alpha \frac{1}{m}\sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)}
 $x_j' = \frac{x_j - \mu_j}{\sigma_j}$
 \end{definition}
 
-{\bf Vectorization} allows to do the updates simultaneously through various matrix operations. Matrix multiplications can be executed very efficiently (Strassen algorithm). Matrix $X$ contains $m$ training data rows and $n$ features where row $x_0$ contains entirely 1s. The cost function and gradient descent then look:
+{\bf Vectorization} allows to do the updates simultaneously through various matrix operations. Matrix multiplications can be executed very efficiently (Strassen algorithm). Matrix $X$ contains $m$ transposed training data columns and $n$ features where feature $x_0$ contains entirely 1s:
+$X$ = $\begin{pmatrix}
+\mbox{------} (x^{(1)})^T \mbox{------} \\
+\mbox{------} (x^{(2)})^T \mbox{------} \\
+... \\
+\mbox{------} (x^{(m)})^T \mbox{------}
+\end{pmatrix}$
+
+
+The cost function and gradient descent then look:
 
 \begin{definition}[Vectorized cost function] ~\\
 $J(\theta) = \frac{1}{2m}(X\theta-y)^T(X\theta-y)$\\
