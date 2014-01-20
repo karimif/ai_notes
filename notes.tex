@@ -1032,8 +1032,9 @@ $J(\theta)=C\sum_{i=1}^m[y^{(i)}cost_1(\theta^Tf^{(i)})+(1-y^{(i)})cost_0(\theta
 Changing the SVM parameters $C(=\frac{1}{\lambda})$ and $\sigma^2$ has impact on bias an variance.  A large $C$ results in lower bias and higher variance whereas a small $C$ results in higher bias and lower variance. A large $\sigma^2$ results in higher bias and lower variance because the features $f_i$ vary more smoothly. In contrast, a small $\sigma^2$ results in lower bias and higher variance.
 
 \section{Applying PCA}
-The {\bf principal component analysis} (PCA) presented in Section~\ref{ref:pcasection} can also be used in supervised learning.
+The {\bf principal component analysis} (PCA) presented in Section~\ref{ref:pcasection} can be used in supervised learning. It allows to map high-dimensional data (such as images or emails in spam filters) to lower dimensions to speed up a learning algorithm. The mapping $x^{(i)}\rightarrow z^{(i)}$ should be defined by running PCA only on the training set. This mapping can be applied as well to the examples $x^{(i)}_{cv}$ and $x^{(i)}_{test}$ in the cross validation and test sets. \\
 
+PCA should only be used if the amount of initial dimensions significantly slows down the learning algorithm. PCA should not be used to prevent overfitting by reducing the amount of features. This might work but drops potentially relevant information. Regularization is a better way to address overfitting.
 
 \chapter{Unsupervised learning}
 Unsupervised learning tries to find hidden structure in {\bf unlabeled data} $\{x^{(1)}, x^{(2)}, ..., x^{(m)}\}$.
