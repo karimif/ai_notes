@@ -1031,6 +1031,9 @@ $J(\theta)=C\sum_{i=1}^m[y^{(i)}cost_1(\theta^Tf^{(i)})+(1-y^{(i)})cost_0(\theta
 
 Changing the SVM parameters $C(=\frac{1}{\lambda})$ and $\sigma^2$ has impact on bias an variance.  A large $C$ results in lower bias and higher variance whereas a small $C$ results in higher bias and lower variance. A large $\sigma^2$ results in higher bias and lower variance because the features $f_i$ vary more smoothly. In contrast, a small $\sigma^2$ results in lower bias and higher variance.
 
+\section{Applying PCA}
+The {\bf principal component analysis} (PCA) presented in Section~\ref{ref:pcasection} can also be used in supervised learning.
+
 
 \chapter{Unsupervised learning}
 Unsupervised learning tries to find hidden structure in {\bf unlabeled data} $\{x^{(1)}, x^{(2)}, ..., x^{(m)}\}$.
@@ -1059,6 +1062,7 @@ $J(c^{(1)}, ..., c^{(m)}, \mu_1, ..., \mu_K)=\frac{1}{m}\sum_{i=1}^m \lVert x^{(
 \end{definition}
 
 \section{Principal component analysis}
+\label{ref:pcasection}
 {\bf Principal component analysis} (PCA) can be used for {\bf dimensionality reduction}. In this process, higher dimensional data is mapped to a lower dimension as defined in Algorithm~\ref{ref:pca}. The goal of PCA is to minimize the {\bf average squared projection error} of all original data and their projections. PCA can be used to reduce memory and time consumption of complex computations. Also, it allows to plot higher dimensional data in 2D or 3D. PCA requires some underlying advanced linear algebra such as the {\bf singular value decomposition} (SVD) which is not further explained in this document. This functionality can be used in {\bf Matlab} or {\bf Octave}.
 
 \begin{definition}[Average squared projection error]
