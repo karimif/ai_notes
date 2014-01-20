@@ -1059,7 +1059,7 @@ $J(c^{(1)}, ..., c^{(m)}, \mu_1, ..., \mu_K)=\frac{1}{m}\sum_{i=1}^m \lVert x^{(
 \end{definition}
 
 \section{Principal component analysis}
-{\bf Principal component analysis} (PCA) can be used for {\bf dimensionality reduction}. In this process, higher dimensional data is mapped to a lower dimension as defined in Algorithm~\ref{ref:pca}. The goal of PCA is to minimize the {\bf average squared projection error} of all original data and their projections. PCA can be used to reduce memory and time consumption of complex computations. Also, it allows to plot higher dimensional data in 2D or 3D. PCA requires some underlying advanced linear algebra such as the {\bf singular value decomposition} which is not further explained in this document. Using {\bf Matlab} or {\bf Octave}, this functionality can be used in PCA.
+{\bf Principal component analysis} (PCA) can be used for {\bf dimensionality reduction}. In this process, higher dimensional data is mapped to a lower dimension as defined in Algorithm~\ref{ref:pca}. The goal of PCA is to minimize the {\bf average squared projection error} of all original data and their projections. PCA can be used to reduce memory and time consumption of complex computations. Also, it allows to plot higher dimensional data in 2D or 3D. PCA requires some underlying advanced linear algebra such as the {\bf singular value decomposition} (SVD) which is not further explained in this document. This functionality can be used in {\bf Matlab} or {\bf Octave}.
 
 \begin{definition}[Average squared projection error]
 $\frac{1}{m}\sum_{i=1}^m \lVert x^{(i)}-x_{approx}^{(i)} \Vert^2$
