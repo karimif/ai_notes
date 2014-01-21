@@ -1081,7 +1081,7 @@ $\frac{1}{m}\sum_{i=1}^m \lVert x^{(i)} \Vert^2$
 \caption{Principal component analysis}
 \label{ref:pca}
 \begin{algorithmic}
-\State $x_j^{(i)} \gets \frac{x_j - \mu_j}{\sigma_j} $ \Comment{Mean normalization and feature scaling}
+\State $x_j^{(i)} \gets \frac{x_j^{(i)} - \mu_j}{\sigma_j} $ \Comment{Mean normalization and feature scaling}
 \State $\Sigma \gets \frac{1}{m}X^TX$ \Comment{Covariance matrix}
 \State $[U,S,V] \gets svd(\Sigma)$ \Comment{Singular value decomposition}
 \State $U_{reduce} \gets$ first $K$ columns of $U$ \Comment{Number $K$ of {\bf principal components}}
