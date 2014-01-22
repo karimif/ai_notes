@@ -1105,12 +1105,25 @@ Usually, the large variances occur in the first $K<n$ principal components and t
 
 
 \section{Anomaly detection}
-{\bf Anomaly detection} allows to find data that does not conform to an expected pattern. This process relies on Gaussian distribution of the data:
+{\bf Anomaly detection} allows to find data that does not conform to an expected pattern. The cluster-based approach of Algorithm~\ref{data:anomalydetection} relies on Gaussian distribution of the data:
 
 \begin{definition}[Gaussian distribution]~\\
 $p(x)=\frac{1}{\sqrt{2\pi}\sigma}exp(-\frac{(x-\mu)^2}{2\sigma^2})$
 \end{definition}
 
+\begin{algorithm}
+\caption{Anomaly detection}
+\label{ref:anomalydetection}
+\begin{algorithmic}
+\State Choose features $x_i$ that might be indicative of anomalous examples
+\State $\mu_j \gets \frac{1}{m}\sum_{i=1}^{m}x_j^{(i)}$ \Comment{Fit parameters $\mu_1,...,\mu_n,\sigma_1,...,\sigma_n$}
+\State $\sigma_j^2 \gets \frac{1}{m}\sum_{i=1}^{m}(x_j^{(i)}-\mu_j)^2$
+\State For new example $x$: $p(x) \gets \prod_{j=1}^np(x_j,\mu_j,\sigma_j^2)$
+\State Anomaly if $p(x) < \epsilon$
+\end{algorithmic}
+\end{algorithm}
+
+\subsection{Anomaly detection vs. supervised learning}
 
 
 
