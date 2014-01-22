@@ -1031,6 +1031,9 @@ $J(\theta)=C\sum_{i=1}^m[y^{(i)}cost_1(\theta^Tf^{(i)})+(1-y^{(i)})cost_0(\theta
 
 Changing the SVM parameters $C(=\frac{1}{\lambda})$ and $\sigma^2$ has impact on bias an variance.  A large $C$ results in lower bias and higher variance whereas a small $C$ results in higher bias and lower variance. A large $\sigma^2$ results in higher bias and lower variance because the features $f_i$ vary more smoothly. In contrast, a small $\sigma^2$ results in lower bias and higher variance.
 
+\section{Multiclass classification}
+In {\bf multiclass classification} examples can be classified into more than two classes. Some classification algorithms permit to do this natively. Generally, this can be done using {\bf one-vs.-all} (one-vs.-rest) classification which trains one binary classifier for each class. Finally, on a new input to make a prediction, the largest classifier is picked.
+
 \section{Applying PCA}
 The {\bf principal component analysis} (PCA) presented in Section~\ref{ref:pcasection} can be used in supervised learning. It allows to map high-dimensional data (such as images or emails in spam filters) to lower dimensions to speed up a learning algorithm. The mapping $x^{(i)}\rightarrow z^{(i)}$ should be defined by running PCA only on the training set. This mapping can be applied as well to the examples $x^{(i)}_{cv}$ and $x^{(i)}_{test}$ in the cross validation and test sets. \\
 
