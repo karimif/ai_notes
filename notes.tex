@@ -1041,6 +1041,23 @@ PCA should only be used if the amount of initial dimensions significantly slows 
 
 
 \section{Recommender systems}
+{\bf Recommender systems} recommend items to users based on item ratings. There are $n_u$ number of users, $n_m$ number of items, $r(i,j)=1$ if user $j$ has rated item $i$ and $y^{(i,j)}$ is the rating given by user $j$.
+
+\begin{figure}[h!]
+\centering
+\begin{tabular}{c||cccc}
+Item & $User_A$ & $User_B$ & $User_C$ & $User_D$ \\
+\hline
+\hline
+$Item_A$ & 5 & 5 & 0 & 0 \\
+$Item_B$ & 5 & ? & ? & 0 \\
+$Item_C$ & ? & 4 & 0 & ? \\
+$Item_D$ & 0 & 0 & 5 & 4 \\
+$Item_E$ & 0 & 0 & 5 & ? \\
+\end{tabular}
+\caption{Sample item ratings}
+\label{ref:sampleitemratings}
+\end{figure}
 
 \chapter{Unsupervised learning}
 Unsupervised learning tries to find hidden structure in {\bf unlabeled data} $\{x^{(1)}, x^{(2)}, ..., x^{(m)}\}$.
