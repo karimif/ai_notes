@@ -1045,19 +1045,37 @@ PCA should only be used if the amount of initial dimensions significantly slows 
 
 \begin{figure}[h!]
 \centering
-\begin{tabular}{c||cccc}
-Item & $User_A$ & $User_B$ & $User_C$ & $User_D$ \\
+\begin{tabular}{c||cccc||cc}
+Item & $User_A$ & $User_B$ & $User_C$ & $User_D$ & $x_1\:(Feature_A)$ & $x_2\:(Feature_B)$ \\
 \hline
 \hline
-$Item_A$ & 5 & 5 & 0 & 0 \\
-$Item_B$ & 5 & ? & ? & 0 \\
-$Item_C$ & ? & 4 & 0 & ? \\
-$Item_D$ & 0 & 0 & 5 & 4 \\
-$Item_E$ & 0 & 0 & 5 & ? \\
+$Item_A$ & 5 & 5 & 0 & 0 & 0.9 & 0 \\
+$Item_B$ & 5 & ? & ? & 0 & 1.0 & 0.01 \\
+$Item_C$ & ? & 4 & 0 & ? & 0.99 & 0 \\
+$Item_D$ & 0 & 0 & 5 & 4 & 0.1 &1.0 \\
+$Item_E$ & 0 & 0 & 5 & ? & 0 & 0.9 \\
 \end{tabular}
 \caption{Sample item ratings}
 \label{ref:sampleitemratings}
 \end{figure}
+
+Figure~\ref{ref:sampleitemratings} contains a sample set of items, users and features. $n_u=4$, $n_m=5$, $x^{(1)}= [1\:0.9\:0]^T$ (as $x_0=1$). To predict rating of item $i$ of user $j$:
+\begin{align*}
+y^{(i,j)}=(\theta^{(j)})^T(x^{(i)})
+\end{align*}
+
+$\theta^{(1)},...,\theta^{(n_u)}$ can be estimated given $x^{(1)},...,x^{(n_m)}$. Vice versa, $x^{(1)},...,x^{(n_m)}$ can be estimated given $\theta^{(1)},...,\theta^{(n_u)}$.
+
+\begin{definition}[$\theta^{(1)},...,\theta^{(n_u)}$ estimation minimization objective]~\\
+ $\min\limits_{\theta^{(1)},...,\theta^{(n_u)}}\:\frac{1}{2}\sum_{j=1}^{n_u}\sum_{i:r(i,j)=1}((\theta^{(j)})^Tx^{(i)}-y^{(i,j)})^2+\frac{\lambda}{2}\sum_{j=1}^{n_u}\sum_{k=1}^{n}(\theta_k^{(j)})^2$
+\end{definition}
+
+\begin{definition}[$x^{(1)},...,x^{(n_m)}$ estimation minimization objective]~\\
+ $\min\limits_{x^{(1)},...,x^{(n_m)}}\:\frac{1}{2}\sum_{i=1}^{n_m}\sum_{j:r(i,j)=1}((\theta^{(j)})^Tx^{(i)}-y^{(i,j)})^2+\frac{\lambda}{2}\sum_{i=1}^{n_m}\sum_{k=1}^{n}(x_k^{(i)})^2$
+\end{definition}
+
+% Add: without m_something in the cost function denominator (first and second part regulation) which is irrelevant for minimization.
+Both definitions are very related to linear regression.
 
 \chapter{Unsupervised learning}
 Unsupervised learning tries to find hidden structure in {\bf unlabeled data} $\{x^{(1)}, x^{(2)}, ..., x^{(m)}\}$.
