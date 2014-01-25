@@ -1105,7 +1105,7 @@ Usually, the large variances occur in the first $K<n$ principal components and t
 
 
 \section{Anomaly detection}
-{\bf Anomaly detection} allows to find data that does not conform to an expected pattern. The cluster-based Algorithm~\ref{ref:anomalydetection} assumes Gaussian distribution selected features that take unusually large or small values in the event of an anomaly:
+{\bf Anomaly detection} allows to find data that does not conform to an expected pattern. The cluster-based Algorithm~\ref{ref:anomalydetection} assumes {\bf independence} between selected features which are representative for anomaly detection. These features take unusually large or small values in the event of an anomaly and have a Gaussian distribution:
 \begin{align*}
 p(x)=\frac{1}{\sqrt{2\pi}\sigma}exp(-\frac{(x-\mu)^2}{2\sigma^2})
 \end{align*}
@@ -1117,9 +1117,9 @@ Non-Gaussian features can be approximated as Gaussian through operations such as
 \label{ref:anomalydetection}
 \begin{algorithmic}
 \State Choose features $x_i$ that might be indicative of anomalous examples
-\State $\mu_j \gets \frac{1}{m}\sum_{i=1}^{m}x_j^{(i)}$ \Comment{Fit parameters $\mu_1,...,\mu_n,\sigma_1,...,\sigma_n$}
+\State $\mu_j \gets \frac{1}{m}\sum_{i=1}^{m}x_j^{(i)}$ \Comment{Fits parameters $\mu_1,...,\mu_n,\sigma_1,...,\sigma_n$}
 \State $\sigma_j^2 \gets \frac{1}{m}\sum_{i=1}^{m}(x_j^{(i)}-\mu_j)^2$
-\State For new example $x$: $p(x) \gets \prod_{j=1}^np(x_j,\mu_j,\sigma_j^2)$ \Comment{Assumes independence between components}
+\State For new example $x$: $p(x) \gets \prod_{j=1}^np(x_j,\mu_j,\sigma_j^2)$ \Comment{Assumes independence between features}
 \State Anomaly if $p(x) < \epsilon$
 \end{algorithmic}
 \end{algorithm}
@@ -1139,7 +1139,31 @@ Then, evaluation metrics such as precision/recall and $F_1$ score can be applied
 \subsection{Anomaly detection vs. supervised learning}
 {\bf Anomaly detection} is used for a very small number of positive examples and large number of negative exempts. It is also used for many different kinds of anomalies as it is hard for any algorithm to learn from just a few positive examples what the anomalies might look like. There may be also future anomalies which may look completely different to any of the anomalous examples learned so far. {\bf Supervised learning} is used for large numbers of both positive and negative examples. It is also used when there are enough positive examples so that the algorithm can get a sense of what positive examples look like and future positive examples are likely to be similar to the ones in the training set.
 
-\subsection{Anomaly detection using multivariate Gaussian distribution}
+\subsection{Correlated features}
+Algorithm~\ref{ref:anomalydetection} assumes independence between the features for which the contours are along the axes. If features are {\bf correlated}, the algorithm performs poorly as the contours should rather be along the correlations. In such a case, some anomalies are incorrectly classified as normal. One could add new features to represent this correlation (e.g. $x_{extra}=\frac{x_1}{x_2}$) which requires manual effort but is computationally cheap. \\
+
+Alternatively, {\bf multivariate Gaussian distribution} helps:
+
+\begin{align*}
+p(x)=\frac{1}{(2\pi)^{n/2}\vert \Sigma \vert ^{1/2}}exp(-\frac{1}{2}(x-\mu)^T \Sigma^{-1}(x-\mu))
+\end{align*}
+
+where $\vert \Sigma \vert$ is the determinant of the {\bf covariance matrix} $\Sigma$. Algorithm~\ref{ref:anomalydetectionmulti} is a {\bf anomaly detection with multivariate Gaussian} which is a generalization of Algorithm~\ref{ref:anomalydetection}.
+
+\begin{algorithm}
+\caption{Anomaly detection with multivariate Gaussian}
+\label{ref:anomalydetectionmulti}
+\begin{algorithmic}
+\State Choose features $x_i$ that might be indicative of anomalous examples
+\State $\mu \gets \frac{1}{m}\sum_{i=1}^m x^{(i)}$
+\State $\Sigma \gets \frac{1}{m}\sum_{i=1}^m(x^{(i)}-\mu)(x^{(i)}-\mu)^T$
+\State For new example $x$: $p(x) \gets \frac{1}{(2\pi)^{n/2}\vert \Sigma \vert ^{1/2}}exp(-\frac{1}{2}(x-\mu)^T \Sigma^{-1}(x-\mu))$ \Comment{Assumes correlation between features}
+\State Anomaly if $p(x) < \epsilon$
+\end{algorithmic}
+\end{algorithm}
+
+This algorithm automatically captures correlations between features. It is computationally more expensive and requires $m>n$ to invert $\Sigma$. There may be further problems that prevent inversion such as linear dependency.
+
 
 
 \chapter{Reinforcement learning}
