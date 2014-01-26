@@ -1043,7 +1043,7 @@ PCA should only be used if the amount of initial dimensions significantly slows 
 
 
 \section{Recommender systems}
-{\bf Recommender systems} recommend items to users based on item ratings. There are $n_u$ number of users, $n_m$ number of items, $r(i,j)=1$ if user $j$ has rated item $i$ and $y^{(i,j)}$ is the rating given by user $j$.
+{\bf Recommender systems} recommend items to users based on item ratings. There are $n_u$ number of users, $n_m$ number of items, $r(i,j)=1$ if user $j$ has rated item $i$ and $y^{(i,j)}$ is the rating given by user $j$. All ratings are on the same scale $[0,max]$, e.g. $max=5$.
 
 \begin{figure}[h!]
 \centering
@@ -1108,8 +1108,20 @@ This algorithm needs to break symmetry by randomly initializing $x^{(1)},...,x^{
 Y = X\Theta^T
 \end{align*}
 
-This is also called {\bf low rank matrix factorization}. \\
+This is also called {\bf low rank matrix factorization}.
+\\
+\\
 As collaborative filtering learns a feature vector $x^{(i)}\in \mathbb{R}$ for each item $i$, the most related items $j$ to item $i$ can be found by taking the $j$ items with smallest $\lVert x^{(i)} - x^{(j)}\rVert$ as a small $\lVert x^{(i)} - x^{(j)}\rVert$ indicates "similarity".
+\\
+\\
+In practice, some users might have not rated any items. In that case, all predictions for this user are $0$. {\bf Mean normalization} of matrix $Y$ can be applied:
+\begin{align*}
+\mu_i = \frac{1}{m^{(i)}} \sum_{j:r(i,j)=1}y^{(i,j)}
+\end{align*}
+\begin{align*}
+Y = Y - \mu
+\end{align*}
+Mean normalization only takes rated items into account with $m^{(i)}$ the number users who rather item $i$. Feature scaling is not necessary as all ratings are already on the same scale.
 
 
 \chapter{Unsupervised learning}
