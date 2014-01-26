@@ -1064,7 +1064,7 @@ Figure~\ref{ref:sampleitemratings} contains a sample set of items, users and fea
 y^{(i,j)}=(\theta^{(j)})^T(x^{(i)})
 \end{align*}
 
-$\theta^{(1)},...,\theta^{(n_u)}$ can be estimated given $x^{(1)},...,x^{(n_m)}$. Vice versa, $x^{(1)},...,x^{(n_m)}$ can be estimated given $\theta^{(1)},...,\theta^{(n_u)}$.
+$i:r(i,j)$ stands for all items $i$ that user $j$ has rated. Vice versa, $j:r(i,j)$ stands for all users $j$ that rated item $i$.
 
 \begin{definition}[$\theta^{(1)},...,\theta^{(n_u)}$ estimation minimization objective]~\\
  $\min\limits_{\theta^{(1)},...,\theta^{(n_u)}}\:\frac{1}{2}\sum_{j=1}^{n_u}\sum_{i:r(i,j)=1}((\theta^{(j)})^Tx^{(i)}-y^{(i,j)})^2+\frac{\lambda}{2}\sum_{j=1}^{n_u}\sum_{k=1}^{n}(\theta_k^{(j)})^2$
@@ -1074,10 +1074,38 @@ $\theta^{(1)},...,\theta^{(n_u)}$ can be estimated given $x^{(1)},...,x^{(n_m)}$
  $\min\limits_{x^{(1)},...,x^{(n_m)}}\:\frac{1}{2}\sum_{i=1}^{n_m}\sum_{j:r(i,j)=1}((\theta^{(j)})^Tx^{(i)}-y^{(i,j)})^2+\frac{\lambda}{2}\sum_{i=1}^{n_m}\sum_{k=1}^{n}(x_k^{(i)})^2$
 \end{definition}
 
-Both definitions are very related to linear regression. In contrast, there is no $m$ in the denominators as it is in linear regression. This constant is irrelevant for the minimization objective.
+
+Both definitions are very related to linear regression. In contrast, there is no $m$ in the denominators as it is in linear regression. This constant is irrelevant for the minimization objective. \\
+
+$\theta^{(1)},...,\theta^{(n_u)}$ can be estimated given $x^{(1)},...,x^{(n_m)}$. Vice versa, $x^{(1)},...,x^{(n_m)}$ can be estimated given $\theta^{(1)},...,\theta^{(n_u)}$. This is a chicken or egg problem. One way to solve this problem is: guess $\theta \rightarrow x \rightarrow \theta \rightarrow x  \rightarrow \theta \rightarrow ...$. This algorithm is called {\bf collaborative filtering}. The term means that with every user rating items (collaboration), the algorithm learns better features. The algorithm is inefficient and can be improved in a way to compute $x^{(1)},...,x^{(n_m)}$ and $\theta^{(1)},...,\theta^{(n_u)}$ simultaneously as defined in Algorithm~\ref{ref:collaborativefiltering}.
+
+\begin{definition}[Simultaneous collaborative filtering minimization objective]~\\
+ $\min\limits_{x^{(1)},...,x^{(n_m)},\theta^{(1)},...,\theta^{(n_u)}}\:\frac{1}{2}\sum_{(i,j):r(i,j)=1}((\theta^{(j)})^Tx^{(i)}-y^{(i,j)})^2+\frac{\lambda}{2}\sum_{i=1}^{n_m}\sum_{k=1}^{n}(x_k^{(i)})^2+\frac{\lambda}{2}\sum_{j=1}^{n_u}\sum_{k=1}^{n}(\theta_k^{(j)})^2$
+\end{definition}
+
+\begin{definition}[Simultaneous collaborative filtering gradient descent]~\\
+$x_k^{(i)}:=x_k^{(i)}-\alpha(\sum_{j:r(i,j)=1}((\theta^{(j)})^Tx^{(i)}-y^{(i,j)})\theta_k^{(j)}+\lambda x_k^{(i)})$ \\
+$\theta_k^{(j)}:=\theta_k^{(j)}-\alpha(\sum_{i:r(i,j)=1}((\theta^{(j)})^Tx^{(i)}-y^{(i,j)})x_k^{(i)}+\lambda \theta_k^{(j)})$
+\end{definition}
+
+\begin{algorithm}
+\caption{Collaborative filtering}
+\label{ref:collaborativefiltering}
+\begin{algorithmic}
+\State 1. Initialize $x^{(1)},...,x^{(n_m)},\theta^{(1)},...,\theta^{(n_u)}$ to small random values \Comment{Break symmetry}
+\State 2. Minimize $x^{(1)},...,x^{(n_m)},\theta^{(1)},...,\theta^{(n_u)}$
+\State $x_k^{(i)}\gets x_k^{(i)}-\alpha(\sum_{j:r(i,j)=1}((\theta^{(j)})^Tx^{(i)}-y^{(i,j)})\theta_k^{(j)}+\lambda x_k^{(i)})$
+\State $\theta_k^{(j)}\gets \theta_k^{(j)}-\alpha(\sum_{i:r(i,j)=1}((\theta^{(j)})^Tx^{(i)}-y^{(i,j)})x_k^{(i)}+\lambda \theta_k^{(j)})$
+\State 3. For a user with parameters $\theta$ and an item with (learned) features $x$, predict a rating
+\State $y^{(i,j)}\gets (\theta^{(j)})^T(x^{(i)})$
+\end{algorithmic}
+\end{algorithm}
+
+This algorithm needs to break symmetry by randomly initializing $x^{(1)},...,x^{(n_m)},$ $\theta^{(1)},...,\theta^{(n_u)}$ which is related to neural networks. As the algorithm does not iterate over $x_0$ or $\theta_0$, all elements are regularized.
+
 
 \chapter{Unsupervised learning}
-Unsupervised learning tries to find hidden structure in {\bf unlabeled data} $\{x^{(1)}, x^{(2)}, ..., x^{(m)}\}$.
+Unsupervised learning tries to find hidden structure in {\bf unlabeled data} $\{x^{(1)}, x^{(2)},$ $..., x^{(m)}\}$.
 
 \section{k-means}
 {\bf k-means} partitions $m$ observations $x^{(i)}$ into $K$ clusters $\mu_k$ as defined in Algorithm~\ref{ref:kmeans}. The optimization objective is to minimize the cost function. The initial cluster coordinates are random which makes this algorithm non-deterministic. A recommended strategy is to randomly pick $K$ training examples as the initial coordinates to make sure that the initial coordinates are not too far away from the actual data. k-means can be run multiple times on the same data to pick the result with the lowest cost. Choosing the number of clusters $K$ is usually done manually depending on the use case.
