@@ -1009,7 +1009,7 @@ Given $x$, new features $f$ depending on proximity to landmarks of the training 
 \item $f_m = similarity(x,l^{(m)})=e^{-\frac{\lVert x - l^{(m)} \rVert^2}{2\sigma^2}}$
 \end{itemize}
 
-$f = [f_0\:f_1\:...\:f_m]^T$. $f_1^{(i)}=sim(x^{(i)},l^{(1)})$. $f^{(i)}$ is a vector of all $sim(x^{(i)},l^{(k)})$ with $k \in [0,m]$. \\
+$f = [f_0\:f_1\:...\:f_m]^T$. $f_1^{(i)}=sim(x^{(i)},l^{(1)})$. $f^{(i)}$ is a vector of $sim(x^{(i)},l^{(k)})$ for $k \in [0,m]$. \\
 If $x\approx l^{(i)}$, then $f_i\approx 1$. If $x$ far from $l^{(i)}$, then $f_i\approx 0$.
 
 \begin{definition}[SVM kernel hypothesis]~\\
