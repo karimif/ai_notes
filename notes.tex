@@ -1074,8 +1074,7 @@ $\theta^{(1)},...,\theta^{(n_u)}$ can be estimated given $x^{(1)},...,x^{(n_m)}$
  $\min\limits_{x^{(1)},...,x^{(n_m)}}\:\frac{1}{2}\sum_{i=1}^{n_m}\sum_{j:r(i,j)=1}((\theta^{(j)})^Tx^{(i)}-y^{(i,j)})^2+\frac{\lambda}{2}\sum_{i=1}^{n_m}\sum_{k=1}^{n}(x_k^{(i)})^2$
 \end{definition}
 
-% Add: without m_something in the cost function denominator (first and second part regulation) which is irrelevant for minimization.
-Both definitions are very related to linear regression.
+Both definitions are very related to linear regression. In contrast, there is no $m$ in the denominators as it is in linear regression. This constant is irrelevant for the minimization objective.
 
 \chapter{Unsupervised learning}
 Unsupervised learning tries to find hidden structure in {\bf unlabeled data} $\{x^{(1)}, x^{(2)}, ..., x^{(m)}\}$.
