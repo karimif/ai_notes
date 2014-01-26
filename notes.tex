@@ -1064,7 +1064,7 @@ Figure~\ref{ref:sampleitemratings} contains a sample set of items, users and fea
 y^{(i,j)}=(\theta^{(j)})^T(x^{(i)})
 \end{align*}
 
-$i:r(i,j)$ stands for all items $i$ that user $j$ has rated. Vice versa, $j:r(i,j)$ stands for all users $j$ that rated item $i$.
+$i:r(i,j)$ stands for all items $i$ that user $j$ has rated. Vice versa, $j:r(i,j)$ stands for all users $j$ that rated item $i$. Collaborative filtering learns a feature vector $x^{(i)}\in \mathbb{R}$ for each item $i$.
 
 \begin{definition}[$\theta^{(1)},...,\theta^{(n_u)}$ estimation minimization objective]~\\
  $\min\limits_{\theta^{(1)},...,\theta^{(n_u)}}\:\frac{1}{2}\sum_{j=1}^{n_u}\sum_{i:r(i,j)=1}((\theta^{(j)})^Tx^{(i)}-y^{(i,j)})^2+\frac{\lambda}{2}\sum_{j=1}^{n_u}\sum_{k=1}^{n}(\theta_k^{(j)})^2$
@@ -1101,7 +1101,13 @@ $\theta_k^{(j)}:=\theta_k^{(j)}-\alpha(\sum_{i:r(i,j)=1}((\theta^{(j)})^Tx^{(i)}
 \end{algorithmic}
 \end{algorithm}
 
-This algorithm needs to break symmetry by randomly initializing $x^{(1)},...,x^{(n_m)},$ $\theta^{(1)},...,\theta^{(n_u)}$ which is related to neural networks. As the algorithm does not iterate over $x_0$ or $\theta_0$, all elements are regularized.
+This algorithm needs to break symmetry by randomly initializing $x^{(1)},...,x^{(n_m)},$ $\theta^{(1)},...,\theta^{(n_u)}$ which is related to neural networks. As the algorithm does not iterate over $x_0$ or $\theta_0$, all elements are regularized. Alternatively, the last step of Algorithm~\ref{ref:collaborativefiltering}, can be vectorized:
+\begin{align*}
+Y = X\Theta^T
+\end{align*}
+
+This is also called {\bf low rank matrix factorization}. \\
+As collaborative filtering learns a feature vector $x^{(i)}\in \mathbb{R}$ for each item $i$, the most related items $j$ to item $i$ can be found by taking the $j$ items with smallest $\lVert x^{(i)} - x^{(j)}\rVert$ as a small $\lVert x^{(i)} - x^{(j)}\rVert$ indicates "similarity".
 
 
 \chapter{Unsupervised learning}
