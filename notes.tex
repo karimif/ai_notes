@@ -762,7 +762,7 @@ It adds $k$ to the numerator and normalizes by adding $k$ to every single class 
 \\
 To prevent numerical underflow while multiplying lots of probabilities, naive Bayes can add the logarithms of these probabilities:
 \begin{align*}
-Y = \max\limits_{y_k} log(P(Y=y_k))+\sum_i log(P(X_i\vert Y=y_k))
+Y = \max\limits_{y_k} log(P(Y=y_k))+\sum_i log(P(x_i\vert Y=y_k))
 \end{align*}
 
 \subsection{Comparison to logistic regression}
