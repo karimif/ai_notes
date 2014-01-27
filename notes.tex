@@ -757,7 +757,7 @@ might be zero and would then reduce the entire product to zero. {\bf Laplacian s
 \begin{align*}
 P(x_i) = \frac{count(x_i+k)}{N+k\vert X\vert}
 \end{align*}
-It adds $k$ to the numerator and normalizes by adding $k$ to every single class of $X$.
+It adds $k$ to the numerator and normalizes by adding $k$ to every single class of $X$. A {\bf cross validation set} helps to find the best $k$, see Chapter~\ref{ref:modelselection}.
 \\
 \\
 To prevent numerical underflow while multiplying lots of probabilities, naive Bayes can add the logarithms of these probabilities:
@@ -897,6 +897,7 @@ The following rules can be followed to decide on the network architecture:
 \end{itemize}
 
 \section{Model selection}
+\label{ref:modelselection}
 {\bf Model selection} is the task of selecting a statistical model from a set of candidate models, given data. For example, different hypotheses for linear regression. Usually, the data is split up in three sets: {\bf training set} (60\%), {\bf cross validation set} (20\%) and {\bf test set} (20\%). A a non-regularized error function can be computed for each of these sets, such as for the test set:
 
 \begin{definition}[Linear regression error function] ~\\
