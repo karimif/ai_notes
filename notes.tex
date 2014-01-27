@@ -220,8 +220,7 @@ Stands for direction-dependent separation. d-separated variables are independent
 
 \begin{table}[h!]
 \begin{center}
-\begin{tabular}{|c|c|}
-\hline
+\begin{tabular}{c|c}
 Active & Inactive \\
 \hline
 \hline
@@ -312,7 +311,6 @@ common effect
 \end{tikzpicture}
 &
 \\
-\hline
 \end{tabular}
 \end{center}
 \caption{Active and inactive triplets with known variables filled}
@@ -326,8 +324,7 @@ A {\bf problem solving agent} requires a deterministic and fully observable envi
 
 \begin{table}[h!]
 \begin{center}
-\begin{tabular}{|l||c|c|c|}
-\hline
+\begin{tabular}{l||c|c|c}
  & Breadth-first & Uniform-cost & Depth-first\\
 \hline
 \hline
@@ -401,7 +398,6 @@ Optimal & yes & yes & no\\
 Complete & yes & yes & no\\
 \hline
 Frontier size ($n$ levels) & $2n$ & $2n$ & $n$\\
-\hline
 \end{tabular}
 \end{center}
 \caption{Comparison of search algorithms}
@@ -499,8 +495,7 @@ $\rightarrow$&$\rightarrow$&$\uparrow$&$\uparrow$&&* \\
 
 \begin{table}[h!]
 \begin{center}
-\begin{tabular}{|l||c|c|}
-\hline
+\begin{tabular}{l||c|c}
 & World & Beliefs \\
 \hline
 \hline
@@ -509,7 +504,6 @@ Probability theory & facts & $[0,1]$ \\
 Propositional logic & facts & true, false, unknown \\
 \hline
 First-order logic & relations, objects, functions & true, false, unknown \\
-\hline
 \end{tabular}
 \end{center}
 \caption{Comparison of formal languages}
@@ -770,8 +764,7 @@ Y = \max\limits_{y_k} log(P(Y=y_k))+\sum_i log(P(x_i\vert Y=y_k))
 
 \begin{figure}[h!]
 \centering
-\begin{tabular}{|c||l||l|}
-\hline
+\begin{tabular}{c||l||l}
 & SPAM & HAM \\
 \hline
 \hline
@@ -780,7 +773,6 @@ Y = \max\limits_{y_k} log(P(Y=y_k))+\sum_i log(P(x_i\vert Y=y_k))
 3 & SECRET SPORTS LINK & SECRET SPORTS EVENT \\
 4 & & SPORTS IS TODAY \\
 5 & & SPORTS COSTS MONEY \\
-\hline
 \end{tabular}
 \caption{Sample messages}
 \label{ref:spamsample}
@@ -987,14 +979,13 @@ The recommended approach to develop a machine learning algorithm is to start wit
 
 \begin{figure}[h!]
 \centering
-\begin{tabular}{r|c|cc|}
+\begin{tabular}{r||ccc}
 & & Actual class & \\
 \hline
-& & 1 & 0 \\
 \hline
+& & 1 & 0 \\
 Predicted & 1 & True positive & False positive \\
 class & 0 & False negative & True negative \\
-\hline
 \end{tabular}
 \caption{Classification and errors}
 \label{ref:classificationerror}
