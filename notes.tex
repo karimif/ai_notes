@@ -751,7 +751,8 @@ might be zero and would then reduce the entire product to zero. {\bf Laplacian s
 \begin{align*}
 P(x_i) = \frac{count(x_i+k)}{N+k\vert X\vert}
 \end{align*}
-It adds $k$ to the numerator and normalizes by adding $k$ to every single class of $X$. A {\bf cross validation set} helps to find the best $k$, see Chapter~\ref{ref:modelselection}.
+It adds $k$ to the numerator and normalizes by adding $k$ to every single class of $X$. This change to the normalizer guarantees that $\sum_i P(x_i) = 1$.
+Using a {\bf cross validation set} helps to find the best $k$, see Chapter~\ref{ref:modelselection}.
 \\
 \\
 To prevent numerical underflow while multiplying lots of probabilities, naive Bayes can add the logarithms of these probabilities:
