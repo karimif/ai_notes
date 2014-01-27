@@ -572,7 +572,7 @@ A {\bf planning agent} interleaves planning and execution. This is necessary for
 
 \chapter{Learning}
 
-{\bf Machine learning} is the field of study that gives computers the ability to learn without being explicitly programmed.
+{\bf Machine learning} is the field of study that gives computers the ability to learn without being explicitly programmed. This means that machine learning algorithms learn models from data. This is different to Bayes networks which reasons with known models.
 
 What:
 \begin{itemize}
@@ -618,7 +618,7 @@ Details:
 
 
 \chapter{Supervised learning}
-Supervised learning learns from {\bf labeled training examples}. If there are not sufficiently enough tfeatures, the learning algorithm may {\bf underfit}. In contrast, it may {\bf overfit} for too many features meaning it only matches the training data well but fails to generalize to new examples.
+Supervised learning learns from {\bf labeled training examples}. If there are not sufficiently many features, the learning algorithm may {\bf underfit}. In contrast, it may {\bf overfit} for too many features meaning it only matches the training data well but fails to generalize to new examples. The vast majority of research in machine learning has been done in supervised learning.
 
 \section{Linear regression}
 {\bf Linear regression} computes a linear regression function for $m$ {\bf training examples} having $n$ {\bf features}. The objective is to minimize the cost function:
@@ -1147,7 +1147,7 @@ Mean normalization allows to predict a mean value per item which is more meaning
 
 
 \chapter{Unsupervised learning}
-Unsupervised learning tries to find hidden structure in {\bf unlabeled data} $\{x^{(1)}, x^{(2)},$ $..., x^{(m)}\}$.
+Unsupervised learning tries to find hidden structure in {\bf unlabeled data} $\{x^{(1)}, x^{(2)},$ $..., x^{(m)}\}$. In machine learning research, unsupervised learning has received less attention than supervised learning but is likely to receive more in the future because of its potential to work on unlabeled data.
 
 \section{k-means}
 {\bf k-means} partitions $m$ observations $x^{(i)}$ into $K$ clusters $\mu_k$ as defined in Algorithm~\ref{ref:kmeans}. The optimization objective is to minimize the cost function. The initial cluster coordinates are random which makes this algorithm non-deterministic. A recommended strategy is to randomly pick $K$ training examples as the initial coordinates to make sure that the initial coordinates are not too far away from the actual data. k-means can be run multiple times on the same data to pick the result with the lowest cost. Choosing the number of clusters $K$ is usually done manually depending on the use case.
