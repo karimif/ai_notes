@@ -765,6 +765,29 @@ To prevent numerical underflow while multiplying lots of probabilities, naive Ba
 Y = \max\limits_{y_k} log(P(Y=y_k))+\sum_i log(P(x_i\vert Y=y_k))
 \end{align*}
 
+\subsection{Spam classification example}
+
+
+\begin{figure}[h!]
+\centering
+\begin{tabular}{|c||l||l|}
+\hline
+& SPAM & HAM \\
+\hline
+\hline
+1 & OFFER IS SECRET & PLAY SPORTS TODAY \\
+2 & CLICK SECRET LINK & WENT PLAY SPORTS \\
+3 & SECRET SPORTS LINK & SECRET SPORTS EVENT \\
+4 & & SPORTS IS TODAY \\
+5 & & SPORTS COSTS MONEY \\
+\hline
+\end{tabular}
+\caption{Sample messages}
+\label{ref:spamsample}
+\end{figure}
+
++ Limitations, but other factors can be added
+
 \subsection{Comparison to logistic regression}
 Naive Bayes requires only a small amount of data, converges quickly and is very fast. In comparison, logistic regression requires more data and computations are more expensive. Nonetheless, it can outperform naive Bayes on a lot of data.
 
