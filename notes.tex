@@ -668,8 +668,6 @@ The {\bf normal equation} is a closed-form solution for linear regression which 
 $\theta = (X^{T}X)^{-1}X^{T}y$
 \end{definition}
 
-\section{Naive Bayes}
-
 
 \section{Logistic regression}
 
@@ -734,6 +732,8 @@ $J(\theta) = \frac{1}{m}\sum_{i=1}^m[-y^{(i)}log(h_{\theta}(x^{(i)}))-(1-y^{(i)}
 \begin{definition}[Regularized logistic regression gradient descent] ~\\
 $\theta_j := \theta_j - \alpha[ \frac{1}{m}\sum_{i=1}^m((h_\theta(x^{(i)})-y^{(i)})x_j^{(i)} ) {\bf + \frac{\lambda}{m}\theta_j}]$
 \end{definition}
+
+\section{Naive Bayes}
 
 
 \section{Neural network}
