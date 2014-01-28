@@ -1366,7 +1366,7 @@ The {\bf optimal value function} is:
 V^{*}(s) = \max\limits_{\pi} V^{\pi}(s)
 \end{align*}
 \begin{align*}
-V^{*}(s) = R(s)+\max\limits_{\pi} \gamma \sum_{s'\in S} P_{sa}(s')V^{*}(s')
+V^{*}(s) = R(s)+\max\limits_{a\in A} \gamma \sum_{s'\in S} P_{sa}(s')V^{*}(s')
 \end{align*}
 
 The {\bf optimal policy} is:
