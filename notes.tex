@@ -1394,6 +1394,7 @@ R(S)=
 The state transition probability is defined as follows for all valid movements (invalid movements are 0): the intended outcome occurs with probability 0.8, but with probability 0.2 the agent moves at right angles to the intended direction (0.1 to the left and 01. to to right if intended north).
 
 The optimal policy is defined in Figure~\ref{ref:sampleworldoptimalpolicy}. The action of $(3, 1)$ is not obvious. If it was north, there would be a 0.1 chance to go to -1 from $(3, 2)$. Therefore, it is left to route away from this potential action.
+
 \begin{figure}[h!]
 \centering
 \begin{tabular}{c|c|c|c|c|}
@@ -1410,6 +1411,10 @@ The optimal policy is defined in Figure~\ref{ref:sampleworldoptimalpolicy}. The 
 \label{ref:sampleworldoptimalpolicy}
 \end{figure}
 
+A bad policy is defined in Figure~\ref{ref:sampleworldoptimalpolicy1}. A sample value function definition part is:
+\begin{align*}
+V^{\pi}((3,1))=R((3,1)) + \gamma[0.8V^{\pi}((3,2))+0.1V^{\pi}((4,1))+0.8V^{\pi}((2,1))]
+\end{align*}
 
 \begin{figure}[h!]
 \centering
