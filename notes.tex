@@ -1463,6 +1463,18 @@ V^{\pi}((3,1))=R((3,1)) + \gamma[0.8V^{\pi}((3,2))+0.1V^{\pi}((4,1))+0.8V^{\pi}(
 
 \section{Value iteration}
 
+\begin{algorithm}
+\caption{Value iteration}
+\label{ref:valueiterationalgorithm}
+\begin{algorithmic}
+\State $\forall s\in S: V(s) \gets 0$
+\Repeat
+\State $\forall s\in S:$ update $V(s) \gets R(s) + \max\limits_{a\in A} \gamma \sum_{s} P_{sa}(s')V^{*}(s')$
+\Until{conversion}
+\end{algorithmic}
+\end{algorithm}
+
+
 \chapter{Localization}
 \section{Grid localization}
 \section{Kalman filter}
