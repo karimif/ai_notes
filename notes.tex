@@ -1335,7 +1335,7 @@ Supervised learning algorithms approximate a mapping of their inputs to the labe
 \begin{itemize}
 \item $S$ is a set of states
 \item $A$ is a set of actions
-\item $P_{sa}$ are the state transition probabilities which is a distribution over the state space for each state $s\in S$ and action $a\in A$. $\sum_{s'}P_{sa}(s')=1, P_{sa}(s')\ge 0$ .
+\item $P_{sa}$ are the state transition probabilities which is a distribution over the state space for each state $s\in S$ and action $a\in A$. $P_{sa}(s')$ is the probability of $s'$ being the subsequent state of $s$ given action $a$. $\sum_{s'}P_{sa}(s')=1, P_{sa}(s')\ge 0$ .
 \item $\gamma \in [0,1)$ is called the discount factor
 \item $R:S \mapsto \mathbb{R}$ is the reward function
 \end{itemize}
