@@ -1340,6 +1340,40 @@ Supervised learning algorithms approximate a mapping of their inputs to the labe
 \item $R:S \mapsto \mathbb{R}$ is the reward function
 \end{itemize}
 
+\subsection{Example}
+This example is to apply the definitions on a small problem. The sample world in Figure~\ref{ref:sampleworld} contains a positive reward in cell $(4, 3)$ and a penalty in $(4, 2)$. It has 11 states and $A = \{N, S, E, W\}$.
+\begin{figure}[h!]
+\centering
+\begin{tabular}{c|c|c|c|c|}
+\hline
+3 & & & & +1 \\
+\hline
+2 & & \cellcolor{black} & & -1 \\
+\hline
+1 & & & & \\
+\hline
+& 1 & 2 & 3 & 4 \\
+\end{tabular}
+\caption{Sample world}
+\label{ref:sampleworld}
+\end{figure}
+
+Usually, a small penalty is assigned to all other states:
+\begin{align*}
+R(S)=
+\left\{
+\begin{array}{ll}
++1 & \mbox{if } S = (4,3) \\
+-1  & \mbox{if } S = (4,2) \\
+-0.02 & \mbox{otherwise}
+\end{array}
+\right.
+\end{align*}
+
+The state transition probability is defined as follows for all valid movements (invalid movements are 0): the intended outcome occurs with probability 0.8, but with probability 0.2 the agent moves at right angles to the intended direction (0.1 to the left and 01. to to right if intended north).
+
+
+
 \chapter{Localization}
 \section{Grid localization}
 \section{Kalman filter}
