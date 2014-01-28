@@ -1349,6 +1349,17 @@ The goal of MDP is to compute a {\bf policy} $\pi:S\mapsto A$ which is a mapping
 \begin{align*}
 V^{\pi}(s) = E[R(s_o)+\gamma R(s_1)+\gamma^2 R(s_2)+...\vert s_0=s,\pi]
 \end{align*}
+\begin{align*}
+= E[R(s_o)+\gamma (R(s_1)+\gamma R(s_2)+...)\vert s_0=s,\pi]
+\end{align*}
+\begin{align*}
+= E[R(s_o)+\gamma (V^{\pi}(s_1))\vert s_0=s,\pi]
+\end{align*}
+$R(s_o)$ is called the {\bf immediate reward} and $\gamma (V^{\pi}(s_1))$ the {\bf future rewards}. More precisely, the {\bf value function} can be defined recursively:
+\begin{align*}
+V^{\pi}(s) = R(s)+\gamma \sum_{s'\in S} P_{s\pi(s)}(s')V^{\pi}(s')
+\end{align*}
+
 
 \subsection{Example}
 This example is to apply the definitions on a small problem. The sample world in Figure~\ref{ref:sampleworld} contains a positive reward in cell $(4, 3)$ and a penalty in $(4, 2)$. It has 11 states and $A = \{N, S, E, W\}$.
