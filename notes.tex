@@ -1376,7 +1376,21 @@ The {\bf optimal policy} is:
 
 One way to get $\pi^{*}$ is to compute $V^{*}$ and to plug it into the definition of $\pi^{*}$. As there is an exponential amount of policies $(\vert A\vert^{\vert S \vert})$, this is impractical.
 
-\subsection{Example}
+\section{Value iteration}
+{\bf Value iteration} is an efficient algorithm for solving finite-state MDPs as defined in Algorithm~\ref{ref:valueiterationalgorithm}.
+
+\begin{algorithm}
+\caption{Value iteration}
+\label{ref:valueiterationalgorithm}
+\begin{algorithmic}
+\State $\forall s\in S: V(s) \gets 0$
+\Repeat
+\State $\forall s\in S:$ update $V(s) \gets R(s) + \max\limits_{a\in A} \gamma \sum_{s'} P_{sa}(s')V^{*}(s')$
+\Until{conversion}
+\end{algorithmic}
+\end{algorithm}
+
+\section{Example}
 This example is to apply the definitions on a small problem. The sample world in Figure~\ref{ref:sampleworld} contains a positive reward in cell $(4, 3)$ and a penalty in $(4, 2)$. It has 11 states and $A = \{N, S, E, W\}$.
 \begin{figure}[h!]
 \centering
@@ -1460,20 +1474,6 @@ V^{\pi}((3,1))=R((3,1)) + \gamma[0.8V^{\pi}((3,2))+0.1V^{\pi}((4,1))+0.8V^{\pi}(
 \caption{Bad policy and corresponding $V^{\pi}$}
 \label{ref:sampleworldoptimalpolicy1}
 \end{figure}
-
-\section{Value iteration}
-{\bf Value iteration} is an efficient algorithm for solving finite-state MDPs as defined in Algorithm~\ref{ref:valueiterationalgorithm}.
-
-\begin{algorithm}
-\caption{Value iteration}
-\label{ref:valueiterationalgorithm}
-\begin{algorithmic}
-\State $\forall s\in S: V(s) \gets 0$
-\Repeat
-\State $\forall s\in S:$ update $V(s) \gets R(s) + \max\limits_{a\in A} \gamma \sum_{s'} P_{sa}(s')V^{*}(s')$
-\Until{conversion}
-\end{algorithmic}
-\end{algorithm}
 
 
 \chapter{Localization}
