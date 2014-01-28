@@ -1345,7 +1345,10 @@ The dynamics of an MDP proceeds as follows: Start in some state $s_0$ and choose
 \begin{align*}
 E[R(s_o)+\gamma R(s_1)+\gamma^2 R(s_2)+...]
 \end{align*}
-The goal of MDP is to compute a {\bf policy} $\pi:S\mapsto A$ which is a mapping from state to actions.
+The goal of MDP is to compute a {\bf policy} $\pi:S\mapsto A$ which is a mapping from state to actions. The {\bf value function} of a policy $\pi$ is:
+\begin{align*}
+V^{\pi}(s) = E[R(s_o)+\gamma R(s_1)+\gamma^2 R(s_2)+...\vert s_0=s,\pi]
+\end{align*}
 
 \subsection{Example}
 This example is to apply the definitions on a small problem. The sample world in Figure~\ref{ref:sampleworld} contains a positive reward in cell $(4, 3)$ and a penalty in $(4, 2)$. It has 11 states and $A = \{N, S, E, W\}$.
