@@ -9,6 +9,7 @@
 \usepackage{hyperref}
 \usepackage{algorithmicx}
 \usepackage{algpseudocode}
+\usepackage{mathtools}
 \usepackage[chapter]{algorithm}
 
 \setlength{\parindent}{0cm}
@@ -1339,6 +1340,12 @@ Supervised learning algorithms approximate a mapping of their inputs to the labe
 \item $\gamma \in [0,1)$ is called the discount factor
 \item $R:S \mapsto \mathbb{R}$ is the reward function
 \end{itemize}
+
+The dynamics of an MDP proceeds as follows: Start in some state $s_0$ and choose an action $a_0\in A$. The MDP then randomly transitions to some successor state $s_1\sim P_{s_0a_0}$. Then choose another action $a_1$ and randomly transition to $s_2\sim P_{s_1a_1}$: $s_0\xrightarrow{a_0}s_1\xrightarrow{a_1}s_2\xrightarrow{a_2}a_3\xrightarrow{a_3}...$. The total {\bf payoff} is: $R(s_0)+\gamma R(s_1)+\gamma^2R(s_2)+...$. This means that later rewards is given less weight than earlier rewards, called {\bf discounting}. The {\bf goal} of reinforcement learning is to maximize:
+\begin{align*}
+E[R(s_o)+\gamma R(s_1)+\gamma^2 R(s_2)+...]
+\end{align*}
+The goal of MDP is to compute a {\bf policy} $\pi:S\mapsto A$ which is a mapping from state to actions.
 
 \subsection{Example}
 This example is to apply the definitions on a small problem. The sample world in Figure~\ref{ref:sampleworld} contains a positive reward in cell $(4, 3)$ and a penalty in $(4, 2)$. It has 11 states and $A = \{N, S, E, W\}$.
