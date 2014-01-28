@@ -1400,6 +1400,35 @@ The optimal policy is defined in Figure~\ref{ref:sampleworldoptimalpolicy}. The 
 \end{figure}
 
 
+\begin{figure}[h!]
+\centering
+\begin{subfigure}[b]{0.4\textwidth}
+\begin{tabular}{c|c|c|c|c|}
+\hline
+3 & $\rightarrow$ & $\rightarrow$ & $\rightarrow$ & +1 \\
+\hline
+2 & $\downarrow$ & \cellcolor{black} & $\rightarrow$ & -1 \\
+\hline
+1 & $\rightarrow$ & $\rightarrow$ & $\uparrow$ & $\uparrow$ \\
+\hline
+& 1 & 2 & 3 & 4 \\
+\end{tabular}
+\end{subfigure}
+\begin{subfigure}[b]{0.4\textwidth}
+\begin{tabular}{c|c|c|c|c|}
+\hline
+3 & .52 & .73 & .77 & +1 \\
+\hline
+2 & -.90 &\cellcolor{black} & -.82 & -1 \\
+\hline
+1 & -.88 & -.87 & -.85 & -1.00 \\
+\hline
+& 1 & 2 & 3 & 4 \\
+\end{tabular}
+\end{subfigure}
+\caption{Bad policy and corresponding $V^{\pi}$}
+\label{ref:sampleworldoptimalpolicy1}
+\end{figure}
 
 \chapter{Localization}
 \section{Grid localization}
