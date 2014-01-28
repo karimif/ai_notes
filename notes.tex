@@ -1422,10 +1422,11 @@ R(S)=
 
 The state transition probability is defined as follows for all valid movements (invalid movements are 0): the intended outcome occurs with probability 0.8, but with probability 0.2 the agent moves at right angles to the intended direction (0.1 to the left and 01. to to right if intended north).
 
-The optimal policy is defined in Figure~\ref{ref:sampleworldoptimalpolicy}. The action of $(3, 1)$ is not obvious. If it was north, there would be a 0.1 chance to go to -1 from $(3, 2)$. Therefore, it is left to route away from this potential action.
+The optimal policy is defined in Figure~\ref{ref:sampleworldoptimalpolicy}. The $V*$ values were computed through value iteration. The action of $(3, 1)$ is not obvious. If it was north, there would be a 0.1 chance to go to -1 from $(3, 2)$. Therefore, it is left to route away from this potential action.
 
 \begin{figure}[h!]
 \centering
+\begin{subfigure}[b]{0.4\textwidth}
 \begin{tabular}{c|c|c|c|c|}
 \hline
 3 & $\rightarrow$ & $\rightarrow$ & $\rightarrow$ & +1 \\
@@ -1436,7 +1437,20 @@ The optimal policy is defined in Figure~\ref{ref:sampleworldoptimalpolicy}. The 
 \hline
 & 1 & 2 & 3 & 4 \\
 \end{tabular}
-\caption{Optimal policy}
+\end{subfigure}
+\begin{subfigure}[b]{0.4\textwidth}
+\begin{tabular}{c|c|c|c|c|}
+\hline
+3 & .86 & .90 & .93 & +1 \\
+\hline
+2 & .82 &\cellcolor{black} & .69 & -1 \\
+\hline
+1 & .78 & .75 & .71 & .49 \\
+\hline
+& 1 & 2 & 3 & 4 \\
+\end{tabular}
+\end{subfigure}
+\caption{Optimal policy and corresponding $V^{\pi}$}
 \label{ref:sampleworldoptimalpolicy}
 \end{figure}
 
