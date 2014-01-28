@@ -728,18 +728,18 @@ $\theta_j := \theta_j - \alpha[ \frac{1}{m}\sum_{i=1}^m((h_\theta(x^{(i)})-y^{(i
 \end{definition}
 
 \section{Naive Bayes}
-{\bf Bayes classifiers} rely on Bayes rule which maps a vector $X$ to a discrete random variable $Y$. Training such a classifier is impractical because of the necessary exponential amount of training examples. A {\bf naive Bayes classifier} relaxes conditional dependency by assuming conditional independence between the parameters in $X$ given $Y$. Naive Bayes is a powerful classifier that is often used in text classification (e.g. spam filtering) and is a dependable baseline when comparing different classifiers. Usually, it works on a so-called {\bf bag of words} which is a frequency of words in a text.
+{\bf Bayes classifiers} rely on Bayes rule which maps a vector $X$ to a discrete random variable $C$ - a class. Training such a classifier is impractical because of the necessary exponential amount of training examples. A {\bf naive Bayes classifier} relaxes conditional dependency by assuming conditional independence between the parameters in $X$ given $C$. Naive Bayes is a powerful classifier that is often used in text classification (e.g. spam filtering) and is a dependable baseline when comparing different classifiers. Usually, it works on a so-called {\bf bag of words} which is a frequency of words in a text.
 \begin{align*}
-P(Y=y_k\vert X) = P(Y=y_k\vert x_1...x_n) = \frac{P(Y=y_k)P(x_1...x_n\vert Y=y_k)}{P(x_1...x_n)}
+P(C\vert X) = P(C\vert x_1...x_n) = \frac{P(C)P(x_1...x_n\vert C)}{P(x_1...x_n)}
 \end{align*}
 \begin{align*}
-= \frac{P(Y=y_k)P(x_1\vert Y=y_k)...P(x_n\vert Y=y_k)}{P(x_1)...P(x_n)}
+= \frac{P(C)P(x_1\vert C)...P(x_n\vert C)}{P(x_1)...P(x_n)}
 \end{align*}
 
-To get the most likely class, the denominator can get dropped as it is independent of $Y$.
+To get the most likely class, the denominator can get dropped as it is independent of $C$.
 
 \begin{align*}
-Y = \max\limits_{y_k} P(Y=y_k)\prod_iP(x_i\vert Y=y_k)
+C = \max\limits_{C} P(C)\prod_iP(x_i\vert C)
 \end{align*}
 
 \subsection{Using naive Bayes}
@@ -757,7 +757,7 @@ Using a {\bf cross validation set} helps to find the best $k$, see Chapter~\ref{
 \\
 To prevent numerical underflow while multiplying lots of probabilities, naive Bayes can add the logarithms of these probabilities:
 \begin{align*}
-Y = \max\limits_{y_k} log(P(Y=y_k))+\sum_i log(P(x_i\vert Y=y_k))
+C = \max\limits_{C} log(P(C))+\sum_i log(P(x_i\vert C))
 \end{align*}
 
 \subsection{Spam classification example}
