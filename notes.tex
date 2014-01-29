@@ -1355,7 +1355,7 @@ V^{\pi}(s) = E[R(s_o)+\gamma R(s_1)+\gamma^2 R(s_2)+...\vert s_0=s,\pi]
 \begin{align*}
 = E[R(s_o)+\gamma (V^{\pi}(s_1))\vert s_0=s,\pi]
 \end{align*}
-$R(s_o)$ is called the {\bf immediate reward} and $\gamma (V^{\pi}(s_1))$ the {\bf future rewards}. More precisely, the {\bf value function} can be defined recursively:
+The value function is the expected sum of discounted rewards upon starting in state $s$ and taking actions according to $\pi$. $R(s_o)$ is called the {\bf immediate reward} and $\gamma (V^{\pi}(s_1))$ the {\bf future rewards}. More precisely, the {\bf value function} can be defined recursively which satisfies the {\bf Bellman equations}:
 \begin{align*}
 V^{\pi}(s) = R(s)+\gamma \sum_{s'\in S} P_{s\pi(s)}(s')V^{\pi}(s')
 \end{align*}
@@ -1365,6 +1365,8 @@ The {\bf optimal value function} is:
 \begin{align*}
 V^{*}(s) = \max\limits_{\pi} V^{\pi}(s)
 \end{align*}
+
+There is also a version of Bellman's equations for the optimal value function:
 \begin{align*}
 V^{*}(s) = R(s)+\max\limits_{a\in A} \gamma \sum_{s'\in S} P_{sa}(s')V^{*}(s')
 \end{align*}
