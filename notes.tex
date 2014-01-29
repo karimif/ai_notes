@@ -1409,7 +1409,7 @@ One way to get $\pi^{*}$ is to compute $V^{*}$ and to plug it into the definitio
 
 {\bf Policy iteration} is computationally expensive for large MDPs because of the $V\gets V^{\pi}$ step which solves a set of $\vert S\vert$ linear equations in $\vert S\vert$ variables. Nonetheless, it is very fast and converges quickly for small MDPs. In practice, value iteration is used more often.
 
-\section{Learning a model for an MDP}
+\section{Model learning}
 In many real-world problems, some parts of an MDP are unknown, e.g. state transition probabilities and rewards. These need to be estimated from data. Trials of transitions:
 \begin{align*}
 s_0^{(1)}\xrightarrow{a_0^{(1)}}s_1^{(1)}\xrightarrow{a_1^{(1)}}s_2^{(1)}\xrightarrow{a_2^{(1)}}s_3^{(1)}\xrightarrow{a_3^{(1)}}...
