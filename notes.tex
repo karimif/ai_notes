@@ -1376,7 +1376,7 @@ The {\bf optimal policy} is:
 
 One way to get $\pi^{*}$ is to compute $V^{*}$ and to plug it into the definition of $\pi^{*}$. As there is an exponential amount of policies $(\vert A\vert^{\vert S \vert})$, this is impractical.
 
-\section{Value iteration}
+\section{Value iteration and policy iteration}
 {\bf Value iteration} is an efficient algorithm for solving finite-state MDPs as defined in Algorithm~\ref{ref:valueiterationalgorithm}. Eventually $V$ converges to $V^{*}$. Then $\pi^{*}$ can be computed using the previous equation.
 
 \begin{algorithm}[h!]
@@ -1390,7 +1390,6 @@ One way to get $\pi^{*}$ is to compute $V^{*}$ and to plug it into the definitio
 \end{algorithmic}
 \end{algorithm}
 
-\section{Policy iteration}
 {\bf Value iteration} is another efficient algorithm for solving finite-state MDPs as defined in Algorithm~\ref{ref:policyiterationalgorithm}. Eventually $V$ and $\pi$ converge to $V^{*}$ and $\pi^{*}$ respectively.
 
 \begin{algorithm}[h!]
