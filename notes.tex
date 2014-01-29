@@ -1410,7 +1410,19 @@ One way to get $\pi^{*}$ is to compute $V^{*}$ and to plug it into the definitio
 {\bf Policy iteration} is computationally expensive for large MDPs because of the $V\gets V^{\pi}$ step which solves a set of $\vert S\vert$ linear equations in $\vert S\vert$ variables. Nonetheless, it is very fast and converges quickly for small MDPs. In practice, value iteration is used more often.
 
 \section{Learning a model for an MDP}
-
+In many real-world problems, some parts of an MDP are unknown, e.g. state transition probabilities and rewards. These need to be estimated from data. Trials of transitions:
+\begin{align*}
+s_0^{(1)}\xrightarrow{a_0^{(1)}}s_1^{(1)}\xrightarrow{a_1^{(1)}}s_2^{(1)}\xrightarrow{a_2^{(1)}}s_3^{(1)}\xrightarrow{a_3^{(1)}}...
+\end{align*}
+\begin{align*}
+s_0^{(2)}\xrightarrow{a_0^{(2)}}s_1^{(2)}\xrightarrow{a_1^{(2)}}s_2^{(2)}\xrightarrow{a_2^{(2)}}s_3^{(2)}\xrightarrow{a_3^{(2)}}...
+\end{align*}
+can be used to estimate the state transition probabilities:
+\begin{align*}
+P_{as}(s')=\frac{\#\mbox{times action } a\mbox{ was taken in state } s \mbox{ and got to }s'} {\#\mbox{times action } a\mbox{ was taken in state } s}
+\end{align*}
+This ratio might be "$0/0$" in case of never having taken action $a$ in state $s$ before, $P_{as}(s')$ can be estimated: $\frac{1}{\vert S\vert}$. A similar procedure can be used if $R$ is unknown. \\
+Having learned a model for the MDP, either value iteration or policy iteration can be used to solve the MDP using the estimated transition probabilities and rewards. For example, model learning and value iteration can be put together and repeated until convergence.
 
 \section{Example}
 This example is to apply the definitions on a small problem. The sample world in Figure~\ref{ref:sampleworld} contains a positive reward in cell $(4, 3)$ and a penalty in $(4, 2)$. It has 11 states and $A = \{N, S, E, W\}$.
