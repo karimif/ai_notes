@@ -1379,7 +1379,7 @@ One way to get $\pi^{*}$ is to compute $V^{*}$ and to plug it into the definitio
 \section{Value iteration}
 {\bf Value iteration} is an efficient algorithm for solving finite-state MDPs as defined in Algorithm~\ref{ref:valueiterationalgorithm}. Eventually $V$ converges to $V*$. Then $\pi^{*}$ can be computed using the previous equation.
 
-\begin{algorithm}
+\begin{algorithm}[h!]
 \caption{Value iteration}
 \label{ref:valueiterationalgorithm}
 \begin{algorithmic}
@@ -1391,6 +1391,19 @@ One way to get $\pi^{*}$ is to compute $V^{*}$ and to plug it into the definitio
 \end{algorithm}
 
 \section{Policy iteration}
+{\bf Value iteration} is another efficient algorithm for solving finite-state MDPs as defined in Algorithm~\ref{ref:policyiterationalgorithm}. Eventually $V$ and $\pi$ converge to $V^{*}$ and $\pi^{*}$ respectively.
+
+\begin{algorithm}[h!]
+\caption{Policy iteration}
+\label{ref:policyiterationalgorithm}
+\begin{algorithmic}
+\State Initialize $\pi$ randomly
+\Repeat
+\State $V\gets V^{\pi}$
+\State $\forall s\in S:\:\pi(s)\gets  \max\limits_{a\in A} \sum_{s'\in S} P_{sa}(s')V(s')$
+\Until{conversion}
+\end{algorithmic}
+\end{algorithm}
 
 
 \section{Example}
