@@ -1380,7 +1380,7 @@ The {\bf optimal policy} is:
 One way to get $\pi^{*}$ is to compute $V^{*}$ and to plug it into the definition of $\pi^{*}$. As there is an exponential amount of policies $(\vert A\vert^{\vert S \vert})$, this is impractical.
 
 \section{Value iteration and policy iteration}
-{\bf Value iteration} is an efficient algorithm for solving finite-state MDPs as defined in Algorithm~\ref{ref:valueiterationalgorithm}. Eventually $V$ converges to $V^{*}$. Then $\pi^{*}$ can be computed using the previous equation.
+{\bf Value iteration} is an efficient algorithm for solving finite-state MDPs as defined in Algorithm~\ref{ref:valueiterationalgorithm}. Starting at 0, it repeatedly improves the value function. Eventually, $V$ converges to $V^{*}$. Then $\pi^{*}$ can be computed using the previous equation.
 
 \begin{algorithm}[h!]
 \caption{Value iteration}
@@ -1393,7 +1393,7 @@ One way to get $\pi^{*}$ is to compute $V^{*}$ and to plug it into the definitio
 \end{algorithmic}
 \end{algorithm}
 
-{\bf Value iteration} is another efficient algorithm for solving finite-state MDPs as defined in Algorithm~\ref{ref:policyiterationalgorithm}. Eventually $V$ and $\pi$ converge to $V^{*}$ and $\pi^{*}$ respectively.
+{\bf Policy iteration} is another efficient algorithm for solving finite-state MDPs as defined in Algorithm~\ref{ref:policyiterationalgorithm}. It starts with a random policy. First, in each iteration, a fixed policy is given and the algorithm solves for the value function of this policy. Second, maximizes the policy for this value function. Eventually, $V$ and $\pi$ converge to $V^{*}$ and $\pi^{*}$ respectively.
 
 \begin{algorithm}[h!]
 \caption{Policy iteration}
@@ -1407,7 +1407,7 @@ One way to get $\pi^{*}$ is to compute $V^{*}$ and to plug it into the definitio
 \end{algorithmic}
 \end{algorithm}
 
-{\bf Policy iteration} is computationally expensive for large MDPs because of the $V\gets V^{\pi}$ step which solves a set of $\vert S\vert$ linear equations in $\vert S\vert$ variables. Nonetheless, it is very fast and converges quickly for small MDPs. In practice, value iteration is used more often.
+In comparison, policy iteration is computationally expensive for large MDPs because of the $V\gets V^{\pi}$ step which solves a set of $\vert S\vert$ linear equations in $\vert S\vert$ variables. Nonetheless, it is very fast and converges quickly for small MDPs. In practice, value iteration is used more often.
 
 \section{Model learning}
 In many real-world problems, some parts of an MDP are unknown, e.g. state transition probabilities and rewards. These need to be estimated from data. Trials of transitions:
