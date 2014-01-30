@@ -1362,6 +1362,7 @@ The value function is the expected sum of discounted rewards upon starting in st
 V^{\pi}(s) = R(s)+\gamma \sum_{s'\in S} P_{s\pi(s)}(s')V^{\pi}(s')
 \end{align*}
 
+Bellman's equations can be used to efficiently solve $V^{\pi}$. Specifically, in a finite-state MDP ($\vert S\vert < \infty$), such one such equation for $V^{\pi}(s)$ can be written down for every state $s$. This gives a set of $\vert S\vert$ linear equations in $\vert S\vert$ variables (the unknown $V^{\pi}(s)$'s, one for each state) which can be efficiently solved for the $V^{\pi}(s)$'s.
 
 The {\bf optimal value function} is:
 \begin{align*}
@@ -1408,7 +1409,7 @@ One way to get $\pi^{*}$ is to compute $V^{*}$ and to plug it into the definitio
 \end{algorithmic}
 \end{algorithm}
 
-In comparison, policy iteration is computationally expensive for large MDPs because of the $V\gets V^{\pi}$ step which solves a set of $\vert S\vert$ linear equations in $\vert S\vert$ variables. Nonetheless, it is very fast and converges quickly for small MDPs. In practice, value iteration is used more often.
+In comparison, policy iteration is computationally expensive for large MDPs because of the $V\gets V^{\pi}$ step which solves a set of $\vert S\vert$ linear equations in $\vert S\vert$ variables. Nonetheless, it is very fast and converges quickly for small MDPs. In practice, value iteration is used more often because of large state spaces.
 
 \section{Model learning}
 In many real-world problems, some parts of an MDP are unknown, e.g. state transition probabilities and rewards. These need to be estimated from data. Trials of transitions:
