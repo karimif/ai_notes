@@ -1352,7 +1352,7 @@ The goal of MDP is to compute a {\bf policy} $\pi:S\mapsto A$ which is a mapping
 V^{\pi}(s) = E[R(s_o)+\gamma R(s_1)+\gamma^2 R(s_2)+...\vert s_0=s,\pi]
 \end{align*}
 \begin{align*}
-= E[R(s_o)+\gamma (R(s_1)+\gamma R(s_2)+...)\vert s_0=s,\pi]
+= E[R(s_o)+\gamma (R(s_1)+\gamma (R(s_2)+...))\vert s_0=s,\pi]
 \end{align*}
 \begin{align*}
 = E[R(s_o)+\gamma (V^{\pi}(s_1))\vert s_0=s,\pi]
