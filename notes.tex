@@ -1379,7 +1379,7 @@ The {\bf optimal policy} is:
 \pi^{*}(s) = \max\limits_{a\in A} \sum_{s'\in S} P_{sa}(s')V^{*}(s')
 \end{align*}
 
-One way to get $\pi^{*}$ is to compute $V^{*}$ and to plug it into the definition of $\pi^{*}$. As there is an exponential amount of policies $(\vert A\vert^{\vert S \vert})$, this is impractical.
+One way to get $\pi^{*}$ is to compute $V^{*}$ by iterating all possible policies $\pi$. Then, it can be plugged into the definition of $\pi^{*}$. As there is an exponential amount of policies $(\vert A\vert^{\vert S \vert})$, this is impractical.
 
 \section{Value iteration and policy iteration}
 {\bf Value iteration} is an efficient algorithm for solving finite-state MDPs as defined in Algorithm~\ref{ref:valueiterationalgorithm}. Starting at 0, it repeatedly improves the value function. Eventually, $V$ converges to $V^{*}$. Then $\pi^{*}$ can be computed using the previous equation.
@@ -1427,7 +1427,10 @@ This ratio might be "$0/0$" in case of never having taken action $a$ in state $s
 Having learned a model for the MDP, either value iteration or policy iteration can be used to solve the MDP using the estimated transition probabilities and rewards. For example, model learning and value iteration can be put together and repeated until convergence.
 
 \section{Continuous MDPs}
-The algorithms discussed so far work on MDPs with a finite number of states. Many real-world problem need an infinite amount of states e.g. to represent positions and orientations. {\bf Discretization} discretizes the state space on which then value iteration or policy iteration work. This approach comes with two downsides: First, there is a loss of information which can be partially treated by using a very fine discretization which creates a huge amount of state. The second downside is called the {\bf curse of dimensionality}. Suppose $R=\mathbb{R}^n$ and each of the $n$ dimensions is discretized into $k$ values. In total this would result in $\vert S_{discretized}\vert=k^n$ states. This grows exponentially in the dimension of the state space $n$ which does not scale well to large problems. Discretization works generally only well for 1d or 2d problem. Many problems are higher-dimensional such as representing a car driving on a 2d plane as $(x, y, \theta, x', y', \theta')$.
+The algorithms discussed so far work on MDPs with a finite number of states. Many real-world problem need an infinite amount of states e.g. to represent positions and orientations. {\bf Discretization} maps the state space to a finite number of buckets on which then value iteration or policy iteration work.
+This approach comes with two downsides: First, there is a loss of information which can be partially treated by using a very fine discretization which creates a huge amount of state.
+The second downside is called the {\bf curse of dimensionality}. Suppose $S=\mathbb{R}^n$ and each of the $n$ dimensions is discretized into $k$ values. In total this would result in $\vert S_{discretized}\vert=k^n$ states.
+This grows exponentially in the dimension of the state space $n$ which does not scale well to large problems. Discretization works generally only well for 1d or 2d problems. Many problems are higher-dimensional such as representing a driving car on a 2d plane as $(x, y, \theta, x', y', \theta')$ which is 6d.
 
 \section{Examples}
 \subsection{Routing in a sample world}
