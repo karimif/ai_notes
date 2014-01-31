@@ -1430,7 +1430,7 @@ Having learned a model for the MDP, either value iteration or policy iteration c
 The algorithms discussed so far work on MDPs with a finite number of states. Many real-world problem need an infinite amount of states e.g. to represent positions and orientations. {\bf Discretization} maps the state space to a finite number of buckets on which then value iteration or policy iteration work.
 This approach comes with two downsides: First, there is a loss of information which can be partially treated by using a very fine discretization which creates a huge amount of state.
 The second downside is called the {\bf curse of dimensionality}. Suppose $S=\mathbb{R}^n$ and each of the $n$ dimensions is discretized into $k$ values. In total this would result in $\vert S_{discretized}\vert=k^n$ states.
-This grows exponentially in the dimension of the state space $n$ which does not scale well to large problems. Discretization works generally only well for 1d or 2d problems. Many problems are higher-dimensional such as representing a driving car on a 2d plane as $(x, y, \theta, x', y', \theta')$ which is 6d.
+This grows exponentially in the dimension of the state space $n$ which does not scale well to large problems. Discretization works generally only well for 1d or 2d problems. Many problems are higher-dimensional such as representing a driving car on a 2d plane as $(x, y, \theta, x', y', \theta')$ which is 6d. There are more advanced algorithms such as {\bf fitted value iteration} and {\bf Q-learning} what work on continuous spaces.
 
 \section{Examples}
 \subsection{Routing in a sample world}
