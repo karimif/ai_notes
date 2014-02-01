@@ -1572,6 +1572,23 @@ $\theta_j := \theta_j - \alpha \frac{1}{m}\sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)}
 \end{algorithm}
 
 
+\subsection{Mini-batch gradient descent}
+{\bf Mini-batch gradient descent} combines batch gradient descent and stochastic gradient descent as described in Algorithm~\ref{ref:minibatchgradientdescent}. It computes the parameters for buckets of $b$ training examples of $m$. It can still be vectorized which is an advantage over stochastic gradient descent and can outperform it.
+
+\begin{algorithm}
+\caption{Mini-batch gradient descent}
+\label{ref:minibatchgradientdescent}
+\begin{algorithmic}
+\State $b\gets $ step size
+\Repeat
+\For{$i$ in $m, step=n$}
+\State $\theta_j  \gets \theta_j - \alpha \frac{1}{\vert b\vert}\sum_{k=i}^{i+9} (h_\theta(x^{(k)})-y^{(k)})x_j^{(k)}$ (for all $j$)
+\EndFor
+\Until{conversion}
+\end{algorithmic}
+\end{algorithm}
+
+
 \chapter{Localization}
 \section{Grid localization}
 \section{Kalman filter}
