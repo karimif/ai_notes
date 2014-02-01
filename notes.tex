@@ -1546,7 +1546,7 @@ Large data sets  help to increase the accuracy of {\bf low-bias} learning algori
 One way to find out if the algorithm has low bias is to randomly pick a lower amount (e.g. 1000) of  examples of this set and plot its learning curves.
 
 \subsection{Stochastic gradient descent}
-Large data sets come with new problems such as {\bf scalability}. Gradient descent often converges within a few steps in the global minimum. But each summation update step of gradient descent can become computationally expensive for large data sets, e.g. 100 million records. The entire set cannot be stored in RAM and needs to be retrieved from hard disk or streamed.
+Large data sets come with new problems, e.g. a lack of {\bf scalability} . Gradient descent often converges within a few steps in the global minimum. But each summation update step of gradient descent can become computationally expensive for large data sets, e.g. 100 million records. The entire set cannot be stored in RAM and needs to be retrieved from hard disk or streamed.
 
 \begin{definition}[Gradient descent] ~\\
 loop until converge \{ \\
