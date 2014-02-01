@@ -1589,6 +1589,21 @@ $\theta_j := \theta_j - \alpha \frac{1}{m}\sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)}
 \end{algorithm}
 
 \section{Online learning}
+{\bf Online learning} is useful when there is a continuous stream of new data and if the entire data set is too large for efficient re-calculation of the parameters. It is defined in Algorithm~\ref{ref:onlinelearning}. Online learning learns on the fly and also adapts to change of data (e.g. rising housing prices).
+
+\begin{algorithm}
+\caption{Online learning}
+\label{ref:onlinelearning}
+\begin{algorithmic}
+\State Get new data
+\Repeat
+\State Update $\theta$ using new data: $\theta_j\gets \theta_j - \alpha (h_\theta(x^{(i)})-y^{(i)})x_j^{(i)}$ (for all $j$)
+\Until{forever}
+\end{algorithmic}
+\end{algorithm}
+
+
+
 
 \section{Map reduce}
 
