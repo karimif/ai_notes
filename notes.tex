@@ -1588,6 +1588,25 @@ $\theta_j := \theta_j - \alpha \frac{1}{m}\sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)}
 \end{algorithmic}
 \end{algorithm}
 
+
+\subsection{MapReduce gradient descent}
+{\bf MapReduce} can be used to speed up gradient descent by distributing the summation in the gradient descent upgrade step as defined in Algorithm~\ref{ref:mapreducegradientdescent}. The data set is split up in $K$ parts which are sent to different computational units such as cores or servers.
+
+\begin{algorithm}
+\caption{MapReduce gradient descent}
+\label{ref:mapreducegradientdescent}
+\begin{algorithmic}
+\State $K\gets $ split count
+\Repeat
+\For{$k=1..K$}
+\State Distribute computation: $temp_j^{(k)}\gets \sum_{i=k\frac{m}{K}+1}^{(k + 1)\frac{m}{K}}(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)}$ (for all $j$)
+\EndFor
+\State $\theta_j  \gets \theta_j - \alpha \frac{1}{m}\sum_{k=1}^{\frac{m}{K}}temp_j^{(k)}$ (for all $j$)
+\Until{forever}
+\end{algorithmic}
+\end{algorithm}
+
+
 \section{Online learning}
 {\bf Online learning} is useful when there is a continuous stream of new data and if the entire data set is too large for efficient re-calculation of the parameters. It is defined in Algorithm~\ref{ref:onlinelearning}. Online learning learns on the fly and also adapts to change of data (e.g. rising housing prices).
 
@@ -1602,10 +1621,6 @@ $\theta_j := \theta_j - \alpha \frac{1}{m}\sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)}
 \end{algorithmic}
 \end{algorithm}
 
-
-
-
-\section{Map reduce}
 
 \chapter{Localization}
 \section{Grid localization}
