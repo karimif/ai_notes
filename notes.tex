@@ -1535,6 +1535,43 @@ V^{\pi}((3,1))=R((3,1)) + \gamma[0.8V^{\pi}((3,2))+0.1V^{\pi}((4,1))+0.8V^{\pi}(
 \subsection{Further examples}
 Reinforcement learning can be applied to a variety of real-world problems such as self-driving cars, self-flying helicopters or stock market prediction (rewards are profits/losses).
 
+\chapter{Further machine learning topics}
+This chapter contains further machine learning-related topics which do not fit into the previous chapters.
+
+\section{Large scale machine learning}
+Large data sets  help to increase the accuracy of {\bf low-bias} learning algorithms. In some cases, the actual algorithm may matter less as others perform similarly well given large data sets:
+\begin{align*}
+\mbox{"It's not who has the best algorithm that wins. It's who has the most data."}
+\end{align*}
+One way to find out if the algorithm has low bias is to randomly pick a lower amount (e.g. 1000) of  examples of this set and plot its learning curves.
+
+\subsection{Stochastic gradient descent}
+Large data sets come with new problems such as {\bf scalability}. Gradient descent often converges within a few steps in the global minimum. But each summation update step of gradient descent can become computationally expensive for large data sets, e.g. 100 million records. The entire set cannot be stored in RAM and needs to be retrieved from hard disk or streamed.
+
+\begin{definition}[Gradient descent] ~\\
+loop until converge \{ \\
+$\theta_j := \theta_j - \alpha \frac{1}{m}\sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)}$ (for all $j$)\\
+\}
+\end{definition}
+
+
+
+{\bf Stochastic gradient descent} computes an approximation of gradient descent as described in Algorithm~\ref{ref:stochasticgradientdescent}. First, the randomization speeds up the algorithm in many cases. Second, the update statement in the inner loop allows the algorithm to improve the parameters quickly without summing up all $m$ training data. The resulting learning curve is {\bf not convex}. In general, the algorithm wanders around the global minimum and moves the parameters towards the region of it.
+
+\begin{algorithm}
+\caption{Stochastic gradient descent}
+\label{ref:stochasticgradientdescent}
+\begin{algorithmic}
+\State Randomly shuffle data set
+\Repeat
+\For{$i=1$ to $m$}
+\State $\theta_j  \gets \theta_j - \alpha (h_\theta(x^{(i)})-y^{(i)})x_j^{(i)}$ (for all $j$)
+\EndFor
+\Until{conversion}
+\end{algorithmic}
+\end{algorithm}
+
+
 \chapter{Localization}
 \section{Grid localization}
 \section{Kalman filter}
