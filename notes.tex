@@ -735,7 +735,13 @@ In non-technical language, "likelihood" is usually a synonym for "probability", 
 
 
 \subsection{Maximum a posteriori}
-
+The Bayes {\bf maximum a posteriori} (MAP) estimate for $\theta$ is given by:
+\begin{align*}
+\theta_{MAP}=\max\limits_{\theta} \prod p(y^{(i)}\vert x^{(i)},\theta)p(\theta)
+\end{align*}
+This definition is similar to the ML estimate for $\theta$, except for the prior $p(\theta)$ term at the end. Also, $\theta$ is treated as a random variable in Bayesian statistics \footnote{Written $ p(y^{(i)}\vert x^{(i)},\theta)$ instead of $ p(y^{(i)}\vert x^{(i)};\theta)$}. In practical applications, a common choice for the prior $p(\theta)$ is to assume that it has a normal distribution. Using this choice of prior, the fitted parameters $\theta$ have smaller norm than that select by ML. In practice, this causes the MAP estimate to be less susceptible to overfitting than the ML estimate. MAP estimation can therefore be seen as a regularization of ML estimation.
+\\
+Bayesian classification turns out to be an effective algorithm for text classification, even though in text classification there can be significantly more features than training examples.
 
 
 \section{Naive Bayes}
