@@ -664,9 +664,6 @@ The {\bf normal equation} is a closed-form solution for linear regression which 
 $\theta = (X^{T}X)^{-1}X^{T}y$
 \end{definition}
 
-\section{Maximum likelihood estimation}
-
-
 \section{Logistic regression}
 
 Logistic regression allows linear classification. The parameters $\theta_j$ comprise the linear separator called decision boundary. The hypothesis is defined as:
@@ -730,6 +727,12 @@ $J(\theta) = \frac{1}{m}\sum_{i=1}^m[-y^{(i)}log(h_{\theta}(x^{(i)}))-(1-y^{(i)}
 \begin{definition}[Regularized logistic regression gradient descent] ~\\
 $\theta_j := \theta_j - \alpha[ \frac{1}{m}\sum_{i=1}^m((h_\theta(x^{(i)})-y^{(i)})x_j^{(i)} ) {\bf + \frac{\lambda}{m}\theta_j}]$
 \end{definition}
+
+\section{Maximum likelihood estimation and maximum a posteriori}
+\subsection{Maximum likelihood estimation}
+
+\subsection{Maximum a posteriori}
+
 
 \section{Naive Bayes}
 {\bf Bayes classifiers} rely on Bayes rule which maps a vector $X$ to a discrete random variable $C$ - a class. Training such a classifier is impractical because of the necessary exponential amount of training examples. A {\bf naive Bayes classifier} relaxes conditional dependency by assuming conditional independence between the parameters in $X$ given $C$. Naive Bayes is a powerful classifier that is often used in text classification (e.g. spam filtering) and is a dependable baseline when comparing different classifiers. Usually, it works on a so-called {\bf bag of words} which is a frequency of words in a text.
