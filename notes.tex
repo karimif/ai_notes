@@ -809,20 +809,29 @@ $=\frac{1/21*2/21*4/21*2/5}{1/21*2/21*4/21*2/5+3/27*2/27*2/27*3/5}=0.4858$
 Naive Bayes requires only a small amount of data, converges quickly and is very fast. In comparison, logistic regression requires more data and computations are more expensive. Nonetheless, it can outperform naive Bayes on a lot of data.
 
 
-\section{Maximum a posteriori and maximum likelihood estimation}
+\section{Maximum a posteriori and maximum likelihood}
 In non-technical language, "likelihood" is usually a synonym for "probability", but in statistical usage, a clear distinction is: the {\em probability} of some observed outcomes given a set of parameter values is referred to as the {\bf likelihood} of the set of parameter values given the observed outcomes. Therefore $P(\theta\vert X)$ can be interpreted as $L(X\vert\theta)$.
 
 \subsection{Maximum a posteriori}
 The Bayes {\bf maximum a posteriori} (MAP) estimate for $\theta$ is given by:
 \begin{align*}
-\theta_{MAP}=\max\limits_{\theta} \prod p(y^{(i)}\vert x^{(i)},\theta)p(\theta)
+\theta_{MAP}=\max\limits_{\theta} \prod_{i=1}^m p(y^{(i)}\vert x^{(i)},\theta)p(\theta)
 \end{align*}
-This definition is similar to the ML estimate for $\theta$, except for the prior $p(\theta)$ term at the end. Also, $\theta$ is treated as a random variable in Bayesian statistics \footnote{Written $ p(y^{(i)}\vert x^{(i)},\theta)$ instead of $ p(y^{(i)}\vert x^{(i)};\theta)$}. In practical applications, a common choice for the prior $p(\theta)$ is to assume that it has a normal distribution. Using this choice of prior, the fitted parameters $\theta$ have smaller norm than that selected by ML. In practice, this causes the MAP estimate to be less susceptible to overfitting than the ML estimate. MAP estimation can therefore be seen as a regularization of ML estimation.
+The data are distributed {\bf i.i.d.} (independently and identically distributed). $\theta$ is treated as a random variable in Bayesian statistics. In practical applications, a common choice for the prior $p(\theta)$ is to assume that it has a normal distribution. Using this choice of prior, the fitted parameters $\theta$ have smaller norm than that selected by ML. In practice, this causes the MAP estimate to be less susceptible to overfitting than the ML estimate. MAP estimation can therefore be seen as a regularization of ML estimation.
 \\
 Bayesian classification turns out to be an effective algorithm for text classification, even though in text classification there can be significantly more features than training examples.
 
 
 \subsection{Maximum likelihood}
+{\bf Maximum likelihood} (ML) estimation is related to MAP but simpler:
+\begin{align*}
+\theta_{MAP}=\max\limits_{\theta} \prod_{i=1}^m p(y^{(i)}\vert x^{(i)};\theta)
+\end{align*}
+This definition is similar to the ML estimate for $\theta$, except for the prior $p(\theta)$ term at the end. 
+Also, $\theta$ is treated as a fixed but unknown variable \footnote{Written $ p(y^{(i)}\vert x^{(i)};\theta)$ instead of $ p(y^{(i)}\vert x^{(i)},\theta)$}. For example, ML can be used to derive the least-squares cost function of linear regression assuming a normal distribution of the error terms $\epsilon^{(i)}$:
+\begin{align*}
+y^{(i)}=\theta^Tx^{(i)}+\epsilon^{(i)}
+\end{align*}
 
 
 \section{Neural network}
