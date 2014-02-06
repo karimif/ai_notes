@@ -728,21 +728,6 @@ $J(\theta) = \frac{1}{m}\sum_{i=1}^m[-y^{(i)}log(h_{\theta}(x^{(i)}))-(1-y^{(i)}
 $\theta_j := \theta_j - \alpha[ \frac{1}{m}\sum_{i=1}^m((h_\theta(x^{(i)})-y^{(i)})x_j^{(i)} ) {\bf + \frac{\lambda}{m}\theta_j}]$
 \end{definition}
 
-\section{Maximum likelihood estimation and maximum a posteriori}
-In non-technical language, "likelihood" is usually a synonym for "probability", but in statistical usage, a clear distinction is: the {\em probability} of some observed outcomes given a set of parameter values is referred to as the {\bf likelihood} of the set of parameter values given the observed outcomes. Therefore $P(\theta\vert X)$ can be interpreted as $L(X\vert\theta)$.
-
-\subsection{Maximum likelihood}
-
-
-\subsection{Maximum a posteriori}
-The Bayes {\bf maximum a posteriori} (MAP) estimate for $\theta$ is given by:
-\begin{align*}
-\theta_{MAP}=\max\limits_{\theta} \prod p(y^{(i)}\vert x^{(i)},\theta)p(\theta)
-\end{align*}
-This definition is similar to the ML estimate for $\theta$, except for the prior $p(\theta)$ term at the end. Also, $\theta$ is treated as a random variable in Bayesian statistics \footnote{Written $ p(y^{(i)}\vert x^{(i)},\theta)$ instead of $ p(y^{(i)}\vert x^{(i)};\theta)$}. In practical applications, a common choice for the prior $p(\theta)$ is to assume that it has a normal distribution. Using this choice of prior, the fitted parameters $\theta$ have smaller norm than that select by ML. In practice, this causes the MAP estimate to be less susceptible to overfitting than the ML estimate. MAP estimation can therefore be seen as a regularization of ML estimation.
-\\
-Bayesian classification turns out to be an effective algorithm for text classification, even though in text classification there can be significantly more features than training examples.
-
 
 \section{Naive Bayes}
 {\bf Bayes classifiers} rely on Bayes rule which maps a vector $X$ to a discrete random variable $C$ - a class. Training such a classifier is impractical because of the necessary exponential amount of training examples. A {\bf naive Bayes classifier} relaxes conditional dependency by assuming conditional independence between the parameters in $X$ given $C$. Naive Bayes is a powerful classifier that is often used in text classification (e.g. spam filtering) and is a dependable baseline when comparing different classifiers. Usually, it works on a so-called {\bf bag of words} which is a frequency of words in a text.
@@ -822,6 +807,22 @@ $=\frac{1/21*2/21*4/21*2/5}{1/21*2/21*4/21*2/5+3/27*2/27*2/27*3/5}=0.4858$
 
 \subsection{Comparison to logistic regression}
 Naive Bayes requires only a small amount of data, converges quickly and is very fast. In comparison, logistic regression requires more data and computations are more expensive. Nonetheless, it can outperform naive Bayes on a lot of data.
+
+
+\section{Maximum likelihood estimation and maximum a posteriori}
+In non-technical language, "likelihood" is usually a synonym for "probability", but in statistical usage, a clear distinction is: the {\em probability} of some observed outcomes given a set of parameter values is referred to as the {\bf likelihood} of the set of parameter values given the observed outcomes. Therefore $P(\theta\vert X)$ can be interpreted as $L(X\vert\theta)$.
+
+\subsection{Maximum likelihood}
+
+
+\subsection{Maximum a posteriori}
+The Bayes {\bf maximum a posteriori} (MAP) estimate for $\theta$ is given by:
+\begin{align*}
+\theta_{MAP}=\max\limits_{\theta} \prod p(y^{(i)}\vert x^{(i)},\theta)p(\theta)
+\end{align*}
+This definition is similar to the ML estimate for $\theta$, except for the prior $p(\theta)$ term at the end. Also, $\theta$ is treated as a random variable in Bayesian statistics \footnote{Written $ p(y^{(i)}\vert x^{(i)},\theta)$ instead of $ p(y^{(i)}\vert x^{(i)};\theta)$}. In practical applications, a common choice for the prior $p(\theta)$ is to assume that it has a normal distribution. Using this choice of prior, the fitted parameters $\theta$ have smaller norm than that selected by ML. In practice, this causes the MAP estimate to be less susceptible to overfitting than the ML estimate. MAP estimation can therefore be seen as a regularization of ML estimation.
+\\
+Bayesian classification turns out to be an effective algorithm for text classification, even though in text classification there can be significantly more features than training examples.
 
 
 \section{Neural network}
