@@ -321,7 +321,33 @@ common effect
 
 
 \chapter{Statistics}
-\section{Mean, variance and standard deviation}
+
+\section{Mean, expected value, variance and standard deviation}
+The {\bf mean} or {\bf expected value} is defined:
+\begin{align*}
+\mu = \sum_i^m x_iP(x_i)
+\end{align*}
+
+For a data set, the mean is:
+\begin{align*}
+\mu = \frac{1}{m}\sum_i^m x_i
+\end{align*}
+
+The {\bf variance} $\sigma^2$ measures how far a set of numbers is spread out:
+\begin{align*}
+\sigma^2 = \frac{1}{m}\sum_i^m (x_i-\mu)^2
+\end{align*}
+
+The {\bf unbiased sample variance} is defined:
+\begin{align*}
+\sigma^2 = \frac{1}{m-1}\sum_i^m (x_i-\mu)^2
+\end{align*}
+
+The {\bf standard deviation} $\sigma$ shows how much variation or dispersion from the average exists:
+\begin{align*}
+\sigma = \sqrt{Var(X)}
+\end{align*}
+
 \section{Covariance}
 \section{Gaussian distribution}
 \section{Estimation of mean and variance}
