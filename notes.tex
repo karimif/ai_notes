@@ -391,6 +391,37 @@ X = \begin{pmatrix}
 
 \section{Gaussian distribution}
 \section{Estimation of mean and variance}
+This section shows how to derive estimations for mean and variance using maximum likelihood estimation defined in Chapter~\ref{ref:estimationsection}.\\
+
+The data $X$ are distributed {\bf i.i.d.} (independently and identically distributed). Therefore:
+\begin{align*}
+p(x_1...x_m\vert \mu,\sigma^2)=\prod_i^m f(x_i\vert \mu,\sigma^2)=\prod_i^m (\frac{1}{\sqrt{2\pi}\sigma}\mbox{exp }(-\frac{(x_i-\mu)^2}{2\sigma^2}))
+\end{align*}
+\begin{align*}
+=(\frac{1}{2\pi\sigma^2})^{\frac{m}{2}}\mbox{exp }(-\frac{\sum_i(x_i-\mu)^2}{2\sigma^2})
+\end{align*}
+Applying log:
+\begin{align*}
+g = \frac{m}{2}\mbox{log }(\frac{1}{2\pi\sigma^2})-\frac{1}{2\sigma^2}\sum_i^m(x_i-\mu)^2
+\end{align*}
+
+The mean estimation can be derived:
+\begin{align*}
+\frac{\partial g}{\partial \mu} = \frac{1}{\sigma^2}\sum_i^m (x_i - y) = 0
+\end{align*}
+\begin{align*}
+m\mu = \sum_i^m x_i \implies \mu = \frac{1}{m}\sum_i^m x_i
+\end{align*}
+
+The variance estimation can be derived:
+\begin{align*}
+\frac{\partial g}{\partial \sigma} = -\frac{m}{\sigma}+\frac{1}{\sigma^3}\sum_i^m (x_i - y)^2 = 0
+\end{align*}
+\begin{align*}
+\sigma^2 = \frac{1}{m}\sum_i^m (x_i - y)^2
+\end{align*}
+
+
 
 \chapter{Problem Solving}
 \section{Introduction}
@@ -853,7 +884,7 @@ In the section, naive Bayes is demonstrated on a spam filter example. Bad messag
 \label{ref:spamsample}
 \end{figure}
 
-The following non-smoothed ($K=0$) probabilities can then be computed which are based on the empirical count (can be derived by maximum likelihood estimation):
+The following non-smoothed ($K=0$) probabilities can then be computed which are based on the empirical count (can be derived by maximum likelihood estimation defined in Chapter~\ref{ref:estimationsection})):
 \begin{itemize}
 \item $P(SPAM) = 3/8$
 \item $P("SECRET"\vert SPAM) = 1/3$
@@ -882,6 +913,7 @@ Naive Bayes requires only a small amount of data, converges quickly and is very 
 
 
 \section{Maximum a posteriori and maximum likelihood}
+\label{ref:estimationsection}
 In non-technical language, "likelihood" is usually a synonym for "probability", but in statistical usage, a clear distinction is: the {\em probability} of some observed outcomes given a set of parameter values is referred to as the {\bf likelihood} of the set of parameter values given the observed outcomes. Therefore $P(\theta\vert X)$ can be interpreted as $L(X\vert\theta)$.
 
 \subsection{Maximum a posteriori}
