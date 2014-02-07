@@ -325,17 +325,17 @@ common effect
 \section{Mean, expected value, variance and standard deviation}
 The {\bf mean} or {\bf expected value} is defined:
 \begin{align*}
-\mu = \sum_i^m x_iP(x_i)
+\mu = E[X] = \sum_i^m x_iP(x_i)
 \end{align*}
 
 For a data set, the mean is:
 \begin{align*}
-\mu = \frac{1}{m}\sum_i^m x_i
+\mu = E[X] = \frac{1}{m}\sum_i^m x_i
 \end{align*}
 
 The {\bf variance} $\sigma^2$ measures how far a set of numbers is spread out:
 \begin{align*}
-\sigma^2 = \frac{1}{m}\sum_i^m (x_i-\mu)^2
+\sigma^2 = E[(X-\mu)^2] = \frac{1}{m}\sum_i^m (x_i-\mu)^2
 \end{align*}
 
 The {\bf unbiased sample variance} is defined:
@@ -351,7 +351,7 @@ The {\bf standard deviation} $\sigma$ shows how much variation or dispersion fro
 \section{Covariance}
 {\bf Covariance} is a measure of how much two random variables change together:
 \begin{align*}
-Cov(X,Y) = \frac{1}{m}\sum_i^m (x_i-\mu_x)(y_i-\mu_y)
+Cov(X,Y) = E[(X-E[X])(Y-E[Y])] = \frac{1}{m}\sum_i^m (x_i-\mu_x)(y_i-\mu_y)
 \end{align*}
 Variance is a special case of the covariance when the two variables are identical:
 \begin{align*}
