@@ -390,15 +390,29 @@ X = \begin{pmatrix}
 
 
 \section{Gaussian distribution}
+{\bf Gaussian distribution} or {\bf normal distribution} is defined:
+\begin{align*}
+f(x\vert \mu,\sigma^2)= \frac{1}{\sqrt{2\pi}\sigma}\mbox{exp}(-\frac{(x_i-\mu)^2}{2\sigma^2})
+\end{align*}
+The area under the curve is equal to one. The {\bf 68-95-99.7 rule} states that 68\% of values drawn from a normal distribution are within one $\sigma$ away from the mean, 95\% and 99.7\% within two and three $\sigma$ respectively.
+
+
+{\bf Multivariate Gaussian} distribution is defined:
+\begin{align*}
+f(x\vert \mu,\Sigma)=\frac{1}{(2\pi)^{n/2}\vert \Sigma \vert ^{1/2}}\mbox{exp}(-\frac{1}{2}(x-\mu)^T \Sigma^{-1}(x-\mu))
+\end{align*}
+
+$\Sigma$ is the covariance matrix.
+
 \section{Estimation of mean and variance}
 This section shows how to derive estimations for mean and variance using maximum likelihood estimation defined in Chapter~\ref{ref:estimationsection}.\\
 
 The data $X$ are distributed {\bf i.i.d.} (independently and identically distributed). Therefore:
 \begin{align*}
-p(x_1...x_m\vert \mu,\sigma^2)=\prod_i^m f(x_i\vert \mu,\sigma^2)=\prod_i^m (\frac{1}{\sqrt{2\pi}\sigma}\mbox{exp }(-\frac{(x_i-\mu)^2}{2\sigma^2}))
+p(x_1...x_m\vert \mu,\sigma^2)=\prod_i^m f(x_i\vert \mu,\sigma^2)=\prod_i^m (\frac{1}{\sqrt{2\pi}\sigma}\mbox{exp}(-\frac{(x_i-\mu)^2}{2\sigma^2}))
 \end{align*}
 \begin{align*}
-=(\frac{1}{2\pi\sigma^2})^{\frac{m}{2}}\mbox{exp }(-\frac{\sum_i(x_i-\mu)^2}{2\sigma^2})
+=(\frac{1}{2\pi\sigma^2})^{\frac{m}{2}}\mbox{exp}(-\frac{\sum_i(x_i-\mu)^2}{2\sigma^2})
 \end{align*}
 Applying log:
 \begin{align*}
