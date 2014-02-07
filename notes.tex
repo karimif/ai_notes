@@ -63,9 +63,11 @@ An {\bf agent} operates autonomously. A {\bf rational agent} acts to achieve the
 {\bf Single vs. multi agent}: the agent is the only one. {\bf Fully observable} vs. {\bf partially observable}: the agent's sensors perceive the complete state of the relevant environment at each point in time. {\bf Deterministic} vs. {\bf stochastic}: the agent's state and action uniquely determine the next state. {\bf Discrete} vs. {\bf continuous}: finite amount of states, actions and outcomes. {\bf Benign} vs. {\bf adversarial}: there is no opponent. {\bf Known vs. unknown}: the agent's knowledge about the "law of physics" of the environment, the outcomes (or probabilities) for all actions are given.
 
 
+\chapter{Mathematics}
+This chapter summarizes and explains mathematical foundations which are relevant to machine learning.
 
-\chapter{Probabilities}
-\section{Introduction} 
+\section{Probabilities}
+\subsection{Introduction}
 
 \begin{definition}[Complement]
 $P(\neg A) = 1 - P(A)$
@@ -76,7 +78,7 @@ $P(A\vee B) =P(A) + P(B) - P(A,B)$
 \end{definition}
 
 
-\section{Independence}
+\subsection{Independence}
 
 \begin{figure}[h!]
 \centering
@@ -152,7 +154,7 @@ As seen in Figure~\ref{ref:condindependence2}, $A\independent B$ when $C$ is unk
 \end{figure}
 
 
-\section{Conditional probabilities}
+\subsection{Conditional probabilities}
 \begin{definition}[Complement]
 $P(\neg A\vert B) = 1 - P(A\vert B)$
 \end{definition}
@@ -190,7 +192,7 @@ $P(A\vert B,e) = \frac{P(B\vert A,e)P(A\vert e)}{P(B\vert e)}$
 \end{definition}
 
 
-\section{Bayes networks}
+\subsection{Bayes networks}
 Bayes networks define probability distributions over random variables and allow compact specification of full joint distributions. The joint probability of the network shown in Figure~\ref{ref:samplenetwork} is: $P(A,B,C,D,E)=P(A)(B)P(C\vert A,B)P(D\vert C)P(E\vert C)$. The general equation is:
 \begin{definition}
 $P(x_1,...,x_n) = \prod_{i=1}^{n}{P(x_i\vert parents(X_i))}$
@@ -319,13 +321,13 @@ common effect
 \label{ref:triplets}
 \end{table}
 
-\chapter{Linear algebra}
+\section{Linear algebra}
 
 
 
-\chapter{Statistics}
+\section{Statistics}
 
-\section{Foundations}
+\subsection{Foundations}
 The {\bf mean} or {\bf expected value} is defined:
 \begin{align*}
 \mu = E[X] = \sum_i^m x_iP(x_i)
@@ -351,7 +353,7 @@ The {\bf standard deviation} $\sigma$ shows how much variation or dispersion fro
 \sigma = \sqrt{\sigma^2(X)}
 \end{align*}
 
-\section{Covariance}
+\subsection{Covariance}
 {\bf Covariance} is a measure of how much two random variables change together:
 \begin{align*}
 Cov(X,Y) = E[(X-E[X])(Y-E[Y])] = \frac{1}{m}\sum_i^m (x_i-\mu_x)(y_i-\mu_y)
@@ -392,7 +394,7 @@ X = \begin{pmatrix}
 \end{align*}
 
 
-\section{Gaussian distribution}
+\subsection{Gaussian distribution}
 {\bf Gaussian distribution} or {\bf normal distribution} is defined:
 \begin{align*}
 f(x\vert \mu,\sigma^2)= \frac{1}{\sqrt{2\pi}\sigma}\mbox{exp}(-\frac{(x_i-\mu)^2}{2\sigma^2})
@@ -407,7 +409,7 @@ f(x\vert \mu,\Sigma)=\frac{1}{(2\pi)^{n/2}\vert \Sigma \vert ^{1/2}}\mbox{exp}(-
 
 $\Sigma$ is the covariance matrix.
 
-\section{Estimation of mean and variance}
+\subsection{Estimation of mean and variance}
 This section shows how to derive estimations for mean and variance using maximum likelihood estimation defined in Chapter~\ref{ref:estimationsection}.\\
 
 The data $X$ are distributed {\bf i.i.d.} (independently and identically distributed). Therefore:
@@ -1328,7 +1330,7 @@ $i:r(i,j)$ stands for all items $i$ that user $j$ has rated. Vice versa, $j:r(i,
 \end{definition}
 
 
-Both definitions are very related to linear regression. In contrast, there is no $m$ in the denominators as it is in linear regression. This constant is irrelevant for the minimization objective. \\
+Both definitions are very related to linear regression. In contrast, there is no $m$ in the denominators as it is in linear regression. This constant is irrelevant to the minimization objective. \\
 
 $\theta^{(1)},...,\theta^{(n_u)}$ can be estimated given $x^{(1)},...,x^{(n_m)}$. Vice versa, $x^{(1)},...,x^{(n_m)}$ can be estimated given $\theta^{(1)},...,\theta^{(n_u)}$. This is a chicken or egg problem. One way to solve this problem is: guess $\theta \rightarrow x \rightarrow \theta \rightarrow x  \rightarrow \theta \rightarrow ...$. This algorithm is called {\bf collaborative filtering}. The term means that with every user rating items (collaboration), the algorithm learns better features. The algorithm is inefficient and can be improved in a way to compute $x^{(1)},...,x^{(n_m)}$ and $\theta^{(1)},...,\theta^{(n_u)}$ simultaneously as defined in Algorithm~\ref{ref:collaborativefiltering}.
 
