@@ -349,6 +349,19 @@ The {\bf standard deviation} $\sigma$ shows how much variation or dispersion fro
 \end{align*}
 
 \section{Covariance}
+{\bf Covariance} is a measure of how much two random variables change together:
+\begin{align*}
+Cov(X,Y) = \frac{1}{m}\sum_i^m (x_i-\mu_x)(y_i-\mu_y)
+\end{align*}
+Variance is a special case of the covariance when the two variables are identical:
+\begin{align*}
+Cov(X,X) = \sigma^2(X)
+\end{align*}
+
+The {\bf covariance matrix} $\Sigma$ is a matrix whose element in the $i$, $j$ position is the covariance between the $i$th and the $j$th elements of a random vector:
+\begin{align*}
+\Sigma_{ij} = Cov(X_i, X_j)
+\end{align*}
 
 
 \section{Gaussian distribution}
