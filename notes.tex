@@ -322,8 +322,20 @@ common effect
 \end{table}
 
 \section{Linear algebra}
-\section{Eigenvalues and eigenvectors}
-
+\subsection{Eigenvalues and eigenvectors}
+Let $A$ be an $n\times n$ matrix. The number $\lambda$ is an {\bf eigenvalue} of $A$ if there exists a non-zero vector $x$ such that:
+\begin{align*}
+Ax = \lambda x
+\end{align*}
+In this case, vector $x$ is called an {\bf eigenvector} of $A$ corresponding to $\lambda$. \\
+The condition can be rewritten:
+\begin{align*}
+(A -\lambda I)x = 0
+\end{align*}
+Where $I$ is the $n\times n$ identity matrix. In order for a non-zero vector $x$ to satisfy this equation, $A -\lambda I$ must not be invertible. That is, the determinant of $A -\lambda I$ must be equal $0$. $p(\lambda)=\mbox{det}(A -\lambda I)$. Thus, $\lambda = [\lambda_1, ..., \lambda_n]^T$ are the eigenvalues of $A$. To find eigenvectors $x = [x_1,...,x_n]^T$ corresponding to an eigenvalue $\lambda$, the system of linear equations needs to be solved:
+\begin{align*}
+(A -\lambda I)x = 0
+\end{align*}
 
 
 \section{Statistics}
