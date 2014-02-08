@@ -1874,7 +1874,15 @@ Large data sets come with new problems, e.g. a lack of {\bf scalability} . (Batc
 {\bf Localization} can be done by using the global positioning system (GPS). Unfortunately, GPS is not accurate. Robot localization requires higher accuracy. This chapter provides information on such techniques.
 
 \section{Markov localization}
-{\bf Markiv localization} is a grid-based localization which uses histogram to represent the belief distribution. Localization starts in an initial {\bf belief state} and consists of two steps: {\bf prediction} and {\bf movement}. Prediction gains information on the current localization. In contrast, movement loses information as movements are inaccurate.
+{\bf Markiv localization} is a grid-based localization which uses histogram to represent the belief distribution. Localization starts in an initial {\bf belief state} and consists of two steps: {\bf sense} and {\bf move}. Sense gains information on the current localization. In contrast, move loses information as movements are inaccurate. \\
+The sense step is: \\
+To come
+
+The move step is:
+\begin{align*}
+P(x'_{i,t}) = P(x_{i,t}\vert a_t) = \sum_{j=1}^{n} P(x_{i,t}\vert x_{j,t-1},a_t)P(x_{j,t-1})
+\end{align*}
+It maps rom a belief state $P(x_{j,t-1})$ and action $a_t$ to a new predicted belief state $P(x'_{i,t})$ by summing over all possible ways (i.e. from all states x$_{j,t-1}$) in which the robot may have reached $x'_{i,t}$.
 
 
 \section{Kalman filter}
