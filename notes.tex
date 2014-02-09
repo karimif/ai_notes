@@ -1912,6 +1912,24 @@ Large data sets come with new problems, e.g. a lack of {\bf scalability} . (Batc
 \chapter{Localization and tracking}
 {\bf Localization} can be done by using the global positioning system (GPS). Unfortunately, GPS is not accurate. Robot localization requires higher accuracy. This chapter provides information on such techniques.
 {\bf Tracking} allows to detect and track other vehicles to avoid collisions.
+Table \ref{ref:complocalization} summarizes and compares properties of the methods discussed in this chapter.
+\begin{table}[h!]
+\begin{center}
+\begin{tabular}{l||c|c|c|c}
+ & State space & Belief & Efficiency & In robotics \\
+\hline
+\hline
+Markov localization & discrete & multi-modal & exponential & approximate \\
+\hline
+Kalman filter & continuous & uni-modal & quadratic & approximate \\
+\hline
+Particle filter & continuous & multi-modal & depends on use case & approximate \\
+
+\end{tabular}
+\end{center}
+\caption{Comparison of localization and tracking methods}
+\label{ref:complocalization}
+\end{table}
 
 \section{Markov localization}
 {\bf Markov localization} is a {\bf discrete} grid-based localization which uses histogram to represent the belief distribution. It is {\bf multi-modal} meaning that there are multiple possible states in which the robot could be. Localization starts in an initial {\bf belief state} and consists of the two steps {\bf sense} and {\bf move} which are executed cyclically. Sense gains information on the current localization. In contrast, move loses information as movements are inaccurate. \\
