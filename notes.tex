@@ -1989,6 +1989,24 @@ The motion update of a 1d Kalman filter is defined as follows and loses informat
 \sigma^{2}\prime = \sigma_1^2 + \sigma_2^2
 \end{align*}
 The motion itself is uncertain and can be described by a Gaussian $\mu_2, \sigma_2^2$. Algorithm~\ref{ref:1dkalmanfilterpython} implements a sample 1d Kalman filter. The velocity is inferred from measuring different positions. Higher-dimensional Kalman filters also allow to infer properties to predict the future, e.g. the velocity in 2d measurements. In that case, Kalman filters allow to predict the velocity of other vehicles which helps a robot to avoid accidents.
+\\
+Multi-dimensional Kalman filters can efficiently be computed through matrix operations. The following elements are needed: {\bf estimate} $x$, {\bf uncertainty covariance} $P$, {\bf state transition matrix} $F$, {\bf motion vector} $u$, {\bf measurement} $z$, {\bf measurement function} $H$ and {\bf measurement noise} $R$. \\
+
+The measurement update is defined as follows:
+\begin{align*}
+y = z - Hx \\
+S = HPH^T + R \\
+K = PH^T S^{-1} \\
+x\prime = x + Ky \\
+P\prime = (I - KH)P
+\end{align*}
+
+
+The motion update is defined as follows:
+\begin{align*}
+x\prime = Fx + u \\
+P\prime = FPF^T
+\end{align*}
 
 \begin{algorithm}
 \caption{Sample 1d Kalman filter}
