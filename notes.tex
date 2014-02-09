@@ -1977,6 +1977,19 @@ print p
 \section{Kalman filter}
 {\bf Kalman filters} allow to estimate the state of a dynamic system. In comparison to Markov localization, they are {\bf continuous} and {\bf uni-modal}. Kalman filters use a {\bf Gaussian distribution} to represent the belief state. Kalman filters have two steps: {\bf measurement update} and {\bf motion update} (prediction). \\
 
+The measurement update of a 1d Kalman filter is a Gaussian multiplication and gains information:
+\begin{align*}
+\mu\prime = \frac{\sigma_2^2\mu_1 + \sigma_1^2\mu_2}{\sigma_1^2 + \sigma_2^2} \\
+\sigma^{2}\prime = \frac{\sigma_1^2\sigma_2^2}{\sigma_1^2+\sigma_2^2}
+\end{align*}
+
+The motion update of a 1d Kalman filter is defined as follows and loses information:
+\begin{align*}
+\mu\prime = \mu_1 + \mu_2 \\
+\sigma^{2}\prime = \sigma_1^2 + \sigma_2^2
+\end{align*}
+The motion itself is uncertain and can be described by a Gaussian $\mu_2, \sigma_2^2$
+
 \section{Particle filter}
 {\bf Particle filters} are {\bf continuous} and {\bf multi-modal}.
 
