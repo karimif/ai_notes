@@ -1919,7 +1919,7 @@ The computation of the move step is:
 P(x'_{i,t}) = P(x_{i,t}\vert a_t) = \sum_{j=1}^{n} P(x_{i,t}\vert x_{j,t-1},a_t)P(x_{j,t-1})
 \end{align*}
 It maps from a belief state $P(x_{j,t-1})$ and action $a_t$ to a new predicted belief state $P(x'_{i,t})$ by summing over all possible ways (i.e. from all states x$_{j,t-1}$) in which the robot may have reached $x'_{i,t}$. \\
-Algorithm~\ref{ref:markovlocalizationpython} implements Markov Localization for sample cyclic 5-cell world. The final belief state is:
+Algorithm~\ref{ref:markovlocalizationpython} implements Markov localization for a sample cyclic 5-cell world. The final belief state is:
 \begin{align*}
 [0.0789, 0.0753, 0.2247, {\bf 0.4329}, 0.1882]
 \end{align*}
