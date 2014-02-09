@@ -2046,6 +2046,8 @@ x\prime = Fx + u \\
 P\prime = F(PF^T)
 \end{align*}
 
+The Kalman filter is quadratic. It is fully represented by a vector - the mean - and the covariance matrix, which is quadratic. This makes the Kalman filter a lot more efficient because it can operate on a state space with more dimensions. \\
+
 Algorithm~\ref{ref:2dkalmanfilterpython} implements a sample 2d Kalman filter which infers the velocity of the object. The final estimations are:
 \begin{align*}
 x = 3.99 \\
