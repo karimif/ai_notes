@@ -1908,7 +1908,7 @@ Large data sets come with new problems, e.g. a lack of {\bf scalability} . (Batc
 {\bf Tracking} allows to detect and track other vehicles to avoid collisions.
 
 \section{Markov localization}
-{\bf Markov localization} is a grid-based localization which uses histogram to represent the belief distribution. It is {\bf multi-modal} meaning that there are multiple possible states in which the robot could be. Localization starts in an initial {\bf belief state} and consists of the two steps {\bf sense} and {\bf move} which are executed cyclically. Sense gains information on the current localization. In contrast, move loses information as movements are inaccurate. \\
+{\bf Markov localization} is a {\bf discrete} grid-based localization which uses histogram to represent the belief distribution. It is {\bf multi-modal} meaning that there are multiple possible states in which the robot could be. Localization starts in an initial {\bf belief state} and consists of the two steps {\bf sense} and {\bf move} which are executed cyclically. Sense gains information on the current localization. In contrast, move loses information as movements are inaccurate. \\
 The computation of the sense step is: \\
 \begin{align*}
 P(x'_{i,t}\vert z_t) = \frac{P(z_t\vert x'_{i,t})P(x'_{i,t})}{P(z_t)}
@@ -1969,7 +1969,7 @@ print p
 
 
 \section{Kalman filter}
-{\bf Kalman filters} allow to estimate the state of a dynamic system. In comparison to Markov localization, it is continuous and uni-modal.
+{\bf Kalman filters} allow to estimate the state of a dynamic system. In comparison to Markov localization, they are {\bf continuous} and {\bf uni-modal}.
 
 \section{Particle filter}
 
