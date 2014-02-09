@@ -495,7 +495,7 @@ f(x\vert \mu,\sigma^2)= \frac{1}{\sqrt{2\pi}\sigma}\mbox{exp}(-\frac{(x_i-\mu)^2
 \end{align*}
 The area under the curve is equal to one. The {\bf 68-95-99.7 rule} states that 68\% of values drawn from a normal distribution are within one $\sigma$ away from the mean, 95\% and 99.7\% within two and three $\sigma$ respectively.
 \\
-The product of two Gaussians $\mu_1, \sigma_1, \mu_2, \sigma_2$ is proportional to a Gaussian:
+The product of two Gaussians $\mu_1, \sigma_1^2, \mu_2, \sigma_2^2$ is proportional to a Gaussian:
 \begin{align*}
 \mu\prime = \frac{\sigma_2^2\mu_1 + \sigma_1^2\mu_2}{\sigma_1^2 + \sigma_2^2} \\
 \sigma^{2}\prime = \frac{\sigma_1^2\sigma_2^2}{\sigma_1^2+\sigma_2^2}
@@ -1988,7 +1988,7 @@ The motion update of a 1d Kalman filter is defined as follows and loses informat
 \mu\prime = \mu_1 + \mu_2 \\
 \sigma^{2}\prime = \sigma_1^2 + \sigma_2^2
 \end{align*}
-The motion itself is uncertain and can be described by a Gaussian $\mu_2, \sigma_2^2$
+The motion itself is uncertain and can be described by a Gaussian $\mu_2, \sigma_2^2$.
 
 \section{Particle filter}
 {\bf Particle filters} are {\bf continuous} and {\bf multi-modal}.
