@@ -2028,8 +2028,8 @@ Multi-dimensional Kalman filters can efficiently be computed through matrix oper
 The measurement update is defined as follows:
 \begin{align*}
 y = z - Hx \\
-S = HPH^T + R \\
-K = PH^T S^{-1} \\
+S = H(PH^T) + R \\
+K = P(H^T S^{-1}) \\
 x\prime = x + Ky \\
 P\prime = (I - KH)P
 \end{align*}
@@ -2038,10 +2038,49 @@ P\prime = (I - KH)P
 The motion update is defined as follows:
 \begin{align*}
 x\prime = Fx + u \\
-P\prime = FPF^T
+P\prime = F(PF^T)
 \end{align*}
 
+Algorithm~\ref{ref:2dkalmanfilterpython} implements a sample 2d Kalman filter which infers the velocity of the object.
 
+\begin{algorithm}
+\caption{Sample 2d Kalman filter}
+\label{ref:2dkalmanfilterpython}
+\begin{python}
+# initial state (location and velocity)
+x = matrix([[0.], [0.]])
+# initial uncertainty
+P = matrix([[1000., 0.], [0., 1000.]])
+# external motion
+u = matrix([[0.], [0.]])
+# next state function
+F = matrix([[1., 1.], [0, 1.]])
+# measurement function
+H = matrix([[1., 0.]])
+# measurement uncertainty
+R = matrix([[1.]]) ]
+# identity matrix
+I = matrix([[1., 0.], [0., 1.]])
+
+measurements = [1, 2, 3]
+
+def kalman_filter(x, P):
+    for n in range(len(measurements)):
+
+        # measurement update
+        y = matrix([[measurements[n]]]) - H * x
+        S = H * (P * H.transpose()) + R
+        K = P * (H.transpose() * S.inverse())
+        x = x + K * y
+        P = (I - K * H) * P
+
+        # motion update
+        x = F * x + u
+        P = F * (P * F.transpose())
+
+kalman_filter(x, P)
+\end{python}
+\end{algorithm}
 
 \section{Particle filter}
 {\bf Particle filters} are {\bf continuous} and {\bf multi-modal}.
