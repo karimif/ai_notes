@@ -2113,7 +2113,112 @@ kalman_filter(x, P)
 \end{algorithm}
 
 \section{Particle filter}
-{\bf Particle filters} are {\bf continuous} and {\bf multi-modal}. The key advantage of particle filters is their simple implementation. Particle filters maintain a set of $N$ random guesses as to where the robot might be. In the first step, all particles then do a certain {\bf movement} in the space. Then, the most relevant particles are kept and duplicated so that the sum of particles remains $N$. This step is called {\bf resampling}.
+{\bf Particle filters} are {\bf continuous} and {\bf multi-modal}. The key advantage of particle filters is their simple implementation. Particle filters maintain a set of $N$ random guesses as to where the robot might be. In the first step, all particles then do a certain {\bf movement} in the space. Then, the most relevant particles are kept and duplicated so that the sum of particles remains $N$. This step is called {\bf resampling}. \\
+Algorithm~\ref{ref:ref:particlefilterpython} implements a particle filter for robot localization and used the robot defined in Algorithm~\ref{ref:ref:robotpython}. Relevance is defined as similar position measured by the distance to four landmarks. The measurement is also uncertain and therefore Gaussian. Efficient resampling is performed by a {\bf resampling wheel}.
+
+\begin{algorithm}
+\caption{Sample particle filter}
+\label{ref:particlefilterpython}
+\begin{python}
+landmarks  = [[20.0, 20.0], [80.0, 80.0],
+              [20.0, 80.0], [80.0, 20.0]]
+world_size = 100.0
+myrobot = robot()
+myrobot = myrobot.move(0.1, 5.0)
+T = 2
+
+N = 1000
+p = []
+for i in range(N):
+    x = robot()
+    x.set_noise(0.05, 0.05, 5.0)
+    p.append(x)
+
+def move():
+    global p
+    p2 = []
+    for i in range(N):
+        p2.append(p[i].move(0.1, 5.0))
+    p = p2
+
+w = []
+def measure_weights():
+    Z = myrobot.sense()
+    for i in range(N):
+        w.append(p[i].measurement_prob(Z))
+
+def resample():
+    global p
+    p3 = []
+    index = int(random.random() * N)
+    beta = 0.0
+    mw = max(w)
+    for i in range(N):
+        beta += random.random() * 2.0 * mw
+        while beta > w[index]:
+            beta -= w[index]
+            index = (index + 1) % N
+        p3.append(p[index])
+    p = p3
+
+def run_particle_filter():
+    move()
+    measure_weights()
+    resample()
+
+for i in range(T):
+    run_particle_filter()
+    myrobot = myrobot.move(0.1, 5.0)
+\end{python}
+\end{algorithm}
+
+\begin{algorithm}
+\caption{Sample robot}
+\label{ref:robotpython}
+\begin{python}
+class robot:
+    # Initializes the robot with random position and direction
+    def __init__(self):
+        ...
+
+    def sense(self):
+        Z = []
+        for i in range(len(landmarks)):
+            dist = sqrt((self.x - landmarks[i][0]) ** 2
+                     + (self.y - landmarks[i][1]) ** 2)
+            dist += random.gauss(0.0, self.sense_noise)
+            Z.append(dist)
+        return Z
+
+    def Gaussian(self, mu, sigma, x):
+        # calculates the probability of x for 1-dim Gaussian
+        # with mean mu and var. sigma
+        return exp(- ((mu - x) ** 2) / (sigma ** 2) / 2.0)
+                     / sqrt(2.0 * pi * (sigma ** 2))
+
+    def measurement_prob(self, measurement):
+        # calculates how likely a measurement should be
+        prob = 1.0;
+        for i in range(len(landmarks)):
+            dist = sqrt((self.x - landmarks[i][0]) ** 2
+                     + (self.y - landmarks[i][1]) ** 2)
+            prob *= self.Gaussian(dist, self.sense_noise,
+                                 measurement[i])
+        return prob
+
+def eval(r, p):
+    sum = 0.0;
+    for i in range(len(p)): # calculate mean error
+        % world_size - (world_size/2.0)
+        dx = (p[i].x - r.x + (world_size/2.0))
+        % world_size - (world_size/2.0)
+        dy = (p[i].y - r.y + (world_size/2.0))
+        err = sqrt(dx * dx + dy * dy)
+        sum += err
+    return sum / float(len(p))
+\end{python}
+\end{algorithm}
+
 
 
 \end{document}
