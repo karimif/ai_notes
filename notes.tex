@@ -2181,6 +2181,15 @@ class robot:
     def __init__(self):
         ...
 
+    def move(self, turn, forward):
+        ...
+        orientation = self.orientation + float(turn) + random.gauss(0.0, self.turn_noise)
+        orientation %= 2 * pi
+        ...
+        # move, and add randomness to the motion command
+        dist = float(forward) + random.gauss(0.0, self.forward_noise)
+        ...
+
     def sense(self):
         Z = []
         for i in range(len(landmarks)):
