@@ -2113,7 +2113,7 @@ kalman_filter(x, P)
 \end{algorithm}
 
 \section{Particle filter}
-{\bf Particle filters} are {\bf continuous} and {\bf multi-modal}. The key advantage of particle filters is their simple implementation. Particle filters maintain a set of $N$ random guesses as to where the robot might be.
+{\bf Particle filters} are {\bf continuous} and {\bf multi-modal}. The key advantage of particle filters is their simple implementation. Particle filters maintain a set of $N$ random guesses as to where the robot might be. In the first step, all particles then do a certain {\bf movement} in the space. Then, the most relevant particles are kept and duplicated so that the sum of particles remains $N$. This step is called {\bf resampling}.
 
 
 \end{document}
