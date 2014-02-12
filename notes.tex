@@ -1610,61 +1610,6 @@ where $\vert \Sigma \vert$ is the determinant of the {\bf covariance matrix} $\S
 
 This algorithm automatically captures correlations between features. It is computationally more expensive and requires $m>n$ to invert $\Sigma$. There may be further problems that prevent inversion such as linear dependency.
 
-\section{Hidden Markov models}
-{\bf Hidden Markov models} (HMMs) are used to analyze and predict time series. A {\bf Markov chain} is a temporal Bayes network which consists of states and transition probabilities. Figure \ref{ref:samplemarkovchain} represents a sample Markov chain.
-
-\begin{figure}[h!]
-\centering
-\begin{tikzpicture}[
-  node distance=1cm and 1cm,
-  mynode/.style={draw,circle,align=center}
-]
-\node[mynode] (R) {R};
-\node[mynode, right=1.5cm of R] (S) {S};
-\path (R) edge [->,bend left] node[above] {0.4} (S)
-(R) edge [loop above] node {0.6} (R)
-(S) edge [->,bend left] node[below] {0.2} (R)
-(S) edge [loop above] node {0.8} (S);
-\end{tikzpicture}
-\caption{Sample Markov chain}
-\label{ref:samplemarkovchain}
-\end{figure}
-
-Given $P(R_0)=1$, the following probabilities can be computed using the law of total probability:
-\begin{itemize}
-\item $P(R_1)=0.6$
-\item $P(R_2)=0.44$
-\item $P(R_3)=0.377$
-\end{itemize}
-
-For $P(R_\infty)=\lim\limits_{t \rightarrow \infty P(R_t)}$, the Markov chain settles to the {\bf stationary distribution}. This can be calculated by repressing the convergence:
-\begin{align*}
-P(R_t) = P(R_{t-1}) = P(R_t\vert R_{t-1})P(R_{t-1}) + P(R_t\vert S_{t-1})P(S_{t-1})
-\end{align*}
-By renaming $P(R_{t-1})$ to $x$, this equation can be solved:
-\begin{align*}
-x &= P(R_t\vert R_{t-1})x + P(R_t\vert S_{t-1})(1-x) &\\
-x &= 0.6x + 0.2(1-x) \\
-x &= \frac{1}{3}
-\end{align*}
-Therefore, $P(R_\infty)=\frac{1}{3}$ and $P(S_\infty)=\frac{2}{3}$. \\
-The probabilities can be also learned from a data set. For $RSSSRSR$, the probabilities are:
-\begin{itemize}
-\item $P(R_0)=1$
-\item $P(S\vert R)=1$
-\item $P(S\vert S)=0.5$
-\item $P(R\vert S)=0.5$
-\item $P(R\vert R)=0$
-\end{itemize}
-{\bf Laplacian smoothing} can be used to reduce overfitting (e.g. all data sets start in $R$). For $K=1$, the probabilities are
-\begin{itemize}
-\item $P(R_0)=\frac{1+1}{1+2}=\frac{2}{3}$
-\item $P(S\vert R)=\frac{2+1}{2+2}=\frac{3}{4}$
-\item $P(S\vert S)=\frac{2+1}{4+2}=\frac{1}{2}$
-\item $P(R\vert S)=\frac{2+1}{4+2}=\frac{1}{2}$
-\item $P(R\vert R)=\frac{0+1}{2+2}=\frac{1}{4}$
-\end{itemize}
-
 
 \chapter{Reinforcement learning}
 Supervised learning algorithms approximate a mapping of their inputs to the labels $y$ of the training set. These labels give an unambiguous "right answer" fear of the inputs $x$. In many problems, it is difficult to provide such an explicit supervision to a learning problem. In {\bf reinforcement learning}, the algorithm is only provided a reward (feedback) function which provides a reward or penalty depending on in which state the learning agent goes. Reinforcement learning is in between of supervised and unsupervised learning as there is some supervision, but significantly less than in supervised learning.
@@ -1871,6 +1816,62 @@ V^{\pi}((3,1))=R((3,1)) + \gamma[0.8V^{\pi}((3,2))+0.1V^{\pi}((4,1))+0.8V^{\pi}(
 
 \subsection{Further examples}
 Reinforcement learning can be applied to a variety of real-world problems such as self-driving cars, self-flying helicopters or stock market prediction (rewards are profits/losses).
+
+\section{Hidden Markov models}
+{\bf Hidden Markov models} (HMMs) are used to analyze and predict time series. A {\bf Markov chain} is a temporal Bayes network which consists of states and transition probabilities. Figure \ref{ref:samplemarkovchain} represents a sample Markov chain.
+
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}[
+  node distance=1cm and 1cm,
+  mynode/.style={draw,circle,align=center}
+]
+\node[mynode] (R) {R};
+\node[mynode, right=1.5cm of R] (S) {S};
+\path (R) edge [->,bend left] node[above] {0.4} (S)
+(R) edge [loop above] node {0.6} (R)
+(S) edge [->,bend left] node[below] {0.2} (R)
+(S) edge [loop above] node {0.8} (S);
+\end{tikzpicture}
+\caption{Sample Markov chain}
+\label{ref:samplemarkovchain}
+\end{figure}
+
+Given $P(R_0)=1$, the following probabilities can be computed using the law of total probability:
+\begin{itemize}
+\item $P(R_1)=0.6$
+\item $P(R_2)=0.44$
+\item $P(R_3)=0.377$
+\end{itemize}
+
+For $P(R_\infty)=\lim\limits_{t \rightarrow \infty P(R_t)}$, the Markov chain settles to the {\bf stationary distribution}. This can be calculated by repressing the convergence:
+\begin{align*}
+P(R_t) = P(R_{t-1}) = P(R_t\vert R_{t-1})P(R_{t-1}) + P(R_t\vert S_{t-1})P(S_{t-1})
+\end{align*}
+By renaming $P(R_{t-1})$ to $x$, this equation can be solved:
+\begin{align*}
+x &= P(R_t\vert R_{t-1})x + P(R_t\vert S_{t-1})(1-x) &\\
+x &= 0.6x + 0.2(1-x) \\
+x &= \frac{1}{3}
+\end{align*}
+Therefore, $P(R_\infty)=\frac{1}{3}$ and $P(S_\infty)=\frac{2}{3}$. \\
+The probabilities can be also learned from a data set. For $RSSSRSR$, the probabilities are:
+\begin{itemize}
+\item $P(R_0)=1$
+\item $P(S\vert R)=1$
+\item $P(S\vert S)=0.5$
+\item $P(R\vert S)=0.5$
+\item $P(R\vert R)=0$
+\end{itemize}
+{\bf Laplacian smoothing} can be used to reduce overfitting (e.g. all data sets start in $R$). For $K=1$, the probabilities are
+\begin{itemize}
+\item $P(R_0)=\frac{1+1}{1+2}=\frac{2}{3}$
+\item $P(S\vert R)=\frac{2+1}{2+2}=\frac{3}{4}$
+\item $P(S\vert S)=\frac{2+1}{4+2}=\frac{1}{2}$
+\item $P(R\vert S)=\frac{2+1}{4+2}=\frac{1}{2}$
+\item $P(R\vert R)=\frac{0+1}{2+2}=\frac{1}{4}$
+\end{itemize}
+
 
 \chapter{Further machine learning topics}
 This chapter contains further machine learning-related topics which do not fit into the previous chapters.
