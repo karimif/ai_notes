@@ -2173,6 +2173,8 @@ kalman_filter(x, P)
 
 \section{Particle filter}
 {\bf Particle filters} are {\bf continuous} and {\bf multi-modal}. The key advantage of particle filters is their simple implementation. Particle filters maintain a set of $N$ random guesses as to where the robot might be. In the first step, all particles then do a certain {\bf movement} in the space. Then, the most relevant particles are kept and duplicated so that the sum of particles remains $N$. This step is called {\bf resampling}. \\
+Particle filters require some noise and uncertainty in the movements and measurements. Noise and uncertainty is important to slightly remix the particles. Also, particle filters do not work well in high-dimensional spaces. Last, particle filters require a good amount of particles and usually do not work well on just a few particles.
+\\
 Algorithm~\ref{ref:particlefilterpython} implements a particle filter for robot localization and used the robot defined in Algorithm~\ref{ref:robotpython}. Relevance is defined as similar position measured by the distance to four landmarks. The measurement is also uncertain and therefore Gaussian. Efficient resampling is performed by a {\bf resampling wheel}.
 
 \begin{algorithm}
