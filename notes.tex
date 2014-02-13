@@ -2210,6 +2210,7 @@ kalman_filter(x, P)
 Particle filters require some noise and uncertainty in the movements and measurements. Noise and uncertainty is important to slightly remix the particles. Also, particle filters do not work well in high-dimensional spaces. Last, particle filters require a good amount of particles and usually do not work well on just a few particles.
 \\
 Algorithm~\ref{ref:particlefilterpython} implements a particle filter for robot localization and used the robot defined in Algorithm~\ref{ref:robotpython}. Relevance is defined as similar position measured by the distance to four landmarks. The measurement is also uncertain and therefore Gaussian. Efficient resampling is performed by a {\bf resampling wheel}.
+A more intuitive but inefficient resampling algorithm is defined in Algorithm~\ref{alg:simpleresampling}.
 
 \begin{algorithm}
 \caption{Sample particle filter}
@@ -2322,5 +2323,28 @@ def eval(r, p):
 \end{algorithm}
 
 
+\begin{algorithm}
+\caption{Simple resampling}
+\label{alg:simpleresampling}
+\begin{python}
+def get_weighted_choice(weights):
+    totals = []
+    running_total = 0
+    for weight in weights:
+        running_total += weight
+        totals.append(running_total)
+    def f():
+        rnd = random.random() * running_total
+        return bisect.bisect(totals, rnd)
+
+    return f
+
+p3 = []
+sampler = get_weighted_choice(w)
+for i in range(N):
+    j = sampler()
+    p3.append(p2[j])
+\end{python}
+\end{algorithm}
 
 \end{document}
