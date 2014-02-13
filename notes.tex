@@ -1876,6 +1876,8 @@ Reinforcement learning can be applied to a variety of real-world problems such a
 
 \section{Hidden Markov models}
 {\bf Hidden Markov models} (HMMs) are used to analyze and predict states and time series. They are related to Markov chains which are simpler Markov models and are explained in Chapter~\ref{ref:markovchains}. In contrast, in a {\em hidden} Markov model, the state is not directly visible, but output, dependent on the state, is visible.
+\\
+HMMs are used for {\bf localization} and {\bf tracking} which is covered by Chapter~\ref{chapter:localizationandtracking}.
 
 \chapter{Further machine learning topics}
 This chapter contains further machine learning-related topics which do not fit into the previous chapters.
@@ -1970,9 +1972,11 @@ Large data sets come with new problems, e.g. a lack of {\bf scalability} . (Batc
 
 
 \chapter{Localization and tracking}
+\label{chapter:localizationandtracking}
 {\bf Localization} can be done by using the global positioning system (GPS). Unfortunately, GPS is not accurate. Robot localization requires higher accuracy. This chapter provides information on such techniques.
 {\bf Tracking} allows to detect and track other vehicles to avoid collisions.
-Table \ref{ref:complocalization} summarizes and compares properties of the methods discussed in this chapter.
+Table \ref{ref:complocalization} summarizes and compares properties of the methods discussed in this chapter. \\
+This chapter covers various {\bf filters} which are related or make use of {\bf hidden Markov models} which are explained in Chapter~.
 \begin{table}[h!]
 \begin{center}
 \begin{tabular}{l||c|c|c|c}
