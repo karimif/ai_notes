@@ -2368,6 +2368,16 @@ Building a truly invariant algorithm is a major computer science problem.
 Vertical {\bf feature extraction} is possible using a trivial {\bf mask} (or {\bf filter} or {\bf kernel}) $[+1\vert -1]$ which is applied on an $m\times n$ image and returns an $(m-1)\times n$ images with all columns containing the difference of the original columns. This shift can be avoided using the following mask: $[+1\vert 0\vert -1]$.
 Usually, the absolute value of the difference is computed. \\
 A {\bf gradient image} is the aggregation of vertical and horizontal filtering. A pixel value threshold can be applied to reduce noise. \\
+{\bf Blurring} is useful for multiple use cases. First, it allows to reduce {\bf anti-aliasing} before downsampling an image. Second, it reduces noise which can improve edge detection. A {\bf Gaussian kernel} blurs an image:
+\begin{align*}
+\frac{1}{159} \begin{pmatrix}
+2 & 4 & 5 & 4 & 2 \\
+4 & 9 & 12 & 9 & 4 \\
+5 & 12 & 15 & 12 & 5 \\
+4 & 9 & 12 & 9 & 4 \\
+2 & 4 & 5 & 4 & 2
+\end{pmatrix}
+\end{align*}
 
 
 \end{document}
