@@ -847,6 +847,7 @@ A {\bf planning agent} interleaves planning and execution. This is necessary for
 Plans might be {\bf hierarchical} which consist of actions on different levels. Some of these levels can be planned ahead, others while executing the plan. Example: A* can find a route from A to Z but the route might change due to accidents. Low-level actions such as turning the steering wheel or pressing the pedals cannot be planned well-ahead in time in the real world. \\
 Plan sequences might be infinite in stochastic environments. For example a robot is not guaranteed to move properly and can only perform certain actions once it successfully moved. A loop-based representation allows to describe such a plan efficiently. \\
 {\bf Scheduling} of tasks is another planning problem that has been extensively studied in the field of operating systems. \\
+Chapter~\ref{chapter:reinforcementlearning} covers {\bf reinforcement learning} which allows efficiently planning under uncertainty.
 
 
 \chapter{Learning}
@@ -1709,6 +1710,8 @@ This algorithm automatically captures correlations between features. It is compu
 
 
 \chapter{Reinforcement learning}
+\label{chapter:reinforcementlearning}
+
 Supervised learning algorithms approximate a mapping of their inputs to the labels $y$ of the training set. These labels give an unambiguous "right answer" fear of the inputs $x$. In many problems, it is difficult to provide such an explicit supervision to a learning problem. In {\bf reinforcement learning}, the algorithm is only provided a reward (feedback) function which provides a reward or penalty depending on in which state the learning agent goes. Reinforcement learning is in between of supervised and unsupervised learning as there is some supervision, but significantly less than in supervised learning.
 The {\bf credit assignment problem} is to figure out after getting a reward what an algorithm did right or wrong to get this reward. For example, a chess algorithm may lose after 30 steps and only gets then a penalty. This makes it hard to solve the credit assignment problem as the cause of the loss might have happened many steps before.
 
