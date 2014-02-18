@@ -907,6 +907,7 @@ A decision tree performs a sequence of tests on the input data and eventually ge
 Goal \iff (Path_1 \vee Path_2 \vee ...)
 \end{align*}
 Decision trees are suitable for describing a variety of problems. Some problems cannot be described properly using decision trees such as the majority function which returns true iff more than half of the inputs are true. This function requires an exponentially large decision tree. \\
+A decision tree can be learned from a training set. Finding the {\bf optimal decision tree} is NP-complete as there are $2^{2^n}$ many possible trees. With some heuristics, one can find a good approximate solution which is a small (but not the smallest) tree.
 
 
 \section{Linear regression}
