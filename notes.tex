@@ -907,7 +907,43 @@ A decision tree performs a sequence of tests on the input data and eventually ge
 Goal \iff (Path_1 \vee Path_2 \vee ...)
 \end{align*}
 Decision trees are suitable for describing a variety of problems. Some problems cannot be described properly using decision trees such as the majority function which returns true iff more than half of the inputs are true. This function requires an exponentially large decision tree. \\
-A decision tree can be learned from a training set. Finding the {\bf optimal decision tree} is NP-complete as there are $2^{2^n}$ many possible trees. With some heuristics, one can find a good approximate solution which is a small (but not the smallest) tree.
+A decision tree can be learned from a training set. Finding the {\bf optimal decision tree} is NP-complete as there are $2^{2^n}$ many possible trees. With some heuristics, one can find a good approximate solution which is a small (but not the smallest) tree. \\
+The sample data defined in Figure~\ref{table:decisiontreeexamples} is used in this section with the following attributes:
+\begin{itemize}
+\item {\em Alternate}: whether there is a suitable alternative restaurant nearby
+\item {\em Bar}: whether the restaurant has a comfortable bar area to wait in
+\item {\em Fri/Sat}: true on Fridays and Saturdays
+\item {\em Hungry}: whether we are hungry
+\item {\em Patrons}: how many people are in the restaurant (values are None, Some, and Full)
+\item {\em Price}: the restaurant's price range
+\item {\em Raining}: whether it is raining outside
+\item {\em Reservation}: whether we made a reservation
+\item {\em Type}: the kind of restaurant (French, Italian, Thai, or burger)
+\item {\em WaitEstimate}: the wait estimated by the host (0-10 minutes, 10-30, 30-60, or $>$60)
+\end{itemize}
+
+\begin{figure}[h!]
+\centering
+\begin{tabular}{c||c|c|c|c|c|c|c|c|c|c||c}
+ & Alt & Bar & Fri & Hun & Pat & Price & Rain & Res & Type & Est & Goal {\em WillWait}\\
+\hline
+\hline
+$x^{(1)}$ & True & False & False & True & Some & \$\$\$ & False & True & French & 0-10 & True \\
+$x^{(2)}$ & True & False & False & True & Full & \$ & False & False & Thai & 30-60 & False \\
+$x^{(3)}$ & False & True & False & False & Some & \$ & False & False & Burger & 0-10 & True \\
+$x^{(4)}$ & True & False &True & True & Full & \$ & True & False & Thai & 30-60 & True \\
+$x^{(5)}$ & True & False & True & False & Full' & \$\$\$ & False & True & French & $>$60 & False \\
+$x^{(6)}$ & False & True & False & True & Some & \$\$ & True & True & Italian & 0-10 & True \\
+$x^{(7)}$ & False & True & False & False & None & \$ & True & False & Burger & 0-10 & False \\
+$x^{(8)}$ & False & False & False & True & Some & \$\$ & True & True & Thai & 0-10 & True \\
+$x^{(9)}$ & False & True & True & False & Full & \$ & True & False & Burger & $>$60 & False \\
+$x^{(10)}$ & True & True & True & True & Full & \$\$\$ & False & True & Italian & 10-30 & False \\
+$x^{(11)}$ & False & False & False & False & None & \$ & False & False & Thai & 0-10 & False \\
+$x^{(12)}$ & True & True & True & True & Full & \$ & False & False & Burger & 30-60 & True \\
+\end{tabular}
+\caption{Decision tree training set}
+\label{table:decisiontreeexamples}
+\end{figure}
 
 
 \section{Linear regression}
