@@ -947,6 +947,34 @@ $x^{(12)}$ & T & T & T & T & Full & \$ & F & F & Burger & 30-60 & T \\
 \label{table:decisiontreeexamples}
 \end{figure}
 
+Algorithm~\ref{alg:decisiontreelearning} learns a good approximation solution. Iadopts a greedy divide-and-conquer strategy  which always tests the most important attribute first. This test divvies the problem up into smaller subproblems that can then be solved recursively.
+
+\begin{algorithm}
+\caption{Decision tree learning}
+\label{alg:decisiontreelearning}
+\begin{algorithmic}
+\Function{DT-LEARNING}{$examples$, $attributes$, $parent\_examples$}
+\If{empty(examples)} \Return{PLURALITY-VAL($parent\_examples$)}
+\ElsIf{all examples have same classification} \Return{the classification}
+\ElsIf{attributes is empty} \Return{PLURALITY-VAL($examples$)}
+\Else
+\State $A$ $\gets \max\limits_{a\in attributes}$ IMPORTANCE($a$, $examples$)
+\State $tree$ $\gets$ a new decision tree with root test $A$
+\For{$v_k \in A$}
+\State $exs$ $\gets \{e \vert e\in examples \wedge e.A = v_k \}$
+\State $subtree$ $\gets$ DT-LEARNING($exs$, $attributes - A$, $examples$)
+\State add a branch to $tree$ with label $(A=v_k)$ and subtree $subtree$
+\EndFor
+\Return{$tree$}
+\EndIf
+\EndFunction
+\end{algorithmic}
+\end{algorithm}
+
+
+"Most important attribute" means the one that makes the most difference to the classification of an example. That way, the algorithm is supposed to get the correct classification with a small number of tests meaning that all generated path in the thee will be short and the tree as a whole will be shallow.
+
+
 
 \section{Linear regression}
 {\bf Linear regression} computes a linear regression function for $m$ {\bf training examples} having $n$ {\bf features}. The objective is to minimize the cost function:
