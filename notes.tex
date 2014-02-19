@@ -976,7 +976,15 @@ Algorithm~\ref{alg:decisiontreelearning} learns a good approximation solution. I
 
 % Add more details on gained information
 "Most important attribute" means the one that makes the most difference to the classification of an example. That way, the algorithm is supposed to get the correct classification with a small number of tests meaning that all generated path in the thee will be short and the tree as a whole will be shallow. The {\em IMPORTANCE} function of Algorithm~\ref{alg:decisiontreelearning} can be defined in terms of {\bf information gain} which is defined is terms of {\bf entropy}, the fundamental quantity in information theory.
-
+\\
+Entropy is a measure of the uncertainty of a random variable, acquisition of information corresponds to a reduction in entropy. Entropy is defined as
+\begin{align*}
+H(V) = -\sum_k P(v_k)log_2 P(v_k)
+\end{align*}
+$B(q)$ is the entropy of a Boolean random variable that is true with probability $q$:
+\begin{align*}
+B(q) = -(q\mbox{ }log_2 q + (1-q)log_2(1-q))
+\end{align*}
 
 
 \section{Linear regression}
