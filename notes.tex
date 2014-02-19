@@ -974,17 +974,34 @@ Algorithm~\ref{alg:decisiontreelearning} learns a good approximation solution. I
 {\em PLURALITY-VAL} selects the most common output value among a set of examples and breaks ties randomly.
 \\
 
-% Add more details on gained information
 "Most important attribute" means the one that makes the most difference to the classification of an example. That way, the algorithm is supposed to get the correct classification with a small number of tests meaning that all generated path in the thee will be short and the tree as a whole will be shallow. The {\em IMPORTANCE} function of Algorithm~\ref{alg:decisiontreelearning} can be defined in terms of {\bf information gain} which is defined is terms of {\bf entropy}, the fundamental quantity in information theory.
 \\
 Entropy is a measure of the uncertainty of a random variable, acquisition of information corresponds to a reduction in entropy. Entropy is defined as
 \begin{align*}
 H(V) = -\sum_k P(v_k)log_2 P(v_k)
 \end{align*}
+with unit {\em bit}.
+
 $B(q)$ is the entropy of a Boolean random variable that is true with probability $q$:
 \begin{align*}
 B(q) = -(q\mbox{ }log_2 q + (1-q)log_2(1-q))
 \end{align*}
+If a training set contains $p$ positive and $n$ negative examples, then the entropy of the goal attribute is
+\begin{align*}
+H(Goal) = B(\frac{p}{p+n})
+\end{align*}
+
+An attribute $A$ with $d$ distinct values divides the training set $E$ into subsets $E_1,...,E_d$. Each subset $E_k$ has $p_k$ positive examples $n_k$ negative examples.. Going along that branch, one needs an additional $B(p_k/(p_k+n_k))$ bits of information to answer the question. A randomly chosen example from the training set has the $k$th value for the approbate with probability $(p_k+n_k)/(p+n)$, so the expected entropy remaining after teasing the attribute $A$ is
+\begin{align*}
+Remainder(A) = \sum_{k=1}^{d}\frac{p_k+n_k}{p+n}B(\frac{p_k}{p_k+n_k})
+\end{align*}
+
+The {\bf information gain} from attribute test on $A$ is the expected reduction in entropy:
+\begin{align*}
+Gain(A) = B(\frac{p}{p+n}) - Remainder(A)
+\end{align*}
+
+In fact, $Gain(A)$ is compute by the {\em IMPORTANCE} function.
 
 
 \section{Linear regression}
