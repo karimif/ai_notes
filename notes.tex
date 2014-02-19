@@ -1002,6 +1002,78 @@ Gain(A) = B(\frac{p}{p+n}) - Remainder(A)
 \end{align*}
 
 In fact, $Gain(A)$ is compute by the {\em IMPORTANCE} function.
+\\
+A learned tree for the training set in Figure~\ref{table:decisiontreeexamples} is showed in Figure~\ref{fig:learneddecisiontreeexample}
+
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}[
+    fact/.style={rectangle, draw=none, rounded corners=1mm, fill=white,
+        text centered, anchor=north, text=black},
+    state/.style={rectangle, draw=none, fill=black,
+        text centered, anchor=north, text=white},
+    leaf/.style={rectangle, draw=none, fill=gray,
+        text centered, anchor=north, text=white},
+    level distance=0.5cm, growth parent anchor=south
+]
+\node (Patrons) [state] {Patrons?} [sibling distance=6cm]
+child{
+	node (PatronsNone) [fact] {None}
+	child{
+		node (PatronsFalse) [leaf] {False}
+	}
+}
+child{ [sibling distance=4cm]
+	node (PatronsFull) [fact] {Full}
+	child{
+		node (WaitEstimate) [state] {WaitEstimate?}
+		child{
+			node (Wait1030) [fact] {10-30}
+			child{
+				node (WaitFalse1) [leaf] {False}
+			}
+		}
+		child{ [sibling distance=2cm]
+			node (Wait3060) [fact] {30-60}
+			child{
+				node (FriSat) [state] {Fri/Sat?}
+				child{
+					node (FriSatFalse) [fact] {False}
+					child{
+						node (FriSatFalseGoal) [leaf] {False}
+					}
+				}
+				child{
+					node (FriSatTrue) [fact] {True}
+					child{
+						node (FriSatTrueGoal) [leaf] {True}
+					}
+				}
+			}
+		}
+		child{
+			node (Wait60) [fact] {$>60$}
+			child{
+				node (WaitFalse2) [leaf] {False}
+			}
+		}
+	}
+}
+child{ [sibling distance=4cm]
+	node (PatronsSome) [fact] {Some}
+	child{
+		node (PatronsTrue) [leaf] {True}
+	}
+}
+;
+
+\end{tikzpicture}
+\caption{Learned decision tree}
+\label{fig:learneddecisiontreeexample}
+\end{figure}
+
+
+
 
 
 \section{Linear regression}
