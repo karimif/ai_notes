@@ -932,9 +932,9 @@ Find-S has a number of drawbacks:
 \For{each positive training example $x \in X$}
 \For{eachatrribute $a_i \in h$}
 \If{$a_i$ is satisfied by $x$}
-Do nothing
+\State Do nothing
 \Else
-Replace $a_i$ in $h$ so that $h' >_g, h\gets h'$
+\State Replace $a_i$ in $h$ so that $h' >_g, h\gets h'$
 \EndIf
 \EndFor
 \EndFor
@@ -1061,7 +1061,7 @@ Algorithm~\ref{alg:decisiontreelearning} learns a good approximation solution. I
 \State $subtree$ $\gets$ DT-LEARNING($exs$, $attributes - A$, $examples$)
 \State add a branch to $tree$ with label $(A=v_k)$ and subtree $subtree$
 \EndFor
-\Return{$tree$}
+\State \Return{$tree$}
 \EndIf
 \EndFunction
 \end{algorithmic}
