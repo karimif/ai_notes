@@ -901,7 +901,8 @@ Details:
 Supervised learning learns from {\bf labeled training examples}. If there are not sufficiently many features, the learning algorithm may {\bf underfit}. In contrast, it may {\bf overfit} for too many features meaning it only matches the training data well but fails to generalize to new examples. The vast majority of research in machine learning has been done in supervised learning.
 
 \section{Concept learning}
-{\bf Concept learning} infers a Boolean-valued function from training data and is a prototype binary classification. The aim is to find a hypothesis $h\in H$ such that $\forall x\in X: (h(x) - c(x)) < \epsilon \approx 0$ where each $x^{(i)}_j$ may be $?$ (any value is acceptable), $0$ (no value is acceptable) or a specific value.
+{\bf Concept learning} infers a Boolean-valued function from training data and is a prototype binary classification if data belongs to the target concept or not.
+The aim is to find a hypothesis $h\in H$ such that $\forall x\in X: (h(x) - c(x)) < \epsilon \approx 0$ where each $x^{(i)}_j$ may be $?$ (any value is acceptable), $0$ (no value is acceptable) or a specific value.
 \\
 Many concept learning algorithms utilize general-to-specific ordering of hypotheses:
 \begin{itemize}
