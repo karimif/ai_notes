@@ -913,7 +913,15 @@ e.g. $h_1 = (?,?,yes,?,?,?)$ and $h_2 = (?,?,yes,?,?,yes)$
 e.g. $h_1 = (?,?,yes,?,?,?)$ and $h_2 = (?,?,?,?,?,yes) \implies h_1 =_g h_2$
 \end{itemize}
 
-Algorithm~\ref{alg:finds} returns the most specific hypothesis for a training set.
+Algorithm~\ref{alg:finds} returns the most specific hypothesis $h$ that best fits the positive training set. The hypothesis returned by Find-S will also fit negative examples as long as training examples are correct.
+\\
+Find-S has a number of drawbacks:
+\begin{itemize}
+\item is sensitive to noise that is present in most training examples
+\item There is not guarantee that $h$ is the only $h$ that fits the data
+\item Several maximally specific hypotheses may exist that fit the data, but Find-S outputs only one
+\item Why should one prefer most specific hypotheses over most general hypotheses?
+\end{itemize}
 
 \begin{algorithm}
 \caption{Find-S}
