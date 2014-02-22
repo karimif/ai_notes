@@ -233,7 +233,7 @@ $P(A\vert B,e) = \frac{P(B\vert A,e)P(A\vert e)}{P(B\vert e)}$
 \subsection{Bayes networks}
 Bayes networks define probability distributions over random variables and allow compact specification of full joint distributions. The joint probability of the network shown in Figure~\ref{ref:samplenetwork} is: $P(A,B,C,D,E)=P(A)(B)P(C\vert A,B)P(D\vert C)P(E\vert C)$. The general equation is:
 \begin{definition}
-$P(x_1,...,x_n) = \prod_{i=1}^{n}{P(x_i\vert parents(X_i))}$
+$P(x_1,...,x_n) = \prod_{i=1}^{n}{P(x_i\vert parents(x_i))}$
 \end{definition}
 
 
@@ -258,7 +258,7 @@ $P(x_1,...,x_n) = \prod_{i=1}^{n}{P(x_i\vert parents(X_i))}$
 \end{figure}
 
 \subsection{d-separation}
-Stands for direction-dependent separation. d-separated variables are independent. $X$ and $Y$ are d-separated if there is no active path between them. Paths consists of {\bf triplets} as defined in Table~\ref{ref:triplets}. An inactive triplet makes an entire path inactive.
+Stands for direction-dependent separation. d-separated variables are independent. $X$ and $Y$ are d-separated if there is no active path between them. Paths consists of {\bf triplets} as defined in Table~\ref{ref:triplets} in which a filled circle represents a known probability. An inactive triplet makes an entire path inactive.
 
 \begin{table}[h!]
 \begin{center}
