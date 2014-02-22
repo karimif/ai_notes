@@ -1061,7 +1061,7 @@ $x^{(12)}$ & T & T & T & T & Full & \$ & F & F & Burger & 30-60 & T \\
 \label{table:decisiontreeexamples}
 \end{figure}
 
-Algorithm~\ref{alg:decisiontreelearning} learns a good approximation solution. Iadopts a greedy divide-and-conquer strategy  which always tests the most important attribute first. This test divvies the problem up into smaller subproblems that can then be solved recursively.
+Algorithm~\ref{alg:decisiontreelearning} learns a good approximation solution. It adopts a greedy divide-and-conquer strategy  which always tests the most important attribute first. This test divides the problem up into smaller subproblems that can then be solved recursively.
 
 \begin{algorithm}
 \caption{Decision tree learning}
@@ -1088,7 +1088,7 @@ Algorithm~\ref{alg:decisiontreelearning} learns a good approximation solution. I
 {\em PLURALITY-VAL} selects the most common output value among a set of examples and breaks ties randomly.
 \\
 
-"Most important attribute" means the one that makes the most difference to the classification of an example. That way, the algorithm is supposed to get the correct classification with a small number of tests meaning that all generated path in the thee will be short and the tree as a whole will be shallow. The {\em IMPORTANCE} function of Algorithm~\ref{alg:decisiontreelearning} can be defined in terms of {\bf information gain} which is defined is terms of {\bf entropy}, the fundamental quantity in information theory.
+"Most important attribute" means the one that makes the most difference to the classification of an example. That way, the algorithm is supposed to get the correct classification with a small number of tests meaning that all generated paths in the thee will be short and the tree as a whole will be shallow. The {\em IMPORTANCE} function of Algorithm~\ref{alg:decisiontreelearning} can be defined in terms of {\bf information gain} which uses {\bf entropy} theory, the fundamental quantity in information theory.
 \\
 Entropy is a measure of the uncertainty of a random variable, acquisition of information corresponds to a reduction in entropy. Entropy is defined as
 \begin{align*}
