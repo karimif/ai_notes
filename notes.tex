@@ -913,6 +913,26 @@ e.g. $h_1 = (?,?,yes,?,?,?)$ and $h_2 = (?,?,yes,?,?,yes)$
 e.g. $h_1 = (?,?,yes,?,?,?)$ and $h_2 = (?,?,?,?,?,yes) \implies h_1 =_g h_2$
 \end{itemize}
 
+Algorithm~\ref{alg:finds} returns the most specific hypothesis for a training set.
+
+\begin{algorithm}
+\caption{Find-S}
+\label{alg:finds}
+\begin{algorithmic}
+\State $h \gets (0,...,0)$ \Comment{Initialize $h\in H$ to the most specific hypothesis}
+\For{each positive training example $x \in X$}
+\For{eachatrribute $a_i \in h$}
+\If{$a_i$ is satisfied by $x$}
+Do nothing
+\Else
+Replace $a_i$ in $h$ so that $h' >_g, h\gets h'$
+\EndIf
+\EndFor
+\EndFor
+\\
+\Return{$h$}
+\end{algorithmic}
+\end{algorithm}
 
 
 \section{Decision trees}
