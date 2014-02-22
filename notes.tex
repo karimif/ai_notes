@@ -902,6 +902,9 @@ Supervised learning learns from {\bf labeled training examples}. If there are no
 
 \section{Concept learning}
 {\bf Concept learning} infers a Boolean-valued function from training data and is a prototype binary classification if data belongs to the target concept or not.
+\\
+It is also called {\bf inductive learning}, meaning that the system tries to induce a "general rule" from a training set.
+\\
 The aim is to find a hypothesis $h\in H$ such that $\forall x\in X: (h(x) - c(x)) < \epsilon \approx 0$ where each $x^{(i)}_j$ may be $?$ (any value is acceptable), $0$ (no value is acceptable) or a specific value.
 \\
 Many concept learning algorithms utilize general-to-specific ordering of hypotheses:
