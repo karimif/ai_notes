@@ -1105,7 +1105,7 @@ If a training set contains $p$ positive and $n$ negative examples, then the entr
 H(Goal) = B(\frac{p}{p+n})
 \end{align*}
 
-An attribute $A$ with $d$ distinct values divides the training set $E$ into subsets $E_1,...,E_d$. Each subset $E_k$ has $p_k$ positive examples $n_k$ negative examples.. Going along that branch, one needs an additional $B(p_k/(p_k+n_k))$ bits of information to answer the question. A randomly chosen example from the training set has the $k$th value for the approbate with probability $(p_k+n_k)/(p+n)$, so the expected entropy remaining after teasing the attribute $A$ is
+An attribute $A$ with $d$ distinct values divides the training set $E$ into subsets $E_1,...,E_d$. Each subset $E_k$ has $p_k$ positive examples $n_k$ negative examples.. Going along that branch, one needs an additional $B(p_k/(p_k+n_k))$ bits of information to answer the question. A randomly chosen example from the training set has the $k$th value for the attribute with probability $(p_k+n_k)/(p+n)$, so the expected entropy remaining after testing the attribute $A$ is
 \begin{align*}
 Remainder(A) = \sum_{k=1}^{d}\frac{p_k+n_k}{p+n}B(\frac{p_k}{p_k+n_k})
 \end{align*}
