@@ -2664,7 +2664,7 @@ for i in range(N):
 {\bf Computer vision} is a field that includes methods for acquiring, processing, analyzing, and understanding images and, in general, high-dimensional data from the real world in order to produce numerical or symbolic information, e.g., in the forms of decisions.
 
 \section{Introduction}
-{\bf Objection recognition} maps an input image to an object. Images have variation and a detection algorithm is invariant if the variance does not influence the result. There are various kinds of {\bf invariance}:
+{\bf Object recognition} maps an input image to an object. Images have variation and a detection algorithm is invariant if the variance does not influence the result. There are various kinds of {\bf invariance}:
 \begin{itemize}
 \item Scale
 \item Illumination
@@ -2679,7 +2679,7 @@ Building a truly invariant object recognition algorithm is a unsolved major comp
 Vertical {\bf feature extraction} is possible using a trivial {\bf mask} (or {\bf filter} or {\bf kernel}) $[+1\vert -1]$ which is applied on an $m\times n$ image and returns an $(m-1)\times n$ images with all columns containing the difference of the original columns. This shift can be avoided using the following mask: $[+1\vert 0\vert -1]$.
 Usually, the absolute value of the difference is computed. \\
 A {\bf gradient image} is the aggregation of vertical and horizontal filtering. A pixel value threshold can be applied to reduce noise. \\
-{\bf Blurring} is useful for multiple use cases. First, it allows to reduce {\bf anti-aliasing} before downsampling an image. Second, it reduces noise which can improve edge detection. A {\bf Gaussian kernel} blurs an image:
+{\bf Blurring} is useful for multiple use cases. First, it allows to do {\bf anti-aliasing} before downsampling an image. Second, it reduces noise which can improve edge detection. A {\bf Gaussian kernel} blurs an image:
 \begin{align*}
 \frac{1}{159} \begin{pmatrix}
 2 & 4 & 5 & 4 & 2 \\
