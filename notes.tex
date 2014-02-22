@@ -978,6 +978,23 @@ Step & $x_1$ & $y_1$ & $x_2$ & $y_2$ & Comments \\
 \end{figure}
 
 
+The last three drawbacks of Find-S are addressed by Algorithm~\ref{alg:candiateelimination}. The main idea is to return a set of hypotheses $VS\subseteq H$ that are consistent with data $X$.
+
+\begin{algorithm}
+\caption{Candidate elimination}
+\label{alg:candidateelimation}
+\begin{algorithmic}
+\State $G\in VS \gets (?,...,?)$ \Comment{Initialize to the most general hypothesis}
+\State $S\in VS \gets (0,...,0)$ \Comment{Initialize to the most specific hypothesis}
+\For{each positive training example $x \in X$}
+x
+\EndFor
+\\
+\Return{hypotheses $G$ and $S$}
+\end{algorithmic}
+\end{algorithm}
+
+
 
 \section{Decision trees}
 {\bf Decision tree} learning algorithms are simple and successful forms of machine learning. A decision tree maps an input vector to a single output value, the "decision". Input and output values can be discrete or continuous. This section only covers decision trees for classification which map a discrete input vector to a discrete output value, the class. \\
