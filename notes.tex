@@ -934,6 +934,41 @@ Replace $a_i$ in $h$ so that $h' >_g, h\gets h'$
 \end{algorithmic}
 \end{algorithm}
 
+The following example demonstrates the algorithm by finding the smallest rectangle that contains all positive coordinates in Table~\ref{table:coordinates}. Table~\ref{table:findscomputation} contains the steps of the computation of the hypothesis.
+
+\begin{figure}[h!]
+\centering
+\begin{tabular}{c||c|c|c|c}
+Class & $x$ & $y$ \\
+\hline
+\hline
++ & 4 & 4 \\
+- & 1 & 1 \\
++ & 5 & 3 \\
+- & 10 & 10 \\
++ & 6 & 5
+\end{tabular}
+\caption{Sample coordinates}
+\label{table:coordinates}
+\end{figure}
+
+
+\begin{figure}[h!]
+\centering
+\begin{tabular}{c||c|c|c|c||l}
+Step & $x_1$ & $y_1$ & $x_2$ & $y_2$ & Comments \\
+\hline
+\hline
+0 & 0 & 0 & 0 & 0 & Initial value \\
+1 & 4 & 4 & 4 & 4 & (4,4) is not in $h$, change $h$ so it just contains (4,4) \\
+2 & 4 & 3 & 5 & 4 & (5,3) is not in $h$, enlarge $h$ to fit both \\
+3 & 4 & 3 & 6 & 5 &  Enlarge again
+\end{tabular}
+\caption{Find-S hypothesis computation}
+\label{table:findscomputation}
+\end{figure}
+
+
 
 \section{Decision trees}
 {\bf Decision tree} learning algorithms are simple and successful forms of machine learning. A decision tree maps an input vector to a single output value, the "decision". Input and output values can be discrete or continuous. This section only covers decision trees for classification which map a discrete input vector to a discrete output value, the class. \\
