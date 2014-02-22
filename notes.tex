@@ -909,7 +909,7 @@ Many concept learning algorithms utilize general-to-specific ordering of hypothe
 \item $h_1$ precedes (is more general than) $h_2 \iff \forall x\in X: [(h_2(x)=1)\implies (h_1(x)=1)]$ \\
 e.g. $h_1 = (?,?,yes,?,?,?)$ and $h_2 = (?,?,yes,?,?,yes) \implies h_1 >_g h_2$
 \item $h_2$ succeeds (is more specific than) $h_1 \iff \forall x\in X: [(h_2(x)=1)\implies (h_1(x)=1)]$ \\
-e.g. $h_1 = (?,?,yes,?,?,?)$ and $h_2 = (?,?,yes,?,?,yes)$
+e.g. $h_1 = (?,?,yes,?,?,?)$ and $h_2 = (?,?,yes,?,?,yes)  \implies h_2 <_g h_1$
 \item $h_1$ and $h_2$ are of equal generality $\iff \exists x\in X: [(h_1(x)=1)\iff (h_2(x)=1)]$ \\
 e.g. $h_1 = (?,?,yes,?,?,?)$ and $h_2 = (?,?,?,?,?,yes) \implies h_1 =_g h_2$
 \end{itemize}
