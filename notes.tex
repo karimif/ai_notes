@@ -987,7 +987,21 @@ The last three drawbacks of Find-S are addressed by Algorithm~\ref{alg:candiatee
 \State $G\in VS \gets (?,...,?)$ \Comment{Initialize to the most general hypothesis}
 \State $S\in VS \gets (0,...,0)$ \Comment{Initialize to the most specific hypothesis}
 \For{each positive training example $x \in X$}
-x
+\If{$x$ is a positive example}
+\State Remove from $G$ all $h$ that are not consistent with $x$
+\For{each hypothesis $s \in S$ that is not consistent with $x$}
+\State Replace $s$ with all $h$ that are consistent with $x, h>_g s, h<_g g\in G$
+\State Remove from $S$ all $s$ being more general than other $s$ in $S$
+\EndFor
+\EndIf
+
+\If{$x$ is a negative example}
+\State Remove from $S$ all $h$ that are not consistent with $x$
+\For{each hypothesis $g \in G$ that is not consistent with $x$}
+\State Replace $g$ with all $h$ that are consistent with $x, g>_g h, h>_g s\in S$
+\State Remove from $G$ all $g$ being less general than other $g$ in $G$
+\EndFor
+\EndIf
 \EndFor
 \\
 \Return{hypotheses $G$ and $S$}
