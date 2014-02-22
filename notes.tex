@@ -1070,7 +1070,7 @@ Algorithm~\ref{alg:decisiontreelearning} learns a good approximation solution. I
 \Function{DT-LEARNING}{$examples$, $attributes$, $parent\_examples$}
 \If{empty(examples)} \Return{PLURALITY-VAL($parent\_examples$)}
 \ElsIf{all examples have same classification} \Return{the classification}
-\ElsIf{attributes is empty} \Return{PLURALITY-VAL($examples$)}
+\ElsIf{empty(attributes)} \Return{PLURALITY-VAL($examples$)}
 \Else
 \State $A$ $\gets \max\limits_{a\in attributes}$ IMPORTANCE($a$, $examples$)
 \State $tree$ $\gets$ a new decision tree with root test $A$
