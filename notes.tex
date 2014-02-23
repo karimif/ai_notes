@@ -688,6 +688,37 @@ Frontier size ($n$ levels) & $2n$ & $2n$ & $n$\\
 \label{ref:search}
 \end{table}
 
+\section{Shortest path algorithm}
+The {\bf shortest path} algorithms finds the shortest path from the {\bf start state} to a {\bf goal state}. Each state might have a number of {\bf successors}.
+
+\begin{algorithm}
+\caption{Sample Markov localization}
+\label{ref:shortestpathpython}
+\begin{python}
+def shortest_path_search(start, successors, is_goal):
+    """Find the shortest path from start state to a state
+    such that is_goal(state) is true."""
+    if is_goal(start):
+        return [start]
+    explored = set() # set of states we have visited
+    frontier = [ [start] ] # ordered list of paths we have blazed
+    while frontier:
+        path = frontier.pop(0)
+        s = path[-1]
+        for (state, action) in successors(s).items():
+            if state not in explored:
+                explored.add(state)
+                path2 = path + [action, state]
+                if is_goal(state):
+                    return path2
+                else:
+                    frontier.append(path2)
+    return Fail
+
+Fail = []
+\end{python}
+\end{algorithm}
+
 \section{Generalizing search to solve problems}
 To come.
 
