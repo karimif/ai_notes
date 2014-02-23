@@ -1394,7 +1394,10 @@ The Bayes {\bf maximum a posteriori} (MAP) estimate for $\theta$ is given by:
 \begin{align*}
 \theta_{MAP}=\max\limits_{\theta} \prod_{i=1}^m p(y^{(i)}\vert x^{(i)},\theta)p(\theta)
 \end{align*}
-The data are distributed {\bf i.i.d.} (independently and identically distributed). $\theta$ is treated as a random variable in Bayesian statistics. In practical applications, a common choice for the prior $p(\theta)$ is to assume that it has a normal distribution. Using this choice of prior, the fitted parameters $\theta$ have smaller norm than that selected by ML. In practice, this causes the MAP estimate to be less susceptible to overfitting than the ML estimate. MAP estimation can therefore be seen as a regularization of ML estimation.
+The data are distributed {\bf i.i.d.} (independently and identically distributed). $\theta$ is treated as a random variable in Bayesian statistics.
+In practical applications, a common choice for the prior $p(\theta)$ is to assume that it has a normal distribution.
+Using this choice of prior, the fitted parameters $\theta$ have smaller norm than that selected by {\bf Maximum Likelihood} (ML).
+In practice, this causes the MAP estimate to be less susceptible to overfitting than the ML estimate. MAP estimation can therefore be seen as a regularization of ML estimation.
 \\
 Bayesian classification turns out to be an effective algorithm for text classification, even though in text classification there can be significantly more features than training examples.
 
