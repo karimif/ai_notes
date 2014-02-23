@@ -689,8 +689,17 @@ Frontier size ($n$ levels) & $2n$ & $2n$ & $n$\\
 \end{table}
 
 \section{Shortest path algorithm}
-The {\bf shortest path algorithm} finds the shortest path from the {\bf start state} to a {\bf goal state}.
+The {\bf shortest path algorithm} finds the shortest path from the {\bf start state} to the {\bf goal state}.
 Each state might have a number of {\bf successors}. Algorithm~\ref{python:shortestpath} implements the shortest path algorithm.
+\\
+The following three parameters of the algorithm are:
+\begin{itemize}
+\item {\em start}: the start state
+\item {\em successors}: function which returns the successors of a start
+\item {\em is\_goal}: function which returns true of a state is the goal
+\end{itemize}
+The {\bf frontier} contains all successors of visited states. The frontier is sorted by path length in ascending order.
+Visited states will not be visited again.
 
 \begin{algorithm}
 \caption{Shortest path}
