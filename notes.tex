@@ -2138,7 +2138,7 @@ s_0^{(2)}\xrightarrow{a_0^{(2)}}s_1^{(2)}\xrightarrow{a_1^{(2)}}s_2^{(2)}\xright
 \end{align*}
 can be used to estimate the state transition probabilities:
 \begin{align*}
-P_{as}(s')=\frac{\#\mbox{times action } a\mbox{ was taken in state } s \mbox{ and got to }s'} {\#\mbox{times action } a\mbox{ was taken in state } s}
+P_{sa}(s')=\frac{\#\mbox{times action } a\mbox{ was taken in state } s \mbox{ and got to }s'} {\#\mbox{times action } a\mbox{ was taken in state } s}
 \end{align*}
 This ratio might be "$0/0$" in case of never having taken action $a$ in state $s$ before, $P_{as}(s')$ can be estimated: $\frac{1}{\vert S\vert}$. A similar procedure can be used if $R$ is unknown. \\
 Having learned a model for the MDP, either value iteration or policy iteration can be used to solve the MDP using the estimated transition probabilities and rewards. For example, model learning and value iteration can be put together and repeated until convergence.
