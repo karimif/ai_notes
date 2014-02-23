@@ -735,6 +735,17 @@ Fail = []
 
 
 \section{Lowest cost}
+The {\bf lowest cost algorithm} finds the shortest path from the {\bf start state} to a {\bf goal state} in terms of the aggregated costs per path as actions can have different costs.
+\\
+Algorithm~\ref{python:lowestcost} contains an implementation in Python. It looks relatively similar to the shortest path algorithm in Algorithm~\ref{python:shortestpath}.
+Nonetheless, there are some remarkable differences, including:
+First, it has another parameter, {\em action\_cost}, a function which returns the cost of an action.
+Second, path contain action costs and total costs.
+Third, the frontier is sorted by total path costs.
+Fourth, the goal test is postponed and moved to the popping of successor states from the frontier. Only then, a path can be correctly classified as the lowest cost path. If it was done before directly after the successor generation, as in the shortest path algorithm, it might return a non-lowest cost path.
+Fifth, the previous difference implies that a goal test at the very beginning of the algorithm is not necessary any more and therefore got dropped.
+
+
 \begin{algorithm}
 \caption{Lowest cost}
 \label{python:lowestcost}
@@ -758,7 +769,8 @@ def lowest_cost_search(start, successors, is_goal, action_cost):
     return Fail
 
 def path_cost(path):
-    "The total cost of a path (which is stored in a tuple with the final action)."
+    "The total cost of a path (which is stored in a tuple
+    with the final action)."
     if len(path) < 3:
         return 0
     else:
