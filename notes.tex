@@ -1988,7 +1988,7 @@ $h_{\Theta}(x)$ & $=$ & $a_1^{(3)}$ $=$ $g(\Theta_{10}^{(2)}a_0^{(2)} + \Theta_{
 \subsection{Backpropagation}
 Training a neural network requires to $\min\limits_{\Theta}J(\Theta)$, e.g. through gradient descent which requires $J(\Theta)$ and $\frac{\partial}{\partial \Theta_{ij}^{(l)}}J(\Theta)$. {\bf Backpropagation} is a method to compute the gradient as described in Figure~\ref{ref:backpropagation}. This algorithm can also be vectorized. The derivative of the Sigmoid function is defined as follows:
 \begin{definition}[Derivative of Sigmoid function] ~\\
-$g^{'}(x)=g(x)*(1-g(x))$
+$g^{'}(x)=g(x)(1-g(x))$
 \end{definition}
 
 \begin{figure}[h!]
