@@ -1828,11 +1828,11 @@ $\frac{1}{m}\sum_{i=1}^m \lVert x^{(i)} \Vert^2$
 
 Choosing the number of principal components $K$ comes with a loss of information. Usually, a fixed percentage such as 99\% or 95\% of the {\bf variance} must be {\bf retained}:
 \begin{align*}
-\frac{\frac{1}{m}\sum_{i=1}^m \lVert x^{(i)}-x_{approx}^{(i)} \Vert^2}{\frac{1}{m}\sum_{i=1}^m \lVert x^{(i)} \Vert^2} \le 0.01 \mbox(1\%)
+\frac{\frac{1}{m}\sum_{i=1}^m \lVert x^{(i)}-x_{approx}^{(i)} \Vert^2}{\frac{1}{m}\sum_{i=1}^m \lVert x^{(i)} \Vert^2} \le 0.01\:\mbox(1\%)
 \end{align*}
 This measure is more useful than the actual amount of dimensions that were reduced. Then, the smallest $K$ to satisfy this equation is chosen. Computing $K$ this way is inefficient as PCA may need to be performed a lot times to choose the smallest $K$. Alternatively, the retained variance can be computed for a given $K$:
 \begin{align*}
-\frac{\sum_{i=1}^{K}S_{ii}}{\sum_{i=1}^{n}S_{ii}} \ge 0.99 \mbox(99\%)
+\frac{\sum_{i=1}^{K}S_{ii}}{\sum_{i=1}^{n}S_{ii}} \ge 0.99\:\mbox(99\%)
 \end{align*}
 
 Usually, the large variances occur in the first $K<n$ principal components and then drops off. Therefore, the most relevant dynamics occur only in the first $K$ dimensions.
@@ -1851,7 +1851,7 @@ Non-Gaussian features can be approximated as Gaussian through operations such as
 \label{ref:anomalydetection}
 \begin{algorithmic}
 \State Choose features $x_i$ that might be indicative of anomalous examples
-\State $\mu_j \gets \frac{1}{m}\sum_{i=1}^{m}x_j^{(i)}$ \Comment{Fits parameters $\mu_1,...,\mu_n,\sigma_1,...,\sigma_n$}
+\State $\mu_j \gets \frac{1}{m}\sum_{i=1}^{m}x_j^{(i)}$ \Comment{Fits parameters $\mu_1,...,\mu_n,\sigma_1^2,...,\sigma_n^2$}
 \State $\sigma_j^2 \gets \frac{1}{m}\sum_{i=1}^{m}(x_j^{(i)}-\mu_j)^2$
 \State For new example $x$: $p(x) \gets \prod_{j=1}^np(x_j,\mu_j,\sigma_j^2)$ \Comment{Assumes independence between features}
 \State Anomaly if $p(x) < \epsilon$
