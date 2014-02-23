@@ -1197,9 +1197,9 @@ One important property of decision trees is that it is possible for a human to u
 $J(\theta) = \frac{1}{2m}\sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})^2$
 \end{definition}
 
-Where the hypothesis $h_\theta(x^{(i)})$ is given by the linear model:
+Where the hypothesis $h_\theta(x)$ is given by the linear model:
 \begin{definition}[Hypothesis]
-$h_\theta(x^{(i)}) = \theta^{T}x = \theta_0 x_0 + \theta_1 x_1 + ... + \theta_n x_n$ with $x_0 = 1$
+$h_\theta(x) = \theta^{T}x = \theta_0 x_0 + \theta_1 x_1 + ... + \theta_n x_n$ with $x_0 = 1$
 \end{definition}
 
 The parameters of the model to be learned are the $\theta_j$ values. One way to do this is to use the batch {\bf gradient descent} algorithm. Through is step, the parameters $\theta_j$ come closer to the optimal values that will achieve the lowest cost $J(\theta)$. If the {\bf learning rate} $\alpha$ is too large, gradient descent might not converge and overshoot the minimum after a certain amount of iterations. Gradient descent might generally not find the global but the local minimum. Gradient descent returns the global minimum for convex or bowl-shaped cost functions which do not have local optima. {\bf Feature normalization} allows to perform gradient descent quickly by normalizing each feature to the mean and scaling it to its standard deviation.
