@@ -689,11 +689,12 @@ Frontier size ($n$ levels) & $2n$ & $2n$ & $n$\\
 \end{table}
 
 \section{Shortest path algorithm}
-The {\bf shortest path} algorithms finds the shortest path from the {\bf start state} to a {\bf goal state}. Each state might have a number of {\bf successors}.
+The {\bf shortest path algorithm} finds the shortest path from the {\bf start state} to a {\bf goal state}.
+Each state might have a number of {\bf successors}. Algorithm~\ref{python:shortestpath} implements the shortest path algorithm.
 
 \begin{algorithm}
-\caption{Sample Markov localization}
-\label{ref:shortestpathpython}
+\caption{Shortest path}
+\label{python:shortestpath}
 \begin{python}
 def shortest_path_search(start, successors, is_goal):
     """Find the shortest path from start state to a state
@@ -718,6 +719,11 @@ def shortest_path_search(start, successors, is_goal):
 Fail = []
 \end{python}
 \end{algorithm}
+
+
+\section{Lowest cost algorithm}
+To come.
+
 
 \section{Generalizing search to solve problems}
 To come.
