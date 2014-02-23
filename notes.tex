@@ -2243,7 +2243,10 @@ Large data sets  help to increase the accuracy of {\bf low-bias} learning algori
 One way to find out if the algorithm has low bias is to randomly pick a lower amount (e.g. 1000) of  examples of this set and plot its learning curves.
 
 \subsection{Stochastic gradient descent}
-Large data sets come with new problems, e.g. a lack of {\bf scalability} . (Batch) gradient descent as defined in Algorithm~\ref{ref:gradientdescent} often converges within a few steps in the global minimum. But each summation update step of gradient descent can become computationally expensive for large data sets, e.g. 100 million records. The entire set cannot be stored in RAM and needs to be retrieved from hard disk or streamed.
+Large data sets come with new problems, e.g. a lack of {\bf scalability}.
+(Batch) gradient descent as defined in Algorithm~\ref{ref:gradientdescent} often converges within a few steps in the global minimum.
+But each summation update step of gradient descent can become computationally expensive for large data sets, e.g. 100 million records.
+The entire set cannot be stored in RAM and needs to be retrieved from hard disk or streamed.
 
 \begin{algorithm}
 \caption{Batch gradient descent}
@@ -2301,7 +2304,7 @@ Large data sets come with new problems, e.g. a lack of {\bf scalability} . (Batc
 \State $K\gets $ split count
 \Repeat
 \For{$k=1..K$}
-\State Distribute computation: $temp_j^{(k)}\gets \sum_{i=k\frac{m}{K}+1}^{(k + 1)\frac{m}{K}}(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)}$ (for all $j$)
+\State Distribute computation: $temp_j^{(k)}\gets \sum_{i=(K-1)\frac{m}{K}+1}^{i+\frac{m}{K}-1}(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)}$ (for all $j$)
 \EndFor
 \State $\theta_j  \gets \theta_j - \alpha \frac{1}{m}\sum_{k=1}^{\frac{m}{K}}temp_j^{(k)}$ (for all $j$)
 \Until{forever}
