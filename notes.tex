@@ -1764,7 +1764,10 @@ Problem solution can be either atomic (e.g. an action) or compound (e.g. a seque
 Cases can be represented in various ways: feature vectors, semantic nets, objects, frames, rules.
 
 \section{Applying PCA}
-The {\bf principal component analysis} (PCA) presented in Section~\ref{ref:pcasection} can be used in supervised learning. It allows to map high-dimensional data (such as images or emails in spam filters) to lower dimensions to speed up a learning algorithm. The mapping $x^{(i)}\rightarrow z^{(i)}$ should be defined by running PCA only on the training set. This mapping can be applied as well to the examples $x^{(i)}_{cv}$ and $x^{(i)}_{test}$ in the cross validation and test sets. \\
+The {\bf principal component analysis} (PCA) presented in Chapter~\ref{ref:pcasection} can be used in supervised learning.
+It allows to map high-dimensional data (such as images or emails in spam filters) to lower dimensions to speed up a learning algorithm.
+The mapping $x^{(i)}\rightarrow z^{(i)}$ should be defined by running PCA only on the training set.
+This mapping can be applied as well to the examples $x^{(i)}_{cv}$ and $x^{(i)}_{test}$ in the cross validation and test sets. \\
 
 PCA should only be used if the amount of initial dimensions significantly slows down the learning algorithm. PCA should not be used to prevent overfitting by reducing the amount of features. This might work but drops potentially relevant information. Regularization is a better way to address overfitting.
 
