@@ -799,8 +799,10 @@ def add_to_frontier(frontier, path):
 \end{algorithm}
 
 
-\section{Generalizing search to solve problems}
-To come.
+\section{Applying generalized search to problem solving}
+The previously discussed implementations of shortest path and lowest cost are abstract as the determination of successors, actions, costs and goals are done by concrete implementations of these functions.
+This separation allows to solve a number of problems easily by only writing concrete implementations without implementing a single line to traverse the {\bf state space}.
+
 
 \section{A* search}
 $A*$ expands the path with that has the minimum value $f$.
