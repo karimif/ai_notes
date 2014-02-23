@@ -689,8 +689,8 @@ Frontier size ($n$ levels) & $2n$ & $2n$ & $n$\\
 \end{table}
 
 \section{Shortest path}
-The {\bf shortest path algorithm} finds the shortest path from the {\bf start state} to a {\bf goal state} in terms of path elements which all have the same value.
-Each state might have a number of {\bf successors}. Algorithm~\ref{python:shortestpath} implements the shortest path algorithm.
+The {\bf shortest path algorithm} finds the shortest path from the {\bf start state} to a {\bf goal state} in terms of the number of path elements which all have a uniform cost.
+Each state might have a number of {\bf successors}. Algorithm~\ref{python:shortestpath} contains an implementation in Python.
 \\
 The following three parameters of the algorithm are:
 \begin{itemize}
@@ -698,7 +698,7 @@ The following three parameters of the algorithm are:
 \item {\em successors}: function which returns the successors of a state and the corresponding actions
 \item {\em is\_goal}: function which returns true of a state is a goal
 \end{itemize}
-The {\bf frontier} contains all successors of previously visited states. The frontier is sorted by path length in ascending order. Visited states will not be visited again.
+The {\bf frontier} contains all non-visited successors of previously visited states. It is sorted by path length in ascending order. Visited states will not be visited again.
 The algorithm picks the first element of the frontier and {\bf expands}, meaning to go through its successors.
 A successor might be a goal state. If so, the algorithm returns the successful path.
 If not, the new state is added to the end of the frontier.
@@ -714,7 +714,7 @@ def shortest_path_search(start, successors, is_goal):
     such that is_goal(state) is true."""
     if is_goal(start):
         return [start]
-    explored = set() # set of states we have visited
+    explored = set([start]) # set of states we have visited
     frontier = [ [start] ] # ordered list of paths we have blazed
     while frontier:
         path = frontier.pop(0)
