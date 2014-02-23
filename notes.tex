@@ -1932,7 +1932,12 @@ A neuron has {\bf inputs} and an {\bf output} as seen in Figure~\ref{ref:neuron}
 $h_\theta(x) = \frac{1}{1+e^{-\theta^{T}x}}$
 \end{definition}
 
-Each neural network has an {\bf input layer}, $\ge 0$ {\bf hidden layers} and an {\bf output layer} as seen in Figure~\ref{ref:neuralnetwork}. The value $a_i^{(j)}$ is called {\bf activation} or {\bf forward propagation} of unit $i$ in layer $j$. $\Theta^{(j)}$ is a matrix of weights to map from layer $j$ to layer $j+1$. If network has $s_j$ units in layer $j$, $s_{j+1}$ units in layer $j+1$, then $\Theta^{(j)}$ will be of dimension $s_{j+1}\times (s_j + 1)$. For the neural network in Figure~\ref{ref:neuralnetwork}, the mapping is defined in Figure~\ref{ref:neuralnetworkmapping}. Once trained, a neural network predicts $1$ (positive classification) if $h_\theta(x) \ge 0.5$ for a new example, otherwise $0$ (negative classification). \\
+Each neural network has an {\bf input layer}, $\ge 0$ {\bf hidden layers} and an {\bf output layer} as seen in Figure~\ref{ref:neuralnetwork}.
+The value $a_i^{(j)}$ is called {\bf activation} or {\bf forward propagation} of unit $i$ in layer $j$.
+$\Theta^{(j)}$ is a matrix of weights to map from layer $j$ to layer $j+1$.
+If the network has $s_j$ units in layer $j$, $s_{j+1}$ units in layer $j+1$, then $\Theta^{(j)}$ is of dimension $s_{j+1}\times (s_j + 1)$.
+For the neural network in Figure~\ref{ref:neuralnetwork}, the mapping is defined in Figure~\ref{ref:neuralnetworkmapping}.
+Once trained, a neural network predicts $1$ (positive classification) if $h_\theta(x) \ge 0.5$ for a new example, otherwise $0$ (negative classification). \\
 
 The cost function for $K$ output units and $L$ layers is defined as follows (with $h_\Theta(x) \in \mathbb{R}^K$ and $(h_\Theta(x))_i = i^{th}$ output):
 
