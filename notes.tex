@@ -2284,7 +2284,7 @@ $g^{'}(x)=g(x)(1-g(x))$
 \State $\Delta_{ij}^{(l)} \gets 0$ (for all $l,i,j$)
 
 \For{$i=1$ to $m$}
-\State $a^{(i)} \gets x^{(i)}$
+\State $a^{(1)} \gets x^{(i)}$
 \State Perform forward propagation to compute $a^{(l)}$ for $l=2,3,...,L$
 \State Using $y^{(i)}$, compute $\delta^{(L)}=a^{(L)}-y^{(i)}$ \Comment {"error"}
 \State Compute $\delta^{(L-1)},\delta^{(L-2)},...,\delta^{(2)}$, e.g. $\delta^{(2)}=(\Theta^{(2)})^T\delta^{(3)}.*g^{'}(z^{(2)})$ \Comment{element-wise multiplication}
