@@ -933,9 +933,14 @@ $\rightarrow$&$\rightarrow$&$\uparrow$&$\uparrow$&&* \\
 \chapter{Planning}
 \label{ref:chapterplanning}
 
-A {\bf planning agent} interleaves planning and execution. This is necessary for environments which are {\bf stochastic}, {\bf multi agent}, {\bf partially observable} or {\bf unknown}. \\
-Plans might be {\bf hierarchical} which consist of actions on different levels. Some of these levels can be planned ahead, others while executing the plan. Example: A* can find a route from A to Z but the route might change due to accidents. Low-level actions such as turning the steering wheel or pressing the pedals cannot be planned well-ahead in time in the real world. \\
-Plan sequences might be infinite in stochastic environments. For example a robot is not guaranteed to move properly and can only perform certain actions once it successfully moved. A loop-based representation allows to describe such a plan efficiently. \\
+A {\bf planning agent} interleaves planning and execution.
+This is necessary for environments which are {\bf stochastic}, {\bf multi agent}, {\bf partially observable} or {\bf unknown}. \\
+Plans might be {\bf hierarchical} which consist of actions on different levels. Some of these levels can be planned ahead, others while executing the plan.
+Example: A* can find a route from A to Z but the route might change due to accidents.
+Low-level actions such as turning the steering wheel or pressing the pedals cannot be planned well-ahead in time in the real world. \\
+Plan sequences might be infinite in stochastic environments.
+For example a robot is not guaranteed to move properly and can only perform certain actions once it successfully moved.
+A loop-based representation allows to describe such a plan efficiently. \\
 {\bf Scheduling} of tasks is another planning problem that has been extensively studied in the field of operating systems. \\
 Chapter~\ref{chapter:reinforcementlearning} covers {\bf reinforcement learning} which can be utilized to do efficient planning under uncertainty.
 
