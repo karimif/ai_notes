@@ -2271,30 +2271,31 @@ $h_{\Theta}(x)$ & $=$ & $a_1^{(3)}$ $=$ $g(\Theta_{10}^{(2)}a_0^{(2)} + \Theta_{
 \end{figure}
 
 \subsection{Backpropagation}
-Training a neural network requires to $\min\limits_{\Theta}J(\Theta)$, e.g. through gradient descent which requires $J(\Theta)$ and $\frac{\partial}{\partial \Theta_{ij}^{(l)}}J(\Theta)$. {\bf Backpropagation} is a method to compute the gradient as described in Figure~\ref{ref:backpropagation}. This algorithm can also be vectorized. The derivative of the Sigmoid function is defined as follows:
+Training a neural network requires to $\min\limits_{\Theta}J(\Theta)$, e.g. through gradient descent which requires $J(\Theta)$ and $\frac{\partial}{\partial \Theta_{ij}^{(l)}}J(\Theta)$. {\bf Backpropagation} is a method to compute the gradient as described in Algorithm~\ref{alg:backpropagation}. This algorithm can also be vectorized. The derivative of the Sigmoid function is defined as follows:
 \begin{definition}[Derivative of Sigmoid function] ~\\
 $g^{'}(x)=g(x)(1-g(x))$
 \end{definition}
 
-\begin{figure}[h!]
-Training set $\{(x^{(1)},y^{(1)}),...,(x^{(m)},y^{(m)})\}$ \\
-Set $\Delta_{ij}^{(l)}=0$ (for all $l,i,j$). \\
-For $i=1$ to $m$
-\begin{tabbing}
-~~~~ \= Set $a^{(i)}=x^{(i)}$ \\
-\> Perform forward propagation to compute $a^{(l)}$ for $l=2,3,...,L$ \\
-\> Using $y^{(i)}$, compute $\delta^{(L)}=a^{(L)}-y^{(i)}$ ("error") \\
-\> Compute $\delta^{(L-1)},\delta^{(L-2)},...,\delta^{(2)}$, e.g. $\delta^{(2)}=(\Theta^{(2)})^T\delta^{(3)}.*g^{'}(z^{(2)})$ (element-wise multiplication) \\
-\> $\Delta_{ij}^{(l)}:=\Delta_{ij}^{(l)}+a_j^{(l)}\delta_i^{(l+1)}$ \\
-$D_{ij}^{(l)}:=\frac{1}{m}\Delta_{ij}^{(l)}+\frac{\lambda}{m}\Theta_{ij}^{(l)}$ if $j\ne0$ (no regularization of bias terms) \\
-$D_{ij}^{(l)}:=\frac{1}{m}\Delta_{ij}^{(l)}$ if $j=0$
-\\
-\\
-$\frac{\partial}{\partial \Theta_{ij}^{(l)}}J(\Theta)=D_{ij}^{(l)}$
-\end{tabbing}
-\caption{Backpropagation algorithm}
-\label{ref:backpropagation}
-\end{figure}
+\begin{algorithm}[h!]
+\caption{Backpropagation}
+\label{alg:backpropagation}
+\begin{algorithmic}
+\State Training set $\{(x^{(1)},y^{(1)}),...,(x^{(m)},y^{(m)})\}$
+\State $\Delta_{ij}^{(l)} \gets 0$ (for all $l,i,j$)
+
+\For{$i=1$ to $m$}
+\State $a^{(i)} \gets x^{(i)}$
+\State Perform forward propagation to compute $a^{(l)}$ for $l=2,3,...,L$
+\State Using $y^{(i)}$, compute $\delta^{(L)}=a^{(L)}-y^{(i)}$ \Comment {"error"}
+\State Compute $\delta^{(L-1)},\delta^{(L-2)},...,\delta^{(2)}$, e.g. $\delta^{(2)}=(\Theta^{(2)})^T\delta^{(3)}.*g^{'}(z^{(2)})$ \Comment{element-wise multiplication}
+\State $\Delta_{ij}^{(l)} \gets \Delta_{ij}^{(l)}+a_j^{(l)}\delta_i^{(l+1)}$
+\EndFor
+\State $D_{ij}^{(l)} \gets \frac{1}{m}\Delta_{ij}^{(l)}$ if $j=0$
+\State $D_{ij}^{(l)} \gets \frac{1}{m}\Delta_{ij}^{(l)}+\frac{\lambda}{m}\Theta_{ij}^{(l)}$ if $j\ne0$ \Comment{no regularization of bias terms}
+\State $\frac{\partial}{\partial \Theta_{ij}^{(l)}}J(\Theta) \gets D_{ij}^{(l)}$
+
+\end{algorithmic}
+\end{algorithm}
 
 There is no $\delta^{(1)}$ as no error term is associated with the input values.
 \\
