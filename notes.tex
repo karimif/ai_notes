@@ -802,6 +802,45 @@ def add_to_frontier(frontier, path):
 \section{Applying generalized search to problem solving}
 The previously discussed implementations of shortest path and lowest cost are abstract as the determination of successors, actions, costs and goals are done by concrete implementations of these functions.
 This separation allows to solve a number of problems easily by only writing concrete implementations without implementing a single line to traverse the {\bf state space}.
+\\
+In this section, the {\bf pouring problem}, is solved this way. In the standard pouring problem, there are two classes of different capacity.
+Legal actions are filling a class, emptying a class or entirely pouring a class into the other one (glutting is not legal).
+Given an initial filling, a goal filling must be achieved by applying these actions.
+The shortest path of actions must be returned or no path in case the problem is not solvable for a certain configuration of start, goal and capacities.
+\\
+Algorithm~\ref{python:pouringproblem} contains an implementation of the function and a sample configuration:
+\begin{itemize}
+\item Capacities: $418$ and $986$
+\item Start: $0$ and $0$
+\item Goal: $6$ and $0$
+\end{itemize}
+
+
+\begin{algorithm}
+\caption{Pouring problem}
+\label{python:pouringproblem}
+\begin{python}
+START = (0, 0)
+GOAL = (6, 0)
+
+def successors(X, Y):
+    def sc(state):
+        x, y = state
+        assert x <= X and y <= Y
+        return {((0, y+x) if y+x <= Y else (x-(Y-y), (Y))): 'x->y',
+                ((x+y, 0) if x+y <= X else (X, (y-(X-x)))): 'x<-y',
+                (X, y): 'fill x',
+                (x, Y): 'fill y',
+                (0, y): 'empty x',
+                (x, 0): 'empty y'}
+    return sc
+
+path = shortest_path_search(START,
+       successors(418, 986),
+       lambda state: state == GOAL)
+\end{python}
+\end{algorithm}
+
 
 
 \section{A* search}
