@@ -1012,8 +1012,76 @@ $OPERATOR$ $PRECEDENCE$ & $:$ & $\neg,=,\wedge,\vee,\implies,\iff$ \\
 Views relations and functions as objects themselves. Therefore, it allows more powerful expressions, e.g. relations on relations: $\forall_R$ $Transitive(R)\iff \forall a,b,c$ $R(a,b)\wedge R(b,c) \implies R(a,c)$
 
 \section{Solving logic puzzles}
-To come.
+The {\bf zebra puzzle} is a well-known {\bf logic puzzle} invented by Albert Einstein:
 
+\begin{enumerate}
+\item There are five houses.
+\item The Englishman lives in the red house.
+\item The Spaniard owns the dog.
+\item Coffee is drunk in the green house.
+\item The Ukrainian drinks tea.
+\item The green house is immediately to the right of the ivory house.
+\item The Old Gold smoker owns snails.
+\item Kools are smoked in the yellow house.
+\item Milk is drunk in the middle house.
+\item The Norwegian lives in the first house.
+\item The man who smokes Chesterfields lives in the house next to the man with the fox.
+\item Kools are smoked in the house next to the house where the horse is kept.
+\item The Lucky Strike smoker drinks orange juice.
+\item The Japanese smokes Parliaments.
+\item The Norwegian lives next to the blue house.
+\end{enumerate}
+
+There are two questions:
+\begin{enumerate}
+\item Who drinks water?
+\item Who owns the zebra?
+\end{enumerate}
+
+Algorithm~\ref{python:zebrapuzzleslow} is an initial implementation to solve the zebra puzzle. As there are $5!^5$ permutations, the algorithm is too slow. It uses an iterator to avoid far indentations.
+\\
+
+\begin{algorithm}
+\caption{Inefficient solution of the zebra puzzle}
+\label{python:zebrapuzzleslow}
+\begin{python}
+import itertools
+
+def imright(h1, h2): return h1 - h2  == 1
+
+def nextto(h1, h2): return abs(h1 - h2) == 1
+
+def zebra_puzzle_slow():
+    houses = [first, _, middle, _, _] = [1, 2, 3, 4, 5]
+    orderings = list(itertools.permutations(houses))
+    return next((WATER, ZEBRA)
+                for (Englishman, Spaniard, Ukranian,
+                        Japanese, Norwegian) in orderings
+                for (red, green, ivory, yellow, blue) in orderings
+                for (dog, snails, fox, horse, ZEBRA) in orderings
+                for (coffee, tea, milk, oj, WATER) in orderings
+                for (OldGold, Kools, Chesterfields, LuckyStrike,
+                        Parliaments) in orderings
+                if Englishman is red
+                if Spaniard is dog
+                if coffee is green
+                if Ukranian is tea
+                if imright(green, ivory)
+                if OldGold is snails
+                if Kools is yellow
+                if milk is middle
+                if Norwegian is first
+                if nextto(Chesterfields, fox)
+                if nextto(Kools, horse)
+                if LuckyStrike is oj
+                if Japanese is Parliaments
+                if nextto(Norwegian, blue)
+                )
+\end{python}
+\end{algorithm}
+
+
+% Add reference to measurement baias
 
 
 \chapter{Learning}
