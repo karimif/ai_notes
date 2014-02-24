@@ -1040,6 +1040,12 @@ There are two questions:
 
 Algorithm~\ref{python:zebrapuzzleslow} is an initial implementation to solve the zebra puzzle. As there are $5!^5$ permutations, the algorithm is too slow. It uses an iterator to avoid far indentations.
 \\
+There are multiple strategies to solve this problem faster. First, {\em Prolog} could be used which creates new problem as the language is difficult to use.
+Second, the Python code can be boosted by reshuffling the loops and conditions to exclude unsuccessful paths as soon as possible as implemented in Algorithm~\ref{python:zebrapuzzlefast}.
+\\
+This example demonstrates that computationally difficult problems can be sped up by applying logic and proper heuristics.
+
+% Add reference to measurement baias
 
 \begin{algorithm}
 \caption{Inefficient solution of the zebra puzzle}
@@ -1080,8 +1086,39 @@ def zebra_puzzle_slow():
 \end{python}
 \end{algorithm}
 
+\begin{algorithm}
+\caption{Efficient solution of the zebra puzzle}
+\label{python:zebrapuzzlefast}
+\begin{python}
+def zebra_puzzle():
+    houses = [first, _, middle, _, _] = [1, 2, 3, 4, 5]
+    orderings = list(itertools.permutations(houses))
+    return next((WATER, ZEBRA)
+                for (red, green, ivory, yellow, blue) in orderings
+                if imright(green, ivory)
+                for (Englishman, Spaniard, Ukranian,
+                         Japanese, Norwegian) in orderings
+                if Englishman is red
+                if Norwegian is first
+                if nextto(Norwegian, blue)
+                for (coffee, tea, milk, oj, WATER) in orderings
+                if coffee is green
+                if Ukranian is tea
+                if milk is middle
+                for (OldGold, Kools, Chesterfields, LuckyStrike,
+                        Parliaments) in orderings
+                if Kools is yellow
+                if LuckyStrike is oj
+                if Japanese is Parliaments
+                for (dog, snails, fox, horse, ZEBRA) in orderings
+                if Spaniard is dog
+                if OldGold is snails
+                if nextto(Chesterfields, fox)
+                if nextto(Kools, horse)
+                )
+\end{python}
+\end{algorithm}
 
-% Add reference to measurement baias
 
 
 \chapter{Learning}
