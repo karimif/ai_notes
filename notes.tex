@@ -2180,9 +2180,14 @@ This algorithm automatically captures correlations between features. It is compu
 
 
 \chapter{Neural networks}
+{\bf Neural networks} are a powerful learning method that is inspired by the brain.
+A neuron has {\bf inputs} and an {\bf output} as seen in Figure~\ref{ref:neuron}.
+A {\bf neural network} consists of layers of {\bf neurons}:
+Each neural network has an {\bf input layer}, $\ge 0$ {\bf hidden layers} and an {\bf output layer} as seen in Figure~\ref{ref:neuralnetwork}.
+
 \label{chapter:neuralnetworks}
 \section{Neural network}
-A neuron has {\bf inputs} and an {\bf output} as seen in Figure~\ref{ref:neuron}. A {\bf neural network} consists of layers of {\bf neurons}. Each layer has a {\bf bias term} of value 1. The parameters $\theta_j$ are called {\bf weights} in some sources. The hypothesis is called {\bf Sigmoid activation function}.
+Each layer has a {\bf bias term} of value 1. The parameters $\theta_j$ are called {\bf weights} in some sources. The hypothesis is called {\bf Sigmoid activation function}.
 
 \begin{figure}[h!]
 \centering
@@ -2212,7 +2217,6 @@ A neuron has {\bf inputs} and an {\bf output} as seen in Figure~\ref{ref:neuron}
 $h_\theta(x) = \frac{1}{1+e^{-\theta^{T}x}}$
 \end{definition}
 
-Each neural network has an {\bf input layer}, $\ge 0$ {\bf hidden layers} and an {\bf output layer} as seen in Figure~\ref{ref:neuralnetwork}.
 The value $a_i^{(j)}$ is called {\bf activation} or {\bf forward propagation} of unit $i$ in layer $j$.
 $\Theta^{(j)}$ is a matrix of weights to map from layer $j$ to layer $j+1$.
 If the network has $s_j$ units in layer $j$, $s_{j+1}$ units in layer $j+1$, then $\Theta^{(j)}$ is of dimension $s_{j+1}\times (s_j + 1)$.
