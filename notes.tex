@@ -2236,7 +2236,8 @@ The {\bf perceptron learning rule} is defined in Algorithm~\ref{alg:perceptron} 
 \item If $y$ is 0 but $h(x)$ is $1$, then w is decreased when the corresponding input $x^{(i)}$ is positive and increased when $x^{(i)}$ is negative. This makes sense, because we want to make $w\cdot x$ smaller so that $h(x)$ outputs a $0$.
 \end{itemize}
 
-The hard nature of the threshold causes some problems: the hypothesis $h(x)$ is not differentiable and is in fact a discontinuous function of its inputs and its weights. This makes learning with the perceptron rule a very unpredictable adventure.
+The hard nature of the threshold causes some problems: the hypothesis $h(x)$ is not differentiable and is in fact a discontinuous function of its inputs and its weights. This makes learning with the perceptron rule a very unpredictable adventure. \\
+Nonetheless, the perceptron is very fast and can be applied to large data sets.
 
 \begin{algorithm}[h!]
 \caption{Perceptron learning rule}
