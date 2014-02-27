@@ -2186,6 +2186,31 @@ A neuron has {\bf inputs} and an {\bf output} as seen in Figure~\ref{ref:neuron}
 A {\bf neural network} consists of layers of {\bf neurons}:
 Each neural network has an {\bf input layer}, $\ge 0$ {\bf hidden layers} and an {\bf output layer} as seen in Figure~\ref{ref:neuralnetwork}.
 
+
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}[
+  node distance=1cm and 1cm,
+  mynode/.style={draw,circle,align=center}
+]
+\node[mynode] (C) {C};
+\node[mynode,above left=2cm and 1cm of C] (X0) {$1$};
+\node[mynode,above left=1cm and 1cm of C] (X1) {$x_1$};
+\node[mynode,above left=0cm and 1cm of C] (X2) {$x_2$};
+\node[mynode,below left=0cm and 1cm of C,draw=white] (X3) {...};
+\node[mynode,below left=1cm and 1cm of C] (XN) {$x_n$};
+\node[mynode,right=1cm and 1cm of C,draw=white] (h) {$h_{\theta}(x)$};
+\path (X0) edge[-latex] (C)
+(X1) edge[-latex] (C)
+(X2) edge[-latex] (C)
+(X3) edge[-latex] (C)
+(XN) edge[-latex] (C)
+(C) edge[-latex] (h);
+\end{tikzpicture}
+\caption{Neuron with bias term $x_0=1$}
+\label{ref:neuron}
+\end{figure}
+
 \section{Perceptrons}
 A {\bf perceptron} is a linear binary classified. In the context of neural networks, it is an artificial neuron using the {\bf heaviside step function} as the activation function.
 The perceptron hypothesis maps an input $x$ to an output value with $x_0=1$.
@@ -2234,30 +2259,6 @@ Second, the learning rate can be changed during the learning to converge faster.
 
 \section{Neural network}
 Each layer has a {\bf bias term} of value 1. The parameters $\theta_j$ are called {\bf weights} in some sources. The hypothesis is called {\bf Sigmoid activation function}.
-
-\begin{figure}[h!]
-\centering
-\begin{tikzpicture}[
-  node distance=1cm and 1cm,
-  mynode/.style={draw,circle,align=center}
-]
-\node[mynode] (C) {C};
-\node[mynode,above left=2cm and 1cm of C] (X0) {$1$};
-\node[mynode,above left=1cm and 1cm of C] (X1) {$x_1$};
-\node[mynode,above left=0cm and 1cm of C] (X2) {$x_2$};
-\node[mynode,below left=0cm and 1cm of C,draw=white] (X3) {...};
-\node[mynode,below left=1cm and 1cm of C] (XN) {$x_n$};
-\node[mynode,right=1cm and 1cm of C,draw=white] (h) {$h_{\theta}(x)$};
-\path (X0) edge[-latex] (C)
-(X1) edge[-latex] (C)
-(X2) edge[-latex] (C)
-(X3) edge[-latex] (C)
-(XN) edge[-latex] (C)
-(C) edge[-latex] (h);
-\end{tikzpicture}
-\caption{Neuron with bias term $x_0=1$}
-\label{ref:neuron}
-\end{figure}
 
 \begin{definition}[Sigmoid activation function]
 $h_\theta(x) = \frac{1}{1+e^{-\theta^{T}x}}$
