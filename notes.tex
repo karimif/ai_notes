@@ -2187,27 +2187,49 @@ A {\bf neural network} consists of layers of {\bf neurons}:
 Each neural network has an {\bf input layer}, $\ge 0$ {\bf hidden layers} and an {\bf output layer} as seen in Figure~\ref{ref:neuralnetwork}.
 
 \section{Perceptrons}
-A {\bf perceptron} is a linear binary classified. In the context of neural networks, it is an artificial neuron using the {\bf heaviside step function} as the activation function. The [er
+A {\bf perceptron} is a linear binary classified. In the context of neural networks, it is an artificial neuron using the {\bf heaviside step function} as the activation function.
+The perceptron hypothesis maps an input $x$ to an output value with $x_0=1$.
 
-\begin{definition}[heaviside step function]
-$h(x) = \left\{
+\begin{definition}[Heaviside step function]
+$heaviside(x) = \left\{
 \begin{array}{lll}
 1  & \mbox{if } x \ge 0 \\
-0  & \mbox{if } x < 0
+0  & \mbox{otherwise}
 \end{array}
 \right.$
 \end{definition}
 
-The perceptron maps an input $x$ to an output value:
-\begin{align*}
-f(x) = \left\{
-\begin{array}{lll}
-1  & \mbox{if } wx+b > 0 \\
-0  & \mbox{otherwise}
-\end{array}
-\right.
-\end{align*}
+\begin{definition}[Perceptron hypothesis]
+$h(x) = heaviside(w\cdot x)$
+\end{definition}
 
+
+The {\bf perceptron learning rule} is defined in Algorithm~\ref{alg:perceptron} with learning rate $\alpha$. The update step is:
+\begin{itemize}
+\item If the output is correct, i.e. $y = h(x)$, then the weights are not changed.
+\item If $y$ is $1$ but $h(x)$ is $0$, then $w$ is increased when the corresponding input $x^{(i)}$ is positive and decreased when $x^{(i)}$ is negative. This makes sense, because we want to make $w\cdot x$ bigger so that $h(x)$ outputs a $1$.
+\item If $y$ is 0 but $h(x)$ is $1$, then w is decreased when the corresponding input $x^{(i)}$ is positive and increased when $x^{(i)}$ is negative. This makes sense, because we want to make $w\cdot x$ smaller so that $h(x)$ outputs a $0$.
+\end{itemize}
+
+The hard nature of the threshold causes some problems: the hypothesis $h(x)$ is not differentiable and is in fact a discontinuous function of its inputs and its weights. This makes learning with the perceptron rule a very unpredictable adventure.
+
+\begin{algorithm}[h!]
+\caption{Perceptron learning rule}
+\label{alg:perceptron}
+\begin{algorithmic}
+\State Training set $\{(x^{(1)},y^{(1)}),...,(x^{(m)},y^{(m)})\}$
+\State $w \gets [0,...,0]^T$ \Comment{Length is the number $n+1$ of features}
+
+\For{$i=1$ to $m$}
+\State $w_j \gets w_j + \alpha(y^{(i)} - h(x^{(i)})) x^{(i)}_j$ \Comment{For all features $j$}
+\EndFor
+
+\end{algorithmic}
+\end{algorithm}
+
+There are various other definitions including the following ones:
+First, the training examples can be chosen randomly from the training set. Then, the training is continued until the algorithm converges.
+Second, the learning rate can be changed during the learning to converge faster.
 
 
 \section{Neural network}
