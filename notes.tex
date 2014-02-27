@@ -2187,7 +2187,28 @@ A {\bf neural network} consists of layers of {\bf neurons}:
 Each neural network has an {\bf input layer}, $\ge 0$ {\bf hidden layers} and an {\bf output layer} as seen in Figure~\ref{ref:neuralnetwork}.
 
 \section{Perceptrons}
-To come.
+A {\bf perceptron} is a linear binary classified. In the context of neural networks, it is an artificial neuron using the {\bf heaviside step function} as the activation function. The [er
+
+\begin{definition}[heaviside step function]
+$h(x) = \left\{
+\begin{array}{lll}
+1  & \mbox{if } x \ge 0 \\
+0  & \mbox{if } x < 0
+\end{array}
+\right.$
+\end{definition}
+
+The perceptron maps an input $x$ to an output value:
+\begin{align*}
+f(x) = \left\{
+\begin{array}{lll}
+1  & \mbox{if } wx+b > 0 \\
+0  & \mbox{otherwise}
+\end{array}
+\right.
+\end{align*}
+
+
 
 \section{Neural network}
 Each layer has a {\bf bias term} of value 1. The parameters $\theta_j$ are called {\bf weights} in some sources. The hypothesis is called {\bf Sigmoid activation function}.
