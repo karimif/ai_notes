@@ -2212,6 +2212,38 @@ Each layer has a {\bf bias term} of value 1. The parameters $\theta_j$ are calle
 \label{ref:neuron}
 \end{figure}
 
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}[
+  node distance=1cm and 1cm,
+  mynode/.style={draw,circle,align=center}
+]
+\node[mynode] (A12) {$a_1^{(2)}$};
+\node[mynode,below=0.5cm of A12] (A22) {$a_2^{(2)}$};
+\node[mynode,below=0.5cm of A22] (A32) {$a_3^{(2)}$};
+\node[mynode,left=0cm and 1cm of A12] (X1) {$x_1$};
+\node[mynode,left=0cm and 1cm of A22] (X2) {$x_2$};
+\node[mynode,left=0cm and 1cm of A32] (X3) {$x_3$};
+\node[mynode,right=0cm and 1cm of A22] (L3) {};
+\node[mynode,right=0cm and 1cm of L3,draw=white] (h) {$h_{\Theta}(x)$};
+\path (X1) edge[-latex] (A12)
+(X1) edge[-latex] (A22)
+(X1) edge[-latex] (A32)
+(X2) edge[-latex] (A12)
+(X2) edge[-latex] (A22)
+(X2) edge[-latex] (A32)
+(X3) edge[-latex] (A12)
+(X3) edge[-latex] (A22)
+(X3) edge[-latex] (A32)
+(A12) edge[-latex] (L3)
+(A22) edge[-latex] (L3)
+(A32) edge[-latex] (L3)
+(L3) edge[-latex] (h);
+\end{tikzpicture}
+\caption{Neural network with three layers (bias terms not displayed)}
+\label{ref:neuralnetwork}
+\end{figure}
+
 \section{Perceptrons}
 A {\bf perceptron} is a linear binary classified. In the context of neural networks, it is an artificial neuron using the {\bf heaviside step function} as the activation function.
 The perceptron hypothesis maps an input $x$ to an output value with $x_0=1$.
@@ -2279,38 +2311,6 @@ The cost function for $K$ output units and $L$ layers is defined as follows (wit
 $J(\Theta) = -\frac{1}{m}[\sum_{i=1}^m \sum_{k=1}^K y_k^{(i)}log(h_{\Theta}(x^{(i)}))_k+(1-y_k^{(i)})log(1-h_{\Theta}(x^{(i)}))_k] \\
 + \frac{\lambda}{2m}\sum_{l=1}^{L-1}\sum_{i=1}^{s_{l}}\sum_{j=1}^{s_{l+1}}(\Theta_{ij}^{(l)})^2$
 \end{definition}
-
-\begin{figure}[h!]
-\centering
-\begin{tikzpicture}[
-  node distance=1cm and 1cm,
-  mynode/.style={draw,circle,align=center}
-]
-\node[mynode] (A12) {$a_1^{(2)}$};
-\node[mynode,below=0.5cm of A12] (A22) {$a_2^{(2)}$};
-\node[mynode,below=0.5cm of A22] (A32) {$a_3^{(2)}$};
-\node[mynode,left=0cm and 1cm of A12] (X1) {$x_1$};
-\node[mynode,left=0cm and 1cm of A22] (X2) {$x_2$};
-\node[mynode,left=0cm and 1cm of A32] (X3) {$x_3$};
-\node[mynode,right=0cm and 1cm of A22] (L3) {};
-\node[mynode,right=0cm and 1cm of L3,draw=white] (h) {$h_{\Theta}(x)$};
-\path (X1) edge[-latex] (A12)
-(X1) edge[-latex] (A22)
-(X1) edge[-latex] (A32)
-(X2) edge[-latex] (A12)
-(X2) edge[-latex] (A22)
-(X2) edge[-latex] (A32)
-(X3) edge[-latex] (A12)
-(X3) edge[-latex] (A22)
-(X3) edge[-latex] (A32)
-(A12) edge[-latex] (L3)
-(A22) edge[-latex] (L3)
-(A32) edge[-latex] (L3)
-(L3) edge[-latex] (h);
-\end{tikzpicture}
-\caption{Neural network with three layers (bias terms not displayed)}
-\label{ref:neuralnetwork}
-\end{figure}
 
 \begin{figure}[h!]
 \centering
