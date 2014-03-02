@@ -2448,7 +2448,11 @@ a_i^{(out)} = softmax(o_i^{(out)}) = \frac{e^{o_i^{(out)}}}{\sum_{i=1}^{K} e^{o_
 \end{align*}
 
 Softmax converts a raw value into a posterior probability.
-Each $a_i^{(out)} \in [0,1]$ and $\sum_i a_i^{(out)} = 1$.
+Each $a_i^{(out)} \in [0,1]$ and $\sum_i a_i^{(out)} = 1$.\\
+The derivative of the softmax function is and therefore related to the derivative of the Sigmoid function:
+\begin{align*}
+\frac{\partial softmax(o_i)}{\partial o_i} = softmax(o_i)(1-softmax(o_i))
+\end{align*}
 
 
 \section{Deep learning}
