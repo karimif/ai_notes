@@ -2091,6 +2091,11 @@ $J(c^{(1)}, ..., c^{(m)}, \mu_1, ..., \mu_K)=\frac{1}{m}\sum_{i=1}^m \lVert x^{(
 {\bf Expectation maximization} (EM) is a generalization of k-means using Gaussian models to smoothen the class memberships. The EM result is thus able to accommodate clusters of variable size much better than k-means as well as correlated clusters.
 
 \subsection{Density-based clustering}
+In {\bf density-based clustering} clusters are defined as areas of higher density than the remainder of the data set.
+Objects in these sparse areas - that are required to separate clusters - are usually considered to be noise and border points.
+Most of the previously discussed algorithms do not perform well on density-based clusters.
+{\bf DBSCAN} is the most popular clustering method.
+On a data set consisting of mixtures of Gaussians, these algorithms are nearly always outperformed by methods such as EM clustering that are able to precisely model this kind of data.
 
 
 \section{Principal component analysis}
