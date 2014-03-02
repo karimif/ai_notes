@@ -2098,7 +2098,7 @@ A large $m$ results in smaller memberships $w$ and hence, fuzzier clusters.
 In the limit $m = 1$, the memberships $w$ converge to $0$ or $1$, which implies a crisp partitioning.
 In the absence of experimentation or domain knowledge, $m$ is commonly set to $2$. \\
 
-With fuzzy c-means, the centroid of a cluster is the mean of all points, weighted by their degree of belonging to the cluster $k$ with $K$ clusters in total:
+With {\bf fuzzy c-means} defined in Algorithm~\ref{alg:fuzzycmeans}, the centroid of a cluster is the mean of all points, weighted by their degree of belonging to the cluster $k$ with $K$ clusters in total:
 
 \begin{align*}
 \mu(k) = \frac{\sum_x w_k(x)^mx}{\sum_x w_k(x)^m}
