@@ -2105,7 +2105,7 @@ In the absence of experimentation or domain knowledge, $m$ is commonly set to $2
 \State $w_{i, k} \gets$ random initialization \Comment{Point coefficients for being in the clusters}
 \Repeat
 \For{$k=1$ to $K$}
-\State $\mu_k \gets \mu(k)$ \Comment{Centroid of each cluster}
+\State $\mu_k \gets \mu(k)$ \Comment{Update centroid of each cluster}
 \EndFor
 \For{$i=1$ to $m$}
 \State $w_{i, k} \gets w_k(x^{(i)}) $ \Comment{Update point coefficients for being in the clusters}
