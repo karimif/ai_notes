@@ -2440,7 +2440,16 @@ The following rules can be followed to decide on the network architecture:
 
 
 \subsection{Multi-class classification}
-To come.
+In multi-class classification, the {\bf output layer} can use the {\bf softmax function} instead of Sigmoid:
+
+\begin{align*}
+o_i^{(out)} = \sum_k^{s_{out-1}+1} \Theta_{ik}^{(out-1)}x_k \\
+a_i^{(out)} = softmax(o_i^{(out)}) = \frac{e^{o_i^{(out)}}}{\sum_{i=1}^{K} e^{o_i^{(out)}}}
+\end{align*}
+
+Softmax converts a raw value into a posterior probability.
+Each $a_i^{(out)} \in [0,1]$ and $\sum_i a_i^{(out)} = 1$.
+
 
 \section{Deep learning}
 To come.
