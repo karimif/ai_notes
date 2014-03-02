@@ -2093,7 +2093,26 @@ The degree to which element $x^{(i)}$ belong  $k$ is:
 w_k(x) = \frac{1}{\sum_j(\frac{\lVert \mu_k - x \Vert}{\lVert \mu_j - x \Vert})^{2/({\bf m}-1)}}
 \end{align*}
 
-The fuzzifier $m$ determines the level of cluster fuzziness. A large $m$ results in smaller memberships $w$ and hence, fuzzier clusters. In the limit $m = 1$, the memberships $w$ converge to $0$ or $1$, which implies a crisp partitioning. In the absence of experimentation or domain knowledge, $m$ is commonly set to $2$.
+The fuzzifier $m$ determines the level of cluster fuzziness.
+A large $m$ results in smaller memberships $w$ and hence, fuzzier clusters.
+In the limit $m = 1$, the memberships $w$ converge to $0$ or $1$, which implies a crisp partitioning.
+In the absence of experimentation or domain knowledge, $m$ is commonly set to $2$. \\
+
+\begin{algorithm}
+\caption{Fuzzy c-means}
+\label{alg:fuzzycmeans}
+\begin{algorithmic}
+\State $w_{i, k} \gets$ random initialization \Comment{Point coefficients for being in the clusters}
+\Repeat
+\For{$k=1$ to $K$}
+\State $\mu_k \gets \mu(k)$ \Comment{Centroid of each cluster}
+\EndFor
+\For{$i=1$ to $m$}
+\State $w_{i, k} \gets w_k(x^{(i)}) $ \Comment{Update point coefficients for being in the clusters}
+\EndFor
+\Until{convergence}
+\end{algorithmic}
+\end{algorithm}
 
 \subsection{Expectation maximization}
 {\bf Expectation maximization} (EM) is a generalization of k-means using Gaussian models to smoothen the class memberships. The EM result is thus able to accommodate clusters of variable size much better than k-means as well as correlated clusters.
