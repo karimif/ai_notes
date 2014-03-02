@@ -2088,7 +2088,7 @@ $J(c^{(1)}, ..., c^{(m)}, \mu_1, ..., \mu_K)=\frac{1}{m}\sum_{i=1}^m \lVert x^{(
 \subsection{Fuzzy c-means}
 In {\bf fuzzy clustering}, every point has a degree of belonging to clusters, as in fuzzy logic, rather than belonging completely to just one cluster.
 Thus, points on the edge of a cluster, may be in the cluster to a lesser degree than points in the center of cluster.
-The degree to which element $x^{(i)}$ belong  $k$ is:
+The degree to which element $x^{(i)}$ belongs $k$ is:
 \begin{align*}
 w_k(x) = \frac{1}{\sum_j(\frac{\lVert \mu_k - x \Vert}{\lVert \mu_j - x \Vert})^{2/({\bf m}-1)}}
 \end{align*}
@@ -2097,6 +2097,12 @@ The fuzzifier $m$ determines the level of cluster fuzziness.
 A large $m$ results in smaller memberships $w$ and hence, fuzzier clusters.
 In the limit $m = 1$, the memberships $w$ converge to $0$ or $1$, which implies a crisp partitioning.
 In the absence of experimentation or domain knowledge, $m$ is commonly set to $2$. \\
+
+With fuzzy c-means, the centroid of a cluster is the mean of all points, weighted by their degree of belonging to the cluster $k$ with $K$ clusters in total:
+
+\begin{align*}
+\mu(k) = \frac{\sum_x w_k(x)^mx}{\sum_x w_k(x)^m}
+\end{align*}
 
 \begin{algorithm}
 \caption{Fuzzy c-means}
