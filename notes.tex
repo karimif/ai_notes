@@ -2310,16 +2310,16 @@ If the network has $s_j$ units in layer $j$, $s_{j+1}$ units in layer $j+1$, the
 For the neural network in Figure~\ref{ref:neuralnetwork}, the mapping is defined in Figure~\ref{ref:neuralnetworkmapping}.
 Once trained, a neural network predicts $1$ (positive classification) if $h_\theta(x) \ge 0.5$ for a new example, otherwise $0$ (negative classification). \\
 
-The cost function for $K$ output units and $L$ layers is a {\bf a cross-entropy error function} and is defined as follows (with $h_\Theta(x) \in \mathbb{R}^K$ and $(h_\Theta(x))_i = i^{th}$ output):
+The cost function for $K$ output units and $L$ layers is a {\bf a cross-entropy error function} and is defined as follows (with $h_\Theta(x) \in \mathbb{R}^K$ and $h_\Theta(x)_k = k^{th}$ output):
 
 \begin{definition}[Cost function] ~\\
-$J(\Theta) = -\frac{1}{m}[\sum_{i=1}^m \sum_{k=1}^K y_k^{(i)}log(h_{\Theta}(x^{(i)}))_k+(1-y_k^{(i)})log(1-h_{\Theta}(x^{(i)}))_k]$
+$J(\Theta) = -\frac{1}{m}[\sum_{i=1}^m \sum_{k=1}^K y_k^{(i)}log\:h_{\Theta}(x^{(i)})_k+(1-y_k^{(i)})log(1-h_{\Theta}(x^{(i)})_k)]$
 \end{definition}
 
 Using the cross-entropy error function instead of the sum-of-squares for a classification problem leads to faster training as well as improved generalization.
 
 \begin{definition}[Regularized cost function] ~\\
-$J(\Theta) = -\frac{1}{m}[\sum_{i=1}^m \sum_{k=1}^K y_k^{(i)}log(h_{\Theta}(x^{(i)}))_k+(1-y_k^{(i)})log(1-h_{\Theta}(x^{(i)}))_k] \\
+$J(\Theta) = -\frac{1}{m}[\sum_{i=1}^m \sum_{k=1}^K y_k^{(i)}log\:h_{\Theta}(x^{(i)})_k+(1-y_k^{(i)})log(1-h_{\Theta}(x^{(i)})_k)] \\
 + \frac{\lambda}{2m}\sum_{l=1}^{L-1}\sum_{i=1}^{s_{l}}\sum_{j=1}^{s_{l+1}}(\Theta_{ji}^{(l)})^2$
 \end{definition}
 
