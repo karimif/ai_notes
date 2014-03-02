@@ -1745,6 +1745,27 @@ which is the least-square cost function of linear regression.
 $J_{test}(\theta) = \frac{1}{2m_{test}}\sum_{i=1}^{m_{test}}(h_{\theta}(x_{test}^{(i)})-y_{test}^{(i)})^2$
 \end{definition}
 
+The {\bf coefficient of determination}, denoted {\bf $R^2$} is a statistical measure that indicates how well data points fit a statistical model - sometimes simply a line or curve.
+$R^2 \in [0,1]$. An $R^2$ of $1$ indicates that the regression line perfectly fits the data.
+
+\begin{definition}[Linear regression error function] ~\\
+$R^2 = 1 - \frac{SS_{res}}{SS_{tot}}$
+\end{definition}
+
+In this context, $o^{(i)}$ are called the {\bf observed values} and $y^{(i)}$ the {\bf predicted values} by the regression (i.e. $h_{\theta}(x^{(i)})$.
+
+$SS_{res}$ is the sum of squares of residuals (errors):
+\begin{align*}
+SS_{res} = \sum_i(o^{(i)} - y^{(i)})^2
+\end{align*}
+
+$SS_{tot}$ is the total sum of squares which is proportional to the sample variance:
+\begin{align*}
+SS_{tot} = \sum_i(o^{(i)} - \mu_o)^2
+\end{align*}
+
+
+
 \begin{definition}[Logistic regression error function] ~\\
 $J_{test}(\theta) = -\frac{1}{m_{test}}\sum_{i=1}^{m_{test}}[y_{test}^{(i)}log(h_\theta(x_{test}^{(i)}))+(1-y_{test}^{(i)})log(h_\theta(x_{test}^{(i)}))]$
 \end{definition}
