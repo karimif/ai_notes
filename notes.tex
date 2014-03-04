@@ -2771,7 +2771,11 @@ The entire set cannot be stored in RAM and needs to be retrieved from hard disk 
 \end{algorithm}
 
 
-{\bf Stochastic gradient descent} computes an approximation of gradient descent as described in Algorithm~\ref{ref:stochasticgradientdescent}. First, the randomization speeds up the algorithm in many cases. Second, the update statement in the inner loop allows the algorithm to improve the parameters quickly without summing up all $m$ training data. The resulting learning curve is {\bf not convex}. In general, the algorithm wanders around the global minimum and moves the parameters towards the region of it.
+{\bf Stochastic gradient descent} or {\bf online gradient descent} or {\bf sequential gradient descent}computes an approximation of gradient descent as described in Algorithm~\ref{ref:stochasticgradientdescent}.
+First, the randomization speeds up the algorithm in many cases.
+Second, the update statement in the inner loop allows the algorithm to improve the parameters quickly without summing up all $m$ training data.
+The resulting learning curve is {\bf not convex}.
+In general, the algorithm wanders around the global minimum and moves the parameters towards the region of it.
 
 \begin{algorithm}
 \caption{Stochastic gradient descent}
