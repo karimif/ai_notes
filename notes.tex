@@ -2771,11 +2771,13 @@ The entire set cannot be stored in RAM and needs to be retrieved from hard disk 
 \end{algorithm}
 
 
-{\bf Stochastic gradient descent} or {\bf online gradient descent} or {\bf sequential gradient descent}computes an approximation of gradient descent as described in Algorithm~\ref{ref:stochasticgradientdescent}.
-First, the randomization speeds up the algorithm in many cases.
+{\bf Stochastic gradient descent} or {\bf online gradient descent} or {\bf sequential gradient descent} computes an approximation of gradient descent as described in Algorithm~\ref{ref:stochasticgradientdescent}.
+First, the randomization splits up the algorithm in many cases.
 Second, the update statement in the inner loop allows the algorithm to improve the parameters quickly without summing up all $m$ training data.
 The resulting learning curve is {\bf not convex}.
-In general, the algorithm wanders around the global minimum and moves the parameters towards the region of it.
+In general, the algorithm wanders around the global minimum and moves the parameters towards the region of it. \\
+Also, stochastic gradient descent handles redundancy very well. Assuming that all training examples are duplicated, the error function gets multiplied by a factor of two. Batch methods require double the computational effort to evaluate the batch error function gradient. In contrast, stochastic gradient descent is unaffected.
+Last, stochastic gradient descent allows to escape from a local minima since a stationary point with respect to the error function for the whale data set is generally not a stationary point for each data point individually.
 
 \begin{algorithm}
 \caption{Stochastic gradient descent}
