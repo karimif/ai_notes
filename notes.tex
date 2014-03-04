@@ -2829,6 +2829,9 @@ Last, stochastic gradient descent allows to escape from a local minima since a s
 
 
 \subsection{Other optimization methods}
+Gradient descent can become very slow for complex parameter spaces.
+There are more efficient methods such as {\bf conjugate gradients} and {\bf quasi-Newton} methods which are much more robust and much faster than simple gradient descent.
+Unlike gradient descent, these algorithms have the property that the error function always decreases at each iteration unless the weight vector has arrived at a local or global minimum.
 
 
 \section{Online learning}
