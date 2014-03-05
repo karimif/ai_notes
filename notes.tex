@@ -2438,11 +2438,6 @@ $J(\Theta) = -\frac{1}{m}[\sum_{i=1}^m \sum_{k=1}^K y_k^{(i)}log\:h_{\Theta}(x^{
 
 Using the cross-entropy error function instead of the sum-of-squares for a classification problem leads to faster training as well as improved generalization.
 
-\begin{definition}[Regularized cost function] ~\\
-$J(\Theta) = -\frac{1}{m}[\sum_{i=1}^m \sum_{k=1}^K y_k^{(i)}log\:h_{\Theta}(x^{(i)})_k+(1-y_k^{(i)})log(1-h_{\Theta}(x^{(i)})_k)] \\
-+ \frac{\lambda}{2m}\sum_{l=1}^{L-1}\sum_{i=1}^{s_{l+1}}\sum_{j=1}^{s_{l}}(\Theta_{ij}^{(l)})^2$
-\end{definition}
-
 \begin{figure}[h!]
 \centering
 \begin{tabular}{lcl}
@@ -2497,8 +2492,7 @@ $g^{'}(x)=g(x)(1-g(x))$
 \State Compute $\delta^{(L-1)},\delta^{(L-2)},...,\delta^{(2)}$, e.g. $\delta^{(2)}=(\Theta^{(2)})^T\delta^{(3)}.*g^{'}(z^{(2)})$ \Comment{element-wise multiplication}
 \State $\Delta_{ij}^{(l)} \gets \Delta_{ij}^{(l)}+a_j^{(l)}\delta_i^{(l+1)}$
 \EndFor
-\State $D_{ij}^{(l)} \gets \frac{1}{m}\Delta_{ij}^{(l)}$ if $j=0$
-\State $D_{ij}^{(l)} \gets \frac{1}{m}\Delta_{ij}^{(l)}+\frac{\lambda}{m}\Theta_{ij}^{(l)}$ if $j\ne0$ \Comment{no regularization of bias terms}
+\State $D_{ij}^{(l)} \gets \frac{1}{m}\Delta_{ij}^{(l)}$
 \State $\frac{\partial}{\partial \Theta_{ij}^{(l)}}J(\Theta) \gets D_{ij}^{(l)}$
 
 \end{algorithmic}
@@ -2516,6 +2510,20 @@ The approximation is approximated as discussed in Chapter~ref{chapter:learningwe
 \begin{definition}[Gradient checking] ~\\
 $\frac{\partial}{\partial\theta_i}J(\theta)\approx\frac{J(...,\theta_{i-1},\theta_{i}+\epsilon,\theta_{i+1},...)-J(...,\theta_{i-1},\theta_{i}-\epsilon,\theta_{i+1},...)}{2\epsilon}$ for small $\epsilon$
 \end{definition}
+
+\subsection{Regularization}
+Regularization can prevent a neural network from overfitting, the cost function then penalizes large weights:
+
+\begin{definition}[Regularized cost function] ~\\
+$J(\Theta) = -\frac{1}{m}[\sum_{i=1}^m \sum_{k=1}^K y_k^{(i)}log\:h_{\Theta}(x^{(i)})_k+(1-y_k^{(i)})log(1-h_{\Theta}(x^{(i)})_k)] \\
++ \frac{\lambda}{2m}\sum_{l=1}^{L-1}\sum_{i=1}^{s_{l+1}}\sum_{j=1}^{s_{l}}(\Theta_{ij}^{(l)})^2$
+\end{definition}
+
+Also, the final step of backpropagation takes regularization into account for the non-bias units when approximating the gradient:
+\begin{align*}
+D_{ij}^{(l)} \gets \frac{1}{m}\Delta_{ij}^{(l)}+\frac{\lambda}{m}\Theta_{ij}^{(l)}\:\mbox{if}\:j\ne0
+\end{align*}
+
 
 \subsection{Picking a network architecture}
 The following rules can be followed to decide on the network architecture:
