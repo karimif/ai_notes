@@ -2136,7 +2136,10 @@ There are alternative approaches for encouraging an adaptive model to exhibit th
 \begin{enumerate}
 \item The training set is augmented by replicating and transforming the training samples to the desired invariances.
 This method can be computationally expensive, but can lead to significant improvements in generalization.
-\item
+\item Invariance is implemented into the preprocessing by extracting features that are invariant under the respective transformations.
+The subsequent learning algorithms use these features and are therefore invariant.
+Given that the extraction works well, this method usually can perform much better on data that is not similar to the training data.
+However, it is usually difficult and time-consuming to manually find these features.
 \item
 \item
 \end{enumerate}
