@@ -2125,8 +2125,21 @@ HMMs are used for example in {\bf localization} and {\bf tracking} which is cove
 
 \section{Invariances}
 \label{chapter:invariances}
-{\bf Invariances} are covered in Chapter~\ref{chapter:cvinvariances}. This section covers how to make learning algorithms invariant.
-\\
+{\bf Invariances} are covered in Chapter~\ref{chapter:cvinvariances}. This section covers how to make learning algorithms invariant. \\
+For example, classifying handwritten digits should work irrespective the digits' position within the image of its size i.e. translation and scale invariance.
+These transformations have significant differences in the raw data, expressed in different intensities at each of the pixel in the image. 
+The classifier shall still classify the digits properly.
+If there are sufficiently many training examples that contain these transformations, the learning algorithm can learn the invariance approximately.
+This approach requires many different training examples of objects at many different positions.
+If there are many different transformations, then this approach becomes impractical as there are usually not enough training examples. \\
+There are alternative approaches for encouraging an adaptive model to exhibit the required invariances, including:
+\begin{enumerate}
+\item
+\item
+\item
+\item
+\end{enumerate}
+
 To come.
 
 
