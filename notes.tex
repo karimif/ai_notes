@@ -1823,6 +1823,7 @@ First, the learning algorithm is trained by using the training data for each hyp
 \\
 A similar approach can be done to find a good regularization parameter $\lambda$.
 
+\label{chapter:debugginglearning}
 \section{Debugging a learning algorithm}
 Implementing a supervised learning algorithm and testing it on new data might reveal unacceptably large errors in its predictions. This section is to give advice on what to do next. Implementing a {\bf diagnostic} might be time-consuming, but doing so can be a very good use of time to get directed into the right direction. In this context, underfitting is called {\bf bias} and overfitting {\bf variance}.
 
@@ -2533,6 +2534,7 @@ The following rules can be followed to decide on the network architecture:
 \item No. of hidden layers: reasonable default: $1$ hidden layer, if $>1$, same number of units in every layer
 \item No. of units per layer: usually the more the better (but also computationally more expensive)
 \end{itemize}
+The more units in the network, the more likely it is to overfit and requires regularization or more training data as discussed in Chapter~\ref{chapter:debugginglearning}.
 
 
 \subsection{Multi-class classification}
