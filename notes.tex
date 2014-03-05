@@ -1853,6 +1853,10 @@ In summary, the following actions can help to solve particular problems:
 \item Try increasing $\lambda$: fixes high variance
 \end{itemize}
 
+An alternative to regularization to prevent overfitting is called {\bf early stopping}.
+Usually, the CV error decreases initially, followed by an increase as the learning algorithm starts to overfit.
+Therefore, training can be stopped at the point of smallest error with respect to the validation data set.
+
 \section{Error analysis}
 The recommended approach to develop a machine learning algorithm is to start with a simple algorithm that can be implemented quickly.
 Then, it can be tested on a small set of data, e.g. a couple of hundreds of records. The cross-validation data can be used to plot the learning curves.
