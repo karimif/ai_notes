@@ -2144,6 +2144,39 @@ However, it is usually difficult and time-consuming to manually find these featu
 \item Last, invariance properties can be built into the learning algorithm. One example is given in Chapter~\ref{chapter:nninvariances} for neural networks.
 \end{enumerate}
 
+{\bf Tangent propagation} can be used to regularize a learning algorithm in order to encourage models to be invariant of transformations of the input.
+Provided that a transformation is continuous (e.g. a rotation or translation in contrast to mirror reflection), then the transformed patterns speed out a {\bf manifold} $M$ within the $n$-dimensional input space.
+Suppose, the transformation is governed by a single parameter $\xi$.
+Then, the subspace $M$ swept out by $x$ is one-dimensional and is parameterized by $\xi$.
+The transformation can be denoted by $s(x,\xi)$ which is defined to that $s(x,0)=x$.
+Then, the tangent to the curve $M$ is given by the derivative:
+
+\begin{align*}
+\tau = \frac{\partial s}{\partial \xi}
+\end{align*}
+
+and the tangent vector at point $x$ (where $\xi=0$) is given by:
+
+\begin{align*}
+\tau = \frac{\partial s(x,\xi)}{\partial \xi}\left.{\!\!\frac{}{}}\right |_{\xi=0}
+\end{align*}
+
+Under a transformation of the input vector, the output of a learning algorithm will usually change.
+The derivative of an output $h_{\theta}(x)_k$ with respect to $\xi$ is given by:
+\begin{align*}
+\tau = \frac{\partial h_{\theta}(x)_k}{\partial \xi}\left.{\!\!\frac{}{}}\right |_{\xi=0}
+\end{align*}
+
+Given the exact learning algorithm, the cost function can be enriched with a regularization term:
+
+\begin{align*}
+J(\theta) = J(\theta) + \lambda \frac{1}{2} \sum_{i=1}^{m} \sum_{k=1}^{K} (\frac{\partial h_{\theta}(x)_k}{\partial \xi}\left.{\!\!\frac{}{}}\right |_{\xi=0})^2
+\end{align*}
+
+This allows to encourage local invariance in the neighborhood of the data points: Assuming zero transformation, errors are high for "orthogonal"/non-invariant training examples.
+
+% Add how to compute tangent vector
+% Add comment for multiple invariances
 
 \chapter{Unsupervised learning}
 Unsupervised learning tries to find hidden structure in {\bf unlabeled data} $\{x^{(1)}, x^{(2)},$ $..., x^{(m)}\}$. In machine learning research, unsupervised learning has received less attention than supervised learning but is likely to receive more in the future because of its potential to work on unlabeled data.
