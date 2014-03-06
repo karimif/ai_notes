@@ -2145,10 +2145,10 @@ However, it is usually difficult and time-consuming to manually find these featu
 \end{enumerate}
 
 {\bf Tangent propagation} can be used to regularize a learning algorithm in order to encourage models to be invariant of transformations of the input.
-Provided that a transformation is continuous (e.g. a rotation or translation in contrast to mirror reflection), then the transformed patterns speed out a {\bf manifold} $M$ within the $n$-dimensional input space.
+Provided that a transformation is continuous (e.g. a rotation or translation in contrast to mirror reflection), then the transformed patterns sweep out a {\bf manifold} $M$ within the $n$-dimensional input space.
 Suppose, the transformation is governed by a single parameter $\xi$.
 Then, the subspace $M$ swept out by $x$ is one-dimensional and is parameterized by $\xi$.
-The transformation can be denoted by $s(x,\xi)$ which is defined to that $s(x,0)=x$.
+The transformation can be denoted by $s(x,\xi)$ which is defined so that $s(x,0)=x$.
 Then, the tangent to the curve $M$ is given by the derivative:
 
 \begin{align*}
@@ -2162,18 +2162,20 @@ and the tangent vector at point $x$ (where $\xi=0$) is given by:
 \end{align*}
 
 Under a transformation of the input vector, the output of a learning algorithm will usually change.
-The derivative of an output $h_{\theta}(x)_k$ with respect to $\xi$ is given by:
+The derivative of an output $y_k$ with respect to $\xi$ is given by:
 \begin{align*}
-\tau = \frac{\partial h_{\theta}(x)_k}{\partial \xi}\left.{\!\!\frac{}{}}\right |_{\xi=0}
+\tau = \frac{\partial y_k}{\partial \xi}\left.{\!\!\frac{}{}}\right |_{\xi=0}
 \end{align*}
 
 Given the exact learning algorithm, the cost function can be enriched with a regularization term:
 
 \begin{align*}
-J(\theta) = J(\theta) + \lambda \frac{1}{2} \sum_{i=1}^{m} \sum_{k=1}^{K} (\frac{\partial h_{\theta}(x)_k}{\partial \xi}\left.{\!\!\frac{}{}}\right |_{\xi=0})^2
+J(\theta)_{reg} = J(\theta) + \lambda \frac{1}{2} \sum_{i=1}^{m} \sum_{k=1}^{K} (\frac{\partial y_k}{\partial \xi}\left.{\!\!\frac{}{}}\right |_{\xi=0})^2
 \end{align*}
 
-This allows to encourage local invariance in the neighborhood of the data points: Assuming zero transformation, errors are high for "orthogonal"/non-invariant training examples.
+This allows to encourage local invariance in the neighborhood of the data points: for zero transformation, errors are high for non-invariant training examples.
+The regularization function is zero when the learning algorithm is invariant under the transformation in the neighborhood of each pattern vector.
+
 
 % Add how to compute tangent vector
 % Add comment for multiple invariances
