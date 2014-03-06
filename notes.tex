@@ -2642,7 +2642,7 @@ Chapter~\ref{chapter:invariances} generally covers how to make learning algorith
 \frac{\partial y_k}{\partial \xi}\left.{\!\!\frac{}{}}\right |_{\xi=0} = \sum_{i=1}^{m} J_{ki}\tau_{i}
 \end{align*}
 
-where $J_{ki}$ is the $(k,i)$ element of the Jacobian matrix for output $k$ and all input variables $i$.
+where $J_{ki}$ is the $(k,i)$ element of the Jacobian matrix for output $k$ and all training examples $x^{(i)}$.
 In neural networks, the Jacobian matrix provides a measure of the local sensitivity of the outputs to changes in each of the input variables.
 The matrix can elements can either be approximated using finite elements or can be computed analytically by an amended backpropagation.
 The analytical solution is not provided in this document.
@@ -2650,7 +2650,7 @@ The analytical solution is not provided in this document.
 The result can be used to compute the regularized cost function:
 
 \begin{align*}
-J(\theta)_{reg} = J(\theta) + \lambda \frac{1}{2} \sum_{i=1}^{m} \sum_{k=1}^{K} (\frac{\partial y_k}{\partial \xi}\left.{\!\!\frac{}{}}\right |_{\xi=0})^2
+J(\theta)_{reg} = J(\theta) + \lambda \frac{1}{2} \sum_{i=1}^{m} \sum_{k=1}^{K} (\sum_{i=1}^{m} J_{ki}\tau_{i})^2
 \end{align*}
 
 Alternatively, neural networks can include invariance properties in their structure. These kind of neural networks are called {\bf convolutional neural networks}. They are widely applied to image data.
