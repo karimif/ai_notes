@@ -2178,7 +2178,7 @@ and the tangent vector at point $x$ (where $\xi=0$) is given by:
 Under a transformation of the input vector, the output of a learning algorithm will usually change.
 The derivative of an output $y_k$ with respect to $\xi$ is given by:
 \begin{align*}
-\tau = \frac{\partial y_k}{\partial \xi}\left.{\!\!\frac{}{}}\right |_{\xi=0}
+\frac{\partial y_k}{\partial \xi}\left.{\!\!\frac{}{}}\right |_{\xi=0}
 \end{align*}
 
 Given the exact learning algorithm, the cost function can be enriched with a regularization term:
@@ -2190,7 +2190,8 @@ J(\theta)_{reg} = J(\theta) + \lambda \frac{1}{2} \sum_{i=1}^{m} \sum_{k=1}^{K} 
 This allows to encourage local invariance in the neighborhood of the data points: for zero transformation, errors are high for non-invariant training examples.
 The regularization function is zero when the learning algorithm is invariant under the transformation in the neighborhood of each pattern vector.
 \\
-The tangent vector can be approximated using finite differences using the equations covered in Chapter~\ref{chapter:learningweights}.
+In a practical implementation, the tangent vector can be approximated if there is not analytic solution.
+This can be done using finite differences using the equations covered in Chapter~\ref{chapter:learningweights}.
 \\
 The manifold $M$ has dimensionality $P$ if the transformation is governed by $P$ parameters.
 The regularizer is then given by the sum of terms, one for each transformation.
