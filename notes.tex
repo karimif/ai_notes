@@ -2175,6 +2175,12 @@ J(\theta)_{reg} = J(\theta) + \lambda \frac{1}{2} \sum_{i=1}^{m} \sum_{k=1}^{K} 
 
 This allows to encourage local invariance in the neighborhood of the data points: for zero transformation, errors are high for non-invariant training examples.
 The regularization function is zero when the learning algorithm is invariant under the transformation in the neighborhood of each pattern vector.
+\\
+The tangent vector can be approximated using finite differences using the equations covered in Chapter~\ref{chapter:learningweights}.
+\\
+The manifold $M$ has dimensionality $P$ if the transformation is governed by $P$ parameters.
+The regularizer is then given by the sum of terms, one for each transformation.
+A learning algorithm that is made invariant to each transformation separately is also locally invariant to combinations of the transformations.
 
 
 % Add how to compute tangent vector
