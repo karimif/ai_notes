@@ -503,6 +503,20 @@ Thus, an eigenvector corresponding to $\lambda_2=-2$ is: $\begin{pmatrix}
 1
 \end{pmatrix}$ which is a basis of the eigenspace corresponding to $\lambda_2=-2$.
 
+\section{Calculus}
+\subsection{Jacobian matrix}
+The {\bf Jacobian matrix} is the matrix of all first-order partial derivatives of a vector-valued function.
+$F : \mathbb{R}^n \mapsto \mathbb{R}^m$ is a function which takes as input real $n$-tuples and produces as output real $m$-tuples.
+Such a function is given by $m$ real-valued component functions $F_1(x_1,...,x_n),...,F_m(x_1,...,x_n)$.
+The Jacobian matrix is a $m\times n$ matrix $J$ of $F$.
+\begin{align*}
+J = \begin{pmatrix}
+\frac{\partial F_1}{\partial x_1} & \dots & \frac{\partial F_1}{\partial x_n} \\
+\vdots & \ddots & \vdots \\
+\frac{\partial F_m}{\partial x_1} & \dots & \frac{\partial F_m}{\partial x_n}
+\end{pmatrix}
+\end{align*}
+
 
 
 \section{Statistics}
