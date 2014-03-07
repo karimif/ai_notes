@@ -2654,13 +2654,14 @@ J(\theta)_{reg} = J(\theta) + \lambda \frac{1}{2} \sum_{i=1}^{m} \sum_{k=1}^{K} 
 \end{align*}
 
 Alternatively, neural networks can include invariance properties in their structure.
-These kind of neural networks are called {\bf convolutional neural networks}.
+These kind of neural networks are called {\bf convolutional neural networks} (CNNs) which tolerate translation of the input.
 They are widely applied to image data. \\
+{\bf Feature maps} are a key to CNNs. A feature map is a layer in a CNN whose units share the same parametrization. This property is called {\bf weight sharing}.
+
 
 Due to the constraints of weights, the number of weights in the network is smaller than in a fully-connected network.
 Also, the number of independent parameters to be learned is significantly smaller. \\
-
-Convolutional neural networks require a slight modification of the backpropagation algorithm for weight sharing.
+CNNs require a slight modification of the backpropagation algorithm for weight sharing.
 
 \section{Deep learning}
 To come.
