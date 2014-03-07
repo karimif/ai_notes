@@ -2656,15 +2656,17 @@ J(\theta)_{reg} = J(\theta) + \lambda \frac{1}{2} \sum_{i=1}^{m} \sum_{k=1}^{K} 
 
 \subsubsection{Convolutional neural networks}
 Alternatively, neural networks can include invariance properties in their structure.
-These kind of neural networks are called {\bf convolutional neural networks} (CNNs) which tolerate translation of the input.
-They are widely applied to image data. \\
-{\bf Feature maps} are a key to CNNs. A feature map is a layer in a CNN whose units share the same parametrization. This property is called {\bf weight sharing}.
-Replicating units in this way allows for features to be detected regardless of their position in the visual field.
+These kind of neural networks are called {\bf convolutional neural networks} (CNNs) which tolerate translation of the input for example.
+They are widely applied for image and speech data. \\
+{\bf Feature maps} are a key to CNNs. A feature map is a layer in a CNN whose units share the same parametrization (weights). This property is called {\bf weight sharing}.
+Replicating units in this way allows for features to be detected regardless of their position in the visual field.\\
+The subsampling layer takes inputs and computes the average of those inputs, multiplied by a weight and finally applies the Sigmoid function to the value.
+In this way, the response of a unit in the subsampling layer is relatively insensitive to small shifts of the image in the corresponding regions of the input space.
 
 
 Due to the constraints of weights, the number of weights in the network is smaller than in a fully-connected network.
 Also, the number of independent parameters to be learned is significantly smaller. \\
-CNNs require a slight modification of the backpropagation algorithm for weight sharing.
+CNNs require a slight modification of the backpropagation algorithm for weight sharing in the convolutional layers and averaging and in the subsampling layers.
 
 \section{Deep learning}
 To come.
