@@ -734,7 +734,7 @@ Frontier size ($n$ levels) & $2n$ & $2n$ & $n$\\
 \end{table}
 
 \section{Shortest path}
-The {\bf shortest path algorithm} finds the shortest path from the {\bf start state} to a {\bf goal state} in terms of the number of path elements which all have a uniform cost.
+The {\bf shortest path algorithm} is an uninformed search algorithm that finds the shortest path from the {\bf start state} to a {\bf goal state} in terms of the number of path elements which all have a uniform cost.
 Each state might have a number of {\bf successors}. Algorithm~\ref{python:shortestpath} contains an implementation in Python.
 \\
 The following three parameters of the algorithm are:
@@ -780,7 +780,7 @@ Fail = []
 
 
 \section{Lowest cost}
-The {\bf lowest cost algorithm} finds the shortest path from the {\bf start state} to a {\bf goal state} in terms of the aggregated costs per path as actions can have different costs.
+The {\bf lowest cost algorithm} is an informed search algorithm that finds the shortest path from the {\bf start state} to a {\bf goal state} in terms of the aggregated costs per path as actions can have different costs.
 \\
 Algorithm~\ref{python:lowestcost} contains an implementation in Python. It looks relatively similar to the shortest path algorithm in Algorithm~\ref{python:shortestpath}.
 Nonetheless, there are some remarkable differences, including:
@@ -891,7 +891,7 @@ path = shortest_path_search(START,
 
 
 \section{A* search}
-$A*$ expands the path with that has the minimum value $f$.
+$A*$ is an informed search algorithm that expands the path with that has the minimum value $f$.
 
 \begin{definition}[A* cost function]
 $f = g + h$ with $g(path) =$ current path cost and $h(path) = h(s) =$ estimated distance to goal
