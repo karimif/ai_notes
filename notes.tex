@@ -289,21 +289,6 @@ $P(x_1,...,x_n) = \prod_{i=1}^{n}{P(x_i\vert parents(x_i))}$
 Stands for direction-dependent separation. d-separated variables are independent. $X$ and $Y$ are d-separated if there is no active path between them.
 Paths consists of {\bf triplets} as defined in Table~\ref{ref:triplets} in which a filled circle represents a known probability. An inactive triplet makes an entire path inactive. \\
 
-Figure~\ref{ref:sampledseparation} contains a sample graph\footnote{Prof. Abbeel. {\em D-separation}. \url{http://www.youtube.com/watch?v=i0CGsHhjISU}}. Is $D$ guaranteed to be independent of $C$, given $E$?
-\begin{itemize}
-\item Path $C\rightarrow A\rightarrow D$ is an \underline{inactive} triplet (common effect) $\implies$ inactive
-\item Path $C\rightarrow B\rightarrow E\rightarrow D$ contains the \underline{active} triplet $C\rightarrow B\rightarrow E$ (common cause) and the \underline{inactive} triplet $B\rightarrow E\rightarrow D$ (causal chain) $\implies$ inactive
-\item Path $C\rightarrow B\rightarrow E\rightarrow A \rightarrow D$ contains the \underline{active} triplet $C\rightarrow B\rightarrow E$ (common cause), the \underline{inactive} triplet $B\rightarrow E\rightarrow A$ (causal chain) and the \underline{inactive} triplet $E\rightarrow A\rightarrow D$ (common effect) $\implies$ inactive
-\item Path $C\rightarrow A\rightarrow E\rightarrow D$ contains the \underline{inactive} triplet $C\rightarrow A\rightarrow E$ (common effect) and the \underline{inactive} triplet $A\rightarrow E\rightarrow D$ (causal cause) $\implies$ inactive
-\end{itemize}
-Since all path paths between $D$ and $C$ are inactive, $D$ and $C$ are independent, given $E$.
-
-Figure~\ref{ref:sampledseparation2} contains another sample graph. Is $A$ guaranteed to be independent of $D$?
-\begin{itemize}
-\item Path $D\rightarrow C\rightarrow A$ is an \underline{active} triplet (causal chain) $\implies$ active
-\end{itemize}
-Since there is an active path paths between $A$ and $D$, $A$ and $D$ are not independent.
-
 
 \begin{table}[h!]
 \begin{center}
@@ -405,28 +390,23 @@ common effect with observed descendant
 \label{ref:triplets}
 \end{table}
 
-\begin{figure}[h!]
-\centering
-\begin{tikzpicture}[
-  node distance=1cm and 1cm,
-  mynode/.style={draw,circle,align=center},
-  font=\small
-]
-\node[mynode] (B) {B};
-\node[mynode,below left=0.5cm and 0.4 of B] (C) {C};
-\node[mynode,below right=0.5cm and 0.4 of B,fill=gray] (E) {E};
-\node[mynode,below left=0.5cm and 0.05 of C] (A) {A};
-\node[mynode,below right=0.5cm and 0.05 of C] (D) {D};
-\path (B) edge[-latex] (C)
-(B) edge[-latex] (E)
-(C) edge[-latex] (A)
-(D) edge[-latex] (A)
-(E) edge[-latex] (A)
-(E) edge[-latex] (D);
-\end{tikzpicture}
-\caption{Sample graph for d-separation given $E$}
-\label{ref:sampledseparation}
-\end{figure}
+
+
+Figure~\ref{ref:sampledseparation1} contains a sample graph. Is $A$ guaranteed to be independent of $D$?
+\begin{itemize}
+\item Path $D\rightarrow C\rightarrow A$ is an \underline{active} triplet (causal chain) $\implies$ active
+\end{itemize}
+Since there is an active path paths between $A$ and $D$, $A$ and $D$ are not independent.
+
+Figure~\ref{ref:sampledseparation2} contains another sample graph\footnote{Prof. Abbeel. {\em D-separation}. \url{http://www.youtube.com/watch?v=i0CGsHhjISU}}. Is $D$ guaranteed to be independent of $C$, given $E$?
+\begin{itemize}
+\item Path $C\rightarrow A\rightarrow D$ is an \underline{inactive} triplet (common effect) $\implies$ inactive
+\item Path $C\rightarrow B\rightarrow E\rightarrow D$ contains the \underline{active} triplet $C\rightarrow B\rightarrow E$ (common cause) and the \underline{inactive} triplet $B\rightarrow E\rightarrow D$ (causal chain) $\implies$ inactive
+\item Path $C\rightarrow B\rightarrow E\rightarrow A \rightarrow D$ contains the \underline{active} triplet $C\rightarrow B\rightarrow E$ (common cause), the \underline{inactive} triplet $B\rightarrow E\rightarrow A$ (causal chain) and the \underline{inactive} triplet $E\rightarrow A\rightarrow D$ (common effect) $\implies$ inactive
+\item Path $C\rightarrow A\rightarrow E\rightarrow D$ contains the \underline{inactive} triplet $C\rightarrow A\rightarrow E$ (common effect) and the \underline{inactive} triplet $A\rightarrow E\rightarrow D$ (causal cause) $\implies$ inactive
+\end{itemize}
+Since all path paths between $D$ and $C$ are inactive, $D$ and $C$ are independent, given $E$.
+
 
 
 \begin{figure}[h!]
@@ -449,9 +429,31 @@ common effect with observed descendant
 (D) edge[-latex] (E);
 \end{tikzpicture}
 \caption{Sample graph for d-separation}
-\label{ref:sampledseparation2}
+\label{ref:sampledseparation1}
 \end{figure}
 
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}[
+  node distance=1cm and 1cm,
+  mynode/.style={draw,circle,align=center},
+  font=\small
+]
+\node[mynode] (B) {B};
+\node[mynode,below left=0.5cm and 0.4 of B] (C) {C};
+\node[mynode,below right=0.5cm and 0.4 of B,fill=gray] (E) {E};
+\node[mynode,below left=0.5cm and 0.05 of C] (A) {A};
+\node[mynode,below right=0.5cm and 0.05 of C] (D) {D};
+\path (B) edge[-latex] (C)
+(B) edge[-latex] (E)
+(C) edge[-latex] (A)
+(D) edge[-latex] (A)
+(E) edge[-latex] (A)
+(E) edge[-latex] (D);
+\end{tikzpicture}
+\caption{Sample graph for d-separation given $E$}
+\label{ref:sampledseparation2}
+\end{figure}
 
 
 \subsection{Markov chains}
