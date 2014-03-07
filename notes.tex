@@ -2653,7 +2653,14 @@ The result can be used to compute the regularized cost function:
 J(\theta)_{reg} = J(\theta) + \lambda \frac{1}{2} \sum_{i=1}^{m} \sum_{k=1}^{K} (\sum_{i=1}^{m} J_{ki}\tau_{i})^2
 \end{align*}
 
-Alternatively, neural networks can include invariance properties in their structure. These kind of neural networks are called {\bf convolutional neural networks}. They are widely applied to image data.
+Alternatively, neural networks can include invariance properties in their structure.
+These kind of neural networks are called {\bf convolutional neural networks}.
+They are widely applied to image data. \\
+
+Due to the constraints of weights, the number of weights in the network is smaller than in a fully-connected network.
+Also, the number of independent parameters to be learned is significantly smaller. \\
+
+Convolutional neural networks require a slight modification of the backpropagation algorithm for weight sharing.
 
 \section{Deep learning}
 To come.
