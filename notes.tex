@@ -2637,6 +2637,7 @@ The derivative of the softmax function is and therefore related to the derivativ
 \label{chapter:nninvariances}
 Chapter~\ref{chapter:invariances} generally covers how to make learning algorithms invariant. This section covers how to make neural networks invariant.
 \\
+\subsubsection{Tangent propagation}
 {\bf Tangent propagation} can be done in neural networks:
 \begin{align*}
 \frac{\partial y_k}{\partial \xi}\left.{\!\!\frac{}{}}\right |_{\xi=0} = \sum_{i=1}^{m} J_{ki}\tau_{i}
@@ -2653,10 +2654,12 @@ The result can be used to compute the regularized cost function:
 J(\theta)_{reg} = J(\theta) + \lambda \frac{1}{2} \sum_{i=1}^{m} \sum_{k=1}^{K} (\sum_{i=1}^{m} J_{ki}\tau_{i})^2
 \end{align*}
 
+\subsubsection{Convolutional neural networks}
 Alternatively, neural networks can include invariance properties in their structure.
 These kind of neural networks are called {\bf convolutional neural networks} (CNNs) which tolerate translation of the input.
 They are widely applied to image data. \\
 {\bf Feature maps} are a key to CNNs. A feature map is a layer in a CNN whose units share the same parametrization. This property is called {\bf weight sharing}.
+Replicating units in this way allows for features to be detected regardless of their position in the visual field.
 
 
 Due to the constraints of weights, the number of weights in the network is smaller than in a fully-connected network.
