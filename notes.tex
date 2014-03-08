@@ -2585,10 +2585,10 @@ $h_{\Theta}(x)$ & $=$ & $a_1^{(3)}$ $=$ $g(\Theta_{10}^{(2)}a_0^{(2)} + \Theta_{
 \label{ref:neuralnetworkmapping}
 \end{figure}
 
-This can be generalized to:
+This can be generalized to for the first hidden layer (layer $2$):
 \begin{align*}
-o_i^{(j+1)} = \sum_k^{s_{j}+1} \Theta_{ik}^{(j)}x_k \\
-a_i^{(j+1)} = g(o_i^{(j+1)})
+z_i^{(j+1)} = \sum_k^{s_{j}+1} \Theta_{ik}^{(j)}x_k \\
+a_i^{(j+1)} = g(z_i^{(j+1)})
 \end{align*}
 
 Figure~\ref{ref:neuralnetworkmappingvectorized} contains a vectorized activation of this network. \\
@@ -2638,12 +2638,8 @@ Therefore, efficient {\bf backpropagation} is used to approximate the gradients 
 
 
 \subsection{Backpropagation}
-Training a neural network requires to $\min\limits_{\Theta}J(\Theta)$, e.g. through gradient descent which requires $J(\Theta)$ and $\frac{\partial}{\partial \Theta_{ij}^{(l)}}J(\Theta)$.
-{\bf Backpropagation} is a method to efficiently compute the gradient as described in Algorithm~\ref{alg:backpropagation}. 
-This algorithm can also be vectorized. The derivative of the Sigmoid function is defined as follows:
-\begin{definition}[Derivative of Sigmoid function] ~\\
-$g^{'}(x)=g(x)(1-g(x))$
-\end{definition}
+Training a neural network requires to $\min\limits_{\Theta}J(\Theta)$, e.g. through gradient descent which needs to know $J(\Theta)$ and $\frac{\partial}{\partial \Theta_{ij}^{(l)}}J(\Theta)$.
+{\bf Backpropagation} is a method to efficiently compute the gradient as described in Algorithm~\ref{alg:backpropagation}. This algorithm can also be vectorized.
 
 \begin{algorithm}[h!]
 \caption{Backpropagation}
@@ -2656,26 +2652,37 @@ $g^{'}(x)=g(x)(1-g(x))$
 \State $a^{(1)} \gets x^{(i)}$
 \State Perform forward propagation to compute $a^{(l)}$ for $l=2,3,...,L$
 \State Using $y^{(i)}$, compute $\delta^{(L)}=a^{(L)}-y^{(i)}$ \Comment {"error"}
-\State Compute $\delta^{(L-1)},\delta^{(L-2)},...,\delta^{(2)}$, e.g. $\delta^{(2)}=(\Theta^{(2)})^T\delta^{(3)}.*g^{'}(z^{(2)})$
-\State $\Delta^{(l)} \gets \Delta^{(l)}+\delta^{(l+1)}(a^{(l)})^T$
+\State Compute $\delta^{(L-1)},\delta^{(L-2)},...,\delta^{(2)}$: $\delta^{(l)}=(\Theta^{(l)})^T\delta^{(l+1)}.*g^{'}(z^{(l)})$
+\State $\Delta^{(l)} \gets \Delta^{(l)}+\delta^{(l+1)}(a^{(l)})^T$  \Comment {Matrix of errors for units of a layer}
 \EndFor
-\State $D_{ij}^{(l)} \gets \frac{1}{m}\Delta_{ij}^{(l)}$
-\State $\frac{\partial}{\partial \Theta_{ij}^{(l)}}J(\Theta) \gets D_{ij}^{(l)}$
+\State $\frac{\partial}{\partial \Theta_{ij}^{(l)}}J(\Theta) \gets \frac{1}{m}\Delta_{ij}^{(l)}$
 
 \end{algorithmic}
 \end{algorithm}
 
+$\Theta_{ij}^{(l)}$ needs to have an initial value. If $\Theta$ was entirely 0, {\bf symmetry} would create a highly redundant neural network with poor learning capabilities.
+{\bf Random initialization} allows symmetry breaking by initializing each $\Theta_{ij}^{(l)}$ to a random value in $[-\epsilon,\epsilon]$. \\
+
 $\delta^{(l)}$ is a vector of errors of the units of layer $l$.
 The errors of the output layer are the differences of the activation values $a^{(L)}$ and the observed values of the $i$th training example: $\delta^{(L)}=a^{(L)}-y^{(i)}$.
-The errors of the hidden layers are: $\delta^{(2)} = \frac{\partial cost(i)}{\partial z^{(2)}} =(\Theta^{(2)})^T\delta^{(3)}.*g^{'}(z^{(2)})$ ($.*$ is the element-wise multiplication). With the cost for training example $x^{(i)}$ being:
+The errors of the hidden layers are: 
+
+\begin{align*}
+\delta^{(2)} = \frac{\partial cost(i)}{\partial z^{(l)}} =(\Theta^{(l)})^T\delta^{(l+1)}.*g^{'}(z^{(l)})
+\end{align*}
+
+($.*$ is the element-wise multiplication). With the cost for training example $x^{(i)}$ being:
 \begin{align*}
 cost(i) = y^{(i)}log\:h_{\Theta}(x^{(i)})+(1-y^{(i)})log(1-h_{\Theta}(x^{(i)}))
 \end{align*}
 
+The derivative of the Sigmoid function is defined as follows:
+\begin{align*}
+g^{'}(x)=g(x)(1-g(x))
+\end{align*}
+
 There is no $\delta^{(1)}$ as no error term is associated with the input values.
-\\
-$\Theta_{ij}^{(l)}$ needs to have an initial value. If $\Theta$ was entirely 0, {\bf symmetry} would create a highly redundant neural network with poor learning capabilities.
-{\bf Random initialization} allows symmetry breaking by initializing each $\Theta_{ij}^{(l)}$ to a random value in $[-\epsilon,\epsilon]$.
+
 
 \subsection{Gradient checking}
 As backpropagation is a complex algorithm, subtile bugs might not be caught and gradient descent might not reach the intended global minimum but only a more expensive minimum.
