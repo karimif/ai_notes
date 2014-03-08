@@ -2575,7 +2575,7 @@ o_i^{(j+1)} = \sum_k^{s_{j}+1} \Theta_{ik}^{(j)}x_k \\
 a_i^{(j+1)} = g(o_i^{(j+1)})
 \end{align*}
 
-
+Figure~\ref{ref:neuralnetworkmappingvectorized} contains a vectorized activation of this network. \\
 
 Once trained, a neural network predicts $1$ (positive classification) if $h_\theta(x) \ge 0.5$ for a new example, otherwise $0$ (negative classification). \\
 
@@ -2601,6 +2601,20 @@ $h_{\Theta}(x)$ & $=$ & $a_1^{(3)}$ $=$ $g(\Theta_{10}^{(2)}a_0^{(2)} + \Theta_{
 \caption{Activation of layers in a neural network}
 \label{ref:neuralnetworkmapping}
 \end{figure}
+
+\begin{figure}[h!]
+\centering
+\begin{tabular}{lcl}
+$a^{(1)}$ & $=$ & $x$ \\
+$z^{(2)}$ & $=$ & $\Theta^{(1)}a^{(1)}$ \\
+$a^{(2)}$ & $=$ & $g(z^{(2)})$ (add $a_0^{(2)}$) \\
+$z^{(3)}$ & $=$ & $\Theta^{(2)}a^{(2)}$ \\
+$h_{\Theta}(x)$ & $=$ & $g(z^{(3)})$ (add $a_0^{(3)}$) \\
+\end{tabular}
+\caption{Vectorized activation of layers in a neural network}
+\label{ref:neuralnetworkmappingvectorized}
+\end{figure}
+
 
 
 \subsection{Learning weights}
