@@ -3003,7 +3003,6 @@ One way to find out if the algorithm has low bias is to randomly pick a lower am
 
 \subsection{Gradient descent}
 \label{chapter:gradientdescent}
-Large data sets come with new problems, e.g. a lack of {\bf scalability}.
 (Batch) gradient descent as defined in Algorithm~\ref{ref:gradientdescent} often converges within a few steps for low-dimensional spaces.
 
 \begin{algorithm}
@@ -3029,8 +3028,9 @@ It returns the global minimum for convex or bowl-shaped cost functions which do 
 $x_j' = \frac{x_j - \mu_j}{\sigma_j}$
 \end{definition}
 
+Large data sets come with new problems, e.g. a lack of {\bf scalability}.
 For high-dimensional spaces such as support vector machines or neural networks, it can require tens of thousands of iterations.
-Each summation update step of gradient descent can become computationally expensive for large data sets, e.g. 100 million records.
+In each iteration, the summation update step of gradient descent can become computationally expensive for large data sets, e.g. 100 million records.
 The entire set cannot be stored in RAM and needs to be retrieved from hard disk or streamed.
 
 
