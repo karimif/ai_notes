@@ -1614,17 +1614,13 @@ Where the hypothesis $h_\theta(x)$ is given by the linear model:
 $h_\theta(x) = \theta^{T}x = \theta_0 x_0 + \theta_1 x_1 + ... + \theta_n x_n$ with $x_0 = 1$
 \end{definition}
 
-The parameters of the model to be learned are the $\theta_j$ values. One way to do this is to use the batch {\bf gradient descent} algorithm. Through is step, the parameters $\theta_j$ come closer to the optimal values that will achieve the lowest cost $J(\theta)$. If the {\bf learning rate} $\alpha$ is too large, gradient descent might not converge and overshoot the minimum after a certain amount of iterations. Gradient descent might generally not find the global but the local minimum. Gradient descent returns the global minimum for convex or bowl-shaped cost functions which do not have local optima. {\bf Feature normalization} allows to perform gradient descent quickly by normalizing each feature to the mean and scaling it to its standard deviation.
-
+The parameters of the model to be learned are the $\theta_j$ values. One way to do this is to use the batch {\bf gradient descent} algorithm.
+Chapter~\ref{chapter:gradientdescent} covers gradient descent and advanced optimization methods.
 
 \begin{definition}[Gradient descent] ~\\
 loop until converge \{ \\
 $\theta_j := \theta_j - \alpha \frac{1}{m}\sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)}$ (simultaneously update $\theta_j$ for all $j$) \\
 \}
-\end{definition}
-
-\begin{definition}[Feature normalization]
-$x_j' = \frac{x_j - \mu_j}{\sigma_j}$
 \end{definition}
 
 {\bf Vectorization} allows to do the updates simultaneously through various matrix operations. Matrix multiplications can be executed very efficiently (Strassen algorithm). Matrix $X$ contains $m$ transposed training data columns and $n$ features where feature $x_0$ contains entirely 1s:
@@ -3005,11 +3001,10 @@ Large data sets  help to increase the accuracy of {\bf low-bias} learning algori
 \end{align*}
 One way to find out if the algorithm has low bias is to randomly pick a lower amount (e.g. 1000) of  examples of this set and plot its learning curves.
 
-\subsection{Stochastic gradient descent}
+\subsection{Gradient descent}
+\label{chapter:gradientdescent}
 Large data sets come with new problems, e.g. a lack of {\bf scalability}.
-(Batch) gradient descent as defined in Algorithm~\ref{ref:gradientdescent} often converges within a few steps in the global minimum.
-But each summation update step of gradient descent can become computationally expensive for large data sets, e.g. 100 million records.
-The entire set cannot be stored in RAM and needs to be retrieved from hard disk or streamed.
+(Batch) gradient descent as defined in Algorithm~\ref{ref:gradientdescent} often converges within a few steps for low-dimensional spaces.
 
 \begin{algorithm}
 \caption{Batch gradient descent}
@@ -3023,6 +3018,23 @@ The entire set cannot be stored in RAM and needs to be retrieved from hard disk 
 \end{algorithmic}
 \end{algorithm}
 
+The direction is chosen by taking the negative of the gradient and the distance is determined by the learning rate $\alpha$.
+Through this step, the parameters $\theta_j$ come closer to the optimal values that will achieve the lowest cost $J(\theta)$.
+If the {\bf learning rate} $\alpha$ is too large, gradient descent might not converge and overshoot the minimum after a certain amount of iterations.
+Gradient descent might generally not find the global but the local minimum.
+It returns the global minimum for convex or bowl-shaped cost functions which do not have local optima.
+{\bf Feature normalization} allows to perform gradient descent quickly by normalizing each feature to the mean and scaling it to its standard deviation.
+
+\begin{definition}[Feature normalization]
+$x_j' = \frac{x_j - \mu_j}{\sigma_j}$
+\end{definition}
+
+For high-dimensional spaces such as support vector machines or neural networks, it can require tens of thousands of iterations.
+Each summation update step of gradient descent can become computationally expensive for large data sets, e.g. 100 million records.
+The entire set cannot be stored in RAM and needs to be retrieved from hard disk or streamed.
+
+
+\subsection{Stochastic gradient descent}
 
 {\bf Stochastic gradient descent} or {\bf online gradient descent} or {\bf sequential gradient descent} computes an approximation of gradient descent as described in Algorithm~\ref{ref:stochasticgradientdescent}.
 First, the randomization splits up the algorithm in many cases.
