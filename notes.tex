@@ -2702,7 +2702,7 @@ $J(\Theta) = -\frac{1}{m}[\sum_{i=1}^m \sum_{k=1}^K y_k^{(i)}log\:h_{\Theta}(x^{
 
 Also, the final step of backpropagation takes regularization into account for the non-bias units when approximating the gradient:
 \begin{align*}
-D_{ij}^{(l)} \gets \frac{1}{m}\Delta_{ij}^{(l)}+\frac{\lambda}{m}\Theta_{ij}^{(l)}\:\mbox{if}\:j\ne0
+\frac{\partial}{\partial \Theta_{ij}^{(l)}}J(\Theta) \gets \frac{1}{m}\Delta_{ij}^{(l)}+\frac{\lambda}{m}\Theta_{ij}^{(l)}\:\mbox{if}\:j\ne0
 \end{align*}
 
 
