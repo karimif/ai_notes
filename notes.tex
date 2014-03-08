@@ -2666,7 +2666,7 @@ $g^{'}(x)=g(x)(1-g(x))$
 \end{algorithm}
 
 $\delta^{(l)}$ is a vector of errors of the units of layer $l$.
-The errors of the output layer are the differences of the actual values $a^{(L)}$ and the expected values $y^{(L)}$: $\delta^{(L)}=a^{(L)}-y^{(i)}$.
+The errors of the output layer are the differences of the activation values $a^{(L)}$ and the observed values of the $i$th training example: $\delta^{(L)}=a^{(L)}-y^{(i)}$.
 The errors of the hidden layers are: $\delta^{(2)}=(\Theta^{(2)})^T\delta^{(3)}.*g^{'}(z^{(2)})$. $.*$ is the element-wise multiplication.
 \\
 There is no $\delta^{(1)}$ as no error term is associated with the input values.
