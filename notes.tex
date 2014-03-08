@@ -2659,7 +2659,7 @@ $\Theta_{ij}^{(l)}$ needs to have an initial value. If $\Theta$ was entirely 0, 
 \subsection{Gradient checking}
 As backpropagation is a complex algorithm, subtile bugs might not be caught and gradient descent might not reach the intended global minimum but only a more expensive minimum.
 {\bf Gradient checking} allows to approximate the gradient and compare it to the gradient returned by backpropagation.
-The approximation is approximated as discussed in Chapter~ref{chapter:learningweights} for each feature $\theta_i$:
+The approximation is approximated as discussed in Chapter~\ref{chapter:learningweights} for each feature $\theta_i$:
 \begin{definition}[Gradient checking] ~\\
 $\frac{\partial}{\partial\theta_i}J(\theta)\approx\frac{J(...,\theta_{i-1},\theta_{i}+\epsilon,\theta_{i+1},...)-J(...,\theta_{i-1},\theta_{i}-\epsilon,\theta_{i+1},...)}{2\epsilon}$ for small $\epsilon$
 \end{definition}
