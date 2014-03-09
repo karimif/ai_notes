@@ -2406,7 +2406,7 @@ PCA is adequate if the data are Gaussian, linear, and stationary, {\bf independe
 \section{Sparse coding}
 Given training data $x^{(1)},x^{(2)},...,x^{(m)}$, {\bf sparse coding} learns bases (features) $\phi_1, \phi_2, ..., \phi_k$ of same dimension as the training data so that each input $x$ can be approximately decomposed as:
 \begin{align*}
-x \approx \sum_{i=1}^k a_j \phi_j
+x \approx \sum_{i=1}^k a_i \phi_i
 \end{align*}
 such that most $a_j$s are zero ("sparse"). \\
 Applied to computer vision, it automatically learns to represent an image in terms of the edges (bases) that appear in it.
