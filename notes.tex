@@ -3111,7 +3111,13 @@ Assuming exact arithmetic, conjugate descent converges in at most $n$ steps wher
 
 
 \subsection{Quasi-Newton methods}
-{\bf Quasi-Newton methods} such as {\bf BFGS} are based on {\bf Newton's method}. To come.
+{\bf Quasi-Newton methods} such as {\bf BFGS} are based on {\bf Newton's method}.
+Newton's method approximates $f(x)$ by a quadratic function around $x_n$ through Taylor expansion and then takes a step towards the maximum/minimum of the quadratic function.
+The equation
+\begin{align*}
+x_{n+1} = x_n - \frac{f'(x_n)}{f''(x_n)}, n = 0, 1, ...
+\end{align*}
+converges towards a root of $f'$, i.e. $x_*$ for which $f'(x_*)=0$. \\
 
 
 \section{Online learning}
