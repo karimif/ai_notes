@@ -3118,6 +3118,8 @@ The equation
 x_{n+1} = x_n - \frac{f'(x_n)}{f''(x_n)}, n = 0, 1, ...
 \end{align*}
 converges towards a root of $f'$, i.e. $x_*$ for which $f'(x_*)=0$. \\
+This scheme can be generalized to several dimensions by replacing the derivative with the gradient and the reciprocal of the second derivative with the inverse of the {\bf Hessian matrix}. \\
+Quasi-Newton methods do not compute the Hessian matrix, but approximate it by analyzing successive gradient vectors instead.
 
 
 \section{Online learning}
