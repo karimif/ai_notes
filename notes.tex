@@ -573,6 +573,19 @@ Thus, an eigenvector corresponding to $\lambda_2=-2$ is: $\begin{pmatrix}
 \end{pmatrix}$ which is a basis of the eigenspace corresponding to $\lambda_2=-2$.
 
 \section{Calculus}
+
+\subsection{Hessian matrix}
+The {\bf Hessian matrix} is a square matrix of second-order partial derivatives of a function.
+Given the real-valued function $f(x_1,...,x_n)$, the Hessian matrix is:
+\begin{align*}
+H(f) = \begin{pmatrix}
+\frac{\partial^2 f}{\partial x_1^2} & \frac{\partial^2 f}{\partial x_1 \partial x_2}  & \dots & \frac{\partial^2 f}{\partial x_1 \partial x_n} \\
+\frac{\partial^2 f}{\partial x_2 \partial x_1} & \frac{\partial^2 f}{\partial x_2^2}  & \dots & \frac{\partial^2 f}{\partial x_2 \partial x_n} \\
+\vdots & \vdots & \ddots & \vdots \\
+\frac{\partial^2 f}{\partial x_n \partial x_1} & \frac{\partial^2 f}{\partial x_n \partial x_2}  & \dots & \frac{\partial^2 f}{\partial x_n^2}
+\end{pmatrix}
+\end{align*}
+
 \subsection{Jacobian matrix}
 The {\bf Jacobian matrix} is the matrix of all first-order partial derivatives of a vector-valued function.
 $F : \mathbb{R}^n \mapsto \mathbb{R}^m$ is a function which takes as input real $n$-tuples and produces as output real $m$-tuples.
