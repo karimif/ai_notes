@@ -3104,7 +3104,11 @@ Once a line is chosen which specifies the direction of the update, the update di
 The position of the point along the line that minimizes the error has impact on the update which can result in a very large or very small weight update.
 
 \subsection{Conjugate descent}
-To come.
+{\bf Conjugate descent} builds on top of the idea of line search. It performs a sequence of line searcher to search for a minimum in the error surface.
+As the first step, the direction is chosen by similar to gradient descent by selecting the negative gradient.
+For each subsequent sequence, a new direction is chosen to that the component of the error gradient that has just been made zero, remains zero.
+Assuming exact arithmetic, conjugate descent converges in at most $n$ steps where $n$ is the amount of features.
+
 
 \subsection{Quasi-Newton methods}
 {\bf Quasi-Newton methods} such as {\bf BFGS} are based on {\bf Newton's method}. To come.
