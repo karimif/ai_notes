@@ -2783,7 +2783,44 @@ Also, the number of independent parameters to be learned is significantly smalle
 CNNs require a slight modification of the backpropagation algorithm for weight sharing in the convolutional layers and averaging and in the subsampling layers.
 
 \section{Recurrent neural networks}
-To come.
+{\bf Recurrent neural networks} (RNNs) are cyclic graphs of neurons as displayed in Figure~\ref{figure:recurrentneuralnetwork}.
+
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}[
+  node distance=1cm and 1cm,
+  mynode/.style={draw,circle,align=center}
+]
+\node[mynode] (A12) {$a_1^{(2)}$};
+\node[mynode,below=0.5cm of A12] (A22) {$a_2^{(2)}$};
+\node[mynode,below=0.5cm of A22] (A32) {$a_3^{(2)}$};
+\node[mynode,left=0cm and 1cm of A12] (X1) {$x_1$};
+\node[mynode,left=0cm and 1cm of A22] (X2) {$x_2$};
+\node[mynode,left=0cm and 1cm of A32] (X3) {$x_3$};
+\node[mynode,right=0cm and 1cm of A22] (L3) {};
+\node[mynode,right=0cm and 1cm of L3,draw=white] (h) {$h_{\Theta}(x)$};
+\path (X1) edge[-latex] (A12)
+(X1) edge[-latex] (A22)
+(X1) edge[-latex] (A32)
+(X2) edge[-latex] (A12)
+(X2) edge[-latex] (A22)
+(X2) edge[-latex] (A32)
+(X3) edge[-latex] (A12)
+(X3) edge[-latex] (A22)
+(X3) edge[-latex] (A32)
+(A12) edge[-latex] (L3)
+(A22) edge[-latex] (L3)
+(A32) edge[-latex] (L3)
+(A32) edge [->,bend left] node {} (X3)
+(L3) edge[-latex] (h);
+\end{tikzpicture}
+\caption{Recurrent neural network}
+\label{figure:recurrentneuralnetwork}
+\end{figure}
+
+They have increased representational power as they create an internal state of the network which allows them to exhibit dynamic temporal behavior. There are several variants of RNNs that have different capabilities.
+Training RNNs is more complex as this depends on their structure. The RNN in Figure~\ref{figure:recurrentneuralnetwork} can be trained using a simple variant of backpropagation.
+
 
 \section{Deep learning}
 To come.
