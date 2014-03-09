@@ -2463,6 +2463,15 @@ where $\vert \Sigma \vert$ is the determinant of the {\bf covariance matrix} $\S
 
 This algorithm automatically captures correlations between features. It is computationally more expensive and requires $m>n$ to invert $\Sigma$. There may be further problems that prevent inversion such as linear dependency.
 
+\section{Sparse coding}
+Given training data $x^{(1)},x^{(2)},...,x^{(m)}$, {\bf sparse coding} learns bases (features) $\phi_1, \phi_2, ..., \phi_k$ of same dimension as the training data so that each input $x$ can be approximately decomposed as:
+\begin{align*}
+x \approx \sum_{i=1}^k a_j \phi_j
+\end{align*}
+such that most $a_j$s are zero ("sparse"). \\
+Applied to computer vision, it automatically learns to represent an image in terms of the edges (bases) that appear in it.
+This gives a more succinct, higher-level representation that the raw pixels\footnote{Andrew Ng. {\em Deep Learning, Self-Taught Learning and Unsupervised Feature Learning}. \url{http://www.youtube.com/watch?v=n1ViNeWhC24}}.
+
 
 \chapter{Neural networks}
 \label{chapter:neuralnetworks}
