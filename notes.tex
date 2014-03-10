@@ -1379,7 +1379,7 @@ The probabilities can be also learned from a data set. For $RSSSRSR$, the probab
 \item $P(R\vert S)=0.5$
 \item $P(R\vert R)=0$
 \end{itemize}
-{\bf Laplacian smoothing} can be used to reduce overfitting (e.g. all data sets start in $R$). For $K=1$, the probabilities are
+{\bf Laplacian smoothing} (see Chapter~\ref{chapter:usingnaivebayes}) can be used to reduce overfitting (e.g. all data sets start in $R$). For $K=1$, the probabilities are
 \begin{itemize}
 \item $P(R_0)=\frac{1+1}{1+2}=\frac{2}{3}$
 \item $P(S\vert R)=\frac{2+1}{2+2}=\frac{3}{4}$
@@ -1881,6 +1881,7 @@ C = \max\limits_{C} P(C)\prod_iP(x_i\vert C)
 \end{align*}
 
 \subsection{Using naive Bayes}
+\label{chapter:usingnaivebayes}
 The probability:
 \begin{align*}
 P(x_i) = \frac{count(x_i)}{N}
