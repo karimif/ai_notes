@@ -1299,7 +1299,7 @@ It makes two assumptions: First, it assumes that all possible causes are listed 
 \label{figure:noisyor}
 \end{figure}
 
-The following probabilities are supposed for the sample causes and effect in Figure~\ref{figure:noisyor} (the negated causes do not have influence on $fever$ because of the second condition.
+The following probabilities are supposed for the sample causes and effect in Figure~\ref{figure:noisyor} (the negated causes do not have influence on $fever$ because of the second condition:
 \begin{itemize}
 \item $P(fever\vert \neg cold, \neg flu, malaria) = {\bf 0.9}$
 \item $P(fever\vert \neg cold, flu, \neg malaria) = {\bf 0.8}$
@@ -1310,7 +1310,7 @@ The probability that none of the causes caused effect $E$ is the product of the 
 \begin{align*}
 P(E\vert parents(E)) = P(E\vert C_1,...,C_n) = 1 - \prod_i (1 - P(E\vert C_i))
 \end{align*}
-The product is taken over the parents there are set to true for that row of the CPT. Table~\ref{table:samplecauses} illustrates this calculation:
+The product is taken over the parents there are set to true for that row of the CPT. Table~\ref{table:samplecauses} illustrates this calculation.
 
 \begin{figure}[h!]
 \centering
