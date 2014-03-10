@@ -260,268 +260,6 @@ $P(A\vert B,e) = \frac{P(B\vert A,e)P(A\vert e)}{P(B\vert e)}$
 \end{definition}
 
 
-\subsection{Bayes networks}
-Bayes networks define probability distributions over random variables and allow compact specification of full joint distributions. The joint probability of the network shown in Figure~\ref{ref:samplenetwork} is: $P(A,B,C,D,E)=P(A)(B)P(C\vert A,B)P(D\vert C)P(E\vert C)$. The general equation is:
-\begin{definition}
-$P(x_1,...,x_n) = \prod_{i=1}^{n}{P(x_i\vert parents(x_i))}$
-\end{definition}
-
-
-\begin{figure}[h!]
-\centering
-\begin{tikzpicture}[
-  node distance=1cm and 1cm,
-  mynode/.style={draw,circle,align=center}
-]
-\node[mynode] (C) {C};
-\node[mynode,above left=1cm of C] (A) {A};
-\node[mynode,above right=1cm of C] (B) {B};
-\node[mynode,below left=1cm of C] (D) {D};
-\node[mynode,below right=1cm of C] (E) {E};
-\path (A) edge[-latex] (C)
-(B) edge[-latex] (C)
-(C) edge[-latex] (D)
-(C) edge[-latex] (E);
-\end{tikzpicture}
-\caption{Sample Bayes network}
-\label{ref:samplenetwork}
-\end{figure}
-
-\subsection{d-separation}
-Stands for direction-dependent separation. d-separated variables are independent. $X$ and $Y$ are d-separated if there is no active path between them.
-Paths consists of {\bf triplets} as defined in Table~\ref{ref:triplets} in which a filled circle represents a known probability. An inactive triplet makes an entire path inactive. \\
-
-
-\begin{table}[h!]
-\begin{center}
-\begin{tabular}{c|c}
-Active & Inactive \\
-\hline
-\hline
-\begin{tikzpicture}[
-  node distance=1cm and 1cm,
-  mynode/.style={draw,circle,align=center}
-]
-\node[mynode] (A) {};
-\node[mynode, right=0.5cm of A] (B) {};
-\node[mynode, right=0.5cm of B] (C) {};
-\path (A) edge[-latex] (B)
-(B) edge[-latex] (C);
-\end{tikzpicture}
-causal chain
-&
-\begin{tikzpicture}[
-  node distance=1cm and 1cm,
-  mynode/.style={draw,circle,align=center}
-]
-\node[mynode] (A) {};
-\node[mynode, right=0.5cm of A, fill=black] (B) {};
-\node[mynode, right=0.5cm of B] (C) {};
-\path (A) edge[-latex] (B)
-(B) edge[-latex] (C);
-\end{tikzpicture}
-\\
-\hline
-\begin{tikzpicture}[
-  node distance=1cm and 1cm,
-  mynode/.style={draw,circle,align=center}
-]
-\node[mynode] (C) {};
-\node[mynode,below left=0.5cm of C] (A) {};
-\node[mynode,below right=0.5cm of C] (B) {};
-\path (C) edge[-latex] (A)
-(C) edge[-latex] (B);
-\end{tikzpicture}
-common cause
-&
-\begin{tikzpicture}[
-  node distance=1cm and 1cm,
-  mynode/.style={draw,circle,align=center}
-]
-\node[mynode, fill=black] (C) {};
-\node[mynode,below left=0.5cm of C] (A) {};
-\node[mynode,below right=0.5cm of C] (B) {};
-\path (C) edge[-latex] (A)
-(C) edge[-latex] (B);
-\end{tikzpicture}
-\\
-\hline
-\begin{tikzpicture}[
-  node distance=1cm and 1cm,
-  mynode/.style={draw,circle,align=center}
-]
-\node[mynode,fill=black] (C) {};
-\node[mynode,above left=0.5cm of C] (A) {};
-\node[mynode,above right=0.5cm of C] (B) {};
-\path (A) edge[-latex] (C)
-(B) edge[-latex] (C);
-\end{tikzpicture}
-common effect
-&
-\begin{tikzpicture}[
-  node distance=1cm and 1cm,
-  mynode/.style={draw,circle,align=center}
-]
-\node[mynode] (C) {};
-\node[mynode,above left=0.5cm of C] (A) {};
-\node[mynode,above right=0.5cm of C] (B) {};
-\path (A) edge[-latex] (C)
-(B) edge[-latex] (C);
-\end{tikzpicture}
-\\
-\hline
-\begin{tikzpicture}[
-  node distance=1cm and 1cm,
-  mynode/.style={draw,circle,align=center}
-]
-\node[mynode] (C) {};
-\node[mynode,above left=0.5cm of C] (A) {};
-\node[mynode,above right=0.5cm of C] (B) {};
-\node[mynode,below=0.5cm of C,color=white] (D) {};
-\node[mynode,below=0cm of D, fill=black] (E) {};
-\path (A) edge[-latex] (C)
-(B) edge[-latex] (C)
-(C) edge[-latex] (D);
-\end{tikzpicture}
-common effect with observed descendant
-&
-\\
-\end{tabular}
-\end{center}
-\caption{Active and inactive triplets with known variables filled}
-\label{ref:triplets}
-\end{table}
-
-For Figure~\ref{ref:samplenetwork}, there are the following (conditional) independences:
-\begin{itemize}
-\item $A \independent B$
-\item $A \independent E \vert C$ and $B \independent D \vert C$
-\item $D \independent E \vert C$
-\end{itemize}
-
-
-
-Figure~\ref{ref:sampledseparation1} is a sample graph\footnote{Prof. Abbeel. {\em D-separation}. \url{http://www.youtube.com/watch?v=i0CGsHhjISU}}. Is $A$ guaranteed to be independent of $D$?
-\begin{itemize}
-\item Path $D\rightarrow C\rightarrow A$ is an \underline{active} triplet (causal chain) $\implies$ active
-\end{itemize}
-Since there is an active path paths between $A$ and $D$, $A$ and $D$ are not independent.
-
-Figure~\ref{ref:sampledseparation2} is another sample graph. Is $D$ guaranteed to be independent of $C$, given $E$?
-\begin{itemize}
-\item Path $C\rightarrow A\rightarrow D$ is an \underline{inactive} triplet (common effect) $\implies$ inactive
-\item Path $C\rightarrow B\rightarrow E\rightarrow D$ contains the \underline{active} triplet $C\rightarrow B\rightarrow E$ (common cause) and the \underline{inactive} triplet $B\rightarrow E\rightarrow D$ (causal chain) $\implies$ inactive
-\item Path $C\rightarrow B\rightarrow E\rightarrow A \rightarrow D$ contains the \underline{active} triplet $C\rightarrow B\rightarrow E$ (common cause), the \underline{inactive} triplet $B\rightarrow E\rightarrow A$ (causal chain) and the \underline{inactive} triplet $E\rightarrow A\rightarrow D$ (common effect) $\implies$ inactive
-\item Path $C\rightarrow A\rightarrow E\rightarrow D$ contains the \underline{inactive} triplet $C\rightarrow A\rightarrow E$ (common effect) and the \underline{inactive} triplet $A\rightarrow E\rightarrow D$ (causal cause) $\implies$ inactive
-\end{itemize}
-Since all path paths between $D$ and $C$ are inactive, $D$ and $C$ are independent, given $E$.
-
-
-
-\begin{figure}[h!]
-\centering
-\begin{tikzpicture}[
-  node distance=1cm and 1cm,
-  mynode/.style={draw,circle,align=center},
-  font=\small
-]
-\node[mynode] (B) {B};
-\node[mynode,below left=0.5cm and 0.4 of B] (C) {C};
-\node[mynode,below right=0.5cm and 0.4 of B] (D) {D};
-\node[mynode,below left=-1cm and 0.4 of C] (A) {A};
-\node[mynode,below right=0.5cm and 0.05 of C] (E) {E};
-\path (B) edge[-latex] (C)
-(B) edge[-latex] (A)
-(B) edge[-latex] (D)
-(C) edge[-latex] (A)
-(D) edge[-latex] (C)
-(D) edge[-latex] (E);
-\end{tikzpicture}
-\caption{Sample graph for d-separation}
-\label{ref:sampledseparation1}
-\end{figure}
-
-\begin{figure}[h!]
-\centering
-\begin{tikzpicture}[
-  node distance=1cm and 1cm,
-  mynode/.style={draw,circle,align=center},
-  font=\small
-]
-\node[mynode] (B) {B};
-\node[mynode,below left=0.5cm and 0.4 of B] (C) {C};
-\node[mynode,below right=0.5cm and 0.4 of B,fill=gray] (E) {E};
-\node[mynode,below left=0.5cm and 0.05 of C] (A) {A};
-\node[mynode,below right=0.5cm and 0.05 of C] (D) {D};
-\path (B) edge[-latex] (C)
-(B) edge[-latex] (E)
-(C) edge[-latex] (A)
-(D) edge[-latex] (A)
-(E) edge[-latex] (A)
-(E) edge[-latex] (D);
-\end{tikzpicture}
-\caption{Sample graph for d-separation given $E$}
-\label{ref:sampledseparation2}
-\end{figure}
-
-
-\subsection{Markov chains}
-\label{ref:markovchains}
-A {\bf Markov chain} is a temporal Bayes network which consists of states and transition probabilities. Figure \ref{ref:samplemarkovchain} represents a sample Markov chain.
-
-\begin{figure}[h!]
-\centering
-\begin{tikzpicture}[
-  node distance=1cm and 1cm,
-  mynode/.style={draw,circle,align=center}
-]
-\node[mynode] (R) {R};
-\node[mynode, right=1.5cm of R] (S) {S};
-\path (R) edge [->,bend left] node[above] {0.4} (S)
-(R) edge [loop above] node {0.6} (R)
-(S) edge [->,bend left] node[below] {0.2} (R)
-(S) edge [loop above] node {0.8} (S);
-\end{tikzpicture}
-\caption{Sample Markov chain}
-\label{ref:samplemarkovchain}
-\end{figure}
-
-Given $P(R_0)=1$, the following probabilities can be computed using the law of total probability:
-\begin{itemize}
-\item $P(R_1)=0.6$
-\item $P(R_2)=0.44$
-\item $P(R_3)=0.377$
-\end{itemize}
-
-For $P(R_\infty)=\lim\limits_{t \rightarrow \infty P(R_t)}$, the Markov chain settles to the {\bf stationary distribution}. This can be calculated by reexpressing the convergence:
-\begin{align*}
-P(R_t) = P(R_{t-1}) = P(R_t\vert R_{t-1})P(R_{t-1}) + P(R_t\vert S_{t-1})P(S_{t-1})
-\end{align*}
-By renaming $P(R_{t-1})$ to $x$, this equation can be solved:
-\begin{align*}
-x &= P(R_t\vert R_{t-1})x + P(R_t\vert S_{t-1})(1-x) &\\
-x &= 0.6x + 0.2(1-x) \\
-x &= \frac{1}{3}
-\end{align*}
-Therefore, $P(R_\infty)=\frac{1}{3}$ and $P(S_\infty)=\frac{2}{3}$. \\
-The probabilities can be also learned from a data set. For $RSSSRSR$, the probabilities are:
-\begin{itemize}
-\item $P(R_0)=1$
-\item $P(S\vert R)=1$
-\item $P(S\vert S)=0.5$
-\item $P(R\vert S)=0.5$
-\item $P(R\vert R)=0$
-\end{itemize}
-{\bf Laplacian smoothing} can be used to reduce overfitting (e.g. all data sets start in $R$). For $K=1$, the probabilities are
-\begin{itemize}
-\item $P(R_0)=\frac{1+1}{1+2}=\frac{2}{3}$
-\item $P(S\vert R)=\frac{2+1}{2+2}=\frac{3}{4}$
-\item $P(S\vert S)=\frac{2+1}{4+2}=\frac{1}{2}$
-\item $P(R\vert S)=\frac{2+1}{4+2}=\frac{1}{2}$
-\item $P(R\vert R)=\frac{0+1}{2+2}=\frac{1}{4}$
-\end{itemize}
-
-
 \section{Linear algebra}
 \subsection{Eigenvalues and eigenvectors}
 Let $A$ be an $n\times n$ matrix. The number $\lambda$ is an {\bf eigenvalue} of $A$ if there exists a non-zero vector $x$ such that:
@@ -1260,6 +998,268 @@ def zebra_puzzle():
 \end{python}
 \end{algorithm}
 
+
+\chapter{Probabilistic reasoning}
+\section{Bayes networks}
+Bayes networks define probability distributions over random variables and allow compact specification of full joint distributions. The joint probability of the network shown in Figure~\ref{ref:samplenetwork} is: $P(A,B,C,D,E)=P(A)(B)P(C\vert A,B)P(D\vert C)P(E\vert C)$. The general equation is:
+\begin{definition}
+$P(x_1,...,x_n) = \prod_{i=1}^{n}{P(x_i\vert parents(x_i))}$
+\end{definition}
+
+
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}[
+  node distance=1cm and 1cm,
+  mynode/.style={draw,circle,align=center}
+]
+\node[mynode] (C) {C};
+\node[mynode,above left=1cm of C] (A) {A};
+\node[mynode,above right=1cm of C] (B) {B};
+\node[mynode,below left=1cm of C] (D) {D};
+\node[mynode,below right=1cm of C] (E) {E};
+\path (A) edge[-latex] (C)
+(B) edge[-latex] (C)
+(C) edge[-latex] (D)
+(C) edge[-latex] (E);
+\end{tikzpicture}
+\caption{Sample Bayes network}
+\label{ref:samplenetwork}
+\end{figure}
+
+\section{d-separation}
+Stands for direction-dependent separation. d-separated variables are independent. $X$ and $Y$ are d-separated if there is no active path between them.
+Paths consists of {\bf triplets} as defined in Table~\ref{ref:triplets} in which a filled circle represents a known probability. An inactive triplet makes an entire path inactive. \\
+
+
+\begin{table}[h!]
+\begin{center}
+\begin{tabular}{c|c}
+Active & Inactive \\
+\hline
+\hline
+\begin{tikzpicture}[
+  node distance=1cm and 1cm,
+  mynode/.style={draw,circle,align=center}
+]
+\node[mynode] (A) {};
+\node[mynode, right=0.5cm of A] (B) {};
+\node[mynode, right=0.5cm of B] (C) {};
+\path (A) edge[-latex] (B)
+(B) edge[-latex] (C);
+\end{tikzpicture}
+causal chain
+&
+\begin{tikzpicture}[
+  node distance=1cm and 1cm,
+  mynode/.style={draw,circle,align=center}
+]
+\node[mynode] (A) {};
+\node[mynode, right=0.5cm of A, fill=black] (B) {};
+\node[mynode, right=0.5cm of B] (C) {};
+\path (A) edge[-latex] (B)
+(B) edge[-latex] (C);
+\end{tikzpicture}
+\\
+\hline
+\begin{tikzpicture}[
+  node distance=1cm and 1cm,
+  mynode/.style={draw,circle,align=center}
+]
+\node[mynode] (C) {};
+\node[mynode,below left=0.5cm of C] (A) {};
+\node[mynode,below right=0.5cm of C] (B) {};
+\path (C) edge[-latex] (A)
+(C) edge[-latex] (B);
+\end{tikzpicture}
+common cause
+&
+\begin{tikzpicture}[
+  node distance=1cm and 1cm,
+  mynode/.style={draw,circle,align=center}
+]
+\node[mynode, fill=black] (C) {};
+\node[mynode,below left=0.5cm of C] (A) {};
+\node[mynode,below right=0.5cm of C] (B) {};
+\path (C) edge[-latex] (A)
+(C) edge[-latex] (B);
+\end{tikzpicture}
+\\
+\hline
+\begin{tikzpicture}[
+  node distance=1cm and 1cm,
+  mynode/.style={draw,circle,align=center}
+]
+\node[mynode,fill=black] (C) {};
+\node[mynode,above left=0.5cm of C] (A) {};
+\node[mynode,above right=0.5cm of C] (B) {};
+\path (A) edge[-latex] (C)
+(B) edge[-latex] (C);
+\end{tikzpicture}
+common effect
+&
+\begin{tikzpicture}[
+  node distance=1cm and 1cm,
+  mynode/.style={draw,circle,align=center}
+]
+\node[mynode] (C) {};
+\node[mynode,above left=0.5cm of C] (A) {};
+\node[mynode,above right=0.5cm of C] (B) {};
+\path (A) edge[-latex] (C)
+(B) edge[-latex] (C);
+\end{tikzpicture}
+\\
+\hline
+\begin{tikzpicture}[
+  node distance=1cm and 1cm,
+  mynode/.style={draw,circle,align=center}
+]
+\node[mynode] (C) {};
+\node[mynode,above left=0.5cm of C] (A) {};
+\node[mynode,above right=0.5cm of C] (B) {};
+\node[mynode,below=0.5cm of C,color=white] (D) {};
+\node[mynode,below=0cm of D, fill=black] (E) {};
+\path (A) edge[-latex] (C)
+(B) edge[-latex] (C)
+(C) edge[-latex] (D);
+\end{tikzpicture}
+common effect with observed descendant
+&
+\\
+\end{tabular}
+\end{center}
+\caption{Active and inactive triplets with known variables filled}
+\label{ref:triplets}
+\end{table}
+
+For Figure~\ref{ref:samplenetwork}, there are the following (conditional) independences:
+\begin{itemize}
+\item $A \independent B$
+\item $A \independent E \vert C$ and $B \independent D \vert C$
+\item $D \independent E \vert C$
+\end{itemize}
+
+
+
+Figure~\ref{ref:sampledseparation1} is a sample graph\footnote{Prof. Abbeel. {\em D-separation}. \url{http://www.youtube.com/watch?v=i0CGsHhjISU}}. Is $A$ guaranteed to be independent of $D$?
+\begin{itemize}
+\item Path $D\rightarrow C\rightarrow A$ is an \underline{active} triplet (causal chain) $\implies$ active
+\end{itemize}
+Since there is an active path paths between $A$ and $D$, $A$ and $D$ are not independent.
+
+Figure~\ref{ref:sampledseparation2} is another sample graph. Is $D$ guaranteed to be independent of $C$, given $E$?
+\begin{itemize}
+\item Path $C\rightarrow A\rightarrow D$ is an \underline{inactive} triplet (common effect) $\implies$ inactive
+\item Path $C\rightarrow B\rightarrow E\rightarrow D$ contains the \underline{active} triplet $C\rightarrow B\rightarrow E$ (common cause) and the \underline{inactive} triplet $B\rightarrow E\rightarrow D$ (causal chain) $\implies$ inactive
+\item Path $C\rightarrow B\rightarrow E\rightarrow A \rightarrow D$ contains the \underline{active} triplet $C\rightarrow B\rightarrow E$ (common cause), the \underline{inactive} triplet $B\rightarrow E\rightarrow A$ (causal chain) and the \underline{inactive} triplet $E\rightarrow A\rightarrow D$ (common effect) $\implies$ inactive
+\item Path $C\rightarrow A\rightarrow E\rightarrow D$ contains the \underline{inactive} triplet $C\rightarrow A\rightarrow E$ (common effect) and the \underline{inactive} triplet $A\rightarrow E\rightarrow D$ (causal cause) $\implies$ inactive
+\end{itemize}
+Since all path paths between $D$ and $C$ are inactive, $D$ and $C$ are independent, given $E$.
+
+
+
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}[
+  node distance=1cm and 1cm,
+  mynode/.style={draw,circle,align=center},
+  font=\small
+]
+\node[mynode] (B) {B};
+\node[mynode,below left=0.5cm and 0.4 of B] (C) {C};
+\node[mynode,below right=0.5cm and 0.4 of B] (D) {D};
+\node[mynode,below left=-1cm and 0.4 of C] (A) {A};
+\node[mynode,below right=0.5cm and 0.05 of C] (E) {E};
+\path (B) edge[-latex] (C)
+(B) edge[-latex] (A)
+(B) edge[-latex] (D)
+(C) edge[-latex] (A)
+(D) edge[-latex] (C)
+(D) edge[-latex] (E);
+\end{tikzpicture}
+\caption{Sample graph for d-separation}
+\label{ref:sampledseparation1}
+\end{figure}
+
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}[
+  node distance=1cm and 1cm,
+  mynode/.style={draw,circle,align=center},
+  font=\small
+]
+\node[mynode] (B) {B};
+\node[mynode,below left=0.5cm and 0.4 of B] (C) {C};
+\node[mynode,below right=0.5cm and 0.4 of B,fill=gray] (E) {E};
+\node[mynode,below left=0.5cm and 0.05 of C] (A) {A};
+\node[mynode,below right=0.5cm and 0.05 of C] (D) {D};
+\path (B) edge[-latex] (C)
+(B) edge[-latex] (E)
+(C) edge[-latex] (A)
+(D) edge[-latex] (A)
+(E) edge[-latex] (A)
+(E) edge[-latex] (D);
+\end{tikzpicture}
+\caption{Sample graph for d-separation given $E$}
+\label{ref:sampledseparation2}
+\end{figure}
+
+
+\section{Markov chains}
+\label{ref:markovchains}
+A {\bf Markov chain} is a temporal Bayes network which consists of states and transition probabilities. Figure \ref{ref:samplemarkovchain} represents a sample Markov chain.
+
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}[
+  node distance=1cm and 1cm,
+  mynode/.style={draw,circle,align=center}
+]
+\node[mynode] (R) {R};
+\node[mynode, right=1.5cm of R] (S) {S};
+\path (R) edge [->,bend left] node[above] {0.4} (S)
+(R) edge [loop above] node {0.6} (R)
+(S) edge [->,bend left] node[below] {0.2} (R)
+(S) edge [loop above] node {0.8} (S);
+\end{tikzpicture}
+\caption{Sample Markov chain}
+\label{ref:samplemarkovchain}
+\end{figure}
+
+Given $P(R_0)=1$, the following probabilities can be computed using the law of total probability:
+\begin{itemize}
+\item $P(R_1)=0.6$
+\item $P(R_2)=0.44$
+\item $P(R_3)=0.377$
+\end{itemize}
+
+For $P(R_\infty)=\lim\limits_{t \rightarrow \infty P(R_t)}$, the Markov chain settles to the {\bf stationary distribution}. This can be calculated by reexpressing the convergence:
+\begin{align*}
+P(R_t) = P(R_{t-1}) = P(R_t\vert R_{t-1})P(R_{t-1}) + P(R_t\vert S_{t-1})P(S_{t-1})
+\end{align*}
+By renaming $P(R_{t-1})$ to $x$, this equation can be solved:
+\begin{align*}
+x &= P(R_t\vert R_{t-1})x + P(R_t\vert S_{t-1})(1-x) &\\
+x &= 0.6x + 0.2(1-x) \\
+x &= \frac{1}{3}
+\end{align*}
+Therefore, $P(R_\infty)=\frac{1}{3}$ and $P(S_\infty)=\frac{2}{3}$. \\
+The probabilities can be also learned from a data set. For $RSSSRSR$, the probabilities are:
+\begin{itemize}
+\item $P(R_0)=1$
+\item $P(S\vert R)=1$
+\item $P(S\vert S)=0.5$
+\item $P(R\vert S)=0.5$
+\item $P(R\vert R)=0$
+\end{itemize}
+{\bf Laplacian smoothing} can be used to reduce overfitting (e.g. all data sets start in $R$). For $K=1$, the probabilities are
+\begin{itemize}
+\item $P(R_0)=\frac{1+1}{1+2}=\frac{2}{3}$
+\item $P(S\vert R)=\frac{2+1}{2+2}=\frac{3}{4}$
+\item $P(S\vert S)=\frac{2+1}{4+2}=\frac{1}{2}$
+\item $P(R\vert S)=\frac{2+1}{4+2}=\frac{1}{2}$
+\item $P(R\vert R)=\frac{0+1}{2+2}=\frac{1}{4}$
+\end{itemize}
 
 
 \chapter{Learning}
