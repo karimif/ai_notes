@@ -1211,7 +1211,7 @@ Since all path paths between $D$ and $C$ are inactive, $D$ and $C$ are independe
 
 
 \section{Explaining away}
-{\bf Explaining away} is special instance of inference on Bayes networks. Given Figure~\ref{figure:explaining away}, a person if happy (H) if it is sunny (S) or if the person got a salary raise (R) or both.
+{\bf Explaining away} is special instance of inference on Bayes networks. Given Figure~\ref{figure:explainingaway}, a person if happy (H) if it is sunny (S) or if the person got a salary raise (R) or both.
 
 \begin{figure}[h!]
 \centering
@@ -1279,11 +1279,57 @@ In order to make {\bf conditional probability tables} (CPTs) more compact, some 
 In general, noisy logical relationships in which a variable depends on $k$ parents can be described using $O(k)$ parameters instead of $O(2^k)$ for the full CPT.
 This makes assessment and learning much easier.
 It makes two assumptions: First, it assumes that all possible causes are listed and second that each cause is independent of the others.
-\\
-The probability that none of the causes caused effect $E$ is the product of the probabilities that each one {\bf did not} cause $E$:
+
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}[
+  node distance=1cm and 1cm,
+  mynode/.style={draw,ellipse,align=center}
+]
+\node[mynode] (D) {Fever};
+\node[mynode,above left=1cm of D] (A) {Cold};
+\node[mynode,above right=1cm and -1cm of D] (B) {Flu};
+\node[mynode,above right=1cm of D] (C) {Malaria};
+\path (A) edge[-latex] (D)
+(B) edge[-latex] (D)
+(C) edge[-latex] (D);
+\end{tikzpicture}
+\caption{Sample causes and effect}
+\label{figure:noisyor}
+\end{figure}
+
+The following probabilities are supposed for the sample causes and effect in Figure~\ref{figure:noisyor} (the negated causes do not have influence on $fever$ because of the second condition:
+\begin{itemize}
+\item $P(fever\vert \neg cold, \neg flu, malaria) = {\bf 0.9}$
+\item $P(fever\vert \neg cold, flu, \neg malaria) = {\bf 0.8}$
+\item $P(fever\vert cold, \neg flu, \neg malaria) = {\bf 0.4}$
+\end{itemize}
+
+The probability that none of the causes caused effect $E$ is the product of the probabilities that each one {\bf did not} cause $E$. The probability that any of them caused $E$ is one minus the above:
 \begin{align*}
 P(E\vert parents(E)) = P(E\vert C_1,...,C_n) = 1 - \prod_i (1 - P(E\vert C_i))
 \end{align*}
+The product is taken over the parents there are set to true for that row of the CPT. Table~\ref{table:samplecauses} illustrates this calculation:
+
+\begin{figure}[h!]
+\centering
+\begin{tabular}{c|c|c||c||c}
+$Cold$ & $Flue$ & $Malaria$ & $P(Fever)$ & $P(\neg Fever)$ \\
+\hline
+\hline
+F & F & F & 0.0 & 1.0 \\
+F & F & {\bf T} & {\bf 0.9} & {\bf 0.1} \\
+F & {\bf T} & F & {\bf 0.8} & {\bf 0.2} \\
+F & T & T & $0.98 = 1 - 0.02$ & $0.02 = 0.2 \times 0.1$ \\
+{\bf T} & F & F & {\bf 0.4} & {\bf 0.6} \\
+T & F & T & $0.94 = 1 - 0.06$ & $0.06 = 0.6 \times 0.1$ \\
+T & T & F & $0.88 = 1 - 0.12$ & $0.12 = 0.6 \times 0.2$ \\
+T & T & T & $0.988 = 1 - 0.012$ & $0.012 = 0.6 \times 0.1 \times 0.1$
+\end{tabular}
+\caption{Sample causes calculation}
+\label{table:samplecauses}
+\end{figure}
+
 
 \section{Markov chains}
 \label{ref:markovchains}
