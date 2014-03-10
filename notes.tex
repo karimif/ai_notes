@@ -1210,6 +1210,37 @@ Since all path paths between $D$ and $C$ are inactive, $D$ and $C$ are independe
 
 
 \section{Explaining away}
+{\bf Explaining away} is special instance of inference on Bayes networks. Given Figure~\ref{figure:explaining away}, a person if happy (H) if it is sunny (S) or if the person got a salary raise (R) or both.
+
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}[
+  node distance=1cm and 1cm,
+  mynode/.style={draw,ellipse,align=center}
+]
+\node[mynode] (C) {Happy};
+\node[mynode,above left=1cm of C] (A) {Sunny};
+\node[mynode,above right=1cm of C] (B) {Grumpy};
+\path (A) edge[-latex] (C)
+(B) edge[-latex] (C);
+\end{tikzpicture}
+\caption{Explaining away}
+\label{figure:explaining away}
+\end{figure}
+
+If the person is happy, sunny weather can explain away the cause of happiness because it makes a salary raise less likely.
+The happiness can be explained by the sunny weather.
+In contrast, if the person is happy, but the weather is rainy, a salary raise is more likely to cause the happiness.
+\\
+The given probabilities are:
+\begin{itemize}
+\item $P(S) = 0.7, P(R) = 0.01$
+\item $P(H\vert S, R) = 1$
+\item $P(H\vert \neg S, R) = 0.9$
+\item $P(H\vert S, \neg R) = 0.7$
+\item $P(H\vert \neg S, \neg R) = 0.1$
+\item $R\independent S \implies P(R\vert S) = 0.01$
+\end{itemize}
 
 
 
