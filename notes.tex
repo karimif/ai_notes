@@ -1229,7 +1229,7 @@ Since all path paths between $D$ and $C$ are inactive, $D$ and $C$ are independe
 \label{figure:explaining away}
 \end{figure}
 
-If the person is happy, sunny weather can explain away the cause of happiness because it makes a salary raise less likely.
+If the person is happy, sunny weather can {\bf explain away} the cause of happiness because it makes a salary raise less likely.
 The happiness can be explained by the sunny weather.
 In contrast, if the person is happy, but the weather is rainy, a salary raise is more likely to cause the happiness.
 \\
@@ -1250,11 +1250,13 @@ This implies various probabilities:
 \item $P(H) = P(H\vert S)P(S) + P(H\vert \neg S)P(\neg S) = 0.5245$
 \end{itemize}
 
-The probability of a salary raise given happiness and sunny weather is (applying general Bayes rule as defined in Chapter~\ref{chapter:bayesrule}):
+The probability of a salary raise given happiness and sunny weather is (applying general Bayes rule as defined in Chapter~\ref{chapter:bayesrule}) is very low:
 \begin{align*}
 P(R\vert H,S) = \frac{P(H\vert R, S)P(R\vert S)}{P(H\vert S)} = 0.0142
 \end{align*}
 
+Therefore, a salary raise is unlikely to cause the happiness when the weather is sunny. The weather then {\bf explains away} the cause of happiness.
+\\
 Comparing this to the probability of a salary raise given only happiness and not knowing anything about the weather helps to understand the explain away effect:
 \begin{align*}
 P(R\vert H) = \frac{P(H\vert R)P(R)}{P(H)} = 0.0185
@@ -1266,8 +1268,6 @@ The most extreme case of making a salary raise likely for happiness is to assume
 \begin{align*}
 P(R\vert H,\neg S) = \frac{P(H\vert R, \neg S)P(R\vert \neg S)}{P(H\vert \neg S)} = 0.0833
 \end{align*}
-
-Better explanations to come.
 
 
 \section{Markov chains}
