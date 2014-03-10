@@ -1239,9 +1239,19 @@ The given probabilities are:
 \item $P(H\vert \neg S, R) = 0.9$
 \item $P(H\vert S, \neg R) = 0.7$
 \item $P(H\vert \neg S, \neg R) = 0.1$
-\item $R\independent S \implies P(R\vert S) = 0.01$
 \end{itemize}
 
+This implies various probabilities:
+\begin{itemize}
+\item $R\independent S \implies P(R\vert S) = 0.01$
+\item $P(H\vert S) = P(H\vert S, R)P(R) + P(H\vert S, \neg R)P(\neg R) = 0.703$
+\item $P(H\vert \neg S) = P(H\vert \neg S, R)P(R) + P(H\vert \neg S, \neg R)P(\neg R) = 0.108$
+\end{itemize}
+
+The probability of a salary raise given happiness and sunny weather is:
+\begin{align*}
+P(R\vert H,S) = \frac{P(H\vert R, S)P(R\vert S)}{P(H\vert S) = 0.014}
+\end{align*}
 
 
 \section{Markov chains}
