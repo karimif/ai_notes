@@ -1247,12 +1247,27 @@ This implies various probabilities:
 \item $R\independent S \implies P(R\vert S) = 0.01$
 \item $P(H\vert S) = P(H\vert S, R)P(R) + P(H\vert S, \neg R)P(\neg R) = 0.703$
 \item $P(H\vert \neg S) = P(H\vert \neg S, R)P(R) + P(H\vert \neg S, \neg R)P(\neg R) = 0.108$
+\item $P(H) = P(H\vert S)P(S) + P(H\vert \neg S)P(\neg S) = 0.5245$
 \end{itemize}
 
 The probability of a salary raise given happiness and sunny weather is (applying general Bayes rule as defined in Chapter~\ref{chapter:bayesrule}):
 \begin{align*}
-P(R\vert H,S) = \frac{P(H\vert R, S)P(R\vert S)}{P(H\vert S)} = 0.014
+P(R\vert H,S) = \frac{P(H\vert R, S)P(R\vert S)}{P(H\vert S)} = 0.0142
 \end{align*}
+
+Comparing this to the probability of a salary raise given only happiness and not knowing anything about the weather helps to understand the explain away effect:
+\begin{align*}
+P(R\vert H) = \frac{P(H\vert R)P(R)}{P(H)} = 0.0185
+\end{align*}
+
+Not knowing if the weather is sunny makes the chance of a salary raise having caused the happiness is higher.
+\\
+The most extreme case of making a salary raise likely for happiness is to assume bad weather which definitely does not cause the happiness:
+\begin{align*}
+P(R\vert H,\neg S) = \frac{P(H\vert R, \neg S)P(R\vert \neg S)}{P(H\vert \neg S)} = 0.0833
+\end{align*}
+
+Better explanations to come.
 
 
 \section{Markov chains}
