@@ -1271,8 +1271,19 @@ P(R\vert H,\neg S) = \frac{P(H\vert R, \neg S)P(R\vert \neg S)}{P(H\vert \neg S)
 \end{align*}
 
 In general, if a certain effect could be caused by multiple causes, seeing one of those causes can {\bf explain away} any other potential cause of this effect.
-Explaining away occurs when there is a {\bf noisy or} configuration in the network.
+Explaining away occurs when there is a {\bf noisy OR} configuration in the network.
 
+
+\section{Noisy OR}
+In order to make {\bf conditional probability tables} (CPTs) more compact, some causal relationships can be models as an OR of the negation of causes. Noisy-OR is a generalization of the logical OR.
+In general, noisy logical relationships in which a variable depends on $k$ parents can be described using $O(k)$ parameters instead of $O(2^k)$ for the full CPT.
+This makes assessment and learning much easier.
+It makes two assumptions: First, it assumes that all possible causes are listed and second that each cause is independent of the others.
+\\
+The probability that none of the causes caused effect $E$ is the product of the probabilities that each one {\bf did not} cause $E$:
+\begin{align*}
+P(E\vert parents(E)) = P(E\vert C_1,...,C_n) = 1 - \prod_i (1 - P(E\vert C_i))
+\end{align*}
 
 \section{Markov chains}
 \label{ref:markovchains}
