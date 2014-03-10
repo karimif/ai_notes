@@ -242,6 +242,7 @@ $P(A\vert C) = \sum_{b\in B}{P(A\vert C,b)P(b\vert C)}$
 \end{definition}
 
 \subsection{Bayes' rule}
+\label{chapter:bayesrule}
 Applying product rule and total probability:
 \begin{definition}
 $P(A\vert B) = \frac{P(B\vert A)P(A)}{\sum_{a\in A}{P(B\vert a)P(a)}} = \frac{P(B\vert A)P(A)}{P(B)}$
@@ -1248,7 +1249,7 @@ This implies various probabilities:
 \item $P(H\vert \neg S) = P(H\vert \neg S, R)P(R) + P(H\vert \neg S, \neg R)P(\neg R) = 0.108$
 \end{itemize}
 
-The probability of a salary raise given happiness and sunny weather is:
+The probability of a salary raise given happiness and sunny weather is (applying general Bayes rule as defined in Chapter~\ref{chapter:bayesrule}):
 \begin{align*}
 P(R\vert H,S) = \frac{P(H\vert R, S)P(R\vert S)}{P(H\vert S) = 0.014}
 \end{align*}
