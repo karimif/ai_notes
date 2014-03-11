@@ -1780,8 +1780,6 @@ $\theta_j := \theta_j - \alpha \frac{1}{m}\sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)}
 \}
 \end{definition}
 
-{\bf Vectorization} allows to do the updates simultaneously through various matrix operations.
-Matrix multiplications can be executed very efficiently, e.g. Strassen algorithm for matrix multiplication in $O(n^{log_2(7)})\approx O(n^{2.8074})$ instead of $O(n^3)$.
 Matrix $X$ contains $m$ transposed training data columns and $n$ features where feature $x_0$ contains entirely 1s:
 $X$ = $\begin{pmatrix}
 \mbox{------} (x^{(1)})^T \mbox{------} \\
@@ -1789,17 +1787,6 @@ $X$ = $\begin{pmatrix}
 ... \\
 \mbox{------} (x^{(m)})^T \mbox{------}
 \end{pmatrix}$
-
-
-The cost function and gradient descent then look:
-
-\begin{definition}[Vectorized cost function] ~\\
-$J(\theta) = \frac{1}{2m}(X\theta-y)^T(X\theta-y)$\\
-\end{definition}
-
-\begin{definition}[Vectorized gradient descent] ~\\
-$\theta := \theta - \alpha \frac{1}{m}X^{T}(h_{\theta}(x)-y) := \theta - \alpha \frac{1}{m}X^{T}(X\theta-y)$
-\end{definition}
 
 The {\bf normal equation} is an efficient closed-form solution for linear regression which requires no loop, no learning rate and no feature normalization.
 It may be too slow for very large matrices as inversion is $O(n^3)$. $X$ may be singular and cannot be inverted.
@@ -1827,20 +1814,37 @@ $J(\theta) = \frac{1}{m}\sum_{i=1}^m[-y^{(i)}log(h_{\theta}(x^{(i)}))-(1-y^{(i)}
 
 The {\bf cross-entropy error function} is the best maximum likelihood estimate for logistic regression.
 Using it instead of the sum-of-squares for a classification problem leads to faster training as well as improved generalization.
-
-
-\begin{definition}[Vectorized cost function] ~\\
-$J(\theta) = \frac{1}{m}[-y^T log(g(X\theta))-(1-y)^T log(1-g(X\theta))]$
-\end{definition}
-
+\\
 This gradient descent looks identical to the linear regression gradient but the formula is actually different because of the different definition of $h_{\theta}(x)$.
 \begin{definition}[Gradient descent]
 $\theta_j := \theta_j - \alpha \frac{1}{m}\sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)}$
 \end{definition}
 
+
+\section{Vectorization}
+{\bf Vectorization} allows to do the updates simultaneously through various matrix operations.
+Matrix multiplications can be executed very efficiently, e.g. Strassen algorithm for matrix multiplication in $O(n^{log_2(7)})\approx O(n^{2.8074})$ instead of $O(n^3)$.
+\\
+The cost function and gradient descent for {\bf linear regression} then look:
+
+\begin{definition}[Vectorized linear regression cost function] ~\\
+$J(\theta) = \frac{1}{2m}(X\theta-y)^T(X\theta-y)$
+\end{definition}
+
+\begin{definition}[Vectorized linear regression gradient descent] ~\\
+$\theta := \theta - \alpha \frac{1}{m}X^{T}(h_{\theta}(x)-y) := \theta - \alpha \frac{1}{m}X^{T}(X\theta-y)$
+\end{definition}
+
+The cost function and gradient descent for {\bf logistic regression} then look:
+\begin{definition}[Vectorized cost function] ~\\
+$J(\theta) = \frac{1}{m}[-y^T log(g(X\theta))-(1-y)^T log(1-g(X\theta))]$
+\end{definition}
+
 \begin{definition}[Vectorized gradient descent] ~\\
 $\theta := \theta - \alpha \frac{1}{m}X^{T}(g(X\theta)-y)$
 \end{definition}
+
+
 
 
 \section{Regularization}
