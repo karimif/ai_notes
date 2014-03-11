@@ -2749,6 +2749,12 @@ Feed-forward neural networks are also sometimes called a {\bf multi-layer percep
 $g = h_\theta(x) = \frac{1}{1+e^{-\theta^{T}x}}$
 \end{definition}
 
+Another choice for the activation function is {\bf tanh} and its output range is $[-1,1]$. It is not used in this document.:
+\begin{definition}[tanh activation function]
+$h_\theta(x) = \frac{e^z - e^{-z}}{e^z + e^{-z}}$
+\end{definition}
+
+
 The value $a_i^{(j)}$ is called {\bf activation} or {\bf forward propagation} of unit $i$ in layer $j$.
 $\Theta^{(j)}$ is a matrix of weights to map from layer $j$ to layer $j+1$.
 If the network has $s_j$ units in layer $j$, $s_{j+1}$ units in layer $j+1$, then $\Theta^{(j)}$ is of dimension $s_{j+1}\times (s_j + 1)$. \\
