@@ -1801,7 +1801,9 @@ $J(\theta) = \frac{1}{2m}(X\theta-y)^T(X\theta-y)$\\
 $\theta := \theta - \alpha \frac{1}{m}X^{T}(h_{\theta}(x)-y) := \theta - \alpha \frac{1}{m}X^{T}(X\theta-y)$
 \end{definition}
 
-The {\bf normal equation} is a closed-form solution for linear regression which requires no loop, no learning rate and no feature normalization. It may be too slow for very large matrices as inversion is $O(n^3)$. $X$ may be singular and cannot be inverted. It is usually recommended to calculate the pseudo inverse.
+The {\bf normal equation} is an efficient closed-form solution for linear regression which requires no loop, no learning rate and no feature normalization.
+It may be too slow for very large matrices as inversion is $O(n^3)$. $X$ may be singular and cannot be inverted.
+It is usually recommended to calculate the {\bf pseudo inverse} instead.
 \begin{definition}[Normal equation]
 $\theta = (X^{T}X)^{-1}X^{T}y$
 \end{definition}
