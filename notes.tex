@@ -1001,7 +1001,7 @@ def zebra_puzzle():
 
 
 \chapter{Probabilistic reasoning}
-Independence and conditional independence relationships allow to simply represented probabilistic representation.
+Independence and conditional independence relationships allow to simply represent probabilistic relationships.
 This chapter introduces {\bf Bayes networks} which are a systematic way to explicitly represent such relationships.
 There are also efficient ways how to do inference on them to learn probabilities of variables.
 In statistics, the term {\bf graphical model} refers to a somewhat broader class that includes Bayes networks.
@@ -1158,7 +1158,7 @@ Figure~\ref{ref:sampledseparation2} is another sample graph. Is $D$ guaranteed t
 \item Path $C\rightarrow A\rightarrow D$ is an \underline{inactive} triplet (common effect) $\implies$ inactive
 \item Path $C\rightarrow B\rightarrow E\rightarrow D$ contains the \underline{active} triplet $C\rightarrow B\rightarrow E$ (common cause) and the \underline{inactive} triplet $B\rightarrow E\rightarrow D$ (causal chain) $\implies$ inactive
 \item Path $C\rightarrow B\rightarrow E\rightarrow A \rightarrow D$ contains the \underline{active} triplet $C\rightarrow B\rightarrow E$ (common cause), the \underline{inactive} triplet $B\rightarrow E\rightarrow A$ (causal chain) and the \underline{inactive} triplet $E\rightarrow A\rightarrow D$ (common effect) $\implies$ inactive
-\item Path $C\rightarrow A\rightarrow E\rightarrow D$ contains the \underline{inactive} triplet $C\rightarrow A\rightarrow E$ (common effect) and the \underline{inactive} triplet $A\rightarrow E\rightarrow D$ (causal cause) $\implies$ inactive
+\item Path $C\rightarrow A\rightarrow E\rightarrow D$ contains the \underline{inactive} triplet $C\rightarrow A\rightarrow E$ (common effect) and the \underline{inactive} triplet $A\rightarrow E\rightarrow D$ (common cause) $\implies$ inactive
 \end{itemize}
 Since all paths between $D$ and $C$ are inactive, $D$ and $C$ are independent, given $E$.
 
@@ -1212,7 +1212,7 @@ Since all paths between $D$ and $C$ are inactive, $D$ and $C$ are independent, g
 
 
 \section{Explaining away}
-{\bf Explaining away} is special instance of inference on Bayes networks. Given Figure~\ref{figure:explainingaway}, a person if happy (H) if it is sunny (S) or if the person got a salary raise (R) or both.
+{\bf Explaining away} is special instance of inference on Bayes networks. Given Figure~\ref{figure:explainingaway}, a person is happy (H) if it is sunny (S) or if the person got a salary raise (R) or both.
 
 \begin{figure}[h!]
 \centering
@@ -1252,7 +1252,7 @@ This implies various probabilities:
 \item $P(H) = P(H\vert S)P(S) + P(H\vert \neg S)P(\neg S) = 0.5245$
 \end{itemize}
 
-The probability of a salary raise given happiness and sunny weather is (applying general Bayes rule as defined in Chapter~\ref{chapter:bayesrule}) is very low:
+The probability of a salary raise given happiness and sunny weather (applying general Bayes rule as defined in Chapter~\ref{chapter:bayesrule}) is very low:
 \begin{align*}
 P(R\vert H,S) = \frac{P(H\vert R, S)P(R\vert S)}{P(H\vert S)} = 0.0142
 \end{align*}
@@ -1271,7 +1271,7 @@ The most extreme case of making a salary raise likely for happiness is to assume
 P(R\vert H,\neg S) = \frac{P(H\vert R, \neg S)P(R\vert \neg S)}{P(H\vert \neg S)} = 0.0833
 \end{align*}
 
-In general, if a certain effect could be caused by multiple causes, seeing one of those causes can {\bf explain away} any other potential cause of this effect.
+In general, if a certain effect could be caused by multiple causes, seeing one of those causes can {\bf explain away} any other potential causes of this effect.
 Explaining away occurs when there is a {\bf noisy OR} configuration in the network\footnote{\url{http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-034-artificial-intelligence-fall-2010/tutorials/MIT6_034F10_tutor06.pdf}}.
 \\
 \\
@@ -1317,8 +1317,8 @@ The probability that none of the causes caused effect $E$ is the product of the 
 \begin{align*}
 P(E\vert parents(E)) = P(E\vert C_1,...,C_n) = 1 - \prod_i (1 - P(E\vert C_i))
 \end{align*}
-The product is taken over the parents there are set to true for that row of the CPT.
-Table~\ref{table:samplecauses} illustrates this calculation and how the other probabilities can be inferred from the $k=3$ probabilities supposed before.
+The product is taken over the parents that are set to true for that row of the CPT.
+Table~\ref{table:samplecauses} illustrates this calculation and how the other probabilities can be inferred from the $k=3$ probabilities given before.
 
 \begin{figure}[h!]
 \centering
