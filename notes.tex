@@ -1780,7 +1780,9 @@ $\theta_j := \theta_j - \alpha \frac{1}{m}\sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)}
 \}
 \end{definition}
 
-{\bf Vectorization} allows to do the updates simultaneously through various matrix operations. Matrix multiplications can be executed very efficiently (Strassen algorithm). Matrix $X$ contains $m$ transposed training data columns and $n$ features where feature $x_0$ contains entirely 1s:
+{\bf Vectorization} allows to do the updates simultaneously through various matrix operations.
+Matrix multiplications can be executed very efficiently, e.g. Strassen algorithm for matrix multiplication in $O(n^{log_2(7)})\approx O(n^{2.8074})$ instead of $O(n^3)$.
+Matrix $X$ contains $m$ transposed training data columns and $n$ features where feature $x_0$ contains entirely 1s:
 $X$ = $\begin{pmatrix}
 \mbox{------} (x^{(1)})^T \mbox{------} \\
 \mbox{------} (x^{(2)})^T \mbox{------} \\
