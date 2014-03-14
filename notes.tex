@@ -3003,12 +3003,39 @@ Training RNNs is more complex as this depends on their structure. The RNN in Fig
 In practice, recurrent networks are more difficult to train than feedforward networks and do not generalize as reliably.
 
 \section{Autoencoders and sparsity}
-An {\bf autoencoder} is a neural network with $N$ input and $N$ output units. It is used in unsupervised learning and sets the target values to be equal to the inputs. I.e., it uses $y^{(i)} = x^{(i)}$.
+An {\bf autoencoder} is a fully-connected feed-forward neural network with $N$ input and $N$ output units.
+It is used in unsupervised learning and sets the target values to be equal to the inputs. I.e., it uses $y^{(i)} = x^{(i)}$.
 An auto encoder has at least one hidden layer of usually less units. This section only covers autoencoders with one hidden layer.
 \\
 The aim of an auto-encoder is to learn a compressed, distributed representation (encoding) for a set of data.
 For a single sigmoid hidden layer, the optimal solution to an auto-encoder is strongly related to principal component analysis covered in Chapter~\ref{ref:pcasection}.
-If a {\bf sparsity} constraint is imposed on the hidden units, then the autoencoder will still discover interesting structure in the data, even if the number of hidden units is large. This sparsity constraint means that the hidden neurons are inactive (close to $0$ for Sigmoid) most of the time.
+If a {\bf sparsity} constraint is imposed on the hidden units, then the autoencoder will still discover interesting structure in the data, even if the number of hidden units is large.
+This sparsity constraint means that the hidden neurons are inactive (close to $0$ for Sigmoid) most of the time.
+This concept is related to sparse encoding from Chapter~\ref{chapter:sparsecoding}.
+\\
+$a_j^{(2)}$ denotes the activation of hidden unit $j$ in the auto encoder.
+$a_j^{(2)}(x)$ denotes the activation of this hidden unit when the network is given a specific input $x$.
+The average activation of hidden unit $j$ is:
+\begin{align*}
+\hat{p}_j = \frac{1}{m}\sum_{i=1}^m [a_j^{(2)}(x^{(i)})]
+\end{align*}
+
+Given a {\bf sparsity parameter} $p$ with a small value close to zero (e.g. $p=0.05$), the goal is to enforce the constraint:
+\begin{align*}
+\hat{p}_j = p
+\end{align*}
+To satisfy this constraint, the hidden unit's activations must mostly be 0.
+\\
+This can be achieved by adding the {\bf Killback-Leibler} (KL) divergence to the cost function to penalize violations of this constraint.
+KL is a measure for how different two different distributions are and can be defined for all units $s_2$ in the hidden layer:
+\begin{align*}
+\sum_{j=1}^{s_2} KL(p\rVert \hat{p}_j) = \sum_{j=1}^{s_2}  p\mbox{log}\frac{p}{\hat{p}_j} + (1-p)\mbox{log}\frac{1-p}{1-\hat{p}_j}
+\end{align*}
+
+The cost function is then with a regulator $\beta$:
+\begin{align*}
+J(\theta)_{sparse} = J(\theta) + \beta \sum_{j=1}^{s_2} KL(p\rVert \hat{p}_j)
+\end{align*}
 
 
 \section{Deep learning}
