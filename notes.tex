@@ -3026,7 +3026,7 @@ Given a {\bf sparsity parameter} $p$ with a small value close to zero (e.g. $p=0
 \end{align*}
 To satisfy this constraint, the hidden unit's activations must mostly be 0.
 \\
-This can be achieved by adding the {\bf Killback-Leibler} (KL) divergence to the cost function to penalize violations of this constraint.
+This can be achieved by adding the {\bf Kullback-Leibler} (KL) divergence to the cost function to penalize violations of this constraint.
 KL is a measure for how different two different distributions are and can be defined for all units $s_2$ in the hidden layer:
 \begin{align*}
 \sum_{j=1}^{s_2} KL(p\rVert \hat{p}_j) = \sum_{j=1}^{s_2}  p\mbox{log}\frac{p}{\hat{p}_j} + (1-p)\mbox{log}\frac{1-p}{1-\hat{p}_j}
