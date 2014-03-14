@@ -3002,8 +3002,12 @@ They have increased representational power as they create an internal state of t
 Training RNNs is more complex as this depends on their structure. The RNN in Figure~\ref{figure:recurrentneuralnetwork} can be trained using a simple variant of backpropagation.
 In practice, recurrent networks are more difficult to train than feedforward networks and do not generalize as reliably.
 
-\section{Autoencoders and sparsity}
-To come.
+\section{Autoencoders}
+An {\bf autoencoder} is a neural network with $N$ input and $N$ output units. It is used in unsupervised learning and sets the target values to be equal to the inputs. I.e., it uses $y^{(i)} = x^{(i)}$.
+An auto encoder has at least one hidden layer of usually less units.
+\\
+The aim of an auto-encoder is to learn a compressed, distributed representation (encoding) for a set of data.
+For a single sigmoid hidden layer, the optimal solution to an auto-encoder is strongly related to principal component analysis covered in Chapter~\ref{ref:pcasection}.
 
 \section{Deep learning}
 Most of today's machine learning tends to be just curve fitting and statistics.
