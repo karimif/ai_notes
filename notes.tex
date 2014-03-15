@@ -3055,6 +3055,8 @@ instead of:
 \delta^{(2)}_i=(\sum_{j=1}^{s_2} \Theta_{ji}^{(2)}\delta_j^{(3)})g^{'}(z_i^{(2)})
 \end{align*}
 
+This requires to know $\hat{p}_i$ which needs to be computed in the very beginning of backpropagation by doing a forward pass on all training examples to compute the average activations on the training set.
+
 \section{Deep learning}
 Most of today's machine learning tends to be just curve fitting and statistics.
 The idea of {\bf deep learning}\footnote{Andrew Ng. {\em Deep Learning, Self-Taught Learning and Unsupervised Feature Learning}. \url{http://www.youtube.com/watch?v=n1ViNeWhC24}} is to make learning algorithms much better and easier to use and to make revolutionary advances in machine learning and AI.
