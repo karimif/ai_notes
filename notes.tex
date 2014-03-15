@@ -2632,7 +2632,12 @@ Stationary means that the statistics of one data set should theoretically be the
 A {\bf whitening transformation} is a {\bf decorrelation transformation} that transforms a set of random variables having a known covariance matrix $\Sigma$ into a set of new random variables whose covariance is the identity matrix (meaning that they are uncorrelated and all have variance 1).
 The transformation is called "whitening" because it changes the input vector into a white noise vector. PCA is strongly related to whitening.
 \\
-By performing PCA on all data and retaining all dimensions, the covariance matrix of the data is:
+By performing PCA on all data and retaining all dimensions:
+\begin{align*}
+x_{rot}^{(i)} = U^Tx^{(i)}
+\end{align*}
+
+The covariance matrix of the data is:
 \begin{align*}
 \begin{pmatrix}
 \lambda_1 & 0 & \dots & 0 \\
@@ -2656,13 +2661,30 @@ In {\bf zero phase whitening} (ZCA), all eigenvectors are retained and the white
 x_{ZCAwhite,i} = u_i x_{PCAwhite,i} = \frac{u_i^T x}{\sqrt{\lambda_i}}
 \end{align*}
 
+The vectorized computation is:
+\begin{align*}
+x_{ZCAwhite} = Ux_{PCAwhite}
+\end{align*}
+
 The transformed data then looks like the original data as much as possible ad is whitened. This makes the results more interpretable.
 \\
 In practice, some eigenvalues $\lambda_i$ are numerically close to 0 and thus the scaling step could blow up the normalization step.
-Therefore, the normalization step can be regularized to prevent large normalization values in such cases with small $\epsilon$:
+Therefore, the normalization step can be {\bf regularized} to prevent large normalization values in such cases with small $\epsilon$:
 \begin{align*}
 x_{PCAwhite,i} = \frac{x_{rot,i}}{\sqrt{\lambda_i+\epsilon}}
 \end{align*}
+
+In Matlab, PCA whitening is is:
+\begin{align*}
+xPCAwhite = diag(1./sqrt(diag(S) + epsilon)) * U' * x;
+\end{align*}
+
+ZCA whitening is:
+\begin{align*}
+xZCAwhite = U * diag(1./sqrt(diag(S) + epsilon)) * U' * x;
+\end{align*}
+
+$diag(1./sqrt(diag(S) + epsilon))$ creates an element-wise diagonal matrix of normalized regularized data.
 
 \section{Sparse coding}
 \label{chapter:sparsecoding}
