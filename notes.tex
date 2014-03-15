@@ -2518,7 +2518,7 @@ On a data set consisting of mixtures of Gaussians, these algorithms are nearly a
 \section{Principal component analysis}
 \label{ref:pcasection}
 "{\bf Principal component analysis} (PCA) computes the most meaningful basis to re-express a noisy, garbled data set"\footnote{\url{http://www.cs.princeton.edu/picasso/mats/PCA-Tutorial-Intuition_jp.pdf}} and can be used for {\bf dimensionality reduction}.
-In this process, higher dimensional data is mapped to a lower dimension, the {\bf number of principal components}, as defined in Algorithm~\ref{ref:pca}.
+In this process, higher dimensional data is mapped to a lower dimension, the {\bf number of principal components}.
 The goal of PCA is to minimize the {\bf average squared projection error} of all original data and their projections.
 
 \begin{definition}[Average squared projection error]
@@ -2536,7 +2536,7 @@ First, the {\bf covariance matrix} is computed:
 \Sigma = \frac{1}{m}X^TX
 \end{align*}
 
-The principal direction of variation of the data can be expressed in {\bf eigenvectors}.
+The principal direction of {\bf variation of data} $\Sigma$ can be expressed in {\bf eigenvectors}.
 They can be sorted by their eigenvalues where $u_1$ is the eigenvector with the largest eigenvalue $\lambda_1$ is the principal feature (component) of the data:
 \begin{align*}
 U = \begin{pmatrix}
@@ -2545,7 +2545,7 @@ u_1 & u_2 & \dots & u_n \\
 | & | & & |
 \end{pmatrix}
 \end{align*}
-The eigenvectors can be used the express data in a new basis. For example, $u_1^T x$ is the length of the projection of $x$ onto the vector $u_1$.
+The eigenvectors can be used to express data in a new basis. For example, $u_1^T x$ is the length of the projection of $x$ onto the vector $u_1$.
 \\
 Therefore, $x$ can be represented in the new basis:
 \begin{align*}
@@ -2558,17 +2558,22 @@ u_n^Tx \\
 \end{align*}
 
 The expression "rot" comes from the observation that this corresponds to a rotation (and possibly reflection) of the original data.
-
-
-PCA requires some underlying advanced linear algebra such as the {\bf singular value decomposition} (SVD) which is not further explained in this document.
-{\bf Matlab} or {\bf Octave} offer functions to compute this. Data can  approximately be mapped back to the origin dimension ($z^{(i)}\in \mathbb{R}^K$ to $x_{approx}^{(i)} \in \mathbb{R}^n$):
+Since $U$ is an orthogonal matrix, it satisfies $U^TU=UU^T=I$.
+Therefore, they can be rotated back to the original data $x$:
 \begin{align*}
-x_{approx}^{(i)} = U_{reduce}*z^{(i)}
+x = U x_{rot}
 \end{align*}
 
+Usually, the {\bf singular vectors} and {\bf singular values} of $\Sigma$ are used instead of the eigenvectors which are strongly related to eigenvectors, but more numerically reliable.
+For symmetric positive semi-definite matrix - which is the case for the matrices relevant to PCA - is equal to its eigenvectors and eigenvalues.
+This can be done using the {\bf singular value decomposition} (SVD) which is not further explained in this document.
+{\bf Matlab} or {\bf Octave} offer functions to compute this.
 
+\begin{align*}
+[U,S,V] = \mbox{svd}(\Sigma)
+\end{align*}
 
-
+PCA is defined in Algorithm~\ref{ref:pca}.
 
 \begin{algorithm}
 \caption{Principal component analysis}
@@ -2591,8 +2596,18 @@ This measure is more useful than the actual amount of dimensions that were reduc
 \frac{\sum_{i=1}^{K}S_{ii}}{\sum_{i=1}^{n}S_{ii}} \ge 0.99\:\mbox(99\%)
 \end{align*}
 
-Usually, the large variances occur in the first $K<n$ principal components and then drops off. Therefore, the most relevant dynamics occur only in the first $K$ dimensions. \\
-PCA is adequate if the data are Gaussian, linear, and stationary, {\bf independent component analysis} (ICA) works on non-Gaussian and very noisy data\footnote{\url{http://www.colorado.edu/engineering/CAS/courses.d/ASEN6519.d/Lectures.d/Lecture10_11.6519.pdf}}.
+As explained before, data can approximately be mapped back to the origin dimension ($z^{(i)}\in \mathbb{R}^K$ to $x_{approx}^{(i)} \in \mathbb{R}^n$):
+\begin{align*}
+x_{approx}^{(i)} = U_{reduce}z^{(i)}
+\end{align*}
+
+Usually, the large variances occur in the first $K<n$ principal components and then drops off. Therefore, the most relevant dynamics occur only in the first $K$ dimensions.
+\\
+
+PCA is adequate if the data are Gaussian, linear, and stationary.
+Stationary means that the statistics of one data set should theoretically be the same as any other.
+{\bf independent component analysis} (ICA) works on non-Gaussian and very noisy data\footnote{\url{http://www.colorado.edu/engineering/CAS/courses.d/ASEN6519.d/Lectures.d/Lecture10_11.6519.pdf}}.
+
 
 
 \section{Sparse coding}
