@@ -2882,10 +2882,6 @@ g^{'}(x)=g(x)(1-g(x))
 \end{align*}
 
 There is no $\delta^{(1)}$ as no error term is associated with the input values.
-\\
-Visualizing the function learned by the autoencoder is possible.
-This visualization shows the features that the units learned meaning for which input the units are maximally activated.
-This is illustrated for an autoencoder on $10\times 10$ images so that $n=100$.
 
 
 \subsection{Gradient checking}
@@ -3061,6 +3057,11 @@ instead of:
 \end{align*}
 
 This requires to know $\hat{p}_i$ which needs to be computed in the very beginning of backpropagation by doing a forward pass on all training examples to compute the average activations on the training set.
+\\
+Visualizing the function learned by the autoencoder is possible.
+This visualization shows the features that the units learned meaning for which input the units are maximally activated.
+This is illustrated for an autoencoder on $10\times 10$ images so that $n=100$.
+
 
 \section{Deep learning}
 Most of today's machine learning tends to be just curve fitting and statistics.
