@@ -2926,12 +2926,12 @@ Methods to prevent overfitting including more training data, regularization and 
 In multi-class classification, the {\bf output layer} can use the {\bf softmax function} instead of Sigmoid:
 
 \begin{align*}
-o_i^{(out)} = \sum_k^{s_{out-1}+1} \Theta_{ik}^{(out-1)}x_k \\
-a_i^{(out)} = softmax(o_i^{(out)}) = \frac{e^{o_i^{(out)}}}{\sum_{i=1}^{K} e^{o_i^{(out)}}}
+o_i^{(L)} = \sum_k^{s_{L-1}+1} \Theta_{ik}^{(L-1)}x_k \\
+a_i^{(L)} = softmax(o_i^{(L)}) = \frac{e^{o_i^{(L)}}}{\sum_{i=1}^{K} e^{o_i^{(L)}}}
 \end{align*}
 
 Softmax converts a raw value into a posterior probability.
-Each $a_i^{(out)} \in [0,1]$ and $\sum_i a_i^{(out)} = 1$.\\
+Each $a_i^{(L)} \in [0,1]$ and $\sum_i a_i^{(L)} = 1$.\\
 The derivative of the softmax function is and therefore related to the derivative of the Sigmoid function:
 \begin{align*}
 \frac{\partial softmax(o_i)}{\partial o_i} = softmax(o_i)(1-softmax(o_i))
