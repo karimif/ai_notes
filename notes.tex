@@ -2556,18 +2556,37 @@ u_2^Tx \\
 u_n^Tx \\
 \end{pmatrix}
 \end{align*}
-
 The expression "rot" comes from the observation that this corresponds to a rotation (and possibly reflection) of the original data.
+\\
+
+The actual reduction of components is to only retain the first $K<n$ principal components. $x$ can be approximated in the new basis:
+\begin{align*}
+\tilde{x} = U_{reduce}^T x = \begin{pmatrix}
+u_1^Tx \\
+u_2^Tx \\
+\vdots \\
+u_K^Tx \\
+0 \\
+\vdots \\
+0
+\end{pmatrix} \approx x_{rot}
+\end{align*}
+
 Since $U$ is an orthogonal matrix, it satisfies $U^TU=UU^T=I$.
 Therefore, they can be rotated back to the original data $x$:
 \begin{align*}
 x = U x_{rot}
 \end{align*}
 
+Data can approximately be mapped back to the origin dimension ($\tilde{x} \in \mathbb{R}^K$ to $x_{approx} \in \mathbb{R}^n$):
+\begin{align*}
+x_{approx} = U_{reduce}\tilde{x}
+\end{align*}
+
 Usually, the {\bf singular vectors} and {\bf singular values} of $\Sigma$ are used instead of the eigenvectors which are strongly related to eigenvectors, but more numerically reliable.
-For symmetric positive semi-definite matrix - which is the case for the matrices relevant to PCA - is equal to its eigenvectors and eigenvalues.
-This can be done using the {\bf singular value decomposition} (SVD) which is not further explained in this document.
-{\bf Matlab} or {\bf Octave} offer functions to compute this.
+For symmetric a positive semi-definite matrix - which is the case for the matrices relevant to PCA - they are equal to the eigenvectors and eigenvalues.
+They can be computed using the {\bf singular value decomposition} (SVD) which is not further explained in this document.
+{\bf Matlab} or {\bf Octave} offer functions to compute this:
 
 \begin{align*}
 [U,S,V] = \mbox{svd}(\Sigma)
@@ -2583,9 +2602,15 @@ PCA is defined in Algorithm~\ref{ref:pca}.
 \State $\Sigma \gets \frac{1}{m}X^TX$ \Comment{Covariance matrix}
 \State $[U,S,V] \gets svd(\Sigma)$ \Comment{Singular value decomposition}
 \State $U_{reduce} \gets$ first $K$ columns of $U$ \Comment{Number $K$ of {\bf principal components}}
-\State $z^{(i)} \gets U_{reduce}^Tx^{(i)}$ \Comment{Maps data $x^{(i)} \in \mathbb{R}^n$ to $z^{(i)}\in \mathbb{R}^K$}
+\State $\tilde{x}^{(i)} \gets U_{reduce}^Tx^{(i)}$ \Comment{Maps data $x^{(i)} \in \mathbb{R}^n$ to $\tilde{x}^{(i)}\in \mathbb{R}^K$}
 \end{algorithmic}
 \end{algorithm}
+
+In order for PCA to work well, the features have approximately zero mean.
+Also, the different features have similar variances to each other.
+Some data such as natural images or audio might already have similar variances and not require any variance normalization.
+PCA is invariant to the scaling of the data and will return the same eigenvectors regardless of the scaling of the input.
+\\
 
 Choosing the number of principal components $K$ comes with a loss of information. Usually, a fixed percentage such as 99\% or 95\% of the {\bf variance} must be {\bf retained}:
 \begin{align*}
@@ -2594,11 +2619,6 @@ Choosing the number of principal components $K$ comes with a loss of information
 This measure is more useful than the actual amount of dimensions that were reduced. Then, the smallest $K$ to satisfy this equation is chosen. Computing $K$ this way is inefficient as PCA may need to be performed a lot times to choose the smallest $K$. Alternatively, the retained variance can be computed for a given $K$:
 \begin{align*}
 \frac{\sum_{i=1}^{K}S_{ii}}{\sum_{i=1}^{n}S_{ii}} \ge 0.99\:\mbox(99\%)
-\end{align*}
-
-As explained before, data can approximately be mapped back to the origin dimension ($z^{(i)}\in \mathbb{R}^K$ to $x_{approx}^{(i)} \in \mathbb{R}^n$):
-\begin{align*}
-x_{approx}^{(i)} = U_{reduce}z^{(i)}
 \end{align*}
 
 Usually, the large variances occur in the first $K<n$ principal components and then drops off. Therefore, the most relevant dynamics occur only in the first $K$ dimensions.
