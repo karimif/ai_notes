@@ -2531,6 +2531,11 @@ $\frac{1}{m}\sum_{i=1}^m \lVert x^{(i)} \Vert^2$
 
 PCA can be used to reduce memory and time consumption of complex computations. Also, it allows to plot higher dimensional data in 2D or 3D.
 \\
+First, the {\bf covariance matrix} is computed:
+\begin{align*}
+\Sigma = \frac{1}{m}X^TX
+\end{align*}
+
 The principal direction of variation of the data can be expressed in {\bf eigenvectors}.
 They can be sorted by their eigenvalues where $u_1$ is the eigenvector with the largest eigenvalue $\lambda_1$ is the principal feature (component) of the data:
 \begin{align*}
