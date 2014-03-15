@@ -3013,7 +3013,8 @@ In practice, recurrent networks are more difficult to train than feedforward net
 An {\bf autoencoder} is a fully-connected feed-forward neural network with $N$ input and $N$ output units.
 It is used in unsupervised learning and sets the target values to be equal to the inputs. I.e., it uses $y^{(i)} = x^{(i)}$.
 An auto encoder has at least one hidden layer of usually less units. This section only covers autoencoders with one hidden layer.
-\\
+
+\subsection{Learning weights}
 The aim of an auto-encoder is to learn a compressed, distributed representation (encoding) for a set of data.
 For a single sigmoid hidden layer, the optimal solution to an auto-encoder is strongly related to principal component analysis covered in Chapter~\ref{ref:pcasection}.
 If a {\bf sparsity} constraint is imposed on the hidden units, then the autoencoder will still discover interesting structure in the data, even if the number of hidden units is large.
@@ -3057,7 +3058,8 @@ instead of:
 \end{align*}
 
 This requires to know $\hat{p}_i$ which needs to be computed in the very beginning of backpropagation by doing a forward pass on all training examples to compute the average activations on the training set.
-\\
+
+\subsection{Visualizing}
 Visualizing the function learned by the autoencoder is possible.
 This visualization shows the features that the units learned meaning for which input the units are maximally activated.
 This is illustrated for an autoencoder on $10\times 10$ images so that $n=100$.
