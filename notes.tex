@@ -2776,9 +2776,9 @@ $h_{\Theta}(x)$ & $=$ & $a_1^{(3)}$ $=$ $g(\Theta_{10}^{(2)}a_0^{(2)} + \Theta_{
 \label{ref:neuralnetworkmapping}
 \end{figure}
 
-This can be generalized to for the first hidden layer (layer $2$):
+This can be generalized to for the first hidden layer (layer $2$, $k=0$ to include bias units):
 \begin{align*}
-z_i^{(j+1)} = \sum_k^{s_{j}+1} \Theta_{ik}^{(j)}x_k \\
+z_i^{(j+1)} = \sum_{k=0}^{s_{j}} \Theta_{ik}^{(j)}x_k \\
 a_i^{(j+1)} = g(z_i^{(j+1)})
 \end{align*}
 
