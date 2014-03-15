@@ -2695,6 +2695,8 @@ x \approx \sum_{i=1}^k a_i \phi_i
 such that most $a_j$s are zero ("sparse"). \\
 Applied to computer vision, it automatically learns to represent an image in terms of the edges (bases) that appear in it.
 This gives a more succinct, higher-level representation that the raw pixels\footnote{Andrew Ng. {\em Deep Learning, Self-Taught Learning and Unsupervised Feature Learning}. \url{http://www.youtube.com/watch?v=n1ViNeWhC24}}.
+\\
+Sparse coding is related to independent component analysis covered in Chapter~\ref{ref:pcasection} and autoencoders covered in Chapter~\ref{chapter:autoencoders}.
 
 
 \section{Anomaly detection}
@@ -3141,6 +3143,7 @@ Training RNNs is more complex as this depends on their structure. The RNN in Fig
 In practice, recurrent networks are more difficult to train than feedforward networks and do not generalize as reliably.
 
 \section{Autoencoders and sparsity}
+\label{chapter:autoencoders}
 An {\bf autoencoder} is a fully-connected feed-forward neural network with $N$ input and $N$ output units.
 It is used in unsupervised learning and sets the target values to be equal to the inputs. I.e., it uses $y^{(i)} = x^{(i)}$.
 An auto encoder has at least one hidden layer of usually less units. This section only covers autoencoders with one hidden layer.
