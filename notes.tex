@@ -3037,6 +3037,17 @@ The cost function is then with a regulator $\beta$:
 J(\theta)_{sparse} = J(\theta) + \beta \sum_{j=1}^{s_2} KL(p\rVert \hat{p}_j)
 \end{align*}
 
+Also, the KL divergence needs to be incorporated into backpropagation for the hidden layer ($l=2$). The (non-vectorized) computation of the the error is then:
+\begin{align*}
+\delta^{(2)}_i=((\sum_{j=1}^{s_2} \Theta_{ji}^{(2)}\delta_j^{(3)}) + \beta(-\frac{p}{\hat{p}_i}+\frac{1-p}{1-\hat{p}_i}))g^{'}(z_i^{(2)})
+\end{align*}
+
+
+instead of:
+
+\begin{align*}
+\delta^{(2)}_i=(\sum_{j=1}^{s_2} \Theta_{ji}^{(2)}\delta_j^{(3)})g^{'}(z_i^{(2)})
+\end{align*}
 
 \section{Deep learning}
 Most of today's machine learning tends to be just curve fitting and statistics.
