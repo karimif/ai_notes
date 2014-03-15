@@ -2629,6 +2629,7 @@ Stationary means that the statistics of one data set should theoretically be the
 {\bf independent component analysis} (ICA) works on non-Gaussian and very noisy data\footnote{\url{http://www.colorado.edu/engineering/CAS/courses.d/ASEN6519.d/Lectures.d/Lecture10_11.6519.pdf}}.
 
 \section{Whitening}
+\label{chapter:whitening}
 A {\bf whitening transformation} is a {\bf decorrelation transformation} that transforms a set of random variables having a known covariance matrix $\Sigma$ into a set of new random variables whose covariance is the identity matrix (meaning that they are uncorrelated and all have variance 1).
 The transformation is called "whitening" because it changes the input vector into a white noise vector. PCA is strongly related to whitening.
 \\
@@ -3148,6 +3149,9 @@ An {\bf autoencoder} is a fully-connected feed-forward neural network with $N$ i
 It is used in unsupervised learning and sets the target values to be equal to the inputs. I.e., it uses $y^{(i)} = x^{(i)}$.
 An auto encoder has at least one hidden layer of usually less units. This section only covers autoencoders with one hidden layer.
 
+\subsection{Preprocessing}
+To achieve best performance of autoencoders and to satisfy various constrains, input data should be preprocessed using {\bf PCA whitening} or {\bf ZCA whitening} covered in Chapter~\ref{chapter:whitening}.
+
 \subsection{Learning weights}
 The aim of an auto-encoder is to learn a compressed, distributed representation (encoding) for a set of data.
 For a single sigmoid hidden layer, the optimal solution to an auto-encoder is strongly related to principal component analysis covered in Chapter~\ref{chapter:pca}.
@@ -3205,8 +3209,6 @@ x_j = \frac{\Theta_{ij}^{(1)}}{\sqrt{\sum_{j=1}^{100} (\Theta_{ij}^{(1)})^2}}
 
 Displaying the image formed by these pixel intensity values, one can understand what feature hidden united $i$ looks for. Usually, hidden units in this first (and only) hidden layer look for edges.
 
-\section{Preprocessing}
-To come.
 
 \section{Deep learning}
 Most of today's machine learning tends to be just curve fitting and statistics.
