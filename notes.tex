@@ -2944,10 +2944,10 @@ Chapter~\ref{chapter:invariances} generally covers how to make learning algorith
 \subsubsection{Tangent propagation}
 {\bf Tangent propagation} can be done in neural networks:
 \begin{align*}
-\frac{\partial y_k}{\partial \xi}\left.{\!\!\frac{}{}}\right |_{\xi=0} = \sum_{i=1}^{m} J_{ki}\tau_{i}
+\frac{\partial y_k}{\partial \xi}\left.{\!\!\frac{}{}}\right |_{\xi=0} = \sum_{i=1}^{s_1} J_{ki}\tau_{i}
 \end{align*}
 
-where $J_{ki}$ is the $(k,i)$ element of the Jacobian matrix for output $k$ and all training examples $x^{(i)}$.
+where $s_1$ is the number of input units, $J_{ki}$ is the $(k,i)$ element of the Jacobian matrix for output $k$ and all training examples $x^{(i)}$.
 In neural networks, the Jacobian matrix provides a measure of the local sensitivity of the outputs to changes in each of the input variables.
 The matrix can elements can either be approximated using finite elements or can be computed analytically by an amended backpropagation.
 The analytical solution is not provided in this document.
@@ -2955,7 +2955,7 @@ The analytical solution is not provided in this document.
 The result can be used to compute the regularized cost function:
 
 \begin{align*}
-J(\theta)_{reg} = J(\theta) + \lambda \frac{1}{2} \sum_{i=1}^{m} \sum_{k=1}^{K} (\sum_{i=1}^{m} J_{ki}\tau_{i})^2
+J(\theta)_{tangent} = J(\theta) + \lambda \frac{1}{2} \sum_{n=1}^{m} \sum_{k=1}^{K} (\sum_{i=1}^{s_1} J_{nki}\tau_{ni})^2
 \end{align*}
 
 \subsubsection{Convolutional neural networks}
