@@ -2657,6 +2657,12 @@ x_{ZCAwhite,i} = u_i x_{PCAwhite,i} = \frac{u_i^T x}{\sqrt{\lambda_i}}
 \end{align*}
 
 The transformed data then looks like the original data as much as possible ad is whitened. This makes the results more interpretable.
+\\
+In practice, some eigenvalues $\lambda_i$ are numerically close to 0 and thus the scaling step could blow up the normalization step.
+Therefore, the normalization step can be regularized to prevent large normalization values in such cases with small $\epsilon$:
+\begin{align*}
+x_{PCAwhite,i} = \frac{x_{rot,i}}{\sqrt{\lambda_i+\epsilon}}
+\end{align*}
 
 \section{Sparse coding}
 \label{chapter:sparsecoding}
