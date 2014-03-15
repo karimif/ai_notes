@@ -2864,6 +2864,7 @@ The error of a unit in the hidden layers is:
 \delta^{(l)}_i=(\sum_{j=1}^{s_l} \Theta_{ji}^{(l)}\delta_j^{(l+1)})g^{'}(z_i^{(l)})
 \end{align*}
 
+this computation does not include the bias units. Some implementations of backpropagation might include the bias units.
 The vectorized computation then is:
 
 \begin{align*}
