@@ -2858,10 +2858,16 @@ $\Theta_{ij}^{(l)}$ needs to have an initial value. If $\Theta$ was entirely 0, 
 
 $\delta^{(l)}$ is a vector of errors of the units of layer $l$.
 The errors of the output layer are the differences of the activation values $a^{(L)}$ and the observed values of the $i$th training example: $\delta^{(L)}=a^{(L)}-y^{(i)}$.
-The errors of the hidden layers are: 
+The error of a unit in the hidden layers is: 
 
 \begin{align*}
-\delta^{(2)} = \frac{\partial cost(i)}{\partial z^{(l)}} =(\Theta^{(l)})^T\delta^{(l+1)}.*g^{'}(z^{(l)})
+\delta^{(l)}_i=(\sum_{j=1}^{s_l} \Theta_{ji}^{(l)}\delta_j^{(l+1)})g^{'}(z_i^{(l)})
+\end{align*}
+
+The vectorized computation then is:
+
+\begin{align*}
+\delta^{(l)} = \frac{\partial cost(i)}{\partial z^{(l)}} =(\Theta^{(l)})^T\delta^{(l+1)}.*g^{'}(z^{(l)})
 \end{align*}
 
 ($.*$ is the element-wise multiplication). With the cost for training example $x^{(i)}$ being:
