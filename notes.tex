@@ -3063,7 +3063,13 @@ This requires to know $\hat{p}_i$ which needs to be computed in the very beginni
 Visualizing the function learned by the autoencoder is possible.
 This visualization shows the features that the units learned meaning for which input the units are maximally activated.
 This is illustrated for an autoencoder on $10\times 10$ images so that $n=100$.
+Visualizing the autoencoder is non-trivial. Imposing some constrains on the input $x$ can help.
+Supposing that the input is norm contained by $\lVert x \rVert^2 = \sum_{i=1}^{100} x_i^2 \le 1$, then the input which maximally activates hidden unit $i$ is given by setting pixel $x_j$ (for all $100$ pixels, $j=1,...,100$) to:
+\begin{align*}
+x_j = \frac{\Theta_{ij}^{(1)}}{\sqrt{\sum_{j=1}^{100} (\Theta_{ij}^{(1)})^2}}
+\end{align*}
 
+Displaying the image formed by these pixel intensity values, one can understand what feature hidden united $i$ looks for. Usually, hidden units in this first (and only) hidden layer look for edges.
 
 \section{Deep learning}
 Most of today's machine learning tends to be just curve fitting and statistics.
