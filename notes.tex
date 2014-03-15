@@ -2648,7 +2648,7 @@ This gives a more succinct, higher-level representation that the raw pixels\foot
 \section{Anomaly detection}
 {\bf Anomaly detection} allows to find data that does not conform to an expected pattern. The cluster-based Algorithm~\ref{ref:anomalydetection} assumes {\bf independence} between selected features which are representative for anomaly detection. These features take unusually large or small values in the event of an anomaly and have a Gaussian distribution:
 \begin{align*}
-p(x)=\frac{1}{\sqrt{2\pi}\sigma}exp(-\frac{(x-\mu)^2}{2\sigma^2})
+p(x)=\frac{1}{\sqrt{2\pi}\sigma}\mbox{exp}(-\frac{(x-\mu)^2}{2\sigma^2})
 \end{align*}
 
 Non-Gaussian features can be approximated as Gaussian through operations such as $log(x), \sqrt{x}, x^{1/3}$ etc.
@@ -2686,7 +2686,7 @@ Algorithm~\ref{ref:anomalydetection} assumes independence between the features f
 Alternatively, {\bf multivariate Gaussian distribution} helps:
 
 \begin{align*}
-p(x)=\frac{1}{(2\pi)^{n/2}\vert \Sigma \vert ^{1/2}}exp(-\frac{1}{2}(x-\mu)^T \Sigma^{-1}(x-\mu))
+p(x)=\frac{1}{(2\pi)^{n/2}\vert \Sigma \vert ^{1/2}}\mbox{exp}(-\frac{1}{2}(x-\mu)^T \Sigma^{-1}(x-\mu))
 \end{align*}
 
 where $\vert \Sigma \vert$ is the determinant of the {\bf covariance matrix} $\Sigma$. Algorithm~\ref{ref:anomalydetectionmulti} is a {\bf anomaly detection with multivariate Gaussian} which is a generalization of Algorithm~\ref{ref:anomalydetection}.
@@ -2698,7 +2698,7 @@ where $\vert \Sigma \vert$ is the determinant of the {\bf covariance matrix} $\S
 \State Choose features $x_i$ that might be indicative of anomalous examples
 \State $\mu \gets \frac{1}{m}\sum_{i=1}^m x^{(i)}$
 \State $\Sigma \gets \frac{1}{m}\sum_{i=1}^m(x^{(i)}-\mu)(x^{(i)}-\mu)^T$
-\State For new example $x$: $p(x) \gets \frac{1}{(2\pi)^{n/2}\vert \Sigma \vert ^{1/2}}exp(-\frac{1}{2}(x-\mu)^T \Sigma^{-1}(x-\mu))$ \Comment{Assumes correlation between features}
+\State For new example $x$: $p(x) \gets \frac{1}{(2\pi)^{n/2}\vert \Sigma \vert ^{1/2}}\mbox{exp}(-\frac{1}{2}(x-\mu)^T \Sigma^{-1}(x-\mu))$ \Comment{Assumes correlation between features}
 \State Anomaly if $p(x) < \epsilon$
 \end{algorithmic}
 \end{algorithm}
