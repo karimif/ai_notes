@@ -2241,7 +2241,7 @@ Problem solution can be either atomic (e.g. an action) or compound (e.g. a seque
 Cases can be represented in various ways: feature vectors, semantic nets, objects, frames, rules.
 
 \section{Applying PCA}
-The {\bf principal component analysis} (PCA) presented in Chapter~\ref{ref:pcasection} can be used in supervised learning.
+The {\bf principal component analysis} (PCA) presented in Chapter~\ref{chapter:pca} can be used in supervised learning.
 It allows to map high-dimensional data (such as images or emails in spam filters) to lower dimensions to speed up a learning algorithm.
 The mapping $x^{(i)}\rightarrow z^{(i)}$ should be defined by running PCA only on the training set.
 This mapping can be applied as well to the examples $x^{(i)}_{cv}$ and $x^{(i)}_{test}$ in the cross validation and test sets. \\
@@ -2516,7 +2516,7 @@ On a data set consisting of mixtures of Gaussians, these algorithms are nearly a
 
 
 \section{Principal component analysis}
-\label{ref:pcasection}
+\label{chapter:pca}
 "{\bf Principal component analysis} (PCA) computes the most meaningful basis to re-express a noisy, garbled data set"\footnote{\url{http://www.cs.princeton.edu/picasso/mats/PCA-Tutorial-Intuition_jp.pdf}} and can be used for {\bf dimensionality reduction}.
 In this process, higher dimensional data is mapped to a lower dimension, the {\bf number of principal components}.
 The goal of PCA is to minimize the {\bf average squared projection error} of all original data and their projections.
@@ -2696,7 +2696,7 @@ such that most $a_j$s are zero ("sparse"). \\
 Applied to computer vision, it automatically learns to represent an image in terms of the edges (bases) that appear in it.
 This gives a more succinct, higher-level representation that the raw pixels\footnote{Andrew Ng. {\em Deep Learning, Self-Taught Learning and Unsupervised Feature Learning}. \url{http://www.youtube.com/watch?v=n1ViNeWhC24}}.
 \\
-Sparse coding is related to independent component analysis covered in Chapter~\ref{ref:pcasection} and autoencoders covered in Chapter~\ref{chapter:autoencoders}.
+Sparse coding is related to independent component analysis covered in Chapter~\ref{chapter:pca} and autoencoders covered in Chapter~\ref{chapter:autoencoders}.
 
 
 \section{Anomaly detection}
@@ -3150,7 +3150,7 @@ An auto encoder has at least one hidden layer of usually less units. This sectio
 
 \subsection{Learning weights}
 The aim of an auto-encoder is to learn a compressed, distributed representation (encoding) for a set of data.
-For a single sigmoid hidden layer, the optimal solution to an auto-encoder is strongly related to principal component analysis covered in Chapter~\ref{ref:pcasection}.
+For a single sigmoid hidden layer, the optimal solution to an auto-encoder is strongly related to principal component analysis covered in Chapter~\ref{chapter:pca}.
 If a {\bf sparsity} constraint is imposed on the hidden units, then the autoencoder will still discover interesting structure in the data, even if the number of hidden units is large.
 This sparsity constraint means that the hidden neurons are inactive (close to $0$ for Sigmoid) most of the time.
 This concept is related to sparse encoding from Chapter~\ref{chapter:sparsecoding}.
