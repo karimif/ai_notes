@@ -2630,9 +2630,33 @@ Stationary means that the statistics of one data set should theoretically be the
 
 \section{Whitening}
 A {\bf whitening transformation} is a {\bf decorrelation transformation} that transforms a set of random variables having a known covariance matrix $\Sigma$ into a set of new random variables whose covariance is the identity matrix (meaning that they are uncorrelated and all have variance 1).
-The transformation is called "whitening" because it changes the input vector into a white noise vector.
+The transformation is called "whitening" because it changes the input vector into a white noise vector. PCA is strongly related to whitening.
 \\
-Remainder to come.
+By performing PCA on all data and retaining all dimensions, the covariance matrix of the data is:
+\begin{align*}
+\begin{pmatrix}
+\lambda_1 & 0 & \dots & 0 \\
+0 & \lambda_2 & \dots & 0 \\
+\vdots & & \ddots & \vdots \\
+0 & & \dots & \lambda_n
+\end{pmatrix}
+\end{align*}
+
+This means that the features are uncorrelated. Each feature can be rescaled to unit variance by:
+\begin{align*}
+x_{PCAwhite,i} = \frac{x_{rot,i}}{\sqrt{\lambda_i}}
+\end{align*}
+
+This data has covariance equal to the identity matrix $I$. $x_{PCAwhite}$ is then called the {\bf PCA whitened} version of the data.
+The different components of $x_{PCAwhite}$ are uncorrelated and have unit variance.
+This process can be combined with {\bf dimensionality reduction}.
+\\
+In {\bf zero phase whitening} (ZCA), all eigenvectors are retained and the whitening is computed by rotating PCA whitening back into the original space:
+\begin{align*}
+x_{ZCAwhite,i} = u_i x_{PCAwhite,i} = \frac{u_i^T x}{\sqrt{\lambda_i}}
+\end{align*}
+
+The transformed data then looks like the original data as much as possible ad is whitened. This makes the results more interpretable.
 
 \section{Sparse coding}
 \label{chapter:sparsecoding}
