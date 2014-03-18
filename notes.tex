@@ -1836,9 +1836,17 @@ $X$ = $\begin{pmatrix}
 
 The {\bf normal equation} is an efficient closed-form solution for linear regression which requires no loop, no learning rate and no feature normalization.
 It may be too slow for very large matrices as inversion is $O(n^3)$. $X$ may be singular and cannot be inverted.
-It is usually recommended to calculate the {\bf pseudo inverse} instead.
+It is usually recommended to calculate the {\bf pseudo inverse} instead. \\
+The normal equation can be derived:
+\begin{align*}
+X\theta &= Y \\
+X^T X\theta &= X^T Y \\
+(X^T X)^{-1} X^T X\theta &= (X^T X)^{-1} X^T Y \\
+\theta &= (X^T X)^{-1}X^T Y
+\end{align*}
+
 \begin{definition}[Normal equation]
-$\theta = (X^{T}X)^{-1}X^{T}y$
+$\theta = (X^{T}X)^{-1}X^{T}Y$
 \end{definition}
 
 \section{Logistic regression}
