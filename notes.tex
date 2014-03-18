@@ -3081,7 +3081,7 @@ There is no $\delta^{(1)}$ as no error term is associated with the input values.
 
 
 \subsection{Gradient checking}
-As backpropagation is a complex algorithm, subtile bugs might not be caught and gradient descent might not reach the intended global minimum but only a more expensive minimum.
+As backpropagation is a complex algorithm, subtile bugs might not be caught and gradient descent might not reach the intended global minimum but only a more expensive minimum as there are usually many local minima in neural network training.
 {\bf Gradient checking} allows to approximate the gradient and compare it to the gradient returned by backpropagation.
 The approximation is approximated as discussed in Chapter~\ref{chapter:learningweights} for each feature $\theta_i$:
 \begin{definition}[Gradient checking] ~\\
