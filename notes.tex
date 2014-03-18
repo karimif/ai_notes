@@ -363,15 +363,20 @@ For a data set, the mean is:
 \mu = E[X] = \frac{1}{m}\sum_i^m x_i
 \end{align*}
 
-The {\bf variance} $\sigma^2$ measures how far a set of numbers is spread out:
+The {\bf sample variance} $\sigma^2$ measures how far a set of numbers is spread out:
 \begin{align*}
 \sigma^2 = E[(X-\mu)^2] = \frac{1}{m}\sum_i^m (x_i-\mu)^2
 \end{align*}
 
-The {\bf unbiased sample variance} is defined:
+If the mean is unknown (and is computed as the sample mean), then the sample variance is a {\bf biased estimator}: it underestimates the variance by a factor of $(n - 1) / n$.
+There are $n$ degrees of freedom in a sample of $n$ points, and simultaneous estimation of mean and variance means one degree of freedom goes to the sample mean and the remaining $n - 1$ degrees of freedom (the residuals) go to the sample variance.
+Correcting by this factor is called {\bf Bessel's correction}. The {\bf unbiased} or {\bf (corrected) sample variance} is defined:
 \begin{align*}
 \sigma^2 = \frac{1}{m-1}\sum_i^m (x_i-\mu)^2
 \end{align*}
+
+However, if the population mean is known, then the deviations of the samples from the population mean have $n$ degrees of freedom (because the mean is not being estimated - the deviations are not residuals but errors) and Bessel's correction is not applicable.
+
 
 The {\bf standard deviation} $\sigma$ shows how much variation or dispersion from the average exists:
 \begin{align*}
