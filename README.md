@@ -7,7 +7,7 @@ _____________
 
 How to read/use it
 ------------------
-If you do not have any LaTeX tools installed, you can find a PDF snapshot from March 15, 2014 here: https://drive.google.com/file/d/0B9Rk7YaGlozGdlFpdkFMX3NEMkU/edit?usp=sharing
+If you do not have any LaTeX tools installed, you can find a PDF snapshot from March 18, 2014 here: https://drive.google.com/file/d/0B9Rk7YaGlozGSnBtM2hVQ1VzLTA/edit?usp=sharing
 
 
 *notes.tex* contains the entire LaTeX sources including figures, no other files needed. This document has been written on a Mac using TeXShop, no additional packages necessary. If you use a different LaTeX suite, you might have to install some packages such as *tikz*.
