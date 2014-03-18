@@ -262,6 +262,32 @@ $P(A\vert B,e) = \frac{P(B\vert A,e)P(A\vert e)}{P(B\vert e)}$
 \end{definition}
 
 
+\section{Information theory}
+Entropy is a measure of the randomness in a variable, acquisition of information corresponds to a reduction in entropy. Entropy is defined as
+\begin{align*}
+H(V) = -\sum_k P(v_k)log_2 P(v_k)
+\end{align*}
+with unit {\em bit}.
+
+Flipping a fair coin (heads, tails) has the following entropy:
+\begin{align*}
+H = -\sum[P(H)\mbox{log}_2P(H) + P(T)\mbox{log}_2P(T)] \\
+= -\sum[0.5\mbox{log}_2 0.5 + 0.5\mbox{log}_2 0.5] = -\mbox{log}_2 0.5 = 1\mbox{bit}
+\end{align*}
+
+A series of two fair coin tosses has an entropy of two bits. The number of fair coin tosses is its entropy in bits.
+However, if the coin is not fair, then the uncertainty and hence the entropy rate is lower.
+This is because, if asked to predict the next outcome, one could choose the most frequent result and be right more often than wrong.
+
+
+Flipping a specific loaded coin (heads, heads) has the following entropy:
+\begin{align*}
+H = -\mbox{log}_2 1 = 0\mbox{bit}
+\end{align*}
+
+Observing the outcome of the coin toss does therefore not give any information gain.
+
+
 \section{Linear algebra}
 \subsection{Eigenvalues and eigenvectors}
 Let $A$ be an $n\times n$ matrix. The number $\lambda$ is an {\bf eigenvalue} of $A$ if there exists a non-zero vector $x$ such that:
@@ -1675,12 +1701,7 @@ This test divides the problem up into smaller subproblems that can then be solve
 \\
 
 "Most important attribute" means the one that makes the most difference to the classification of an example. That way, the algorithm is supposed to get the correct classification with a small number of tests meaning that all generated paths in the thee will be short and the tree as a whole will be shallow. The {\em IMPORTANCE} function of Algorithm~\ref{alg:decisiontreelearning} can be defined in terms of {\bf information gain} which uses {\bf entropy} theory, the fundamental quantity in information theory.
-\\
-Entropy is a measure of the uncertainty of a random variable, acquisition of information corresponds to a reduction in entropy. Entropy is defined as
-\begin{align*}
-H(V) = -\sum_k P(v_k)log_2 P(v_k)
-\end{align*}
-with unit {\em bit}.
+
 
 $B(q)$ is the entropy of a Boolean random variable that is true with probability $q$:
 \begin{align*}
