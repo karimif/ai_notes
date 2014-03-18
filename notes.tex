@@ -1598,7 +1598,12 @@ A decision tree performs a sequence of tests on the input data and eventually ge
 \begin{align*}
 Goal \iff (Path_1 \vee Path_2 \vee ...)
 \end{align*}
-Decision trees are suitable for describing a variety of problems. Some problems cannot be described properly using decision trees such as the majority function which returns true iff more than half of the inputs are true. This function requires an exponentially large decision tree. \\
+Decision trees are suitable for describing a variety of problems. Some problems cannot be described efficiently using decision trees such as:
+\begin{itemize}
+\item The majority function which returns true iff more than half of the inputs are true
+\item XOR
+\end{itemize}
+These functions need to look at all elements and therefore require an exponentially large decision tree. \\
 A decision tree can be learned from a training set. Finding the {\bf optimal decision tree} is NP-complete as there are $2^{2^n}$ many possible trees. With some heuristics, one can find a good approximate solution which is a small (but not the smallest) tree. \\
 The sample data defined in Figure~\ref{table:decisiontreeexamples} is used in this section with the following attributes:
 \begin{itemize}
@@ -1639,7 +1644,10 @@ $x^{(12)}$ & T & T & T & T & Full & \$ & F & F & Burger & 30-60 & T \\
 \label{table:decisiontreeexamples}
 \end{figure}
 
-Algorithm~\ref{alg:decisiontreelearning} learns a good approximation solution. It adopts a greedy divide-and-conquer strategy  which always tests the most important attribute first. This test divides the problem up into smaller subproblems that can then be solved recursively.
+A basic algorithm to learn decision trees is {\bf ID3} which utilizes entropy theory.
+Algorithm~\ref{alg:decisiontreelearning} is based on it and learns a good approximation solution.
+It adopts a greedy divide-and-conquer strategy  which always tests the most important attribute first.
+This test divides the problem up into smaller subproblems that can then be solved recursively.
 
 \begin{algorithm}
 \caption{Decision tree learning}
