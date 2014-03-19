@@ -2291,9 +2291,46 @@ Lazy learning is very suitable for complex and incomplete problem domains, where
 {\bf Parametric models} such as linear and logistic regression require a constant size of parameters that is indecent of the number of training examples. They also allow to throw away the training examples once the parameters (e.g. $\theta$ of linear regression) of the hypothesis have been computed as they summarize by the parameters. In comparison, {\bf non-parametric models} require a set of parameters that may grow if the size of the training set grows. Non-parametric learning is also called {\bf instance-based learning} or {\bf memory-based learning}.
 
 \subsection{k-nearest neighbors}
-{\bf K-nearest neighbors} KNN can be used for classification and regression. In classification, the class of an example is determined by selecting the majority class of the $K$ nearest training examples. In regression, the mean value of the $K$ nearest examples is chosen. Usually, nearest is interpreted geometrically by computing the norm.
-\\
+{\bf K-nearest neighbors} KNN can be used for classification and regression.
+In classification, the class of an example is determined by selecting the majority class of the $K$ nearest training examples.
+In regression, the mean value of the $K$ nearest examples is chosen. \\
+Defining nearest depends on the exact use case.
 $K$ is a smoothing parameter. The larger $K$, the smoother the output.
+
+Figure~\ref{figure:knnexample1} contains the training set for a function $f : \mathbb{R}^2 \mapsto \mathbb{R}$ and the respective Manhattan and Euclidean distances to $x=4$,2.
+\begin{figure}[h!]
+\centering
+\begin{tabular}{c|c||c|c}
+X & Y & Manhattan & Euclidian$^2$ \\
+\hline
+\hline
+1,6 & 7 & 7 & 25 \\
+2,4 & 8 & 4 & 8 \\
+3,7 & 16 & 6 & 26 \\
+6,8 & 44 & 8 & 40 \\
+7,1 & 50 & 4 & 10 \\
+8,4 & 68 & 6 & 20
+\end{tabular}
+\caption{Distances for $x=4$,2}
+\label{figure:knnexample1}
+\end{figure}
+
+Figure~\ref{figure:knnexample2} contains the regression values for distance types and different values of $K$.
+
+\begin{figure}[h!]
+\centering
+\begin{tabular}{c|c||c|c}
+ \multicolumn{2}{c||}{Manhattan} & \multicolumn{2}{c}{Euclidean} \\
+ \hline
+ K = 1 & K = 3 & K = 1 & K = 3 \\
+\hline
+\hline
+29 & 39.5 & 8 & 42 \\
+\end{tabular}
+\caption{KNN example for $x=4$,2}
+\label{figure:knnexample2}
+\end{figure}
+
 
 \subsection{Case-based reasoning}
 {\bf Case-based reasoning} (CBR) is reasoning by remembering: previously solved cases are used to suggest solutions for novel but similar problems. Cases contain knowledge about previous experiences (solved problems).
