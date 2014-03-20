@@ -2297,21 +2297,21 @@ In regression, the mean value of the $K$ nearest examples is chosen. \\
 Defining nearest depends on the exact use case.
 $K$ is a smoothing parameter. The larger $K$, the smoother the output.
 
-Figure~\ref{figure:knnexample1} contains the training set for a function $f : \mathbb{R}^2 \mapsto \mathbb{R}$ and the respective Manhattan and Euclidean distances to $x=4$,2.
+Figure~\ref{figure:knnexample1} contains the training set for a function $f : \mathbb{R}^2 \mapsto \mathbb{R}$ and the respective Manhattan and Euclidean distances to $x=(4,2)$.
 \begin{figure}[h!]
 \centering
 \begin{tabular}{c|c||c|c}
 X & Y & Manhattan & Euclidian$^2$ \\
 \hline
 \hline
-1,6 & 7 & 7 & 25 \\
-2,4 & 8 & 4 & 8 \\
-3,7 & 16 & 6 & 26 \\
-6,8 & 44 & 8 & 40 \\
-7,1 & 50 & 4 & 10 \\
-8,4 & 68 & 6 & 20
+(1,6) & 7 & 7 & 25 \\
+(2,4) & 8 & 4 & 8 \\
+(3,7) & 16 & 6 & 26 \\
+(6,8) & 44 & 8 & 40 \\
+(7,1) & 50 & 4 & 10 \\
+(8,4) & 68 & 6 & 20
 \end{tabular}
-\caption{Distances for $x=4$,2}
+\caption{Distances for $x=(4,2)$}
 \label{figure:knnexample1}
 \end{figure}
 
@@ -2327,7 +2327,7 @@ Figure~\ref{figure:knnexample2} contains the regression values for distance type
 \hline
 29 & 35.5 & 8 & 42 \\
 \end{tabular}
-\caption{KNN example for $x=4$,2}
+\caption{KNN example for $x=(4,2)$}
 \label{figure:knnexample2}
 \end{figure}
 
