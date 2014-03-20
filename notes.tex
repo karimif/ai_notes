@@ -2284,11 +2284,14 @@ Changing the SVM parameters $C(=\frac{1}{\lambda})$ and $\sigma^2$ has impact on
 In {\bf multiclass classification} examples can be classified into more than two classes. Some classification algorithms permit to do this natively. Generally, this can be done using {\bf one-vs.-all} (one-vs.-rest) classification which trains one binary classifier for each class. Finally, on a new input to make a prediction, the largest classifier is picked.
 
 \section{Instance-based learning}
-{\bf Eager learning} methods construct general (one-fits-all), explicit (input independent) description of the target function based on the provided training examples.
-{\bf Lazy learning} methods simply store the data and generalizing beyond these data is postponed until an explicit request is made.
-Lazy learning methods can construct a different approximation to the target function for each encountered query instance. Eager learning methods use the same approximation to the target function, which must be learned based on training examples and before input queries are observed.
+{\bf Eager learning} methods construct general (one-fits-all), explicit (input independent) description of the target function based on the provided training examples. They can construct a different approximation to the target function for each encountered query instance.
+{\bf Parametric models} such as linear and logistic regression require a constant size of parameters that is indecent of the number of training examples. They also allow to throw away the training examples once the parameters (e.g. $\theta$ of linear regression) of the hypothesis have been computed as they summarize by the parameters.
+
+{\bf Lazy learning} methods simply store the data and generalizing beyond these data is {\em postponed} until an explicit request is made. Therefore, there is no actual learning process.
+ hey use the same approximation to the target function, which must be learned based on training examples and before input queries are observed.
 Lazy learning is very suitable for complex and incomplete problem domains, where a complex target function can be represented by a collection of less complex local approximations.
-{\bf Parametric models} such as linear and logistic regression require a constant size of parameters that is indecent of the number of training examples. They also allow to throw away the training examples once the parameters (e.g. $\theta$ of linear regression) of the hypothesis have been computed as they summarize by the parameters. In comparison, {\bf non-parametric models} require a set of parameters that may grow if the size of the training set grows. Non-parametric learning is also called {\bf instance-based learning} or {\bf memory-based learning}.
+{\bf K-nearest neighbors} is an example for lazy learning.
+{\bf Non-parametric models} require a set of parameters that may grow if the size of the training set grows. Non-parametric learning is also called {\bf instance-based learning} or {\bf memory-based learning}.
 
 \subsection{k-nearest neighbors}
 {\bf K-nearest neighbors} KNN can be used for classification and regression.
