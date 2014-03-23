@@ -1057,11 +1057,13 @@ There are also efficient ways how to do inference on them to learn probabilities
 In statistics, the term {\bf graphical model} refers to a somewhat broader class that includes Bayes networks.
 
 \section{Bayes networks}
-Bayes networks define probability distributions over random variables and allow compact specification of full joint distributions. The joint probability of the network shown in Figure~\ref{ref:samplenetwork} is: $P(A,B,C,D,E)=P(A)(B)P(C\vert A,B)P(D\vert C)P(E\vert C)$. The general equation is:
+Bayes networks define probability distributions over random variables and allow compact specification of full joint distributions. The joint probability is:
 \begin{definition}
 $P(x_1,...,x_n) = \prod_{i=1}^{n}{P(x_i\vert parents(x_i))}$
 \end{definition}
 
+
+The joint probability of the network shown in Figure~\ref{ref:samplenetwork} is: $P(A,B,C,D,E)=P(A)(B)P(C\vert A,B)P(D\vert C)P(E\vert C)$.
 
 \begin{figure}[h!]
 \centering
@@ -1082,6 +1084,18 @@ $P(x_1,...,x_n) = \prod_{i=1}^{n}{P(x_i\vert parents(x_i))}$
 \caption{Sample Bayes network}
 \label{ref:samplenetwork}
 \end{figure}
+
+It has 10 probability values or {\bf parameters}:
+\begin{itemize}
+\item $\vert P(A)\vert = 1$
+\item $\vert P(B)\vert = 1$
+\item $\vert P(C\vert A,B)\vert = 4$
+\item $\vert P(D\vert C)\vert = 2$
+\item $\vert P(E\vert C)\vert = 2$
+\end{itemize}
+
+This is much more compact than the $31$ probabilities required by the joint distribution over these 5 variables ($2^n - 1$).
+
 
 \section{d-separation}
 Stands for direction-dependent separation. d-separated variables are independent. $X$ and $Y$ are d-separated if there is no active path between them.
