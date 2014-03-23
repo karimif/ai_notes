@@ -242,6 +242,28 @@ $P(A) = \sum_{b\in B}{P(A,b)} = \sum_{b\in B}{P(A\vert b)P(b)}$
 $P(A\vert C) = \sum_{b\in B}{P(A\vert C,b)P(b\vert C)}$
 \end{definition}
 
+Example for the probabilities given in Table~\ref{table:sampleprobabilities}:
+\begin{table}[h!]
+\begin{center}
+\begin{tabular}{c|c||c}
+Storm & Lightening & $P$ \\
+\hline
+\hline
+T & T & 0.25 \\
+T & F & 0.40 \\
+F & T & 0.05 \\
+F & F & 0.3
+\end{tabular}
+\end{center}
+\caption{Sample probabilities}
+\label{table:sampleprobabilities}
+\end{table}
+
+\begin{itemize}
+\item $P(\neg Storm) = P(\neg Storm, Lightening) + P(\neg Storm, \neg Lightening) = 0.05 + 0.3 = 0.35$
+\item $P(Lightening\vert Storm) = \frac{P(Lightening, Storm)}{P(Storm)} = \frac{0.25}{0.65} \approx 0.3846$
+\end{itemize}
+
 \subsection{Bayes' rule}
 \label{chapter:bayesrule}
 Applying product rule and total probability:
