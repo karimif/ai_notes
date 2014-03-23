@@ -278,6 +278,9 @@ P(D\vert +) = \frac{P(+\vert D)P(D)}{P(+)} = \frac{P(+\vert D)P(D)}{P(+\vert D)P
 \end{align*}
 
 Most likely, John Doe does not have $D$.
+\\
+
+And example for the general Bayes rule is demonstrated in Chapter~\ref{chapter:explainingaway}.
 
 
 \section{Information theory}
@@ -1276,6 +1279,7 @@ Since all paths between $D$ and $C$ are inactive, $D$ and $C$ are independent, g
 
 
 \section{Explaining away}
+\label{chapter:explainingaway}
 {\bf Explaining away} is special instance of inference on Bayes networks. Given Figure~\ref{figure:explainingaway}, a person is happy (H) if it is sunny (S) or if the person got a salary raise (R) or both.
 
 \begin{figure}[h!]
@@ -1316,7 +1320,7 @@ This implies various probabilities:
 \item $P(H) = P(H\vert S)P(S) + P(H\vert \neg S)P(\neg S) = 0.5245$
 \end{itemize}
 
-The probability of a salary raise given happiness and sunny weather (applying general Bayes rule as defined in Chapter~\ref{chapter:bayesrule}) is very low:
+The probability of a salary raise given happiness and sunny weather (applying {\bf general Bayes rule} as defined in Chapter~\ref{chapter:bayesrule}) is very low:
 \begin{align*}
 P(R\vert H,S) = \frac{P(H\vert R, S)P(R\vert S)}{P(H\vert S)} = 0.0142
 \end{align*}
