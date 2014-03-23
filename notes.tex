@@ -261,6 +261,24 @@ The normalizer might be difficult to calculate. It can be substituted with pseud
 $P(A\vert B,e) = \frac{P(B\vert A,e)P(A\vert e)}{P(B\vert e)}$
 \end{definition}
 
+Example: $0.8\%$ of people have disease $D$. A $D$ test returns correct positive $98\%$ of the time and a correct negative $97\%$ of the time.
+The test returns positive for John. Does he have disease $D$?
+
+The probabilities can be summarized:
+\begin{itemize}
+\item $P(D) = 0.008$
+\item $P(+\vert D) = 0.98$
+\item $P(-\vert \neg D) = 0.97$
+\end{itemize}
+
+The question is: what is the probability $P(D\vert +)$?
+\begin{align*}
+P(D\vert +) = \frac{P(+\vert D)P(D)}{P(+)} = \frac{P(+\vert D)P(D)}{P(+\vert D)P(D) + P(+\vert \neg D)P(\neg D)} \\
+= \frac{0.98 \times 0.008}{0.98 \times 0.008) + 0.03 \times 0.992} \approx 0.2085 = 20.85\%
+\end{align*}
+
+Most likely, John Doe does not have $D$.
+
 
 \section{Information theory}
 Entropy is a measure of the randomness in a variable, acquisition of information corresponds to a reduction in entropy. Entropy is defined as
