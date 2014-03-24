@@ -4154,6 +4154,18 @@ Methods for knowledge acquisition from natural language include text classificat
 {\bf Language models} are widely used in these methods as they allow to predict the probability distribution of language expressions.
 
 \section{Language models}
+Sequences of $n$ symbols are called {\bf $n$-grams} with "unigram" for 1-gram, "bigram" for 2-gram and "trigram" for 3-gram.
+Probability distributions over $n$-letter sequences are called {\bf $n$-gram models}.
+\\
+An $n$-gram model is defined as a {\bf Markov chain} of order $n-1$, the probability of a character $c_i$ depends only on the immediately preceding characters, not on any other characters.
+For example, in a trigram model:
+\begin{align*}
+P(c_i\vert c_{1:i-1}) = P(c_i\vert c_{i-2:i-1})
+\end{align*}
 
+The probability of a sequence of characters $P(c_{1:N})$ under the trigram model is:
+\begin{align*}
+P(c_{1:N}) = \prod_{i=1}^N P(c_i\vert c_{1:i-1}) = \prod_{i=1}^N P(c_i\vert c_{i-2:i-1})
+\end{align*}
 
 \end{document}
