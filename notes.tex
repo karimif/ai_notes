@@ -4168,4 +4168,15 @@ The probability of a sequence of characters $P(c_{1:N})$ under the trigram model
 P(c_{1:N}) = \prod_{i=1}^N P(c_i\vert c_{1:i-1}) = \prod_{i=1}^N P(c_i\vert c_{i-2:i-1})
 \end{align*}
 
+As models shall generalize well to texts that one has not seen yet, overfitting shall be prevented using {\bf smoothing}. The simplest method is {\bf Laplacian smoothing} covered in Chapter~\ref{chapter:usingnaivebayes}.
+Therefore, if a random Boolean variable $X$ has been false in all $n$ observations, the estimate for $P(X=true)$ should be $1/(n+2)$.
+\\
+A better approach is a {\bf backoff model} which starts by estimating $n$-gram counts, but for any particular sequence that has allow or zero count, one backs off to $(n-1)$-grams.
+{\bf Linear interpolation smoothing} is a back off model that combines trigram, bigram and unigram models by linear interpolation:
+\begin{align*}
+\hat{P}(c_i\vert c_{i-2:i-1}) = \lambda_3 P(c_i\vert c_{i-2:i-1}) + \lambda_2 P(c_i\vert c_{i-1}) + \lambda_1 P(c_i)
+\end{align*}
+
+where $\lambda_3 + \lambda_2 + \lambda_1 = 1$. The values $\lambda_i$ can be fixed or trained with an expectation-maximization algorithm.
+
 \end{document}
