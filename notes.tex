@@ -4155,9 +4155,9 @@ Methods for knowledge acquisition from natural language include text classificat
 
 \section{Language models}
 Sequences of $n$ symbols are called {\bf $n$-grams} with "unigram" for 1-gram, "bigram" for 2-gram and "trigram" for 3-gram.
-Symbols can be characters, words or other elements.
-Probability distributions over $n$-letter sequences are called {\bf $n$-gram models}.
+Symbols can be characters, words or other elements. The following definitions use characters as symbols.
 \\
+Probability distributions over $n$-letter sequences are called {\bf $n$-gram models}.
 An $n$-gram model is defined as a {\bf Markov chain} of order $n-1$, the probability of a character $c_i$ depends only on the immediately preceding characters, not on any other characters.
 For example, in a trigram model:
 \begin{align*}
