@@ -4257,7 +4257,18 @@ A better approach is a {\bf backoff model} which starts by estimating $n$-gram c
 where $\lambda_3 + \lambda_2 + \lambda_1 = 1$. The values $\lambda_i$ can be fixed or trained with an expectation-maximization algorithm.
 \\ \\
 {\bf Model selection} of the possible $n$=gram models and different smoothing methods can be done using cross-validation and test sets as demonstrated in Chapter~\ref{ref:modelselection}.
-
-
+\\ \\
+$N$-grams can also be defined over words rather than characters. The {\bf vocabulary} - the set of symbols that make up the {\bf corpus} and the model - is larger.
+There are significantly more words than characters in most languages. Also, defining what a word looks like is possible in different ways.
+Word $n$-gram models also need to deal with {\bf out of vocabulary} words as the corpus is likely to not contain all possible words.
+This problem does not occur with character $n$-gram models as new letters are unlikely to be invented.
+\\
+Word models become more powerful the larger $n$. For example, this can be demonstrated by building unigram, bigram and trigram models over word in a corpus and then randomly sampling sequences of words from the models:
+\begin{itemize}
+\item Unigram: logical are as are confusion a may right tries agent goal the was ...
+\item Bigram: systems are very similar computational approach would be represented ...
+\item Trigram: planning and scheduling are integrated the success of naive bayes model is ...
+\end{itemize}
+The larger $n$, the better the corpus can be approximated.
 
 \end{document}
