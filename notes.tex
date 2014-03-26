@@ -304,6 +304,43 @@ Most likely, John Doe does not have $D$.
 
 And example for the general Bayes rule is demonstrated in Chapter~\ref{chapter:explainingaway}.
 
+\subsection{Monty Hall problem}
+The {\bf Monty Hall problem} is a brain teaser in the form of a probability puzzle, loosely based on the American television game show {\em Let's Make a Deal} and named after its original host, Monty Hall.
+It can be expressed as follows:
+\\
+\\
+{\em Suppose you're on a game show, and you're given the choice of three doors: Behind one door is a car; behind the others, goats. You pick a door, say No. 1, and the host, who knows what's behind the doors, opens another door, say No. 3, which has a goat. He then says to you, "Do you want to pick door No. 2?" Is it to your advantage to switch your choice?}
+\\
+\\
+There are multiple ways to solve it. The first one is a tabular solution as shown in Table\ref{table:montyhallsolution}.
+
+\begin{table}[h!]
+\begin{center}
+\begin{tabular}{c||c||c|c|c||c|c|c}
+Case & $P$ & D$_1$ & D$_2$ & D$_3$ & Opened door & Res if staying at D$_1$ & Res if switching \\
+\hline
+\hline
+1a & 1/6 & {\bf Car} & Goat & Goat & 2 & {\bf Car} & Goat \\
+\hline
+1a & 1/6 & {\bf Car} & Goat & Goat & {\bf 3} & {\bf Car} & Goat \\
+\hline
+2a & 1/6 & Goat & {\bf Car} & Goat & {\bf 3} & Goat & {\bf Car} \\
+\hline
+2b & 1/6 & Goat & {\bf Car} & Goat &{\bf 3} & Goat & {\bf Car} \\
+\hline
+3a & 1/6 & Goat & Goat & {\bf Car} & 2 & Goat & {\bf Car} \\
+\hline
+3b & 1/6 & Goat & Goat & {\bf Car} & 2 & Goat & {\bf Car} \\
+\end{tabular}
+\end{center}
+\caption{Solution of Monty Hall problem}
+\label{table:montyhallsolution}
+\end{table}
+
+For these six equally likely cases, probabilities can be computed by counting.
+Therefore the conditional probability of winning by switching is 2/3.
+
+
 
 \section{Information theory}
 Entropy is a measure of the randomness in a variable, acquisition of information corresponds to a reduction in entropy. Entropy is defined as
