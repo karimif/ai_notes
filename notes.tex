@@ -4279,5 +4279,16 @@ The larger $n$, the better the corpus can be approximated.
 \label{chapter:textclassification}
 {\bf Text classification} or {\bf categorization} decided which of predefined set of classes a text of some kind belongs to. Language identification and genre classification are examples of text classification.
 Text classification is demonstrated for {\bf spam detection} in Chapter~\ref{chapter:spamclassificationexample}.
+\\
+In short, a message can be classified with an application of Bayes rule:
+\begin{align*}
+\max\limits_{c} P(c\vert message) = \max\limits_{c} P(message\vert c)P(c)
+\end{align*}
+where $P(c)$ is estimated just by counting the total number of messages of a class.
+\\
+The example in Chapter~\ref{chapter:spamclassificationexample} uses a unigram word model, which is called the {\bf bag of words} model.
+This term mean to put the words of the training corpus in a bag and then selection words one at a time.
+Bag of word models lose the order of the words; a unigram model gives the same probability to any permutation of a text.
+Higher-order $n$-gram models maintain some local notion of word oder.
 
 \end{document}
