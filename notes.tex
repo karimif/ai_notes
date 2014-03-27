@@ -4300,7 +4300,14 @@ For spam detection, non-$n$-gram features can be added such as when the message 
 Spam filtering is an {\bf adversarial task} as spammers modify their spam in response to the spam detector's changes.
 
 {\bf Feature selection} is crucial to the performance of text classification which can for example utilize PCA (Chapter~\ref{chapter:pca}).
-
+\\
+\\
+Another approach for classification is {\bf data compression}. It reveals repeating patterns which are then added to a dictionary to compress data.
+First, the training data are joined per class (e.g. all spam and ham messages are joined) and then compressed. Second, the new data is appended to each set (e.g. to the previously joined spam and ham sets) and all sets are compressed.
+The class for which the compression adds the fewer number of additional bytes for the new data is the predicted class.
+\\
+Running off-the-shelf compression algorithms like gzip or RAR can be quite slow for long strings, but their accuracy is comparable to traditional classification algorithms.
+Also, there is promise for algorithms that use character $n$-gram models directly with no preprocessing or feature selection.
 
 \section{Information retrieval}
 
