@@ -4316,8 +4316,13 @@ IR systems compose of:
 \begin{itemize}
 \item {\bf Corpus} of documents
 \item {\bf Queries} in a query language
-\item {\bf Result sets} relevant to a query
+\item {\bf Result sets} relevant to a query which can be ranked
 \item {\bf Display} of the result set
 \end{itemize}
+
+The earliest IR systems worked on {\bf boolean keyword models} in which each word in the document collection is treated as a Boolean feature which is true of a document if the word occurs in the document or false if it does not.
+This model is simple to explain and explain. In contrast, it is difficult for users to take advantage of it as they might not be familiar with Boolean logic.
+Also, ranking based on Boolean membership is not powerful as the relevance of document is a single bit.
+
 
 \end{document}
