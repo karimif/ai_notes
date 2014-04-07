@@ -4337,7 +4337,7 @@ IDF is defined as follows:
 IDF(q_i) = \mbox{log}\frac{N-DF(q_i) + 0.5}{DF(q_i) + 0.5}
 \end{align*}
 
-Third, the length of a document with short documents being better candidates. \\
+Third, the length of a document with short documents being better candidates. \\ \\
 The {\bf BM25} function is defined as follows:
 \begin{align*}
 BM25(d_j, q_{1:N}) = \sum_{i=1}^{N} IDF(q_i) \frac{TF(q_i, d_j)(k+1)}{TF(q_i,d_j) + k(1-b+b\frac{\vert d_j\vert}{L})}
