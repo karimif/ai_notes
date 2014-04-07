@@ -4328,6 +4328,15 @@ This model is simple to explain and explain. In contrast, it is difficult for us
 Also, {\bf ranking} based on Boolean membership is not powerful as the relevance of document is a single bit.
 \\
 IR systems can be evaluated using {\bf precision} and {\bf recall} defined in Chapter~\ref{chapter:erroranalysis}.
+\\
+There are a variety of possible refinements that many IR systems use:
+\begin{itemize}
+\item {\bf Case-insensitivity}: e.g. "CERN" to "cern"
+\item {\bf Stemming} to work on stems of terms, e.g. "couch" instead of "couches"
+\item {\bf Synonyms} such as "sofa" and "couch"
+\item {\bf Stopwords} to ignore very frequent terms such as "at" or "a"
+\item {\bf Metadata} to use extra data such as keywords and publication data
+\end{itemize}
 
 \subsection{Ranking}
 Most modern IR systems use more powerful {\bf ranking models } which are based on statistics of word counts such as {\bf BM25} or the {\bf vector space model} which are applied on a search result or {\bf hit list}.
