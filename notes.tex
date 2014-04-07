@@ -4325,26 +4325,57 @@ IR systems compose of:
 The earliest IR systems worked on {\bf boolean keyword models} in which each word in the document collection is treated as a Boolean feature which is true of a document if the word occurs in the document or false if it does not.
 This model is simple to explain and explain. In contrast, it is difficult for users to take advantage of it as they might not be familiar with Boolean logic.
 Also, {\bf ranking} based on Boolean membership is not powerful as the relevance of document is a single bit.
-\\
-\\
+
+\subsection{Ranking}
 Most modern IR systems use more powerful {\bf ranking models } which are based on statistics of word counts such as {\bf BM25} or the {\bf vector space model} which are applied on a search result or {\bf hit list}.
 \\
 In these models, three factors affect scoring: First, the {\bf term frequency} (TF) is the number of times a term occurs in a document.
 Second, the {\bf inverse document frequency} (IDF) is a measure of whether the term is common or rare across all documents. For example "in" appears in almost all documents, so it has a high document frequency and thus a low inverse document frequency.
 In contrast, "voltage" has a lower document frequency and therefore a higher inverse document frequency.
-IDF is defined as follows:
+IDF is usually computed as follows:
 \begin{align*}
 IDF(q_i) = \mbox{log}\frac{N-DF(q_i) + 0.5}{DF(q_i) + 0.5}
 \end{align*}
 
+With $N$ documents in total. But IDF can also be computed:
+\begin{align*}
+IDF(q_i) = \mbox{log}\frac{N}{\vert \{ d \in D : q_i \in d \} \vert}
+\end{align*}
+
+Which is obtained by dividing the total number of documents by the number of documents containing the term, and then taking the logarithm of that quotient.
+\\
+
 Third, the length of a document with short documents being better candidates. \\ \\
-The {\bf BM25} function is defined as follows:
+The {\bf BM25} function is defined as follows given a document $d_j$ and a query consisting of the words $q_{1:N}$:
 \begin{align*}
 BM25(d_j, q_{1:N}) = \sum_{i=1}^{N} IDF(q_i) \frac{TF(q_i, d_j)(k+1)}{TF(q_i,d_j) + k(1-b+b\frac{\vert d_j\vert}{L})}
 \end{align*}
 
 $\vert d_j\vert$ is the length of document $d_j$ in word and $L$ is the average document length in the corpus: $L = \sum_i \vert d_i\vert / N$.
 The two parameter $k$ and $b$ can be tuned by cross-validation; typical values are $k = 2.0$ and $b = 0.75$.
+\\
+\\
+The {\bf vector space model} is another scoring model. Documents and queries are represented as vectors:
+\begin{align*}
+d_j = (w_{1,j}, w_{2,j}, ..., w_{t,j}) \\
+q = (w_{1,q}, w_{2,q}, ..., w_{t,q})
+\end{align*}
+
+Each dimension corresponds to a separate term.
+If a term occurs in the document, its value in the vector is non-zero.
+There are several different ways of computing these values, also known as (term) weights, have been developed. One of the best known schemes is {\bf tf-idf weighting} which is the product of term frequency and inverse document frequency for a term $t$ and document $d$:
+\begin{align*}
+TFIDF(t, d) = TF(t, d) \times IDF(t)
+\end{align*}
+
+The vector space model calculates the angle between record and query vectors. The smaller the angle, the more similar the vectors.
+In practice, it is easier to calculate the cosine of the angle between the vectors, instead of the angle itself:
+\begin{align*}
+cos(\alpha) = \frac{d_j \cdot q}{\lVert d_j \rVert \lVert q \rVert}
+\end{align*}
+
+Where $d_j \cdot q$ is the intersection (i.e. the dot product) of the document and the query vectors, $\lVert d_j \rVert$ is the norm of vector $d_j$. \\
+The larger $cos(\alpha)$, the more relevant the document.
 
 
 \end{document}
