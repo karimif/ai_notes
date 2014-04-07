@@ -4327,8 +4327,9 @@ This model is simple to explain and explain. In contrast, it is difficult for us
 Also, {\bf ranking} based on Boolean membership is not powerful as the relevance of document is a single bit.
 \\
 \\
-Most modern IR systems use more powerful {\bf ranking models } which are based on statistics of word counts such as the {\bf vector space model} and {\bf BM25}.
-In these models, three factors affect scoring: First, the {\bf term frequency} (TF) is the frequency with which a term appears in a document.
+Most modern IR systems use more powerful {\bf ranking models } which are based on statistics of word counts such as {\bf BM25} or the {\bf vector space model} which are applied on a search result or {\bf hit list}.
+\\
+In these models, three factors affect scoring: First, the {\bf term frequency} (TF) is the number of times a term occurs in a document.
 Second, the {\bf inverse document frequency} (IDF) is a measure of whether the term is common or rare across all documents. For example "in" appears in almost all documents, so it has a high document frequency and thus a low inverse document frequency.
 In contrast, "voltage" has a lower document frequency and therefore a higher inverse document frequency.
 IDF is defined as follows:
@@ -4336,6 +4337,14 @@ IDF is defined as follows:
 IDF(q_i) = \mbox{log}\frac{N-DF(q_i) + 0.5}{DF(q_i) + 0.5}
 \end{align*}
 
-Third, the length of a document with short documents being better candidates.
+Third, the length of a document with short documents being better candidates. \\
+The {\bf BM25} function is defined as follows:
+\begin{align*}
+BM25(d_j, q_{1:N}) = \sum_{i=1}^{N} IDF(q_i) \frac{TF(q_i, d_j)(k+1)}{TF(q_i,d_j) + k(1-b+b\frac{\vert d_j\vert}{L})}
+\end{align*}
+
+$\vert d_j\vert$ is the length of document $d_j$ in word and $L$ is the average document length in the corpus: $L = \sum_i \vert d_i\vert / N$.
+The two parameter $k$ and $b$ can be tuned by cross-validation; typical values are $k = 2.0$ and $b = 0.75$.
+
 
 \end{document}
