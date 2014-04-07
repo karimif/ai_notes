@@ -2316,6 +2316,7 @@ Usually, the CV error decreases initially, followed by an increase as the learni
 Therefore, training can be stopped at the point of smallest error with respect to the validation data set.
 
 \section{Error analysis}
+\label{chapter:erroranalysis}
 The recommended approach to develop a machine learning algorithm is to start with a simple algorithm that can be implemented quickly.
 Then, it can be tested on a small set of data, e.g. a couple of hundreds of records. The cross-validation data can be used to plot the learning curves.
 This allows to decide if more data, more features etc. are likely to help. In the {\bf error analysis} the examples on which the algorithm made errors on are manually examined.
@@ -4325,6 +4326,8 @@ IR systems compose of:
 The earliest IR systems worked on {\bf boolean keyword models} in which each word in the document collection is treated as a Boolean feature which is true of a document if the word occurs in the document or false if it does not.
 This model is simple to explain and explain. In contrast, it is difficult for users to take advantage of it as they might not be familiar with Boolean logic.
 Also, {\bf ranking} based on Boolean membership is not powerful as the relevance of document is a single bit.
+\\
+IR systems can be evaluated using {\bf precision} and {\bf recall} defined in Chapter~\ref{chapter:erroranalysis}.
 
 \subsection{Ranking}
 Most modern IR systems use more powerful {\bf ranking models } which are based on statistics of word counts such as {\bf BM25} or the {\bf vector space model} which are applied on a search result or {\bf hit list}.
