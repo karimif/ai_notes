@@ -14,6 +14,8 @@
 \usepackage[utf8]{inputenc}
 \usepackage[chapter]{algorithm}
 
+\lstset{language=Prolog}
+
 % Default fixed font does not support bold face
 \DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{9} % for bold
 \DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{9}  % for normal
@@ -1143,6 +1145,55 @@ Computations are initiated by running {\bf queries} over these relations.
 Queries have one or more {\bf goals}.
 A goal is something that Prolog tries to {\em satisfy} by finding values of the variables hat make the goal succeed.
 
+\subsection{Clauses}
+Clauses are defined in {\bf knowledge bases}:
+\begin{lstlisting}
+parent(pam, bob).
+parent(tom, bob).
+parent(tom, liz).
+parent(bob, ann).
+parent(bob, pat).
+parent(pat, jim).
+
+female(pam).
+female(liz).
+female(pat).
+female(ann).
+male(tom).
+male(bob).
+male(jim).
+\end{lstlisting}
+
+{\bf parent} is a binary relation and {\bf male} and {\bf female} are unary relations. For example, Pam is a parent of Bob.
+Is Bob a parent of Pat? This questions can be communicated to the Prolog system with the following query:
+\begin{lstlisting}
+?- parent(bob, pat).
+\end{lstlisting}
+which returns: {\bf yes}. In contrast:
+\begin{lstlisting}
+?- parent(pat, bob).
+\end{lstlisting}
+returns: {\bf no}. Also for unknown values:
+\begin{lstlisting}
+?- parent(pat, harry).
+\end{lstlisting}
+returns: {\bf no}.
+\\
+\\
+Other questions can be asked like:
+\begin{lstlisting}
+?- parent(bob, X).
+\end{lstlisting}
+which returns all children of Bob: {\bf X = ann} and {\bf X = pat}. The Prolog interpreter returns all solutions by pressing ; incrementally.
+\\
+\\
+More complex queries like:
+\begin{lstlisting}
+?- parent(X, ann),parent(X, pat).
+\end{lstlisting}
+are possible where "," stands for "and" and ";" for "or". This query returns the common parents of Ann and Pat.
+
+\subsection{Rules}
 
 \chapter{Probabilistic reasoning}
 Independence and conditional independence relationships allow to simply represent probabilistic relationships.
