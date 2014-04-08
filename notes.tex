@@ -1145,8 +1145,8 @@ Computations are initiated by running {\bf queries} over these relations.
 Queries have one or more {\bf goals}.
 A goal is something that Prolog tries to {\em satisfy} by finding values of the variables hat make the goal succeed.
 
-\subsection{Clauses}
-Clauses are defined in {\bf knowledge bases}:
+\subsection{Simple facts, rules and queries}
+{\bf Clauses} are defined in {\bf knowledge bases}:
 \begin{lstlisting}
 parent(pam, bob).
 parent(tom, bob).
@@ -1164,7 +1164,7 @@ male(bob).
 male(jim).
 \end{lstlisting}
 
-{\bf parent} is a binary relation and {\bf male} and {\bf female} are unary relations. For example, Pam is a parent of Bob.
+{\bf parent} is a binary relation and {\bf male} and {\bf female} are unary relations, the three of them are {\bf facts} as they are unconditionally true. For example, Pam is a parent of Bob.
 Is Bob a parent of Pat? This questions can be communicated to the Prolog system with the following query:
 \begin{lstlisting}
 ?- parent(bob, pat).
@@ -1192,8 +1192,25 @@ More complex queries like:
 ?- parent(X, ann),parent(X, pat).
 \end{lstlisting}
 are possible where "," stands for "and" and ";" for "or". This query returns the common parents of Ann and Pat.
-
-\subsection{Rules}
+\\
+\\
+{\bf  Rules} in the form $Parent(X, Y) \implies offspring(Y, X)$ are defined in Prolog as follows:
+\begin{lstlisting}
+offspring(Y, X) :- Parent(X, Y)
+\end{lstlisting}
+Rules have have the following structure:
+\begin{lstlisting}
+Head :- Body
+\end{lstlisting}
+$X$ is the sister of $Y$ if they have the same parent $Z$, if $X$ is female and if $X$ and $Y$ are different:
+\begin{lstlisting}
+sister(X, Y) :-
+  parent(Z, X),
+  parent(Z, Y),
+  female(X),
+  different(X, Y).
+\end{lstlisting}
+If the last condition did not exist, the query result would include all any female who has a parent as she is a sister of herself.
 
 \chapter{Probabilistic reasoning}
 Independence and conditional independence relationships allow to simply represent probabilistic relationships.
