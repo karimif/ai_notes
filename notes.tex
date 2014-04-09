@@ -1058,7 +1058,7 @@ Answers:
 
 Algorithm~\ref{python:zebrapuzzleslow} is an initial implementation to solve the zebra puzzle. As there are $5!^5$ permutations, the algorithm is too slow. It uses an iterator to avoid far indentations.
 \\
-There are multiple strategies to solve this problem faster. First, {\em Prolog} could be used which creates new problem as the language is difficult to use.
+There are multiple strategies to solve this problem faster. First, {\em Prolog} (see Chapter~\ref{chapter:prolog}) could be used which creates new problem as the language is difficult to use.
 \\
 Second, the Python code can be boosted by reshuffling the loops and conditions to exclude unsuccessful paths as soon as possible as implemented in Algorithm~\ref{python:zebrapuzzlefast}.
 It takes less than 1 millisecond to solve the problem on a modern computer.
@@ -1139,6 +1139,7 @@ def zebra_puzzle():
 \end{algorithm}
 
 \section{Prolog}
+\label{chapter:prolog}
 {\bf Prolog} is a logic programming language and declarative: the program logic is expressed in terms of relations which are represented as {\bf clauses}.
 There are two types of clauses: {\bf facts} and {\bf rules}.
 Computations are initiated by running {\bf queries} over these relations.
