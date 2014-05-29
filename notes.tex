@@ -707,7 +707,7 @@ The following three parameters of the algorithm are:
 \begin{itemize}
 \item {\em start}: the start state
 \item {\em successors}: function which returns the successors of a state and the corresponding actions
-\item {\em is\_goal}: function which returns true of a state is a goal
+\item {\em is\_goal}: function which returns true if a state is a goal
 \end{itemize}
 The {\bf frontier} contains all non-visited successors of previously visited states. It is sorted by path length in ascending order. Visited states will not be visited again.
 The algorithm picks the first element of the frontier and {\bf expands}, meaning to go through its successors.
@@ -751,7 +751,7 @@ The {\bf lowest cost algorithm} is an informed search algorithm that finds the s
 Algorithm~\ref{python:lowestcost} contains an implementation in Python. It looks relatively similar to the shortest path algorithm in Algorithm~\ref{python:shortestpath}.
 Nonetheless, there are some remarkable differences, including:
 First, it has another parameter, {\em action\_cost}, a function which returns the cost of an action.
-Second, path contain action costs and total costs.
+Second, paths contain action costs and total costs.
 Third, the frontier is sorted by total path costs.
 Fourth, the goal test is postponed and moved to the popping of successor states from the frontier. Only then, a path can be correctly classified as the lowest cost path. If it was done before directly after the successor generation, as in the shortest path algorithm, it might return a non-lowest cost path.
 Fifth, the previous difference implies that a goal test at the very beginning of the algorithm is not necessary any more and therefore got dropped.
@@ -812,7 +812,7 @@ def add_to_frontier(frontier, path):
 
 \section{Applying generalized search to problem solving}
 The previously discussed implementations of shortest path and lowest cost are abstract as the determination of successors, actions, costs and goals are done by concrete implementations of these functions.
-This separation allows to solve a number of problems easily by only writing concrete implementations without implementing a single line to traverse the {\bf state space}.
+This separation allows to solve a number of problems easily by only writing concrete implementations of these functions without implementing a single line to traverse the {\bf state space}.
 \\
 In this section, the {\bf pouring problem}, is solved this way. In the standard pouring problem, there are two classes of different capacity.
 Legal actions are filling a class, emptying a class or entirely pouring a class into the other one (glutting is not legal).
@@ -857,7 +857,7 @@ path = shortest_path_search(START,
 
 
 \section{A* search}
-$A*$ is an informed search algorithm that expands the path with that has the minimum value $f$.
+$A*$ is an informed search algorithm that expands the path which has the minimum value $f$.
 
 \begin{definition}[A* cost function]
 $f = g + h$ with $g(path) =$ current path cost and $h(path) = h(s) =$ estimated distance to goal
