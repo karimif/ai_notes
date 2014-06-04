@@ -2061,7 +2061,7 @@ $X$ = $\begin{pmatrix}
 The {\bf normal equation} is an efficient closed-form solution for linear regression which requires no loop, no learning rate and no feature normalization.
 It may be too slow for very large matrices as inversion is $O(n^3)$. $X$ may be singular and cannot be inverted.
 It is usually recommended to calculate the {\bf pseudo inverse} instead. \\
-The normal equation can be derived:
+The normal equation can be derived from the vectorized representation (see Chapter~\ref{chapter:vectorization}):
 \begin{align*}
 X\theta &= Y \\
 X^T X\theta &= X^T Y \\
@@ -2091,7 +2091,7 @@ The cost function in logistic regression is convex:
 $J(\theta) = \frac{1}{m}\sum_{i=1}^m[-y^{(i)}log(h_{\theta}(x^{(i)}))-(1-y^{(i)})log(1-h_{\theta}(x^{(i)}))]$
 \end{definition}
 
-The {\bf cross-entropy error function} is the best maximum likelihood estimate for logistic regression.
+The {\bf cross-entropy error function} is the best maximum likelihood (see Chapter~~\ref{ref:estimationsection}) estimate for logistic regression.
 Using it instead of the sum-of-squares for a classification problem leads to faster training as well as improved generalization.
 \\
 This gradient descent looks identical to the linear regression gradient but the formula is actually different because of the different definition of $h_{\theta}(x)$.
@@ -2101,6 +2101,7 @@ $\theta_j := \theta_j - \alpha \frac{1}{m}\sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)}
 
 
 \section{Vectorization}
+\label{chapter:vectorization}
 {\bf Vectorization} allows to do the updates simultaneously through various matrix operations.
 Matrix multiplications can be executed very efficiently, e.g. Strassen algorithm for matrix multiplication in $O(n^{log_2(7)})\approx O(n^{2.8074})$ instead of $O(n^3)$.
 \\
