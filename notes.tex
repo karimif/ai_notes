@@ -2297,7 +2297,8 @@ Instead of maximizing $L(\theta)$, any strictly increasing function of $L(\theta
 l(\theta)=\mbox{log } L(\theta)=\mbox{log }\prod_{i=1}^m\frac{1}{\sqrt{2\pi}\sigma}\mbox{exp}(-\frac{(y^{(i)}-\theta^Tx^{(i)})^2}{2\sigma^2})
 \end{align*}
 \begin{align*}
-=\sum_{i=1}^m \mbox{log }[\frac{1}{\sqrt{2\pi}\sigma}\mbox{exp}(-\frac{(y^{(i)}-\theta^Tx^{(i)})^2}{2\sigma^2})]=m\mbox{log }[\frac{1}{\sqrt{2\pi}\sigma}] -\frac{1}{\sigma^2}\frac{1}{2}\sum_{i=1}^{m}(y^{(i)}-\theta^Tx^{(i)})^2
+=\sum_{i=1}^m \mbox{log }[\frac{1}{\sqrt{2\pi}\sigma}\mbox{exp}(-\frac{(y^{(i)}-\theta^Tx^{(i)})^2}{2\sigma^2})]
+=m\mbox{log }[\frac{1}{\sqrt{2\pi}\sigma}] -\frac{1}{2\sigma^2}\sum_{i=1}^{m}(y^{(i)}-\theta^Tx^{(i)})^2
 \end{align*}
 Hence, maximizing $l(\theta)$ gives the same answer as {\bf minimizing}:
 \begin{align*}
