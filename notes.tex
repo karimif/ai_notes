@@ -4335,7 +4335,7 @@ P(c_{1:N}) = \prod_{i=1}^N P(c_i\vert c_{1:i-1}) = \prod_{i=1}^N P(c_i\vert c_{i
 As models shall generalize well to texts that one has not seen yet, overfitting shall be prevented using {\bf smoothing}. The simplest method is {\bf Laplacian smoothing} covered in Chapter~\ref{chapter:usingnaivebayes}.
 Therefore, if a random Boolean variable $X$ has been false in all $n$ observations, the estimate for $P(X=true)$ should be $1/(n+2)$.
 \\
-A better approach is a {\bf backoff model} which starts by estimating $n$-gram counts, but for any particular sequence that has allow or zero count, one backs off to $(n-1)$-grams.
+A better approach is a {\bf backoff model} which starts by estimating $n$-gram counts, but for any particular sequence that has a low or zero count, one backs off to $(n-1)$-grams.
 {\bf Linear interpolation smoothing} is a back off model that combines trigram, bigram and unigram models by linear interpolation:
 \begin{align*}
 \hat{P}(c_i\vert c_{i-2:i-1}) = \lambda_3 P(c_i\vert c_{i-2:i-1}) + \lambda_2 P(c_i\vert c_{i-1}) + \lambda_1 P(c_i)
@@ -4343,14 +4343,14 @@ A better approach is a {\bf backoff model} which starts by estimating $n$-gram c
 
 where $\lambda_3 + \lambda_2 + \lambda_1 = 1$. The values $\lambda_i$ can be fixed or trained with an expectation-maximization algorithm.
 \\ \\
-{\bf Model selection} of the possible $n$=gram models and different smoothing methods can be done using cross-validation and test sets as demonstrated in Chapter~\ref{ref:modelselection}.
+{\bf Model selection} of the possible $n$-gram models and different smoothing methods can be done using cross-validation and test sets as demonstrated in Chapter~\ref{ref:modelselection}.
 \\ \\
 $N$-grams can also be defined over words rather than characters. The {\bf vocabulary} - the set of symbols that make up the {\bf corpus} and the model - is larger.
 There are significantly more words than characters in most languages. Also, defining what a word looks like is possible in different ways.
 Word $n$-gram models also need to deal with {\bf out of vocabulary} words as the corpus is likely to not contain all possible words.
 This problem does not occur with character $n$-gram models as new letters are unlikely to be invented.
 \\
-Word models become more powerful the larger $n$. For example, this can be demonstrated by building unigram, bigram and trigram models over word in a corpus and then randomly sampling sequences of words from the models:
+Word models become more powerful the larger $n$. For example, this can be demonstrated by building unigram, bigram and trigram models over words in a corpus and then randomly sampling sequences of words from the models:
 \begin{itemize}
 \item Unigram: logical are as are confusion a may right tries agent goal the was ...
 \item Bigram: systems are very similar computational approach would be represented ...
@@ -4360,7 +4360,7 @@ The larger $n$, the better the corpus can be approximated.
 
 \section{Text classification}
 \label{chapter:textclassification}
-{\bf Text classification} or {\bf categorization} decided which of predefined set of classes a text of some kind belongs to. Language identification and genre classification are examples of text classification.
+{\bf Text classification} or {\bf categorization} decide which of predefined set of classes a text of some kind belongs to. Language identification and genre classification are examples of text classification.
 Text classification is demonstrated for {\bf spam detection} in Chapter~\ref{chapter:spamclassificationexample}.
 \\
 In short, a message can be classified with an application of Bayes rule:
@@ -4393,7 +4393,7 @@ Also, there is promise for algorithms that use character $n$-gram models directl
 
 \section{Information retrieval}
 The field of {\bf information retrieval} (IR) deals with finding documents that are relevant to a user's need for information.
-The most popular example of IR stems are WWW search engines such as Google or Bing which show a lit of relevant pages to a user's query.
+The most popular example of IR systems are WWW search engines such as Google or Bing which show a lot of relevant pages to a user's query.
 IR systems compose of:
 \begin{itemize}
 \item {\bf Corpus} of documents
@@ -4404,7 +4404,7 @@ IR systems compose of:
 \end{itemize}
 
 The earliest IR systems worked on {\bf boolean keyword models} in which each word in the document collection is treated as a Boolean feature which is true of a document if the word occurs in the document or false if it does not.
-This model is simple to explain and explain. In contrast, it is difficult for users to take advantage of it as they might not be familiar with Boolean logic.
+This model is simple to explain. In contrast, it is difficult for users to take advantage of it as they might not be familiar with Boolean logic.
 Also, {\bf ranking} based on Boolean membership is not powerful as the relevance of document is a single bit.
 \\
 IR systems can be evaluated using {\bf precision} and {\bf recall} defined in Chapter~\ref{chapter:erroranalysis}.
@@ -4437,14 +4437,14 @@ IDF(q_i) = \mbox{log}\frac{N}{\vert \{ d \in D : q_i \in d \} \vert}
 Which is obtained by dividing the total number of documents by the number of documents containing the term, and then taking the logarithm of that quotient.
 \\
 
-Third, the length of a document with short documents being better candidates. \\ \\
+Third, the {\bf length of a document} with short documents being better candidates. \\ \\
 The {\bf BM25} function is defined as follows given a document $d_j$ and a query consisting of the words $q_{1:N}$:
 \begin{align*}
 BM25(d_j, q_{1:N}) = \sum_{i=1}^{N} IDF(q_i) \frac{TF(q_i, d_j)(k+1)}{TF(q_i,d_j) + k(1-b+b\frac{\vert d_j\vert}{L})}
 \end{align*}
 
 $\vert d_j\vert$ is the length of document $d_j$ in word and $L$ is the average document length in the corpus: $L = \sum_i \vert d_i\vert / N$.
-The two parameter $k$ and $b$ can be tuned by cross-validation; typical values are $k = 2.0$ and $b = 0.75$.
+The two parameters $k$ and $b$ can be tuned by cross-validation; typical values are $k = 2.0$ and $b = 0.75$.
 \\
 \\
 The {\bf vector space model} is another scoring model. Documents and queries are represented as vectors:
