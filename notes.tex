@@ -2559,7 +2559,7 @@ Figure~\ref{figure:knnexample2} contains the regression values for distance type
  K = 1 & K = 3 & K = 1 & K = 3 \\
 \hline
 \hline
-29 & 35.5 & 8 & 42 \\
+29 & 35.5 & 8 & 38 \\
 \end{tabular}
 \caption{KNN example for $x=(4,2)$}
 \label{figure:knnexample2}
@@ -2704,7 +2704,7 @@ HMMs are used for example in {\bf localization} and {\bf tracking} which is cove
 
 \section{Invariances}
 \label{chapter:invariances}
-{\bf Invariances} are covered in Chapter~\ref{chapter:cvinvariances}. This section covers how to make learning algorithms invariant. \\
+{\bf Invariances} in Computer Vision are covered in Chapter~\ref{chapter:cvinvariances}. This section covers how to make learning algorithms invariant. \\
 For example, classifying handwritten digits should work irrespective the digits' position within the image of its size i.e. translation and scale invariance.
 These transformations have significant differences in the raw data, expressed in different intensities at each of the pixel in the image.
 The classifier shall still classify the digits properly.
@@ -2767,11 +2767,11 @@ A learning algorithm that is made invariant to each transformation separately is
 Therefore, it falls in between of supervised and unsupervised learning.
 First, the learning algorithm is given labeled training data. Second, it is given unlabeled data which it then classifies.
 All of the unlabeled data is of one of the classes that are used in the labeled training data.
-Making use of this addition unlabeled data allows to capture better the shape of the underlying data distribution and generalize better to new samples. \\
+Making use of this additional unlabeled data allows to capture better the shape of the underlying data distribution and generalize better to new samples. \\
 Semi-supervised learning is not widely used as usually unlabeled data is of more classes that are unknown and not part of the labeled training data.
 
 \section{Ensemble learning}
-{\bf Ensemble learning} selects o set, or {\bf ensemble}, of hypotheses from the hypothesis space and combine their predictions.
+{\bf Ensemble learning} selects or set, or {\bf ensemble}, of hypotheses from the hypothesis space and combines their predictions.
 These learners can be trained on different subsets of the training set which are called {\bf bags}.
 The hope is that by combining their predictions using majority voting for classification (on which the remainder of this section focuses) or averaging for regression, that the error can be reduced.
 \\
