@@ -3839,7 +3839,7 @@ Second, the update statement in the inner loop allows the algorithm to improve t
 The resulting learning curve is {\bf not convex}.
 In general, the algorithm wanders around the global minimum and moves the parameters towards the region of it. \\
 Also, stochastic gradient descent handles redundancy very well. Assuming that all training examples are duplicated, the error function gets multiplied by a factor of two. Batch methods require double the computational effort to evaluate the batch error function gradient. In contrast, stochastic gradient descent is unaffected.
-Last, stochastic gradient descent allows to escape from a local minima since a stationary point with respect to the error function for the whale data set is generally not a stationary point for each data point individually.
+Last, stochastic gradient descent allows to escape from a local minimum since a stationary point with respect to the error function for the whole data set is generally not a stationary point for each data point individually.
 
 \begin{algorithm}
 \caption{Stochastic gradient descent}
@@ -3864,7 +3864,7 @@ Last, stochastic gradient descent allows to escape from a local minima since a s
 \begin{algorithmic}
 \State $b\gets $ step size
 \Repeat
-\For{$i$ in $m, step=n$}
+\For{$i$ in $m, step=b$}
 \State $\theta_j  \gets \theta_j - \alpha \frac{1}{\vert b\vert}\sum_{k=i}^{i+9} (h_\theta(x^{(k)})-y^{(k)})x_j^{(k)}$ (for all $j$)
 \EndFor
 \Until{convergence}
@@ -3894,7 +3894,7 @@ Gradient descent can become very slow for complex parameter spaces.
 There are more efficient methods such as {\bf conjugate gradients} and {\bf quasi-Newton} methods which are much more robust and much faster than simple gradient descent.
 Unlike gradient descent, these algorithms have the property that the error function always decreases at each iteration unless the weight vector has arrived at a local or global minimum. \\
 In comparison to gradient descent's learning rate $\alpha$, {\bf line search} follows a different approach choosing the distance for the weight update.
-Once a line is chosen which specifies the direction of the update, the update distance is chosen by finding the minion of the error function along this line.
+Once a line is chosen which specifies the direction of the update, the update distance is chosen by finding the minimum of the error function along this line.
 The position of the point along the line that minimizes the error has impact on the update which can result in a very large or very small weight update.
 
 \subsection{Conjugate descent}
@@ -3917,7 +3917,7 @@ Quasi-Newton methods do not compute the Hessian matrix, but approximate it by an
 
 
 \section{Online learning}
-{\bf Online learning} is useful when there is a continuous stream of new data and if the entire data set is too large for efficient re-calculation of the parameters. It is defined in Algorithm~\ref{ref:onlinelearning}. Online learning learns on the fly and also adapts to change of data (e.g. rising housing prices).
+{\bf Online learning} is useful when there is a continuous stream of new data or if the entire data set is too large for efficient re-calculation of the parameters. It is defined in Algorithm~\ref{ref:onlinelearning}. Online learning learns on the fly and also adapts to change of data (e.g. rising housing prices).
 
 \begin{algorithm}
 \caption{Online learning}
