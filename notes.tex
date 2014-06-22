@@ -3956,7 +3956,7 @@ Particle filter & continuous & multi-modal & depends on use case & approximate \
 \end{table}
 
 \section{Markov localization}
-{\bf Markov localization} is a {\bf discrete} grid-based localization which uses histogram to represent the belief distribution. It is {\bf multi-modal} meaning that there are multiple possible states in which the robot could be. Localization starts in an initial {\bf belief state} and consists of the two steps {\bf sense} and {\bf move} which are executed cyclically. Sense gains information on the current localization. In contrast, move loses information as movements are inaccurate. \\
+{\bf Markov localization} is a {\bf discrete} grid-based localization which uses histograms to represent the belief distribution. It is {\bf multi-modal} meaning that there are multiple possible states in which the robot could be. Localization starts in an initial {\bf belief state} and consists of the two steps {\bf sense} and {\bf move} which are executed cyclically. Sense gains information on the current localization. In contrast, move loses information as movements are inaccurate. \\
 The computation of the sense step is: \\
 \begin{align*}
 P(x'_{i,t}\vert z_t) = \frac{P(z_t\vert x'_{i,t})P(x'_{i,t})}{P(z_t)}
@@ -3968,7 +3968,7 @@ The computation of the move step is:
 P(x'_{i,t}) = P(x_{i,t}\vert a_t) = \sum_{j=1}^{n} P(x_{i,t}\vert x_{j,t-1},a_t)P(x_{j,t-1})
 \end{align*}
 It maps from a belief state $P(x_{j,t-1})$ and action $a_t$ to a new predicted belief state $P(x'_{i,t})$ by
-summing over all possible ways (i.e. from all states $x_{j,t-1}$) in which the robot may have reached $x'_{i,t}$. \\
+summing over all possible ways (i.e. from all states $x_{j,t-1}$) from which the robot may have reached $x'_{i,t}$. \\
 Markov localization complexity grows exponentially. This is because any grid that is defined over $k$-dimensions will end up having exponentially many grid cells in the number of dimensions, which does not allow to represent high dimensional grids very well. \\
 Algorithm~\ref{ref:markovlocalizationpython} implements Markov localization for a sample cyclic 5-cell world. The final belief state is:
 \begin{align*}
