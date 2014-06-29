@@ -1752,7 +1752,7 @@ Algorithm~\ref{alg:finds} returns the most specific hypothesis $h$ that best fit
 \\
 Find-S has a number of drawbacks:
 \begin{itemize}
-\item is sensitive to noise that is present in most training examples
+\item Is sensitive to noise that is present in most training examples
 \item There is not guarantee that $h$ is the only $h$ that fits the data
 \item Several maximally specific hypotheses may exist that fit the data, but Find-S outputs only one
 \item Why should one prefer most specific hypotheses over most general hypotheses?
@@ -1764,7 +1764,7 @@ Find-S has a number of drawbacks:
 \begin{algorithmic}
 \State $h \gets (0,...,0)$ \Comment{Initialize $h\in H$ to the most specific hypothesis}
 \For{each positive training example $x \in X$}
-\For{eachatrribute $a_i \in h$}
+\For{each atrribute $a_i \in h$}
 \If{$a_i$ is satisfied by $x$}
 \State Do nothing
 \Else
@@ -1812,7 +1812,7 @@ Step & $x_1$ & $y_1$ & $x_2$ & $y_2$ & Comments \\
 \end{figure}
 
 
-The last three drawbacks of Find-S are addressed by Algorithm~\ref{alg:candiateelimination}. The main idea is to return a set of hypotheses $VS\subseteq H$ that are consistent with data $X$.
+The last three drawbacks of Find-S are addressed by Algorithm~\ref{alg:candidateelimation}. The main idea is to return a set of hypotheses $VS\subseteq H$ that are consistent with data $X$.
 
 \begin{algorithm}
 \caption{Candidate elimination}
