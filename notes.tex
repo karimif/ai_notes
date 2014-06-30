@@ -3492,6 +3492,8 @@ In practice, recurrent networks are more difficult to train than feedforward net
 \section{Autoencoders and sparsity}
 \label{chapter:autoencoders}
 An {\bf autoencoder} is a fully-connected feed-forward neural network with $N$ input and $N$ output units.
+The aim of an auto-encoder is to learn a compressed, distributed representation (encoding) for a set of data.
+For a single sigmoid hidden layer, the optimal solution to an auto-encoder is strongly related to principal component analysis covered in Chapter~\ref{chapter:pca}.
 It is used in unsupervised learning and sets the target values to be equal to the inputs. I.e., it uses $y^{(i)} = x^{(i)}$.
 An auto encoder has at least one hidden layer of usually less units. This section only covers autoencoders with one hidden layer.
 
@@ -3499,8 +3501,6 @@ An auto encoder has at least one hidden layer of usually less units. This sectio
 To achieve best performance of autoencoders and to satisfy various constrains, input data should be preprocessed using {\bf PCA whitening} or {\bf ZCA whitening} covered in Chapter~\ref{chapter:whitening}.
 
 \subsection{Learning weights}
-The aim of an auto-encoder is to learn a compressed, distributed representation (encoding) for a set of data.
-For a single sigmoid hidden layer, the optimal solution to an auto-encoder is strongly related to principal component analysis covered in Chapter~\ref{chapter:pca}.
 If a {\bf sparsity} constraint is imposed on the hidden units, then the autoencoder will still discover interesting structure in the data, even if the number of hidden units is large.
 This sparsity constraint means that the hidden neurons are inactive (close to $0$ for Sigmoid) most of the time.
 This concept is related to sparse encoding from Chapter~\ref{chapter:sparsecoding}.
