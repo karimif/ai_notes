@@ -2876,7 +2876,7 @@ $\frac{1}{m}\sum_{i=1}^m \lVert x^{(i)} \Vert^2$
 
 PCA can be used to reduce memory and time consumption of complex computations. Also, it allows to plot higher dimensional data in 2D or 3D.
 \\
-First, the {\bf covariance matrix} is computed:
+First, the {\bf covariance matrix} is computed (assuming mean-normalized data $X$):
 \begin{align*}
 \Sigma = \frac{1}{m}X^TX
 \end{align*}
@@ -2929,7 +2929,7 @@ x_{approx} = U_{reduce}\tilde{x}
 \end{align*}
 
 Usually, the {\bf singular vectors} and {\bf singular values} of $\Sigma$ are used instead of the eigenvectors which are strongly related to eigenvectors, but more numerically reliable.
-For symmetric a positive semi-definite matrix - which is the case for the matrices relevant to PCA - they are equal to the eigenvectors and eigenvalues.
+For a symmetric positive semi-definite matrix - which is the case for the matrices relevant to PCA - they are equal to the eigenvectors and eigenvalues.
 They can be computed using the {\bf singular value decomposition} (SVD) which is not further explained in this document.
 {\bf Matlab} or {\bf Octave} offer functions to compute this:
 
@@ -2971,7 +2971,7 @@ Usually, the large variances occur in the first $K<n$ principal components and t
 
 PCA is adequate if the data are Gaussian, linear, and stationary.
 Stationary means that the statistics of one data set should theoretically be the same as any other.
-{\bf independent component analysis} (ICA) works on non-Gaussian and very noisy data\footnote{\url{http://www.colorado.edu/engineering/CAS/courses.d/ASEN6519.d/Lectures.d/Lecture10_11.6519.pdf}}.
+{\bf Independent component analysis} (ICA) works on non-Gaussian and very noisy data\footnote{\url{http://www.colorado.edu/engineering/CAS/courses.d/ASEN6519.d/Lectures.d/Lecture10_11.6519.pdf}}.
 
 \section{Whitening}
 \label{chapter:whitening}
