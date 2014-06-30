@@ -3425,7 +3425,7 @@ Chapter~\ref{chapter:invariances} generally covers how to make learning algorith
 
 where $s_1$ is the number of input units, $J_{ki}$ is the $(k,i)$ element of the Jacobian matrix for output $k$ and all training examples $x^{(i)}$.
 In neural networks, the Jacobian matrix provides a measure of the local sensitivity of the outputs to changes in each of the input variables.
-The matrix can elements can either be approximated using finite elements or can be computed analytically by an amended backpropagation.
+The matrix elements can either be approximated using finite elements or can be computed analytically by an amended backpropagation.
 The analytical solution is not provided in this document.
 
 The result can be used to compute the regularized cost function:
@@ -3446,7 +3446,7 @@ In this way, the response of a unit in the subsampling layer is relatively insen
 
 Due to the constraints of weights, the number of weights in the network is smaller than in a fully-connected network.
 Also, the number of independent parameters to be learned is significantly smaller. \\
-CNNs require a slight modification of the backpropagation algorithm for weight sharing in the convolutional layers and averaging and in the subsampling layers.
+CNNs require a slight modification of the backpropagation algorithm for weight sharing in the convolutional layers and averaging in the subsampling layers.
 
 \section{Recurrent neural networks}
 {\bf Recurrent neural networks} (RNNs) are cyclic graphs of neurons as displayed in Figure~\ref{figure:recurrentneuralnetwork}.
