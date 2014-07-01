@@ -3555,6 +3555,23 @@ x_j = \frac{\Theta_{ij}^{(1)}}{\sqrt{\sum_{j=1}^{100} (\Theta_{ij}^{(1)})^2}}
 
 Displaying the image formed by these pixel intensity values, one can understand what feature hidden united $i$ looks for. Usually, hidden units in this first (and only) hidden layer look for edges.
 
+\section{Self-taught learning}
+In general, in {\bf self-taught} and unsupervised learning, an algorithm is given a large amount of unlabeled data with which to learn a good feature representation of the input.
+For a specific classification task, this learned feature representation and labeled data is used for classification applying supervised learning on that labeled data to solve the classification task.
+\\
+Autoencoders can be used in self-taught learning.
+First, features are learned from unlabeled data by training a sparse autoencoder (assuming one hidden layer).
+\\
+Second, for any new input $x$, a vector of activations $a$ of the hidden units can be computed.
+This gives a better representation of the input than the original raw input.
+Supposing a labeled training set $\{(x_l^{(1)}, y^{(1)}), ..., (x_l^{(m)}, y^{(m)})\}$ of $m_l$ examples, a better representation of $x_l^{(i)}$ can be obtained by feeding $x_l^{(i)}$ to the autoencoder and obtaining the corresponding vector of activations $a_l^{(i)}$.
+Then, either $x_l^{(i)}$ can be replaced by $a_l^{(i)}$ or both feature vectors can be concatenated, getting a representation $(x_l^{(i)}, a_l^{(i)})$.
+Thus, the training set becomes $\{(a_l^{(1)}, y^{(1)}), ..., (a_l^{(m)}, y^{(m)})\}$ in the first case or $\{((x_l^{(1)}, a_l^{(1)}), y^{(1)}), ..., ((x_l^{(1)}, a_l^{(m)}), y^{(m)})\}$ in the second one.
+In practice, the concatenated representation works better, but for memory or computation reasons, the replacement representation can be more efficient.
+\\
+Finally, a supervised learning algorithm such as an SVM, logistic regression, etc. can be trained on the training set to make predictions on the $y$ values.
+A test example $x_{test}$ would follow the same procedure: first it is fed to the autoencoder to get $a_{test}$.
+Then, either $a_{test}$ or $(x_{test}, x_{test})$ is passed to the trained classifier to get a prediction.
 
 \section{Deep learning}
 Most of today's machine learning tends to be just curve fitting and statistics.
