@@ -3571,7 +3571,7 @@ In practice, the concatenated representation works better, but for memory or com
 \\
 Finally, a supervised learning algorithm such as an SVM, logistic regression, etc. can be trained on the training set to make predictions on the $y$ values.
 A test example $x_{test}$ would follow the same procedure: first it is fed to the autoencoder to get $a_{test}$.
-Then, either $a_{test}$ or $(x_{test}, x_{test})$ is passed to the trained classifier to get a prediction.
+Then, either $a_{test}$ or $(x_{test}, a_{test})$ is passed to the trained classifier to get a prediction.
 
 \section{Deep learning}
 Most of today's machine learning tends to be just curve fitting and statistics.
