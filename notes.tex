@@ -867,7 +867,7 @@ def add_to_frontier(frontier, path):
 The previously discussed implementations of shortest path and lowest cost are abstract as the determination of successors, actions, costs and goals are done by concrete implementations of these functions.
 This separation allows to solve a number of problems easily by only writing concrete implementations of these functions without implementing a single line to traverse the {\bf state space}.
 \\
-In this section, the {\bf pouring problem}, is solved this way. In the standard pouring problem, there are two classes of different capacity.
+In this section, the {\bf pouring problem}, is solved this way. In the standard pouring problem, there are two glasses of different capacity.
 Legal actions are filling a class, emptying a class or entirely pouring a class into the other one (glutting is not legal).
 Given an initial filling, a goal filling must be achieved by applying these actions.
 The shortest path of actions must be returned or no path in case the problem is not solvable for a certain configuration of start, goal and capacities.
@@ -916,7 +916,7 @@ $A*$ is an informed search algorithm that expands the path which has the minimum
 $f = g + h$ with $g(path) =$ current path cost and $h(path) = h(s) =$ estimated distance to goal
 \end{definition}
 
-$f$ is a {\bf heuristic function}. $A*$ finds lowest cost path if: $h(s) <$ true cost. Subsequently, $h$ never overestimates and is {\bf optimistic} or {\bf admissible}. See Figure~\ref{ref:heuristic} for an example.
+$f$ is a {\bf heuristic function}. $A*$ finds lowest cost path if: $h(s) \le $ true cost. Subsequently, $h$ never overestimates and is {\bf optimistic} or {\bf admissible}. See Figure~\ref{ref:heuristic} for an example.
 
 \begin{figure}[h!]
 \centering
