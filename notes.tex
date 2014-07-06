@@ -301,10 +301,10 @@ P(D\vert +) = \frac{P(+\vert D)P(D)}{P(+)} = \frac{P(+\vert D)P(D)}{P(+\vert D)P
 = \frac{0.98 \times 0.008}{0.98 \times 0.008 + 0.03 \times 0.992} \approx 0.2085 = 20.85\%
 \end{align*}
 
-Most likely, John Doe does not have $D$.
+Most likely, John does not have $D$.
 \\
 
-And example for the general Bayes rule is demonstrated in Chapter~\ref{chapter:explainingaway}.
+An example for the general Bayes rule is demonstrated in Chapter~\ref{chapter:explainingaway}.
 
 \subsection{Monty Hall problem}
 The {\bf Monty Hall problem} is a brain teaser in the form of a probability puzzle, loosely based on the American television game show {\em Let's Make a Deal} and named after its original host, Monty Hall.
@@ -379,7 +379,7 @@ with unit {\em bit}.
 Flipping a fair coin (heads, tails) has the following entropy:
 \begin{align*}
 H = -\sum[P(H)\mbox{log}_2P(H) + P(T)\mbox{log}_2P(T)] \\
-= 0.5\mbox{log}_2 0.5 + 0.5\mbox{log}_2 0.5 = -\mbox{log}_2 0.5 = 1\mbox{bit}
+= -[0.5\mbox{log}_2 0.5 + 0.5\mbox{log}_2 0.5] = -\mbox{log}_2 0.5 = 1\mbox{bit}
 \end{align*}
 
 A series of two fair coin tosses has an entropy of two bits. The number of fair coin tosses is its entropy in bits.
@@ -474,7 +474,7 @@ $F : \mathbb{R}^n \mapsto \mathbb{R}^m$ is a function which takes as input real 
 Such a function is given by $m$ real-valued component functions $F_1(x_1,...,x_n),...,F_m(x_1,...,x_n)$.
 The Jacobian matrix is a $m\times n$ matrix $J$ of $F$.
 \begin{align*}
-J(f) = \begin{pmatrix}
+J(F) = \begin{pmatrix}
 \frac{\partial F_1}{\partial x_1} & \dots & \frac{\partial F_1}{\partial x_n} \\
 \vdots & \ddots & \vdots \\
 \frac{\partial F_m}{\partial x_1} & \dots & \frac{\partial F_m}{\partial x_n}
@@ -508,7 +508,7 @@ Correcting by this factor is called {\bf Bessel's correction}. The {\bf unbiased
 \sigma^2 = \frac{1}{m-1}\sum_i^m (x_i-\mu)^2
 \end{align*}
 
-However, if the population mean is known, then the deviations of the samples from the population mean have $n$ degrees of freedom (because the mean is not being estimated - the deviations are not residuals but errors) and Bessel's correction is not applicable.
+However, if the population mean is known, then the deviations of the samples from the population mean have $m$ degrees of freedom (because the mean is not being estimated - the deviations are not residuals but errors) and Bessel's correction is not applicable.
 
 
 The {\bf standard deviation} $\sigma$ shows how much variation or dispersion from the average exists:
