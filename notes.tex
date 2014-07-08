@@ -1194,6 +1194,26 @@ def zebra_puzzle():
 
 \section{Logic programming}
 {\bf Logic programming} is a programming paradigm based on {\bf formal logic}. A program written in a logic programming language is a set of sentences in logical form, expressing facts and rules about some problem domain.
+\\
+The following terms are used in mathematical logic and logic programming. A {\bf clause} is a disjunction of literals:
+\begin{align*}
+l_1 \vee ... \vee l_m
+\end{align*}
+
+A {\bf horn clause} is a clause with at most one positive literal. A clause with exactly one positive literal is called a {\bf definite clause}: 
+\begin{align*}
+a_0 \vee \neg a_1 \vee ... \vee \neg a_m \\
+a_0 \impliedby a_1 \wedge ... \wedge a_m
+\end{align*}
+
+A {\bf theory} is a conjunction of clauses:
+\begin{align*}
+C_1 \wedge ... \wedge C_m
+\end{align*}
+
+A {\bf logic program} is a conjunction of Horn clauses.
+
+
 
 
 \section{Prolog}
