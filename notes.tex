@@ -2808,6 +2808,10 @@ Then, a second hypothesis is learned to do better on the misclassified examples 
 This process continues in this way until $K$ hypotheses are generated, where $K$ is an input to the boosting algorithm.
 The final ensemble hypothesis is a weighted-majority combination of all the $K$ hypotheses, each weighted according to how well it performed on the training set.
 
+\section{Inductive logic programming}
+{\bf Inductive logic programming} (ILP) is a subfield of machine learning which uses logic programming as a uniform representation for examples, background knowledge and hypotheses.
+Given an encoding of the known background knowledge and a set of examples represented as a logical database of facts, an ILP system will derive a hypothesised logic program which entails all the positive and none of the negative examples.
+
 \chapter{Unsupervised learning}
 Unsupervised learning tries to find hidden structures in {\bf unlabeled data} $\{x^{(1)}, x^{(2)},$ $..., x^{(m)}\}$. In machine learning research, unsupervised learning has received less attention than supervised learning but is likely to receive more in the future because of its potential to work on unlabeled data.
 
