@@ -3933,10 +3933,10 @@ Last, stochastic gradient descent allows to escape from a local minimum since a 
 \begin{algorithmic}
 \State $K\gets $ split count
 \Repeat
-\For{$k=1..K$}
-\State Distribute computation: $temp_j^{(k)}\gets \sum_{i=(k-1)\frac{m}{K}+1}^{i+\frac{m}{K}-1}(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)}$ (simultaneously for all $j$)
+\For{$i$ in $m, step=m/K$}
+\State Distribute computation: $temp_j^{(k)}\gets \sum_{k=i}^{i+step}(h_\theta(x^{(k)})-y^{(k)})x_j^{(k)}$ (simultaneously for all $j$)
 \EndFor
-\State $\theta_j  \gets \theta_j - \alpha \frac{1}{m}\sum_{k=1}^{\frac{m}{K}}temp_j^{(k)}$ (simultaneously for all $j$)
+\State $\theta_j  \gets \theta_j - \alpha \frac{1}{m}\sum_{k=1}^{step}temp_j^{(k)}$ (simultaneously for all $j$)
 \Until{forever}
 \end{algorithmic}
 \end{algorithm}
