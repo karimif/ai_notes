@@ -3937,7 +3937,7 @@ Last, stochastic gradient descent allows to escape from a local minimum since a 
 \State Distribute computation: $temp_j^{(k)}\gets \sum_{k=i}^{i+step}(h_\theta(x^{(k)})-y^{(k)})x_j^{(k)}$ (simultaneously for all $j$)
 \EndFor
 \State $\theta_j  \gets \theta_j - \alpha \frac{1}{m}\sum_{k=1}^{step}temp_j^{(k)}$ (simultaneously for all $j$)
-\Until{forever}
+\Until{convergence}
 \end{algorithmic}
 \end{algorithm}
 
