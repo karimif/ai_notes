@@ -4424,11 +4424,11 @@ where $P(c)$ is estimated just by counting the total number of messages of a cla
 Aside from naive Bayes, a variety of other classification techniques can be used such as KNN, SVMs, decision trees, neural networks or logistic regression.
 \\
 The example in Chapter~\ref{chapter:spamclassificationexample} uses a unigram word model, which is called the {\bf bag of words} model.
-This term mean to put the words of the training corpus in a bag and then selection words one at a time.
+This term means to put the words of the training corpus in a bag and then selection words one at a time.
 Bag of word models lose the order of the words; a unigram model gives the same probability to any permutation of a text.
 Higher-order $n$-gram models maintain some local notion of word oder.
 \\
-With bigrams and trigrams the number of feature squared or cubed and other.
+With bigrams and trigrams the number of features squared or cubed and other.
 Choice of features has significant impact on the quality of the results.
 For spam detection, non-$n$-gram features can be added such as when the message was sent, which IP it was sent from or whether a URL or an image if part of the message.
 Spam filtering is an {\bf adversarial task} as spammers modify their spam in response to the spam detector's changes.
