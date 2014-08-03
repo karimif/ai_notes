@@ -3917,7 +3917,7 @@ Last, stochastic gradient descent allows to escape from a local minimum since a 
 \State $b\gets $ step size
 \Repeat
 \For{$i$ in $m, step=b$}
-\State $\theta_j  \gets \theta_j - \alpha \frac{1}{\vert b\vert}\sum_{k=i}^{i+9} (h_\theta(x^{(k)})-y^{(k)})x_j^{(k)}$ (simultaneously for all $j$)
+\State $\theta_j  \gets \theta_j - \alpha \frac{1}{step}\sum_{k=i}^{i+step} (h_\theta(x^{(k)})-y^{(k)})x_j^{(k)}$ (simultaneously for all $j$)
 \EndFor
 \Until{convergence}
 \end{algorithmic}
