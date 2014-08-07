@@ -526,6 +526,13 @@ Variance is a special case of the covariance when the two variables are identica
 Cov(X,X) = \sigma^2(X)
 \end{align*}
 
+The exact value is not as important as its sign. If the value is positive, then that indicates that both dimensions increase together.
+If the value is negative, then as one dimension increases, the other decreases.
+In the last case, if the covariance is zero, it indicates that the two dimensions are independent of each other.
+\\
+{\bf Example}: a two-dimensional data set with mark of an exam and hours spent on the preparation. If the covariance is positive, that means that, in general, as the number of hours of study increased, so did the final mark.
+\\
+\\
 The {\bf covariance matrix} $\Sigma$ is a matrix whose element in the $i$, $j$ position is the covariance between the $i$th and the $j$th elements of a random vector:
 \begin{align*}
 \Sigma_{ij} = Cov(X_i, X_j)
