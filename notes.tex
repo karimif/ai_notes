@@ -517,9 +517,9 @@ The {\bf standard deviation} $\sigma$ shows how much variation or dispersion fro
 \end{align*}
 
 \subsection{Covariance}
-{\bf Covariance} is a measure of how much two random variables change together:
+{\bf Covariance} is a measure of how much data dimensions vary from the mean with respect to each other.
 \begin{align*}
-Cov(X,Y) = E[(X-E[X])(Y-E[Y])] = \frac{1}{m}\sum_i^m (x_i-\mu_x)(y_i-\mu_y)
+Cov(X,Y) = E[(X-E[X])(Y-E[Y])] = \frac{1}{m-1}\sum_i^m (x_i-\mu_x)(y_i-\mu_y)
 \end{align*}
 Variance is a special case of the covariance when the two variables are identical:
 \begin{align*}
@@ -531,7 +531,7 @@ The {\bf covariance matrix} $\Sigma$ is a matrix whose element in the $i$, $j$ p
 \Sigma_{ij} = Cov(X_i, X_j)
 \end{align*}
 \begin{align*}
-\Sigma = \frac{1}{m}\sum_i^m (x_i-\mu)^T(x_i-\mu)
+\Sigma = \frac{1}{m-1}\sum_i^m (x_i-\mu)^T(x_i-\mu)
 \end{align*}
 
 Example:
