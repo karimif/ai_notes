@@ -3273,7 +3273,9 @@ Third, the learning rate can be changed during the learning to converge faster.
 \section{Feed-forward neural networks}
 Figure~\ref{ref:neuralnetwork} contains a {\bf fully-conntected} {\bf feed-forward neural network}.
 This kind of neural networks are acyclic graphs of neurons that propagate input values through to the output layer.
-Feed-forward neural networks are also sometimes called {\bf multi-layer perceptrons} with the difference that the neurons use the {\bf Sigmoid activation function} in contrast to the heaviside step function used in perceptrons.
+They can be used for both {\bf classification} and {\bf regression}, this chapter focuses on classification.
+Feed-forward neural networks are also sometimes called {\bf multi-layer perceptrons}.
+For classification, the neurons use the {\bf Sigmoid activation function} in contrast to the heaviside step function used in perceptrons and the direct continuous value output for regression.
 
 \begin{definition}[Sigmoid activation function]
 $g = h_\theta(x) = \frac{1}{1+e^{-\theta^{T}x}}$
@@ -3326,7 +3328,9 @@ $h_{\Theta}(x)$ & $=$ & $a^{(3)}$ $=$ $g(z^{(3)})$ (add $a_0^{(3)}$) \\
 \label{ref:neuralnetworkmappingvectorized}
 \end{figure}
 
-Once trained, a neural network predicts $1$ (positive classification) if $h_\theta(x) \ge 0.5$ for a new example, otherwise $0$ (negative classification). \\
+Once trained, a neural network predicts $1$ (positive classification) if $h_\theta(x) \ge 0.5$ for a new example, otherwise $0$ (negative classification).
+For regression, the Sigmoid function is not used in the output layer to use the continuous values.
+\\
 
 The cost function for $K$ output units and $L$ layers is a {\bf a cross-entropy error function} and is defined as follows (with $h_\Theta(x) \in \mathbb{R}^K$ and $h_\Theta(x)_k = k^{th}$ output):
 
