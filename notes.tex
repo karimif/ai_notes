@@ -3071,7 +3071,7 @@ Therefore, the normalization step can be {\bf regularized} to prevent large norm
 x_{PCAwhite,i} = \frac{x_{rot,i}}{\sqrt{\lambda_i+\epsilon}}
 \end{align*}
 
-In Matlab, PCA whitening is is:
+In Matlab, PCA whitening is:
 \begin{align*}
 xPCAwhite = diag(1./sqrt(diag(S) + epsilon)) * U' * x;
 \end{align*}
