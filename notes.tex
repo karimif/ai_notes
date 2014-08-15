@@ -3025,9 +3025,11 @@ Stationary means that the statistics of one data set should theoretically be the
 \section{Whitening}
 \label{chapter:whitening}
 A {\bf whitening transformation} is a {\bf decorrelation transformation} that transforms a set of random variables having a known covariance matrix $\Sigma$ into a set of new random variables whose covariance is the identity matrix (meaning that they are uncorrelated and all have variance 1).
-The transformation is called "whitening" because it changes the input vector into a white noise vector. PCA is strongly related to whitening.
+The transformation is called "whitening" because it changes the input vector into a white noise vector. 
 \\
-By performing PCA on all data and retaining all dimensions:
+The goal of whitening is to make the input less redundant. More formally, the desire is to have training data in which the features are less correlated with each other and the features all have the same variance.
+\\
+PCA is strongly related to whitening. By performing PCA on all data and retaining all dimensions:
 \begin{align*}
 x_{rot}^{(i)} = U^Tx^{(i)}
 \end{align*}
