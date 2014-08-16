@@ -3148,7 +3148,7 @@ where $\vert \Sigma \vert$ is the determinant of the {\bf covariance matrix} $\S
 \begin{algorithmic}
 \State Choose features $x_i$ that might be indicative of anomalous examples
 \State $\mu \gets \frac{1}{m}\sum_{i=1}^m x^{(i)}$
-\State $\Sigma \gets \frac{1}{m}\sum_{i=1}^m(x^{(i)}-\mu)(x^{(i)}-\mu)^T$
+\State $\Sigma \gets \frac{1}{m}\sum_{i=1}^m(x^{(i)}-\mu)^T(x^{(i)}-\mu)$
 \State For new example $x$: $p(x) \gets \frac{1}{(2\pi)^{n/2}\vert \Sigma \vert ^{1/2}}\mbox{exp}(-\frac{1}{2}(x-\mu)^T \Sigma^{-1}(x-\mu))$ \Comment{Assumes correlation between features}
 \State Anomaly if $p(x) < \epsilon$
 \end{algorithmic}
