@@ -2441,7 +2441,7 @@ First, the learning algorithm is trained by using the training data for each hyp
 \\
 A similar approach can be done to find a good regularization parameter $\lambda$.
 
-\section{Debugging a learning algorithm}
+\subsection{Bias and variance}
 \label{chapter:debugginglearning}
 Implementing a supervised learning algorithm and testing it on new data might reveal unacceptably large errors in its predictions. This section is to give advice on what to do next. Implementing a {\bf diagnostic} might be time-consuming, but doing so can be a very good use of time to get directed into the right direction. In this context, underfitting is called {\bf bias} and overfitting {\bf variance}.
 
@@ -2475,7 +2475,7 @@ An alternative to regularization to prevent overfitting is called {\bf early sto
 Usually, the CV error decreases initially, followed by an increase as the learning algorithm starts to overfit.
 Therefore, training can be stopped at the point of smallest error with respect to the validation data set.
 
-\section{Error analysis}
+\subsection{Error analysis}
 \label{chapter:erroranalysis}
 The recommended approach to develop a machine learning algorithm is to start with a simple algorithm that can be implemented quickly.
 Then, it can be tested on a small set of data, e.g. a couple of hundreds of records. The cross-validation data can be used to plot the learning curves.
