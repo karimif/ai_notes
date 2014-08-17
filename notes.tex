@@ -1719,6 +1719,41 @@ The probabilities can be also learned from a data set. For $RSSSRSR$, the probab
 \item $P(R\vert R)=\frac{0+1}{2+2}=\frac{1}{4}$
 \end{itemize}
 
+\section{Hidden Markov models}
+\label{section:HMM}
+{\bf Hidden Markov models} (HMMs) are used to analyze and predict states and time series. They are related to Markov chains which are simpler Markov models and are explained in Chapter~\ref{ref:markovchains}. In contrast, in a {\em hidden} Markov model, the states ares not directly visible, but measurements, dependent on the state, are visible.
+\\
+Figure~\ref{fig:samplehiddenmarkov} contains a hidden Markov model in which the measurements are happy (H) or grumpy (G) depending on the weather rainy (R) or sunny (S). Given measurements, the state probabilities can be calculated using Bayes rule, e.g.: $P(R_1\vert H_1)=\frac{P(H_1\vert R_1)P(R_1)}{P(H_1)}$.
+
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}[
+  node distance=1cm and 1cm,
+  mynode/.style={draw,circle,align=center}
+]
+\node[mynode] (R) {R};
+\node[mynode, right=1.5cm of R] (S) {S};
+\node[mynode, below left=1.5cm and 0.1 of R] (H1) {H};
+\node[mynode, below right=1.5cm and 0.1 of R] (G1) {G};
+\node[mynode, below left=1.5cm and 0.1 of S] (H2) {H};
+\node[mynode, below right=1.5cm and 0.1 of S] (G2) {G};
+\path (R) edge [->,bend left] node[above] {0.4} (S)
+(R) edge [loop above] node {0.6} (R)
+(S) edge [->,bend left] node[below] {0.2} (R)
+(S) edge [loop above] node {0.8} (S)
+(R) edge [->, dashed] node[left] {0.4} (H1)
+(R) edge [->, dashed] node[right] {0.6} (G1)
+(S) edge [->, dashed] node[left] {0.9} (H2)
+(S) edge [->, dashed] node[right] {0.1} (G2)
+;
+\end{tikzpicture}
+\caption{Sample hidden Markov model}
+\label{fig:samplehiddenmarkov}
+\end{figure}
+
+
+HMMs are used for example in {\bf localization} and {\bf tracking} which is covered in Chapter~\ref{chapter:localizationandtracking}. There are many other possible applications such as in finance.
+
 
 \chapter{Learning}
 
@@ -3973,7 +4008,7 @@ Quasi-Newton methods do not compute the Hessian matrix, but approximate it by an
 {\bf Localization} can be done by using the global positioning system (GPS). Unfortunately, GPS is not accurate. Robot localization requires higher accuracy. This chapter provides information on such techniques.
 {\bf Tracking} allows to detect and track other vehicles to avoid collisions.
 Table \ref{ref:complocalization} summarizes and compares properties of the methods discussed in this chapter. \\
-This chapter covers various {\bf filters} which are related or make use of {\bf hidden Markov models}.
+This chapter covers various {\bf filters} which are related or make use of {\bf hidden Markov models} which are covered in Chapter~\ref{section:HMM}.
 \begin{table}[h!]
 \begin{center}
 \begin{tabular}{l||c|c|c|c}
@@ -3991,40 +4026,6 @@ Particle filter & continuous & multi-modal & depends on use case & approximate \
 \caption{Comparison of localization and tracking methods}
 \label{ref:complocalization}
 \end{table}
-
-\section{Hidden Markov models}
-{\bf Hidden Markov models} (HMMs) are used to analyze and predict states and time series. They are related to Markov chains which are simpler Markov models and are explained in Chapter~\ref{ref:markovchains}. In contrast, in a {\em hidden} Markov model, the states ares not directly visible, but measurements, dependent on the state, are visible.
-\\
-Figure~\ref{fig:samplehiddenmarkov} contains a hidden Markov model in which the measurements are happy (H) or grumpy (G) depending on the weather rainy (R) or sunny (S). Given measurements, the state probabilities can be calculated using Bayes rule, e.g.: $P(R_1\vert H_1)=\frac{P(H_1\vert R_1)P(R_1)}{P(H_1)}$.
-
-\begin{figure}[h!]
-\centering
-\begin{tikzpicture}[
-  node distance=1cm and 1cm,
-  mynode/.style={draw,circle,align=center}
-]
-\node[mynode] (R) {R};
-\node[mynode, right=1.5cm of R] (S) {S};
-\node[mynode, below left=1.5cm and 0.1 of R] (H1) {H};
-\node[mynode, below right=1.5cm and 0.1 of R] (G1) {G};
-\node[mynode, below left=1.5cm and 0.1 of S] (H2) {H};
-\node[mynode, below right=1.5cm and 0.1 of S] (G2) {G};
-\path (R) edge [->,bend left] node[above] {0.4} (S)
-(R) edge [loop above] node {0.6} (R)
-(S) edge [->,bend left] node[below] {0.2} (R)
-(S) edge [loop above] node {0.8} (S)
-(R) edge [->, dashed] node[left] {0.4} (H1)
-(R) edge [->, dashed] node[right] {0.6} (G1)
-(S) edge [->, dashed] node[left] {0.9} (H2)
-(S) edge [->, dashed] node[right] {0.1} (G2)
-;
-\end{tikzpicture}
-\caption{Sample hidden Markov model}
-\label{fig:samplehiddenmarkov}
-\end{figure}
-
-
-HMMs are used for example in {\bf localization} and {\bf tracking} which is covered in Chapter~\ref{chapter:localizationandtracking}. There are many other possible applications such as in finance.
 
 
 \section{Markov localization}
