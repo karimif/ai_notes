@@ -3063,7 +3063,7 @@ The vectorized computation is:
 x_{ZCAwhite} = Ux_{PCAwhite}
 \end{align*}
 
-The transformed data then looks like the original data as much as possible ad is whitened. This makes the results more interpretable.
+The transformed data then looks like the original data as much as possible and is whitened. This makes the results more interpretable.
 \\
 In practice, some eigenvalues $\lambda_i$ are numerically close to 0 and thus the scaling step could blow up the normalization step.
 Therefore, the normalization step can be {\bf regularized} to prevent large normalization values in such cases with small $\epsilon$:
