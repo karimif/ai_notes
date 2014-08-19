@@ -594,10 +594,25 @@ $\Sigma$ is the covariance matrix and $\mu$ is a vector of means.
 
 \subsection{Maximum a posteriori and maximum likelihood}
 \label{ref:estimationsection}
-In non-technical language, "likelihood" is usually a synonym for "probability", but in statistical usage, a clear distinction is: the {\em probability} of some observed outcomes given a set of parameter values is referred to as the {\bf likelihood} of the set of parameter values given the observed outcomes. Therefore $P(\theta\vert X)$ can be interpreted as $L(X\vert\theta)$.
+In non-technical language, "likelihood" is usually a synonym for "probability", but in statistical usage, a clear distinction is: the {\em probability} of some observed outcomes given a set of parameter values is referred to as the {\bf likelihood} of the set of parameter values given the observed outcomes. Therefore $P(\theta\vert X)$ can be interpreted as $L(X\vert\theta)$. \\
+{\bf Maximum likelihood estimation}, is the procedure of finding the value of one or more parameters for a given statistic which makes the known likelihood distribution a maximum.
 
 \subsubsection{Maximum a posteriori}
-The Bayes {\bf maximum a posteriori} (MAP) estimate for $\theta$ is given by:
+One way to trade off model complexity and fit to the data is to choose the model that is most likely, given the data. That is, choose the model that maximizes the probability of the model given the data, $P(\theta\vert X)$. The model that maximizes $P(\theta\vert X)$ is called the {\bf maximum a posteriori probability} (MAP) model.\\
+The probability of a model (or a hypothesis) given some data is obtained by using Bayes' rule:
+\begin{align*}
+P(\theta\vert X) = \frac{P(X\vert \theta)P(\theta)}{P(X)}
+\end{align*}
+The likelihood, $P(X\vert \theta)$ is the probability that this model would have produced this data set.
+It is high when the model is a good fit to the data, and it is low when the model would have predicted different data.
+The prior $P(\theta)$ encodes the learning bias and specifies which models are a priori more likely. The prior probability of the model, $P(\theta)$, is required to bias the learning toward simpler models.
+Typically simpler models have a higher prior probability. The denominator $P(X)$ is a normalizing constant to make sure that the probabilities sum to 1.\\
+Because the denominator is independent of the model, it can be ignored when choosing the most likely model. Thus, the MAP model is the model that maximizes:
+\begin{align*}
+P(X\vert\theta)P(\theta)
+\end{align*}
+
+More precisely, the MAP estimate for $\theta$ is given by:
 \begin{align*}
 \theta_{MAP}=\max\limits_{\theta} \prod_{i=1}^m p(y^{(i)}\vert x^{(i)},\theta)p(\theta)
 \end{align*}
