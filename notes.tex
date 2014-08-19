@@ -630,7 +630,9 @@ Bayesian classification turns out to be an effective algorithm for text classifi
 \theta_{ML}=\max\limits_{\theta} \prod_{i=1}^m p(y^{(i)}\vert x^{(i)};\theta)
 \end{align*}
 This definition is similar to the ML estimate for $\theta$, except for the prior $p(\theta)$ term at the end. 
-Also, $\theta$ is treated as a fixed but unknown variable \footnote{Written $ p(y^{(i)}\vert x^{(i)};\theta)$ instead of $ p(y^{(i)}\vert x^{(i)},\theta)$}. For example, ML can be used to derive the least-squares cost function of linear regression assuming that the error terms $\epsilon^{(i)}$ are i.i.d. according to a normal distribution:
+Also, $\theta$ is treated as a fixed but unknown variable \footnote{Written $ p(y^{(i)}\vert x^{(i)};\theta)$ instead of $ p(y^{(i)}\vert x^{(i)},\theta)$}. 
+It is assumed that each choice of the parameter vector is equally likely.
+For example, ML can be used to derive the least-squares cost function of linear regression assuming that the error terms $\epsilon^{(i)}$ are i.i.d. according to a normal distribution:
 \begin{align*}
 y^{(i)}=\theta^Tx^{(i)}+\epsilon^{(i)}
 \end{align*}
