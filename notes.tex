@@ -693,15 +693,19 @@ The variance estimation can be derived:
 \sigma^2 = \frac{1}{m}\sum_i^m (x_i - y)^2
 \end{align*}
 
+\subsection{Mixture distributions}
+{\bf Mixture distributions} have $K$ components, each of which is a distribution in its own right. Variable $C$ denotes the component:
+\begin{align*}
+P(X) = \sum_{i=1}^K P(C=i)P(X\vert C=i)
+\end{align*}
+
+
 
 \subsection{Expectation maximization}
 \label{chapter:em}
 In many cases, a closed form cannot be derived in contrast to the previous examples.
-This is for example the case for mixture distributions:
-\begin{align*}
-P(X) = \sum_{i=1}^K P(C=i)P(X\vert C=i)
-\end{align*}
-Such a distribution has $K$ components, each of which is a distribution in its own right. Variable $C$ denotes the component.
+This is for example the case for mixture distributions.
+
 
 
 \chapter{Problem Solving}
