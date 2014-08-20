@@ -2235,14 +2235,14 @@ It may be too slow for very large matrices as inversion is $O(n^3)$. $X$ may be 
 It is usually recommended to calculate the {\bf pseudo inverse} instead. \\
 The normal equation can be derived from the vectorized representation (see Chapter~\ref{chapter:vectorization}):
 \begin{align*}
-X\theta &= Y \\
-X^T X\theta &= X^T Y \\
-(X^T X)^{-1} X^T X\theta &= (X^T X)^{-1} X^T Y \\
-\theta &= (X^T X)^{-1}X^T Y
+X\theta &= y \\
+X^T X\theta &= X^T y \\
+(X^T X)^{-1} X^T X\theta &= (X^T X)^{-1} X^T y \\
+\theta &= (X^T X)^{-1}X^T Yy
 \end{align*}
 
 \begin{definition}[Normal equation]
-$\theta = (X^{T}X)^{-1}X^{T}Y$
+$\theta = (X^{T}X)^{-1}X^{T}y$
 \end{definition}
 
 \section{Logistic regression}
@@ -2319,7 +2319,7 @@ $\theta = (X^{T}X+\lambda
 & & ... & \\
 & & & 1
 \end{pmatrix}
-)^{-1}X^{T}Y$
+)^{-1}X^{T}y$
 \end{definition}
 
 For logistic regression, the definitions change to:
