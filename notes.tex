@@ -712,6 +712,7 @@ In many cases, a closed form cannot be derived in contrast to the previous examp
 This is for example often the case for mixture distributions.
 An {\bf expectation maximization} (EM) algorithm is an iterative method for finding maximum likelihood estimates of parameters in statistical models, where the model depends on unobserved {\bf latent variables}.
 The EM iteration alternates between performing an expectation (E) step, which creates a function for the expectation of the log-likelihood evaluated using the current estimate for the parameters, and a maximization (M) step, which computes parameters maximizing the expected log-likelihood found on the E step. These parameter-estimates are then used to determine the distribution of the latent variables in the next E step. \\
+For example, EM can be applied to clustering as explained in Chapter~\ref{chapter:emclustering}. \\
 Applying EM to new applications is difficult because of identifying the hidden variables.
 
 
@@ -2937,6 +2938,7 @@ With {\bf fuzzy c-means} defined in Algorithm~\ref{alg:fuzzycmeans}, the centroi
 \end{algorithm}
 
 \subsection{Expectation maximization}
+\label{chapter:emclustering}
 {\bf Expectation maximization} (EM) clustering is based on the EM algorithm covered in Chapter~\ref{chapter:em}.
 It a generalization of k-means using Gaussian models to smoothen the class memberships. The EM result is thus able to accommodate clusters of variable size much better than k-means as well as correlated clusters.
 
