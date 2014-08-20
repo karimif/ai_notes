@@ -710,6 +710,9 @@ with $\mu_i$, the mean of each component and the covariance matrix $\Sigma_i$ fo
 \label{chapter:em}
 In many cases, a closed form cannot be derived in contrast to the previous examples.
 This is for example often the case for mixture distributions.
+An {\bf expectation maximization} (EM) algorithm is an iterative method for finding maximum likelihood estimates of parameters in statistical models, where the model depends on unobserved {\bf latent variables}.
+The EM iteration alternates between performing an expectation (E) step, which creates a function for the expectation of the log-likelihood evaluated using the current estimate for the parameters, and a maximization (M) step, which computes parameters maximizing the expected log-likelihood found on the E step. These parameter-estimates are then used to determine the distribution of the latent variables in the next E step. \\
+Applying EM to new applications is difficult because of identifying the hidden variables.
 
 
 
