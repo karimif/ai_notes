@@ -698,7 +698,7 @@ The variance estimation can be derived:
 \begin{align*}
 P(X) = \sum_{i=1}^K P(C=i)P(X\vert C=i)
 \end{align*}
-$w_i = P(C=i)$ is the weight of each component. \\
+$w_i = P(C=i)$ is the weight of each component with $\sum_{i=1}^K w_i = 1$. \\
 A {\bf mixture of Gaussians} uses Gaussian components, which is a natural choice for continuous data:
 \begin{align*}
 P(X) = \sum_{i=1}^K P(C=i)P(X\vert C=i,\mu_i,\Sigma_i)
