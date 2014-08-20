@@ -696,7 +696,12 @@ The variance estimation can be derived:
 
 \subsection{Expectation maximization}
 \label{chapter:em}
-To come.
+In many cases, a closed form cannot be derived in contrast to the previous examples.
+This is for example the case for mixture distributions:
+\begin{align*}
+P(X) = \sum_{i=1}^K P(C=i)P(X\vert C=i)
+\end{align*}
+Such a distribution has $K$ components, each of which is a distribution in its own right. Variable $C$ denotes the component.
 
 
 \chapter{Problem Solving}
