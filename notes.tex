@@ -460,6 +460,7 @@ Thus, an eigenvector corresponding to $\lambda_2=-2$ is: $\begin{pmatrix}
 \section{Calculus}
 
 \subsection{Hessian matrix}
+\label{chapter:hessian}
 The {\bf Hessian matrix} is a square matrix of second-order partial derivatives of a function.
 Given the real-valued function $f(x_1,...,x_n)$, the Hessian matrix is:
 \begin{align*}
@@ -4023,17 +4024,36 @@ As the first step, the direction is chosen by similar to gradient descent by sel
 For each subsequent sequence, a new direction is chosen to that the component of the error gradient that has just been made zero, remains zero.
 Assuming exact arithmetic, conjugate descent converges in at most $n$ steps where $n$ is the amount of features.
 
-
 \subsection{Quasi-Newton methods}
-{\bf Quasi-Newton methods} such as {\bf BFGS} are based on {\bf Newton's method}.
-Newton's method approximates $f(x)$ by a quadratic function around $x_n$ through Taylor expansion and then takes a step towards the maximum/minimum of the quadratic function.
-The equation
+{\bf Newton's method} is a method for finding successively better approximations to the roots (or zeroes) of a real-valued function:
 \begin{align*}
-x_{n+1} = x_n - \frac{f'(x_n)}{f''(x_n)}, n = 0, 1, ...
+\theta := \theta - \frac{f(\theta)}{f'(\theta)}, n = 0, 1, ...
 \end{align*}
-converges towards a root of $f'$, i.e. $x_*$ for which $f'(x_*)=0$. \\
-This scheme can be generalized to several dimensions by replacing the derivative with the gradient and the reciprocal of the second derivative with the inverse of the {\bf Hessian matrix}. \\
-Quasi-Newton methods do not compute the Hessian matrix, but approximate it by analyzing successive gradient vectors instead.
+
+Newton's method approximates $f(x)$ by a quadratic function around $x_n$ through Taylor expansion and then takes a step towards the maximum/minimum of the quadratic function. \\
+
+To minimize (or maximize) a function $l$, the minima of $l$ correspond to points where its first derivative $l'$ is zero.
+So, by letting $f=l'$, one can use the same algorithm to minimize $l$, and obtain update rule:
+\begin{align*}
+\theta := \theta - \frac{l'(\theta)}{l''(\theta)}, n = 0, 1, ...
+\end{align*}
+converges towards a root of $l'$, i.e. $\theta_*$ for which $l'(\theta_*)=0$. \\
+
+Newton's method can be used to minimize a cost function.
+This scheme can be generalized to several dimensions by replacing the derivative with the gradient and the reciprocal of the second derivative with the inverse of the {\bf Hessian matrix} (see Chapter~\ref{chapter:hessian}), also called the {\bf Newton-Raphson method}:
+\begin{align*}
+\theta := \theta - H^{-1} \nabla_\theta l(\theta)
+\end{align*}
+
+Here, the gradient $\nabla_\theta l(\theta)$ is the vector of partial derivatives of $l(\theta)$ with respect
+to the $\theta_i$'s.
+$H$ is an $n$-by-$n$ matrix (actually, $n + 1$-by-$n + 1$, assuming that the bias term is included) called the Hessian).
+\\
+
+Usually, Newton's method converges much faster than gradient descent and therefore requires many fewer iterations, but so long as $n$ is not too large, it is usually much faster overall.
+One iteration of Newton's method can be more expensive than one iteration of gradient descent, since it requires finding and inverting the Hessian.\\
+
+{\bf Quasi-Newton methods} such as {\bf BFGS} do not compute the Hessian matrix, but approximate it by analyzing successive gradient vectors instead.
 
 
 \section{Online learning}
