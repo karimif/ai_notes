@@ -4052,8 +4052,10 @@ This scheme can be generalized to several dimensions by replacing the derivative
 
 Here, the gradient $\nabla_\theta l(\theta)$ is the vector of partial derivatives of $l(\theta)$ with respect
 to the $\theta_i$'s.
-$H$ is an $n$-by-$n$ matrix (actually, $n + 1$-by-$n + 1$, assuming that the bias term is included) called the Hessian).
-\\
+$H$ is an $n$-by-$n$ matrix (actually, $n + 1$-by-$n + 1$, assuming that the bias term is included) called the Hessian):
+\begin{align*}
+H_{ij} = \frac{\partial^2 l}{\partial \theta_i \partial \theta_j}
+\end{align*}
 
 Usually, Newton's method converges much faster than gradient descent and therefore requires many fewer iterations, but so long as $n$ is not too large, it is usually much faster overall.
 One iteration of Newton's method can be more expensive than one iteration of gradient descent, since it requires finding and inverting the Hessian.\\
