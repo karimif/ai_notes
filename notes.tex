@@ -2275,15 +2275,13 @@ A least squares cost function could be used:
 $J(\theta) = \frac{1}{2m}\sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})^2$
 \end{definition}
 
-It is non-convex as the Sigmoid hypothesis is non-linear. Therefore, gradient descent is not guaranteed to converge to the global minimum. \\
-The cost function in logistic regression is convex (see derivation in Chapter~\ref{chapter:logisticregressioncostfunction}:
+It is non-convex as the Sigmoid hypothesis is non-linear. Therefore, gradient descent is not guaranteed to converge to the global minimum.
+The {\bf cross-entropy error function} is the best maximum likelihood estimate for logistic regression.
+Using it instead of the sum-of-squares for a classification problem leads to faster training as well as improved generalization as it is convex (see derivation in Chapter~\ref{chapter:logisticregressioncostfunction}).
 \begin{definition}[Cost function] ~\\
 $J(\theta) = \frac{1}{m}\sum_{i=1}^m[-y^{(i)}log(h_{\theta}(x^{(i)}))-(1-y^{(i)})log(1-h_{\theta}(x^{(i)}))]$
 \end{definition}
 
-The {\bf cross-entropy error function} is the best maximum likelihood (see Chapter~~\ref{ref:estimationsection}) estimate for logistic regression.
-Using it instead of the sum-of-squares for a classification problem leads to faster training as well as improved generalization.
-\\
 This gradient descent looks identical to the linear regression gradient but the formula is actually different because of the different definition of $h_{\theta}(x)$.
 \begin{definition}[Gradient descent]
 $\theta_j := \theta_j - \alpha \frac{1}{m}\sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)}$
