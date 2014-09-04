@@ -3496,7 +3496,7 @@ Training a neural network requires to $\min\limits_{\Theta}J(\Theta)$, e.g. thro
 \State $a^{(1)} \gets x^{(i)}$
 \State Perform forward propagation to compute $a^{(l)}$ for $l=2,3,...,L$
 \State Using $y^{(i)}$, compute $\delta^{(L)}=a^{(L)}-y^{(i)}$ \Comment {"error"}
-\State Compute $\delta^{(L-1)},\delta^{(L-2)},...,\delta^{(2)}$: $\delta^{(l)}=(\Theta^{(l)})^T\delta^{(l+1)}.*g^{'}(z^{(l)})$
+\State Compute $\delta^{(L-1)},\delta^{(L-2)},...,\delta^{(2)}$: $\delta^{(l)}=(\Theta^{(l)})^T\delta^{(l+1)}.*g'(z^{(l)})$
 \State $\Delta^{(l)} \gets \Delta^{(l)}+\delta^{(l+1)}(a^{(l)})^T$  \Comment {Matrix of errors for units of a layer}
 \EndFor
 \State $\frac{\partial}{\partial \Theta_{ij}^{(l)}}J(\Theta) \gets \frac{1}{m}\Delta_{ij}^{(l)}$
@@ -3512,14 +3512,14 @@ The errors of the output layer are the differences of the activation values $a^{
 The error of a unit in the hidden layers is: 
 
 \begin{align*}
-\delta^{(l)}_i=(\sum_{j=1}^{s_l} \Theta_{ji}^{(l)}\delta_j^{(l+1)})g^{'}(z_i^{(l)})
+\delta^{(l)}_i=(\sum_{j=1}^{s_l} \Theta_{ji}^{(l)}\delta_j^{(l+1)})g'(z_i^{(l)})
 \end{align*}
 
 this computation does not include the bias units. Some implementations of backpropagation might include the bias units.
 The vectorized computation then is:
 
 \begin{align*}
-\delta^{(l)} = \frac{\partial cost(i)}{\partial z^{(l)}} =(\Theta^{(l)})^T\delta^{(l+1)}.*g^{'}(z^{(l)})
+\delta^{(l)} = \frac{\partial cost(i)}{\partial z^{(l)}} =(\Theta^{(l)})^T\delta^{(l+1)}.*g'(z^{(l)})
 \end{align*}
 
 ($.*$ is the element-wise multiplication). With the cost for training example $x^{(i)}$ being:
@@ -3530,8 +3530,12 @@ cost(i) = y^{(i)}log\:h_{\Theta}(x^{(i)})+(1-y^{(i)})log(1-h_{\Theta}(x^{(i)}))
 The derivative of the Sigmoid function is defined as follows:
 \begin{align*}
 g'(z) & = \frac{d}{dz} \frac{1}{1+e^{-z}}& \\
-& = \frac{1}{(1+e^{-z})^2} (e^{-z}) & \\
-& = \frac{1}{(1+e^{-z})} (1 - \frac{1}{1 + e^{-z}}) & \\
+& = \frac{e^{-z}}{(1+e^{-z})^2} & \\
+& = \frac{e^{-z}+1-1}{(1+e^{-z})^2} & \\
+& = \frac{1+e^{-z}-1}{(1+e^{-z})^2} & \\
+& = \frac{1+e^{-z}}{(1+e^{-z})^2} - \frac{1}{(1+e^{-z})^2} & \\
+& = \frac{1}{(1+e^{-z})} - \frac{1}{(1+e^{-z})^2} & \\
+& = \frac{1}{(1+e^{-z})}( 1 - \frac{1}{(1+e^{-z})}) & \\
 & = g(z)(1-g(z))&
 \end{align*}
 
@@ -3705,14 +3709,14 @@ J(\theta)_{sparse} = J(\theta) + \beta \sum_{j=1}^{s_2} KL(p\rVert \hat{p}_j)
 
 Also, the KL divergence needs to be incorporated into backpropagation for the hidden layer ($l=2$). The (non-vectorized) computation of the the error is then:
 \begin{align*}
-\delta^{(2)}_i=((\sum_{j=1}^{s_2} \Theta_{ji}^{(2)}\delta_j^{(3)}) + \beta(-\frac{p}{\hat{p}_i}+\frac{1-p}{1-\hat{p}_i}))g^{'}(z_i^{(2)})
+\delta^{(2)}_i=((\sum_{j=1}^{s_2} \Theta_{ji}^{(2)}\delta_j^{(3)}) + \beta(-\frac{p}{\hat{p}_i}+\frac{1-p}{1-\hat{p}_i}))g'(z_i^{(2)})
 \end{align*}
 
 
 instead of:
 
 \begin{align*}
-\delta^{(2)}_i=(\sum_{j=1}^{s_2} \Theta_{ji}^{(2)}\delta_j^{(3)})g^{'}(z_i^{(2)})
+\delta^{(2)}_i=(\sum_{j=1}^{s_2} \Theta_{ji}^{(2)}\delta_j^{(3)})g'(z_i^{(2)})
 \end{align*}
 
 This requires to know $\hat{p}_i$ which needs to be computed in the very beginning of backpropagation by doing a forward pass on all training examples to compute the average activations on the training set.
