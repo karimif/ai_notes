@@ -2291,7 +2291,37 @@ $\theta_j := \theta_j - \alpha \frac{1}{m}\sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)}
 
 \subsection{Convex cost function}
 \label{chapter:logisticregressioncostfunction}
-To come.
+Can can $\theta$ get fit to the logistic regression model? As shown in Chapter~\ref{ref:estimationsection} for linear regression, the maximum likelihood estimator can be derived under a set of assumptions.
+First, assuming the following probabilities:
+\begin{align*}
+& P(y=1\vert x; \theta) = h_\theta(x) & \\
+& P(y=0\vert x; \theta) = 1-h_\theta(x) &
+\end{align*}
+
+This can be written more compactly:
+\begin{align*}
+P(y\vert x; \theta) = (h_\theta(x))^y(1-h_\theta(x))^{1-y}
+\end{align*}
+
+Second, assuming that the data are distributed {\bf i.i.d.}, the likelihood of the parameters are:
+\begin{align*}
+L(\theta) & = p(y\vert X;\theta) & \\
+& = \prod_{i=1}^m p(y^{(i)}\vert x^{(i)};\theta) & \\
+& = \prod_{i=1}^m (h_\theta(x^{(i)}))^{y^{(i)}}(1-h_\theta(x^{(i)}))^{1-y^{(i)}} &
+\end{align*}
+
+It is easier to maximize the log likelihood:
+\begin{align*}
+l(\theta) & = \mbox{log } L(\theta)& \\
+& = \sum_{i=1}^m y^{(i)}\mbox{log }h_\theta(x^{(i)}) + (1-y^{(i)})\mbox{log}(1-h_\theta(x^{(i)})) &
+\end{align*}
+
+In the final cost function, the negative logarithms are used:
+\begin{definition}[Cost function] ~\\
+$J(\theta) = \frac{1}{m}\sum_{i=1}^m[-y^{(i)}log(h_{\theta}(x^{(i)}))-(1-y^{(i)})log(1-h_{\theta}(x^{(i)}))]$
+\end{definition}
+
+As $h_{\theta} \in (0,1)$, the negative logarithm returns a positive error which penalizes strong classification errors more than errors that are closer to the decision boundary.
 
 \section{Vectorization}
 \label{chapter:vectorization}
