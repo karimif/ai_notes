@@ -2258,6 +2258,7 @@ It may help to delete features or to use regularization (Chapter~\ref{chapter:ve
 Also, the {\bf pseudo inverse} can be used instead.
 
 \section{Logistic regression}
+\label{chapter:logisticregression}
 
 Logistic regression allows linear classification. Classification maps inputs to discrete output variables.
 The parameters $\theta_j$ comprise the linear separator called {\bf decision boundary}. The hypothesis is defined as:
@@ -2277,7 +2278,7 @@ $J(\theta) = \frac{1}{2m}\sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})^2$
 
 It is non-convex as the Sigmoid hypothesis is non-linear. Therefore, gradient descent is not guaranteed to converge to the global minimum.
 The {\bf cross-entropy error function} is the best maximum likelihood estimate for logistic regression.
-Using it instead of the sum-of-squares for a classification problem leads to faster training as well as improved generalization as it is convex (see derivation in Chapter~\ref{chapter:logisticregressioncostfunction}).
+Using it instead of least squares for a classification problem leads to faster training as well as improved generalization as it is convex (see derivation in Chapter~\ref{chapter:logisticregressioncostfunction}).
 \begin{definition}[Cost function] ~\\
 $J(\theta) = \frac{1}{m}\sum_{i=1}^m[-y^{(i)}log(h_{\theta}(x^{(i)}))-(1-y^{(i)})log(1-h_{\theta}(x^{(i)}))]$
 \end{definition}
@@ -3402,8 +3403,8 @@ $J(\Theta) = -\frac{1}{m}[\sum_{i=1}^m \sum_{k=1}^K y_k^{(i)}log\:h_{\Theta}(x^{
 
 
 The cross-entropy error function is the best maximum likelihood estimate for a neural network.
-Using it instead of the sum-of-squares for a classification problem leads to faster training as well as improved generalization.
-Usually, the cost function is {\bf non-convex} and has many local minima. Therefore, finding the global minimum of the cost function of a neural network is difficult and training often converges in a local minimum.
+Using it instead of least squares for a classification problem leads to faster training as well as improved generalization, as shown for logistic regression in Chapter~\ref{chapter:logisticregression}.
+Usually, the cost function of a neural network is {\bf non-convex} and has many local minima. Therefore, finding the global minimum of the cost function of a neural network is difficult and training often converges in a local minimum.
 
 
 \subsection{Learning weights}
