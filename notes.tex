@@ -3529,7 +3529,10 @@ cost(i) = y^{(i)}log\:h_{\Theta}(x^{(i)})+(1-y^{(i)})log(1-h_{\Theta}(x^{(i)}))
 
 The derivative of the Sigmoid function is defined as follows:
 \begin{align*}
-g^{'}(x)=g(x)(1-g(x))
+g'(z) & = \frac{d}{dz} \frac{1}{1+e^{-z}}& \\
+& = \frac{1}{(1+e^{-z})^2} (e^{-z}) & \\
+& = \frac{1}{(1+e^{-z})} (1 - \frac{1}{1 + e^{-z}}) & \\
+& = g(z)(1-g(z))&
 \end{align*}
 
 There is no $\delta^{(1)}$ as no error term is associated with the input values.
