@@ -3402,6 +3402,7 @@ $J(\Theta) = -\frac{1}{m}[\sum_{i=1}^m \sum_{k=1}^K y_k^{(i)}log\:h_{\Theta}(x^{
 
 The cross-entropy error function is the best maximum likelihood estimate for a neural network.
 Using it instead of the sum-of-squares for a classification problem leads to faster training as well as improved generalization.
+Usually, the cost function is {\bf non-convex} and has many local minima. Therefore, finding the global minimum of the cost function of a neural network is difficult and training often converges in a local minimum.
 
 
 \subsection{Learning weights}
