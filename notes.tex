@@ -2223,6 +2223,7 @@ $h_\theta(x) = \theta^{T}x = \theta_0 x_0 + \theta_1 x_1 + ... + \theta_n x_n$ w
 
 The parameters of the model to be learned are the $\theta_j$ values. One way to do this is to use the batch {\bf gradient descent} algorithm, which finds the global minimum of the convex cost function.
 Chapter~\ref{chapter:gradientdescent} covers gradient descent and advanced optimization methods.
+The partial derivatives are derived in Chapter~\ref{chapter:linearregressionderivatives}.
 
 \begin{definition}[Gradient descent] ~\\
 loop until converge \{ \\
@@ -2230,6 +2231,27 @@ $\theta_j := \theta_j - \alpha \frac{1}{m}\sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)}
 \}
 \end{definition}
 
+\subsection{Partial derivatives}
+\label{chapter:linearregressionderivatives}
+For a single training example $(x,y)$, the partial derivatives are:
+\begin{align*}
+\frac{\partial}{\partial \theta_j} J(\theta) & = \frac{\partial}{\partial \theta_j} \frac{1}{2} (h_\theta(x)-y)^2& \\
+& = 2\frac{1}{2} (h_\theta(x)-y) \frac{\partial}{\partial \theta_j}(h_\theta(x)-y)& \\
+& =  (h_\theta(x)-y) \frac{\partial}{\partial \theta_j}(\sum_{i=0}^n \theta_i x_i - y)& \\
+& = (h_\theta(x)-y)x_j&
+\end{align*}
+
+This gives the following update rule:
+\begin{align*}
+\theta_j := \theta_j - \alpha (h_\theta(x)-y)x_j
+\end{align*}
+
+Modifying this method for $m$ training examples and the original cost function gives the following update rule that is used in gradient descent:
+\begin{align*}
+\theta_j := \theta_j - \alpha \frac{1}{m}\sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)}
+\end{align*}
+
+\subsection{Normal equation}
 Matrix $X$ contains $m$ transposed training data columns and $n$ features where feature $x_0$ contains entirely 1s:
 $X$ = $\begin{pmatrix}
 \mbox{------} (x^{(1)})^T \mbox{------} \\
