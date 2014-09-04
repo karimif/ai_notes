@@ -2209,7 +2209,7 @@ One important property of decision trees is that it is possible for a human to u
 \section{Linear regression}
 {\bf Linear regression} computes a linear regression function for $m$ {\bf training examples} having $n$ {\bf features}.
 Regression maps inputs to continuous output variables.
-The objective is to minimize the convex cost function:
+The objective is to minimize the {\bf convex cost function}:
 \begin{definition}[Cost function]
 $J(\theta) = \frac{1}{2m}\sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})^2$
 \end{definition}
@@ -2219,7 +2219,7 @@ Where the hypothesis $h_\theta(x)$ is given by the linear model:
 $h_\theta(x) = \theta^{T}x = \theta_0 x_0 + \theta_1 x_1 + ... + \theta_n x_n$ with $x_0 = 1$
 \end{definition}
 
-The parameters of the model to be learned are the $\theta_j$ values. One way to do this is to use the batch {\bf gradient descent} algorithm.
+The parameters of the model to be learned are the $\theta_j$ values. One way to do this is to use the batch {\bf gradient descent} algorithm, which finds the global minimum of the convex cost function.
 Chapter~\ref{chapter:gradientdescent} covers gradient descent and advanced optimization methods.
 
 \begin{definition}[Gradient descent] ~\\
