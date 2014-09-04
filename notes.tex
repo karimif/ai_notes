@@ -2270,6 +2270,12 @@ The hypothesis can be more complex to use logistic regression for non-linear cla
 $g(z) = \frac{1}{1 + e^{-z}}$
 \end{definition}
 
+A least squares cost function could be used:
+\begin{definition}[Non-convex cost function]
+$J(\theta) = \frac{1}{2m}\sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})^2$
+\end{definition}
+
+It is non-convex as the Sigmoid hypothesis is non-linear. Therefore, gradient descent is not guaranteed to converge to the global minimum. \\
 The cost function in logistic regression is convex:
 \begin{definition}[Cost function] ~\\
 $J(\theta) = \frac{1}{m}\sum_{i=1}^m[-y^{(i)}log(h_{\theta}(x^{(i)}))-(1-y^{(i)})log(1-h_{\theta}(x^{(i)}))]$
