@@ -2408,14 +2408,14 @@ $\theta_j := \theta_j - \alpha[ \frac{1}{m}\sum_{i=1}^m((h_\theta(x^{(i)})-y^{(i
 
 In general, a so-called $L_2$ regularization has been used in the equations above which squares the parameter values.
 In contrast, there is $L_1$ regularization which uses the linear parameter values.
-$L_1$ regularization tends to produce a {\bf sparse} model.
+$L_1$ regularization tends to produce a {\bf sparse} model\footnote{Andrew Ng. {\em Feature selection, $L_1$ vs. $L_2$ regularization, and rotational invariance}. \url{http://ai.stanford.edu/~ang/papers/icml04-l1l2.pdf}}.
 That is, it often sets many parameters to zero, effectively declaring the corresponding attributes to be irrelevant. \\
 $L_2$ regularization gives no preference to zero weights.
 
 
 \section{Discriminative and generative classifiers}
 Classification algorithms such as logistic regression, SVMs or neural networks are {\bf discriminative classifiers}.
-Discriminative classifiers learn $P(y\vert x)$ directly, which models the boundary between classes. \\
+Discriminative classifiers learn $P(y\vert x)$ directly, which models the boundary between classes\footnote{Andrew Ng. {\em On Discriminative vs. Generative classifiers: A comparison of logistic regression and naive Bayes}. \url{http://cs.stanford.edu/people/ang/papers/nips01-discriminativegenerative.pdf}}. \\
 In contrast, {\bf generative classifiers} model $P(x,y) = P(x\vert y)P(y)$, which explicitly models the actual distribution of each class.
 With the joint probability distribution function, given an $y$, one can calculate ("generate") its respective $x$. For this reason they are called generative models.
 
