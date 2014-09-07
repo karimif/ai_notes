@@ -2413,8 +2413,15 @@ That is, it often sets many parameters to zero, effectively declaring the corres
 $L_2$ regularization gives no preference to zero weights.
 
 
+\section{Discriminative and generative classifiers}
+Classification algorithms such as logistic regression, SVMs or neural networks are {\bf discriminative classifiers}.
+Discriminative classifiers learn $P(y\vert x)$ directly, which models the boundary between classes. \\
+In contrast, {\bf generative classifiers} model $P(x,y) = P(x\vert y)P(y)$, which explicitly models the actual distribution of each class.
+With the joint probability distribution function, given an $y$, one can calculate ("generate") its respective $x$. For this reason they are called generative models.
+
+
 \section{Naive Bayes}
-{\bf Bayes classifiers} rely on Bayes rule which maps a vector $X$ to a discrete random variable $C$ - a class. Training such a classifier is impractical because of the necessary exponential amount of training examples. A {\bf naive Bayes classifier} relaxes conditional dependency by assuming conditional independence between the parameters in $X$ given $C$. Naive Bayes is a powerful classifier that is often used in text classification (e.g. spam filtering) and is a dependable baseline when comparing different classifiers. Usually, it works on a so-called {\bf bag of words} which is a frequency of words in a text.
+{\bf Bayes classifiers} are {\bf generative classifiers} which rely on Bayes rule which maps a vector $X$ to a discrete random variable $C$ - a class. Training such a classifier is impractical because of the necessary exponential amount of training examples. A {\bf naive Bayes classifier} relaxes conditional dependency by assuming conditional independence between the parameters in $X$ given $C$. Naive Bayes is a powerful classifier that is often used in text classification (e.g. spam filtering) and is a dependable baseline when comparing different classifiers. Usually, it works on a so-called {\bf bag of words} which is a frequency of words in a text.
 \begin{align*}
 P(C\vert X) = P(C\vert x_1...x_n) = \frac{P(C)P(x_1...x_n\vert C)}{P(x_1...x_n)}
 \end{align*}
@@ -2496,7 +2503,8 @@ This simple spam filter is only illustrative and will perform poorly on real-wor
 
 
 \subsection{Comparison to logistic regression}
-Naive Bayes requires only a small amount of data, converges quickly and is very fast. In comparison, logistic regression requires more data and computations are more expensive. Nonetheless, it can outperform naive Bayes on a lot of data.
+Naive Bayes requires only a small amount of data, converges quickly and is very fast. In comparison, logistic regression requires more data and computations are more expensive. Nonetheless, it can outperform naive Bayes on a lot of data. \\
+Another advantage of naive Bayes is that it can be implemented very quickly which makes it a good quick and dirty prototype.
 
 
 
