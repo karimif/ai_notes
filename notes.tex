@@ -235,6 +235,14 @@ For $a$ and $b$ to be true, $b$ needs to be true and $a$ needs to be true given 
 $P(A,B) =P(A\vert B)P(B)$
 \end{definition}
 
+This rule can be applied to more than 2 variables:
+\begin{align*}
+P(A,B,C) = & P(A\vert B,C)P(B,C) \\
+P(A,B,C) = & P(A\vert B,C)P(B\vert C)P(C) \\
+P(A,B\vert C)P(C) = & P(A\vert B,C)P(B\vert C)P(C) \\
+P(A,B\vert C) = & P(A\vert B,C)P(B\vert C)
+\end{align*}
+
 \subsection{Total probability}
 \begin{definition}
 $P(A) = \sum_{b\in B}{P(A,b)} = \sum_{b\in B}{P(A\vert b)P(b)}$
