@@ -295,9 +295,28 @@ The normalizer might be difficult to calculate. It can be substituted with pseud
 \item $P(A\vert B) = \alpha P'(A\vert B)$ and $P(\neg A\vert B) = \alpha P'(\neg A\vert B)$ with $\alpha = \frac{1}{P'(A\vert B) + P'(\neg A\vert B)}$
 \end{enumerate}
 
+Using conditional independence, it can be generalized to three variables:
+\begin{align*}
+P(A,B,C) & = P(B,A,C) \\
+P(A\vert B,C)P(B,C) & = P(B\vert A,C)P(A,C) \\
+P(A\vert B,C)P(B\vert C)P(C) & = P(B\vert A,C)P(A\vert C)P(C) \\
+P(A\vert B,C) & = \frac{P(B\vert A,C)P(A\vert C)P(C)}{P(B\vert C)P(C)} \\
+P(A\vert B,C) & = \frac{P(B\vert A,C)P(A\vert C)}{P(B\vert C)}
+\end{align*}
+
 \begin{definition}[General Bayes' rule]
-$P(A\vert B,e) = \frac{P(B\vert A,e)P(A\vert e)}{P(B\vert e)}$
+$P(A\vert B,C) = \frac{P(B\vert A,C)P(A\vert C)}{P(B\vert C)}$
 \end{definition}
+
+Using conditional independence, it can be generalized to four variables:
+\begin{align*}
+P(A,B,C,D) & = P(B,A,C,D) \\
+P(A\vert B,C,D)P(B,C,D) & = P(B\vert A,C,D)P(A,C,D) \\
+P(A\vert B,C,D)P(B\vert C,D)P(C,D) & = P(B\vert A,C,D)P(A\vert C,D)P(C,D) \\
+P(A\vert B,C,D)P(B\vert C,D)P(C\vert D)P(D) & = P(B\vert A,C,D)P(A\vert C,D)P(C\vert D)P(D) \\
+P(A\vert B,C,D) & = \frac{P(B\vert A,C,D)P(A\vert C,D)P(C\vert D)P(D)}{P(B\vert C,D)P(C\vert D)P(D)} \\
+P(A\vert B,C,D) & = \frac{P(B\vert A,C,D)P(A\vert C,D)}{P(B\vert C,D)}
+\end{align*}
 
 Example: $0.8\%$ of people have disease $D$. A $D$ test returns correct positive $98\%$ of the time and a correct negative $97\%$ of the time.
 The test returns positive for John. Does he have disease $D$?
