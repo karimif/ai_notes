@@ -276,9 +276,15 @@ F & F & 0.3
 
 \subsection{Bayes' rule}
 \label{chapter:bayesrule}
-Applying product rule and total probability:
-\begin{definition}
-$P(A\vert B) = \frac{P(B\vert A)P(A)}{\sum_{a\in A}{P(B\vert a)P(a)}} = \frac{P(B\vert A)P(A)}{P(B)}$
+Applying product rule:
+\begin{align*}
+P(A,B) & = P(B,A) \\
+P(A\vert B)P(B) & = P(B\vert A)P(A) \\
+P(A\vert B) &= \frac{P(B\vert A)P(A)}{P(B)}
+\end{align*}
+
+\begin{definition}[Bayes' rule]
+$P(A\vert B) = \frac{P(B\vert A)P(A)}{P(B)} = \frac{P(B\vert A)P(A)}{\sum_{a\in A}{P(B\vert a)P(a)}}$
 \end{definition}
 
 The terminology is: $Posterior = \frac{Likelihood\times Prior}{Normalizer}$\\
