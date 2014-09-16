@@ -182,7 +182,7 @@ $P(A\vert B) = P(A)$ or $P(B\vert A) = P(B)$
   node distance=1cm and 0cm,
   mynode/.style={draw,circle,align=center}
 ]
-\node[mynode] (C) {C};
+\node[mynode,fill=gray] (C) {C};
 \node[mynode,below left=1cm of C] (A) {A};
 \node[mynode,below right=1cm of C] (B) {B};
 \path (C) edge[-latex] (A)
