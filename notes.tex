@@ -1970,7 +1970,7 @@ Find-S has a number of drawbacks:
 \begin{algorithmic}
 \State $h \gets (0,...,0)$ \Comment{Initialize $h\in H$ to the most specific hypothesis}
 \For{each positive training example $x \in X$}
-\For{each atrribute $a_i \in h$}
+\For{each attribute $a_i \in h$}
 \If{$a_i$ is satisfied by $x$}
 \State Do nothing
 \Else
@@ -2052,7 +2052,7 @@ The last three drawbacks of Find-S are addressed by Algorithm~\ref{alg:candidate
 
 \section{Decision trees}
 {\bf Decision tree} learning algorithms are simple and successful forms of machine learning.
-They are {\bf symbolic machine learning} algorithms which a form of automated knowledge elicitation from a possibly disparate set of sources sharing a commonality of domain description.
+They are {\bf symbolic machine learning} algorithms which are a form of automated knowledge elicitation from a possibly disparate set of sources sharing a commonality of domain description.
 \\
 A decision tree maps an input vector to a single output value, the "decision". Input and output values can be discrete or continuous. This section only covers decision trees for classification which map a discrete input vector to a discrete output value, the class. \\
 A decision tree performs a sequence of tests on the input data and eventually generates a decision. This decision can also be expressed in propositional logic by aggregating all paths leading to {\em true}:
