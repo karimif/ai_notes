@@ -633,7 +633,7 @@ $\Sigma$ is the covariance matrix and $\mu$ is a vector of means.
 
 \subsection{Maximum a posteriori and maximum likelihood}
 \label{ref:estimationsection}
-In non-technical language, "likelihood" is usually a synonym for "probability", but in statistical usage, a clear distinction is: the {\em probability} of some observed outcomes given a set of parameter values is referred to as the {\bf likelihood} of the set of parameter values given the observed outcomes. Therefore $P(\theta\vert X)$ can be interpreted as $L(X\vert\theta)$. \\
+In non-technical language, "likelihood" is usually a synonym for "probability", but in statistical usage, a clear distinction is: the {\em probability} of some observed outcomes given a set of parameter values is referred to as the {\bf likelihood} of the set of parameter values given the observed outcomes. Therefore $P(X\vert\theta)$ can be interpreted as $L(\theta\vert X)$. \\
 {\bf Maximum likelihood estimation}, is the procedure of finding the value of one or more parameters for a given statistic which makes the known likelihood distribution a maximum.
 
 \subsubsection{Maximum a posteriori}
@@ -2377,7 +2377,7 @@ In the final cost function, the negative logarithms are used (and divided by the
 $J(\theta) = \frac{1}{m}\sum_{i=1}^m[-y^{(i)}log(h_{\theta}(x^{(i)}))-(1-y^{(i)})log(1-h_{\theta}(x^{(i)}))]$
 \end{definition}
 
-As $h_{\theta} \in (0,1)$, the negative logarithm returns a positive error which penalizes strong classification errors more than errors that are closer to the decision boundary.
+As $h_{\theta} \in (0,1)$, the negative logarithm returns a positive error and penalizes strong classification errors more than errors that are closer to the decision boundary.
 
 \section{Vectorization}
 \label{chapter:vectorization}
@@ -3405,7 +3405,7 @@ The {\bf perceptron learning rule} is defined in Algorithm~\ref{alg:perceptron} 
 \end{itemize}
 
 The hard nature of the threshold causes some problems: the hypothesis $h(x)$ is not differentiable and is in fact a discontinuous function of its inputs and its weights. This makes learning with the perceptron rule a very unpredictable adventure. 
-As the function is non-diffferentiable, gradient descent cannot be applied to perceptrons. \\
+As the function is non-differentiable, gradient descent cannot be applied to perceptrons. \\
 Nonetheless, the perceptron is very fast and can be applied to large data sets.
 
 \begin{algorithm}[h!]
