@@ -603,9 +603,70 @@ X = \begin{pmatrix}
 \end{align*}
 
 \begin{align*}
-\Sigma = \begin{pmatrix}
-2 & -3.2\\
--3.2 & 5.2\\
+X - \bar{X} = \begin{pmatrix}
+-2 & 3\\
+-1 & 2\\
+0 & 0\\
+1 & -2\\
+2 & -3
+\end{pmatrix}
+\end{align*}
+
+\begin{align*}
+\Sigma_{1,1} & = Cov(x_1,x_1) = Var(x_1) = 2.5 \\
+\Sigma_{1,2} & = Cov(x_1,x_2) = -4 \\
+\Sigma_{2,1} & = Cov(x_2,x_1) = -4 \\
+\Sigma_{2,2} & = Cov(x_2,x_2) = Var(x_2) = 6.6
+\end{align*}
+Or:
+
+\begin{align*}
+\Sigma & = \frac{1}{5-1}(\begin{pmatrix}
+4 & -6\\
+-6 & 9\\
+\end{pmatrix} + \begin{pmatrix}
+1 & -2\\
+-2 & 4\\
+\end{pmatrix} + 0_{2,2} + \begin{pmatrix}
+1 & -2\\
+-2 & 4\\
+\end{pmatrix} + \begin{pmatrix}
+4 & -6\\
+-6 & 9\\
+\end{pmatrix}) & \\
+& = \frac{1}{4} \begin{pmatrix}
+10 & -16\\
+-16 & 26\\ 
+\end{pmatrix} = \begin{pmatrix}
+2.5 & -4\\
+-4 & 6.5\\
+\end{pmatrix} &
+\end{align*}
+
+Vectorized computation of covariance matrix:
+\begin{align*}
+\Sigma = \frac{1}{m-1}\sum_i^m (X-\bar{X})^T(X-\bar{X})
+\end{align*}
+
+Example:
+\begin{align*}
+\Sigma & = \frac{1}{5-1}\begin{pmatrix}
+-2 & -1 & 0 & 1 & 2\\
+3 & 2 & 0 & -2 & -3
+\end{pmatrix}\begin{pmatrix}
+-2 & 3\\
+-1 & 2\\
+0 & 0\\
+1 & -2\\
+2 & -3
+\end{pmatrix} & \\
+& = \frac{1}{4} \begin{pmatrix}
+10 & -16\\
+-16 & 26\\ 
+\end{pmatrix}
+= \begin{pmatrix}
+2.5 & -4\\
+-4 & 6.5
 \end{pmatrix}
 \end{align*}
 
