@@ -2767,7 +2767,7 @@ With $g(z) = 1$ if $z \ge 0$, $g(z) = -1$ if $z < 0$
 Finding optimal $w$ and $b$ can be found using gradient decent which results in a non-convex optimization problem.
 However, there is a convex solution (detailed omitted):
 \begin{align*}
-\min\limits_{\gamma, w, b} \frac{1}{2}\lvert w \rvert^2
+\min\limits_{\gamma, w, b} \frac{1}{2}\lVert w \rVert^2
 \end{align*}
 with the following constraint: $y^{(i)}(w^Tx^{(i)}+b) \ge 1$ for $i = 1,...,m$.
 This is a {\bf quadratic programming problem} for which there are efficient software packages to solve it. \\
@@ -2782,8 +2782,9 @@ with the following constraints:
 \item $\alpha_i \ge 0$ for $i = 1,...,m$
 \item $\sum_{i=1}^m \alpha_i y^{(i)} = 0$
 \end{itemize}
+This can be solved more efficiently using the SMO algorithm. Eventually, $\alpha_i$ will all be zero except for the support vectors.
 
-This can be solved more efficiently using the SMO algorithm. Eventually, $\alpha_i$ will all be zero except for the support vectors. \\
+\subsection{Prediciting}
 Predictions can be made:
 \begin{align*}
 h(x) & = sign(w^Tx + b) & \\
@@ -2791,9 +2792,14 @@ h(x) & = sign(w^Tx + b) & \\
 & = sign(\sum_{i=1}^m \alpha_i y^{(i)}(x^{(i)}\cdot x) + b) &
 \end{align*}
 
+\subsection{Non-linear SMVs}
 
+\subsection{Kernels}
 
 \subsection{Regularization}
+
+\subsection{Bias and variance}
+Changing the SVM parameters $C(=\frac{1}{\lambda})$ and $\sigma^2$ has impact on bias an variance.  A large $C$ results in lower bias and higher variance whereas a small $C$ results in higher bias and lower variance. A large $\sigma^2$ results in higher bias and lower variance because the features $f_i$ vary more smoothly. In contrast, a small $\sigma^2$ results in lower bias and higher variance.
 
 \subsection{Old definition from Coursera}
 {\bf This subsection is obsolete! It is retained to give a very abstract view on SVMs and how they could be implemented in a simpler, but less efficient and less optimal way.} \\
@@ -2873,8 +2879,6 @@ To optimize the training, the regularization part is slightly changed:
 \begin{definition}[Optimized SVM kernel cost function]~\\
 $J(\theta)=C\sum_{i=1}^m[y^{(i)}cost_1(\theta^Tf^{(i)})+(1-y^{(i)})cost_0(\theta^Tf^{(i)})]+\frac{1}{2}\sum_{j=1}^{\bf m}\theta_j^2$
 \end{definition}
-
-Changing the SVM parameters $C(=\frac{1}{\lambda})$ and $\sigma^2$ has impact on bias an variance.  A large $C$ results in lower bias and higher variance whereas a small $C$ results in higher bias and lower variance. A large $\sigma^2$ results in higher bias and lower variance because the features $f_i$ vary more smoothly. In contrast, a small $\sigma^2$ results in lower bias and higher variance.
 
 \section{Multiclass classification}
 In {\bf multiclass classification} examples can be classified into more than two classes. Some classification algorithms permit to do this natively. Generally, this can be done using {\bf one-vs.-all} (one-vs.-rest) classification which trains one binary classifier for each class. Finally, on a new input to make a prediction, the largest classifier is picked.
