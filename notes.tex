@@ -2730,6 +2730,71 @@ $2\frac{PR}{P+R}$
 {\bf Example}: Returning all positive examples of a set. 30 examples are classified positively only 20 of which are positive, while failing to return 40 additional positive examples. The precision is $20/30 = 2/3$ while the recall is $20/60 = 1/3$.
 
 \section{Support vector machines}
+\subsection{Large margins}
+In {\bf large margin} classifiers, a prediction can be considered a very confident one:
+\begin{itemize}
+\item $y = 1$ if $\theta^Tx \gg 0$
+\item $y = 0$ if $\theta^Tx \ll 0$
+\end{itemize}
+The goal of SVMs is to find $\theta$ so that $\theta^Tx^{(i)} \gg 0$ whenever $y^{(i)} = 1$ and $\theta^Tx^{(i)} \ll 0$ whenever $y^{(i)} = 0$, since this would reflect a very confident and correct set of classifications for all the training examples.
+The key insight is that the examples closer to the separator are more relevant and paying attention to them can improve the separator.
+
+\subsection{Properties of SVMs}
+A {\bf support vector machine} (SVM) is a linear large margin classifier.
+There are three properties that make SVMs attractive:
+\begin{itemize}
+\item A large margin helps them to generalize well.
+\item SVMs create a linear separating hyperplane. They also have the ability to embed data into a higher-dimensional space using the {\bf kernel trick}. This allows to separate non-linearly separable data in a higher-dimensional space. This linear separator is actually non-linear in the original space.
+\item SVMs are a non-parametric method, but in practice often retain only a small fraction of the number of training examples, called the {\bf support vectors} which "hold up" the hyperplane.
+\end{itemize}
+
+\subsection{Changes in notation}
+In the first part of this section, linearly separable data sets are assumed. Also, the notation is different to the previous learning algorithms such as logistic regression:
+\begin{itemize}
+\item $y \in \{-1, 1\}$ instead of $\{0, 1\}$
+\item $x \in \mathbb{R}^n$ instead of $\mathbb{R}^{n+1}$
+\item $w, b$ instead of $\theta$
+\item $b$ takes the role of $\theta_0$
+\item $w$ takes the role of $[\theta_1 ... \theta_n]^T$
+\end{itemize}
+
+\begin{definition}[SVM hypothesis]
+$h_{w,b}(x) = g(w\cdot x + b)$
+\end{definition}
+With $g(z) = 1$ if $z \ge 0$, $g(z) = -1$ if $z < 0$
+
+\subsection{Training}
+Finding optimal $w$ and $b$ can be found using gradient decent which results in a non-convex optimization problem.
+However, there is a convex solution (detailed omitted):
+\begin{align*}
+\min\limits_{\gamma, w, b} \frac{1}{2}\lvert w \rvert^2
+\end{align*}
+with the following constraint: $y^{(i)}(w^Tx^{(i)}+b) \ge 1$ for $i = 1,...,m$.
+This is a {\bf quadratic programming problem} for which there are efficient software packages to solve it. \\
+
+However, using {\bf Lagrangian multipliers} leading to the optimization problem's dual form will help to use kernels to get optimal margin classifiers to work efficiently in very high dimensional spaces:
+
+\begin{align*}
+\max\limits_{\alpha} W(\alpha) = \sum_{i=1}^m \alpha_i - \frac{1}{2} \sum_{i=1}^m \sum_{j=1}^m y^{(i)} y^{(j)} (x^{(i)}\cdot x^{(j)})
+\end{align*}
+with the following constraints:
+\begin{itemize}
+\item $\alpha_i \ge 0$ for $i = 1,...,m$
+\item $\sum_{i=1}^m \alpha_i y^{(i)} = 0$
+\end{itemize}
+
+This can be solved more efficiently using the SMO algorithm. Eventually, $\alpha_i$ will all be zero except for the support vectors. \\
+Predictions can be made:
+\begin{align*}
+h(x) & = sign(w^Tx + b) & \\
+& = sign((\sum_{i=1}^m \alpha_i y^{(i)}x^{(i)})^T x + b) & \\
+& = sign(\sum_{i=1}^m \alpha_i y^{(i)}(x^{(i)}\cdot x) + b) &
+\end{align*}
+
+
+
+\subsection{Regularization}
+
 \subsection{Old definition from Coursera}
 {\bf This subsection is obsolete! It is retained to give a very abstract view on SVMs and how they could be implemented in a simpler, but less efficient and less optimal way.} \\
 
