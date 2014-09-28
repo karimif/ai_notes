@@ -1972,6 +1972,23 @@ It is largely concerned with computational and data efficiency and deals with qu
 \item How are inputs acquired?
 \end{itemize}
 
+\subsection{VC dimension}
+\label{chapter:vcdimension}
+\begin{definition}[Vapnik and Chervonenkis (VC) dimesion]
+The VC dimension of a class of functions \{fi\} is the maximum number of points that can be separated
+(shattered) into two classes in all possible ways. 
+\end{definition}
+
+We illustrate this using a simple example. Given the class \{f\} is straight lines on a 2D plane, then any three (non collinear) points can be separated.
+The figure shows all the possible ways in which three non collinear points can be divided into two classes.
+However for four points there is a case that cannot be separated by a single line, thus the VC dimension of a line is 3. If we extend the dimension to three then all possible the four point cases can be separated by a hyperplane. This generalizes to a fundamental theorem:
+
+\begin{definition}
+The VC dimension of the set of oriented hyperplanes in $\mathbb{R}^n$ is $n + 1$
+\end{definition}
+This implies that it is always possible, for a finite point set, to find a dimension where all possible separations of the point set can be achieved by a hyperplane.
+
+
 \section{Machine learning jokes}
 {\em Why is Bayes classifier upset?} \\
 Because everyone calls him naive.
