@@ -1975,7 +1975,7 @@ It is largely concerned with computational and data efficiency and deals with qu
 \subsection{VC dimension}
 \label{chapter:vcdimension}
 \begin{definition}[Vapnik and Chervonenkis (VC) dimesion]
-The VC dimension of a class of functions \{fi\} is the maximum number of points that can be separated
+The VC dimension of a class of functions $\{f_i\}$ is the maximum number of points that can be separated
 (shattered) into two classes in all possible ways. 
 \end{definition}
 
@@ -2760,10 +2760,9 @@ The key insight is that the examples closer to the separator are more relevant a
 A {\bf support vector machine} (SVM) is a linear large margin classifier.
 There are three properties that make SVMs attractive:
 \begin{itemize}
-\item A large margin helps them to generalize well.
 \item SVMs create a linear separating hyperplane. They also have the ability to embed data into a higher-dimensional space using the {\bf kernel trick}. This allows to separate non-linearly separable data in a higher-dimensional space. This linear separator is actually non-linear in the original space.
 \item SVMs are a non-parametric method, but in practice often retain only a small fraction of the number of training examples, called the {\bf support vectors} which "hold up" the hyperplane.
-\item An important benefit of the support vector machine approach is that the complexity of the resulting classifier is characterized by the number of support vectors rather than the dimensionality of the transformed space. As a result, support vector machines tend to be less prone to problems of over-fitting than some other methods.
+\item A large margin helps them to generalize well. An important benefit of the support vector machine approach is that the complexity of the resulting classifier is characterized by the number of support vectors rather than the dimensionality of the transformed space. As a result, support vector machines tend to be less prone to problems of over-fitting than some other methods.
 \end{itemize}
 
 \subsection{Changes in notation}
@@ -2793,14 +2792,14 @@ This is a {\bf quadratic programming problem} for which there are efficient soft
 However, using {\bf Lagrangian multipliers} leading to the optimization problem's dual form will help to use kernels to get optimal margin classifiers to work efficiently in very high dimensional spaces (details omitted):
 
 \begin{align*}
-\max\limits_{\alpha} W(\alpha) = \sum_{i=1}^m \alpha_i - \frac{1}{2} \sum_{i=1}^m \sum_{j=1}^m y^{(i)} y^{(j)} (x^{(i)}\cdot x^{(j)})
+\max\limits_{\alpha} W(\alpha) = \sum_{i=1}^m \alpha_i - \frac{1}{2} \sum_{i=1}^m \sum_{j=1}^m \alpha_i \alpha_j y^{(i)} y^{(j)} (x^{(i)}\cdot x^{(j)})
 \end{align*}
 with the following constraints:
 \begin{itemize}
 \item $\alpha_i \ge 0$ for $i = 1,...,m$
 \item $\sum_{i=1}^m \alpha_i y^{(i)} = 0$
 \end{itemize}
-This can be solved more efficiently using the SMO algorithm. Eventually, $\alpha_i$ will all be zero except for the support vectors.
+This can be solved more efficiently using coordinate ascent or the SMO algorithm. Eventually, $\alpha_i$ will all be zero except for the support vectors.
 
 \subsection{Prediciting}
 Predictions can be made:
@@ -2824,19 +2823,19 @@ with the following constraints:
 \item $\zeta_i \ge 0$ for $i = 1,...,m$
 \end{itemize}
 
-Thus, examples are now permitted to have margin less than 1. If an example has margin $1 - \zeta_i$, there is an additional cost in the objective function being increased by $C \zeta_i$. The parameter $C=\frac{1}{\lambda}$ controls the relative weighting between the twin goals of making $\lVert w \rVert^2$ small (which makes the margin large) and of ensuring that most examples have margin at least 1. \\
+Thus, examples are now permitted to have margin less than 1. If an example has margin $1 - \zeta_i$, there is an additional cost in the objective function being increased by $C \zeta_i$. The parameter $C$ plays a role similar to $\frac{1}{\lambda}$ and controls the relative weighting between the twin goals of making $\lVert w \rVert^2$ small (which makes the margin large) and of ensuring that most examples have margin at least 1. \\
 
 Using Lagrangian multipliers (details omitted):
 
 \begin{align*}
-\max\limits_{\alpha} W(\alpha) = \sum_{i=1}^m \alpha_i - \frac{1}{2} \sum_{i=1}^m \sum_{j=1}^m y^{(i)} y^{(j)} (x^{(i)}\cdot x^{(j)})
+\max\limits_{\alpha} W(\alpha) = \sum_{i=1}^m \alpha_i - \frac{1}{2} \sum_{i=1}^m \sum_{j=1}^m \alpha_i \alpha_j y^{(i)} y^{(j)} (x^{(i)}\cdot x^{(j)})
 \end{align*}
 with the following constraints:
 \begin{itemize}
 \item $0 \le \alpha_i \le C$ for $i = 1,...,m$
 \item $\sum_{i=1}^m \alpha_i y^{(i)} = 0$
 \end{itemize}
-This can be solved more efficiently using coordinate ascent or the SMO algorithm. Eventually, $\alpha_i$ will all be zero except for the support vectors.
+Again, this can be solved more efficiently using coordinate ascent or the SMO algorithm. Eventually, $\alpha_i$ will all be zero except for the support vectors.
 
 \subsection{Kernels}
 The non-linear SVM is based on the following idea. We map the points in the data set to a higher dimension space where it is possible to separate them with a linear hyperplane. The mapping is non-linear and is achieved by a suitable {\bf kernel function}.
