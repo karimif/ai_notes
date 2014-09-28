@@ -1984,7 +1984,7 @@ The figure shows all the possible ways in which three non collinear points can b
 However for four points there is a case that cannot be separated by a single line, thus the VC dimension of a line is 3. If we extend the dimension to three then all possible the four point cases can be separated by a hyperplane. This generalizes to a fundamental theorem:
 
 \begin{definition}
-The VC dimension of the set of oriented hyperplanes in $\mathbb{R}^n$ is $n + 1$
+The VC dimension of the set of oriented hyperplanes in $\mathbb{R}^n$ is $n + 1$.
 \end{definition}
 This implies that it is always possible, for a finite point set, to find a dimension where all possible separations of the point set can be achieved by a hyperplane.
 
@@ -2810,7 +2810,8 @@ h(x) & = sign(w^Tx + b) & \\
 \end{align*}
 
 \subsection{Regularization}
-This algorithm can also work on non-linearly separable data sets as well as less sensitive to outliers, the optimization objective can be reformulated (details omitted):
+To prevent overfitting (outliers) or if there exists no hyperplane that can split the "yes" and "no" examples, the {\bf soft margin method} will choose a hyperplane that splits the examples as cleanly as possible, while still maximizing the distance to the nearest cleanly split examples.
+The optimization objective can be reformulated (details omitted):
 
 \begin{align*}
 \min\limits_{\gamma, w, b} \frac{1}{2}\lVert w \rVert^2 + C\sum_{i=1}^m  \zeta_i
@@ -2839,6 +2840,9 @@ This can be solved more efficiently using the SMO algorithm. Eventually, $\alpha
 \subsection{Non-linear SMVs}
 
 \subsection{Kernels}
+
+\subsection{Kernelization}
+The kernel method can be applied to any other learning algorithm that can be reformulated to work only with dot products of paris of data points. Then, the dot product is replaced by a Kernel function which leads to a {\bf kernelized} version of the algorithm.
 
 \subsection{Bias and variance}
 Changing the SVM parameters $C(=\frac{1}{\lambda})$ and $\sigma^2$ has impact on bias an variance.  A large $C$ results in lower bias and higher variance whereas a small $C$ results in higher bias and lower variance. A large $\sigma^2$ results in higher bias and lower variance because the features $f_i$ vary more smoothly. In contrast, a small $\sigma^2$ results in lower bias and higher variance.
