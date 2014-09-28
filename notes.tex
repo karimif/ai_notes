@@ -2763,6 +2763,7 @@ There are three properties that make SVMs attractive:
 \item A large margin helps them to generalize well.
 \item SVMs create a linear separating hyperplane. They also have the ability to embed data into a higher-dimensional space using the {\bf kernel trick}. This allows to separate non-linearly separable data in a higher-dimensional space. This linear separator is actually non-linear in the original space.
 \item SVMs are a non-parametric method, but in practice often retain only a small fraction of the number of training examples, called the {\bf support vectors} which "hold up" the hyperplane.
+\item An important benefit of the support vector machine approach is that the complexity of the resulting classifier is characterized by the number of support vectors rather than the dimensionality of the transformed space. As a result, support vector machines tend to be less prone to problems of over-fitting than some other methods.
 \end{itemize}
 
 \subsection{Changes in notation}
@@ -2835,14 +2836,39 @@ with the following constraints:
 \item $0 \le \alpha_i \le C$ for $i = 1,...,m$
 \item $\sum_{i=1}^m \alpha_i y^{(i)} = 0$
 \end{itemize}
-This can be solved more efficiently using the SMO algorithm. Eventually, $\alpha_i$ will all be zero except for the support vectors.
-
-\subsection{Non-linear SMVs}
+This can be solved more efficiently using coordinate ascent or the SMO algorithm. Eventually, $\alpha_i$ will all be zero except for the support vectors.
 
 \subsection{Kernels}
+The non-linear SVM is based on the following idea. We map the points in the data set to a higher dimension space where it is possible to separate them with a linear hyperplane. The mapping is non-linear and is achieved by a suitable {\bf kernel function}.
+Check Chapter~\ref{chapter:vcdimension} for VC dimension as an appropriate measure. \\
 
-\subsection{Kernelization}
-The kernel method can be applied to any other learning algorithm that can be reformulated to work only with dot products of paris of data points. Then, the dot product is replaced by a Kernel function which leads to a {\bf kernelized} version of the algorithm.
+Supposing that function $\phi$ maps from an $n$-dimensional space to an $m$-dimensional space where $m > n$:
+\begin{align*}
+\phi : \mathbb{R}^n \to \mathbb{R}^m
+\end{align*}
+
+Then, by replacing $x^{(i)}\cdot x^{(j)}$ in all the equations of the optimization formulation, an optimal separating hyperplane normal vector $w\in \mathbb{R}^m$ can be found.
+This mapping can be computationally expensive and require high time and storage amounts.
+A {\bf kernel} is a function that implicitly computes the dot product in the higher dimensional space:
+\begin{align*}
+K(x^{(i)}, x^{(j)}) = \phi(x^{(i)})\cdot \phi(x^{(j)})
+\end{align*}
+
+Valid kernels need to satisfy {\bf Mercer's theorem} (omitted). \\
+Commonly used kernels that satisfy it are:
+\begin{itemize}
+\item Polynomial: $K(u,v) = (u\cdot v + 1)^p$
+\item Gaussian Radial Basis Function: $K(u,v) = exp(-\frac{\lVert u -v\rVert^2}{2\sigma^2})$
+\end{itemize}
+
+The radial basis kernel is of particular interest. For $m$ distinct training points, the radial basis kernel makes the SVM operate in an $m$ dimensional space.
+One can say that the radial basis kernel maps to a space of {\bf infinite dimension} because one can make $m$ as large as one wants and the space it operates in keeps growing without bound. This can be seen by that fact that there is an infinite series expansion of $e^x$ which is required to gather the dot product terms.
+Thus the radial basis function can solve any classification problem regardless of size. It also behaves in a predictable (though not always ideal) way.
+\\
+However, other kernels, like the polynomial kernel do not have this property of the dimensionality scaling with the number of training samples. For example, if one has 1000 2D training samples and uses a polynomial kernel of order 2 then the SVM will operate in a 3 dimensional space, not a 1000 dimensional space.
+
+~\\
+The kernel method can be applied to any other learning algorithm that can be reformulated to work only with dot products of pairs of data points. Then, the dot product is replaced by a Kernel function which leads to a {\bf kernelized} version of the algorithm.
 
 \subsection{Bias and variance}
 Changing the SVM parameters $C(=\frac{1}{\lambda})$ and $\sigma^2$ has impact on bias an variance.  A large $C$ results in lower bias and higher variance whereas a small $C$ results in higher bias and lower variance. A large $\sigma^2$ results in higher bias and lower variance because the features $f_i$ vary more smoothly. In contrast, a small $\sigma^2$ results in lower bias and higher variance.
