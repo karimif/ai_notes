@@ -1974,7 +1974,7 @@ It is largely concerned with computational and data efficiency and deals with qu
 
 \subsection{VC dimension}
 \label{chapter:vcdimension}
-\begin{definition}[Vapnik and Chervonenkis (VC) dimesion]
+\begin{definition}[Vapnik and Chervonenkis (VC) dimension]
 The VC dimension of a class of functions $\{f_i\}$ is the maximum number of points that can be separated
 (shattered) into two classes in all possible ways. 
 \end{definition}
@@ -2775,11 +2775,6 @@ In the first part of this section, linearly separable data sets are assumed. Als
 \item $w$ takes the role of $[\theta_1 ... \theta_n]^T$
 \end{itemize}
 
-\begin{definition}[SVM hypothesis]
-$h_{w,b}(x) = g(w\cdot x + b)$
-\end{definition}
-With $g(z) = 1$ if $z \ge 0$, $g(z) = -1$ if $z < 0$
-
 \subsection{Training}
 Finding optimal $w$ and $b$ can be found using gradient decent which results in a non-convex optimization problem.
 However, there is a {\bf convex solution} (details omitted):
@@ -3139,7 +3134,7 @@ It is a main task of exploratory {\bf data mining} and a common technique for st
 \end{algorithm}
 
 \begin{definition}[k-means cost function]~\\
-$J(c^{(1)}, ..., c^{(m)}, \mu_1, ..., \mu_K)=\frac{1}{m}\sum_{i=1}^m \lVert x^{(i)}-\mu_{c^{(i)}}\rVert_2 $
+$J(c^{(1)}, ..., c^{(m)}, \mu_1, ..., \mu_K)=\frac{1}{m}\sum_{i=1}^m \lVert x^{(i)}-\mu_{c^{(i)}}\rVert^2 $
 \end{definition}
 
 \subsection{Fuzzy c-means}
@@ -3197,11 +3192,11 @@ In this process, higher dimensional data is mapped to a lower dimension, the {\b
 The goal of PCA is to minimize the {\bf average squared projection error} of all original data and their projections.
 
 \begin{definition}[Average squared projection error]
-$\frac{1}{m}\sum_{i=1}^m \lVert x^{(i)}-x_{approx}^{(i)} \Vert_2$
+$\frac{1}{m}\sum_{i=1}^m \lVert x^{(i)}-x_{approx}^{(i)} \Vert^2$
 \end{definition}
 
 \begin{definition}[Total variation in data]
-$\frac{1}{m}\sum_{i=1}^m \lVert x^{(i)} \Vert_2$
+$\frac{1}{m}\sum_{i=1}^m \lVert x^{(i)} \Vert^2$
 \end{definition}
 
 PCA can be used to reduce memory and time consumption of complex computations. Also, it allows to plot higher dimensional data in 2D or 3D.
@@ -3289,7 +3284,7 @@ PCA is invariant to the scaling of the data and will return the same eigenvector
 
 Choosing the number of principal components $K$ comes with a loss of information. Usually, a fixed percentage such as 99\% or 95\% of the {\bf variance} must be {\bf retained}:
 \begin{align*}
-\frac{\frac{1}{m}\sum_{i=1}^m \lVert x^{(i)}-x_{approx}^{(i)} \Vert_2}{\frac{1}{m}\sum_{i=1}^m \lVert x^{(i)} \Vert_2} \le 0.01\:\mbox(1\%)
+\frac{\frac{1}{m}\sum_{i=1}^m \lVert x^{(i)}-x_{approx}^{(i)} \Vert^2}{\frac{1}{m}\sum_{i=1}^m \lVert x^{(i)} \Vert^2} \le 0.01\:\mbox(1\%)
 \end{align*}
 This measure is more useful than the actual amount of dimensions that were reduced. Then, the smallest $K$ to satisfy this equation is chosen. Computing $K$ this way is inefficient as PCA may need to be performed a lot times to choose the smallest $K$. Alternatively, the retained variance can be computed for a given $K$:
 \begin{align*}
